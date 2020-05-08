@@ -4,27 +4,33 @@
 
 
 ## Desafio para candidatos à vaga de Desenvolvedor Frontend (Jr/Pleno/Sênior) - UX / UI.
-Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento. Abaixo explicaremos tudo o que será necessário.
+Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento.
 
 ## Instruções:
 
-Siga o Briefing em PDF 
+* Siga as instruções do <a href="https://github.com/Oliveira-Trust/desafio-frontend/blob/master/Briefing.pdf">Briefing</a> em PDF.
 
 ## Tecnologias a serem utilizadas
+
 * HTML
 * CSS
 * Javascript
 * Bootstrap
 
 ## Entrega:
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo e depois envie-nos o pull request. Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
+
+* Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo e depois envie-nos o pull request.
 
 Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 
 ### Bônus:
 
+* Conhecimento e interesse em UX / UI.
 
-## Nossa análise
+### Nossa análise:
 
+* Preocupação com a usabilidade da interface e a experiência do usuário;
+* Harmonização das cores e elementos;
+* Atenção a responsividade.
 
 # Boa sorte!
