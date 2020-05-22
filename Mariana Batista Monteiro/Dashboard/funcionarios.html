@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Oliveira Trust - Funcionários</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- meanmenu icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- educate icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/educate-custon-icon.css">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="style.css">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/responsive.css"> 
+    <!-- dropzone CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/dropzone/dropzone.css"> 
+</head>
+
+<body>
+    <!-- Start Left menu area -->
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="#"><img class="main-logo" src="img/logo/logo.png" alt="Oliveira Trust" /></a>
+                <strong><a href="#"><img src="img/logo/logosn.png" alt="Oliveira Trust" /></a></strong>
+            </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                  <ul class="metismenu" id="menu1">
+                        <li class="active">
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-star"></span><span class="mini-click-non">Funcionários</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Informações" href="funcionarios.html"><span class="mini-sub-pro">Informações</span></a></li>
+                                <li><a title="Adicionar funcionário" href="add-funcionario.html"><span class="mini-sub-pro">Adicionar funcionário</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+    <!-- End Left menu area -->
+    <!-- Start Welcome area -->
+    <div class="all-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo-pro">
+                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="Oliveira Trust" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="header-advance-area">
+          <div class="header-top-area">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="header-top-wraper">
+                              <div class="row">
+                                  <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                      <div class="menu-switcher-pro">
+                                          <button title="menu" type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                                  <i class="educate-icon educate-nav"></i>
+                                          </button>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                  </div>
+                                  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                      <div class="header-right-info">
+                                          <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                              <li class="nav-item">
+                                                  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                          <img src="img/product/pro4.jpg" alt="imagem de perfil" />
+                                                          <span class="admin-name">Olá, Maria!</span>
+                                                          <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                  </a>
+                                                  <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                      <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>Minha conta</a>
+                                                      </li>
+                                                      <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>Cofigurações</a>
+                                                      </li>
+                                                      <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Sair</a>
+                                                      </li>
+                                                  </ul>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       </div>
+	<!-- Mobile Menu start -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul class="mobile-menu-nav">
+                                    <li><a data-toggle="collapse" data-target="#demodepart" href="#">Funcionários <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <li><a href="funcionarios.html">Informações</a>
+                                            </li>
+                                            <li><a href="add-funcionario.html">Adicionar funcionário</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+	<!-- Mobile Menu end -->
+    <!-- Start table area -->
+            <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> </div>
+                    </div>
+                </div>
+            </div>
+        <div class="product-status mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-status-wrap drp-lst">
+                           
+                         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                            <h4>Informações</h4>
+                          </div>   
+                            <div style="margin-bottom:2em;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 breadcome-heading">
+                                            <form role="search" class="sr-input-func">
+                                                <input type="text" placeholder="Buscar..." class="search-int form-control" >
+                                                <a href="#"><i class="fa fa-search"></i></a>
+                                            </form>
+                                        </div>
+                            <div class="add-product">
+                                <a href="add-funcionario.html">Adicionar funcionário</a>
+                            </div>
+                            <div class="product-tab-list  fade active in" id="pag1">
+                                <table>
+                                    <tr>
+                                        <th>Nº</th>                                        
+                                        <th>Nome</th>
+                                        <th>Cargo</th>
+                                        <th>Setor</th>
+                                        <th>Tempo de empresa</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                   <tr>
+                                        <td>2</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>15</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>16</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>17</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>18</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>20</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>21</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>22</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>23</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>24</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>25</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>26</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>27</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>28</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>29</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>30</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>31</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>32</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>33</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>34</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>35</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>36</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>37</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>38</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>39</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>40</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>41</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>42</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>43</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>44</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>45</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>46</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>47</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>48</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>49</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>50</td>
+                                        <td>Marta Gonçalves dos Santos</td>
+                                        <td>Analista</td>
+                                        <td>Marketing</td>
+                                        <td>3 anos</td>
+                                        <td>
+                                            <button data-toggle="tooltip" title="Editar" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="Excluir" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="custom-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Voltar</a></li>
+                                        <li class="page-item"><a class="page-link" href="#pag1">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#pag2">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">próximo</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+        
+<!-- End table area -->
+    <!-- jquery
+		============================================ -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap JS
+		============================================ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- meanmenu JS
+		============================================ -->
+    <script src="js/jquery.meanmenu.js"></script>
+    <!-- sticky JS
+		============================================ -->
+    <script src="js/jquery.sticky.js"></script>
+    <!-- metisMenu JS
+		============================================ --> 
+    <script src="js/metisMenu/metisMenu.min.js"></script>
+    <script src="js/metisMenu/metisMenu-active.js"></script>
+    <!-- main JS
+		============================================ --> 
+    <script src="js/main.js"></script>
+    
+</body>
+
+</html>
