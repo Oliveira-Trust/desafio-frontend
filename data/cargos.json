@@ -1,0 +1,53 @@
+[
+    {
+        "nome": "Administrativo",
+        "cargo": [
+            "Analista Administrativo",
+            "Assistente Administrativo",
+            "Auxiliar Administrativo",
+            "Auxiliar de Serviços Gerais",
+            "Estágiário",
+            "Gerente Administrativo",
+            "Jovem Aprendiz",
+            "Supervisor Administrativo"
+        ]
+    },
+    {
+        "nome": "Atendimento",
+        "cargo": [
+            "Assistente de Atendimento",
+            "Analista de Atendimento",
+            "Jovem Aprendiz",
+            "Supervisor de Atendimento"
+        ]
+    },
+    {
+        "nome": "Desenvolvimento de Sistemas",
+        "cargo": [
+            "Analista de Sistemas",
+            "Auxiliar de Programação",
+            "Estágiário",
+            "Jovem Aprendiz",
+            "Supervior de Desenvolvimento"
+        ]
+    },
+    {
+        "nome": "Financeiro",
+        "cargo": [
+            "Analista Financeiro",
+            "Assistente Financeiro",
+            "Auxiliar Financeiro",
+            "Estágiario",
+            "Jovem Aprendiz",
+            "Gerente Financeiro",
+            "Supervisor Financeiro"
+        ]
+    },
+    {
+        "nome": "Informática",
+        "cargo": [
+            "Assistente de Informática",
+            "Jovem Aprendiz",
+            "Supervisor de Informática"
+        ]
+    }]
