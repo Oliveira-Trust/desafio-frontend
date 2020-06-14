@@ -1,36 +1,26 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
-
-
-## Desafio para candidatos à vaga de Desenvolvedor Frontend (Jr/Pleno/Sênior) - UX / UI.
-Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento.
+## Desafio Frontend
+Olá caro avaliador, nesse texto irei comentar o que utilizei para realizáa-lo.
 
 ## Instruções:
-
-* Siga as instruções do <a href="https://github.com/Oliveira-Trust/desafio-frontend/blob/master/Briefing.pdf">Briefing</a> em PDF.
+* Seguindo as instruções do Briefing em PDF. Criei algumas telas para poder me basear e depois aprimorar na construção do teste.
+* Foram criadas as telas de Login, Dashboard com a lista de funcionários e alguns widgets, e uma tela de cadastro de funcionários.
+* Menu criado lateralmente, e submenus criados no avatar do perfil que estiver acessando o painel de dashboard simulando estar logado.
+* Na tela de login, a idéia é dar impressão que o usuário estivesse registrado em cookie, session, ou localstorage, e o mesmo digitasse apenas a senha e clicando em login, pudesse acessar o painel de dashboard.
 
 ## Tecnologias a serem utilizadas
-
 * HTML
 * CSS
-* Javascript
-* Bootstrap
+* Javascript, criei algumas funções para pequenos efeitos no dropdown, e tb consumo de um arquivo json com os nomes de 50 funcionários fictícios.
+* TailwindCSS, preferi utilizar este framework pois queria colocar em prática meus estudos no mesmo. Saindo assim da zona de conforto de mais de 5 anos de conhecimento com Bootstrap.
 
 ## Entrega:
+* O resultado final os senhores podem conferir acessando a pasta dist.
 
-* Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo e depois envie-nos o pull request.
+## Contatos
+* Skype ID: atmmoreira
+* Email: atmmoreira.rj@gmail.com
+* Phone: +55 21 2692-2032 / +55 21 9.9289.0362
+* Whatsapp: https://bit.ly/2zRSfIa
+* Telegram: https://bit.ly/35rmmBV
 
-Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
-
-### Bônus:
-
-* Conhecimento e interesse em UX / UI.
-
-### Nossa análise:
-
-* Preocupação com a usabilidade da interface e a experiência do usuário;
-* Harmonização das cores e elementos;
-* Atenção a responsividade.
-
-# Boa sorte!
+## Obrigado pela oportunidade e espero que gostem.

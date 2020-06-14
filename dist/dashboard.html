@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Desafio Frontend - Dashboard Funcionários</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="text-gray-800 antialiased">
+    <nav class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+        <div class="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
+            <a class="md:block text-left md:pb-2 text-gray-700 mr-1 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0" href="javascript:void(0)">
+                <img src="./img/logotipo.png" alt="">
+            </a>
+            <ul class="md:hidden items-center flex flex-wrap list-none">
+                <li class="inline-block relative">
+                    <a class="text-gray-600 block py-1 px-3" href="#" onclick="openDropdown(event,'notification-dropdown')"><i class="fas fa-bars"></i></a>
+                    <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="notification-dropdown">
+                        <a href="./index.html" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Dashboard</a>
+                        <a href="./cadastro.html" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Funcionário</a>
+                        <div class="h-0 my-2 border border-solid border-gray-200"></div>
+                        <a href="./index.html" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Sair</a>
+                    </div>
+                </li>
+                <li class="inline-block relative">
+                    <a class="text-gray-600 block" href="#" onclick="openDropdown(event,'user-responsive-dropdown')">
+                        <div class="items-center flex">
+                            <span class="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full">
+                                <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="./img/img_teste.jpg">
+                            </span>
+                        </div>
+                    </a>
+                    <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="user-responsive-dropdown">
+                        <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Perfil</a>
+                        <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Configurações</a>
+                        <div class="h-0 my-2 border border-solid border-gray-200"></div>
+                        <a href="./index.html" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Sair</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden">
+                <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-gray-300">
+                    <div class="flex flex-wrap">
+                        <div class="w-6/12">
+                            <a class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0" href="#">
+                                <img src="./img/logotipo.png" alt="">
+                            </a>
+                        </div>
+                        <div class="w-6/12 flex justify-end">
+                            <button type="button" class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+                    <li class="items-center">
+                        <a class="text-red-500 hover:text-red-600 text-xs uppercase py-3 font-bold block" href="./dashboard.html">
+                            <i class="fas fa-tv opacity-75 mr-2 text-sm"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="items-center">
+                        <a class="text-gray-500 hover:text-red-600 text-xs uppercase py-3 font-bold block" href="./cadastro.html">
+                            <i class="fas fa-users opacity-75 mr-2 text-sm"></i> Funcionários
+                        </a>
+                    </li>
+                    <li class="items-center">
+                        <a class="text-gray-500 hover:text-red-600 text-xs uppercase py-3 font-bold block" href="./index.html">
+                            <i class="fas fa-sign-out-alt opacity-75 mr-2 text-sm"></i> Sair
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="relative md:ml-64">
+        <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-no-wrap md:justify-start flex items-center p-4">
+            <div class="w-full mx-autp items-center flex justify-between md:flex-no-wrap flex-wrap md:px-10 px-4">
+                <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="./dashboard.html">Dashboard</a>
+                <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
+                    <a class="text-gray-600 block" href="#dropdown" onclick="openDropdown(event,'user-dropdown')">
+                        <div class="items-center flex">
+                            <span class="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full">
+                                <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="./img/img_teste.jpg">
+                            </span>
+                        </div>
+                    </a>
+                    <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;"  id="user-dropdown">
+                        <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Perfil</a>
+                        <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Configurações</a>
+                        <div class="h-0 my-2 border border-solid border-gray-200"></div>
+                        <a href="./index.html" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">Sair</a>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        <div class="relative bg-red-600 md:pt-32 pb-32 pt-12">
+            <div class="px-4 md:px-10 mx-auto w-full">
+                <div>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                <div class="flex-auto p-4">
+                                    <div class="flex flex-wrap">
+                                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                            <h5 class="text-gray-500 uppercase font-bold text-xs">Funcionários</h5><span class="font-semibold text-xl text-gray-800">50</span>
+                                        </div>
+                                        <div class="relative w-auto pl-4 flex-initial">
+                                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+                                                <i class="far fa-chart-bar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-4">
+                                        <span class="text-green-500 mr-2">
+                                            <i class="fas fa-arrow-up"></i> 3.48%
+                                        </span>
+                                        <span class="whitespace-no-wrap">último mês</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                <div class="flex-auto p-4">
+                                    <div class="flex flex-wrap">
+                                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                            <h5 class="text-gray-500 uppercase font-bold text-xs">Novos Funcionários</h5>
+                                            <span class="font-semibold text-xl text-gray-800">20</span>
+                                        </div>
+                                        <div class="relative w-auto pl-4 flex-initial">
+                                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
+                                                <i class="fas fa-chart-pie"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-4">
+                                        <span class="text-red-500 mr-2">
+                                            <i class="fas fa-arrow-down"></i> 3.48%
+                                        </span>
+                                        <span class="whitespace-no-wrap">última semana</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                <div class="flex-auto p-4">
+                                    <div class="flex flex-wrap">
+                                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                            <h5 class="text-gray-500 uppercase font-bold text-xs">Cadastros</h5>
+                                            <span class="font-semibold text-xl text-gray-800">9</span>
+                                        </div>
+                                        <div class="relative w-auto pl-4 flex-initial">
+                                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-4">
+                                        <span class="text-orange-500 mr-2">
+                                            <i class="fas fa-arrow-down"></i> 1.10%
+                                        </span>
+                                        <span class="whitespace-no-wrap">ontem</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                            <div
+                                class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                <div class="flex-auto p-4">
+                                    <div class="flex flex-wrap">
+                                        <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                            <h5 class="text-gray-500 uppercase font-bold text-xs">Atendimentos</h5><span
+                                                class="font-semibold text-xl text-gray-800">49,65%</span>
+                                        </div>
+                                        <div class="relative w-auto pl-4 flex-initial">
+                                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
+                                                <i class="fas fa-percent"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-4">
+                                        <span class="text-green-500 mr-2">
+                                            <i class="fas fa-arrow-up"></i> 12%
+                                        </span>
+                                        <span class="whitespace-no-wrap">último mês</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 md:px-10 mx-auto w-full -m-24">
+              <div class="flex flex-wrap mt-4">
+                <div class="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                        <div class="rounded-t mb-0 px-4 py-3 border-0">
+                            <div class="flex flex-wrap items-center">
+                                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                                    <h3 class="font-semibold text-base text-gray-800 uppercase">Funcionários</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block w-full overflow-x-auto">
+                            <table class="items-center w-full bg-transparent border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            #</th>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            Nome</th>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            Sobrenome</th>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            Cargo</th>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            Setor</th>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            Tempo de Empresa</th>
+                                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                                            Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="funcionarios"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" charset="utf-8"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
