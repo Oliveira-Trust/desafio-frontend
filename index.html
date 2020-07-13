@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.ico">
+    <title>Desafio Frontend</title>
+
+    <link rel="stylesheet" href="bibliotecas/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bibliotecas/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bibliotecas/datatables/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="css/sb-admin.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="bg-dark fixed-nav sticky-footer" id="page-top">
+
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <a class="navbar-brand" href="index.html">
+            <img id="logo" src="img/logotipo.png" width="200">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarCurso" aria-control="navbarCurso" aria-expanded="false" aria-label="Navegação Toggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCurso" class="collapse navbar-collapse">
+            <ul class="navbar-nav navbar-sidenav">
+                <li class="nav-item">
+                    <a class="nav-link active nav-link-collapse collapse" href="#linkspagina" data-toggle="collapse">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text ">Funcionários</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="linkspagina">
+                        <li>
+                            <a href="#" data-toggle='modal' data-target='#cadastro'>Cadastrar</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modelId" href="#">
+                        <i class="fa fa-fw fa-file"></i>
+                        <span class="nav-link-text">Enviar Arquivos</span>
+                    </a>
+                </li>
+
+
+            </ul>
+            <ul class="navbar-nav sidenav-toggler">
+                <li class="nav-item">
+                    <a href="" id="sidenavToggler" class="nav-link text-center">
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- Navbar Header -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pesquisar por...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-sign-out">Logout</i>
+                    </a>
+                </li>
+
+            </ul><!-- fim Navbar Header -->
+        </div>
+
+    </nav><!-- fim Navegação -->
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Funcionários</a>
+                </li>
+            </ol>
+            <!-- Tabela Funcionários Cadastrados -->
+            <div class="row">
+                <div class="col-12">
+                    <h1>Funcionários Cadastrados</h1>
+                </div>
+            </div>
+            <div class="card mb-3">
+
+                <div class="card-body">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Sobrenome</th>
+                                <th>Cargo</th>
+                                <th>Setor</th>
+                                <th>Tempo de Empresa</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Sobrenome</th>
+                                <th>Cargo</th>
+                                <th>Setor</th>
+                                <th>Tempo de Empresa</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                            <tr>
+                                <td>Renan</td>
+                                <td>Dantas</td>
+                                <td>Desenvolvedor Front-end</td>
+                                <td>TI</td>
+                                <td>3 anos</td>
+                                <td><a type='button' class='btn btn-danger' href='#' data-toggle='modal'
+                                        data-target='#excluir'>Excluir</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> <!-- Tabela Funcionários Cadastrados -->
+        </div>
+
+        <!-- Modal Cadastrar Funcionário -->
+        <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cadastro Novo Funcionário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="">Novo Funcionário
+
+                                    </label>
+                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                        placeholder="Digite seu nome">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Cargo</label>
+                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                        placeholder="Digite seu cargo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Setor</label>
+                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                                        placeholder="Digite seu setor">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger action">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Excluir Funcionário -->
+        <div class="modal fade" id="excluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Excluir Cadastro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja excluir o cadastro do funcionário?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Enviar Arquivo -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- <div class="modal-header">
+                        <h5 class="modal-title">Enviar Arquivo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> -->
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Arquivos</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Selecionar Arquivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger action">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright Dashboard Oliveira Trust</small>
+                </div>
+            </div>
+        </footer>
+
+    </div> <!-- fim Content -->
+
+    <script src="bibliotecas/jquery/jquery.min.js"></script>
+    <script src="bibliotecas/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bibliotecas/jquery-easing/jquery.easing.min.js"></script>
+    <script src="bibliotecas/datatables/jquery.dataTables.js"></script>
+    <script src="bibliotecas/datatables/dataTables.bootstrap4.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+    <script src="js/sb-admin-datatables.min.js"></script>
+
+
+
+</body>
+
+</html>
