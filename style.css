@@ -1,0 +1,57 @@
+@font-face{
+    font-family: Rokkitt;
+    src: url(./fonts/Rokkitt.ttf)
+}
+@font-face{
+    font-family: Sansation-Light;
+    src: url(./fonts/Sansation_Light.ttf)
+}
+@font-face{
+    font-family: Scada-Regular;
+    src: url(./fonts/Scada-Regular.ttf)
+}
+
+* {
+    padding:0;
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    border:0
+    }
+
+.cabecalho{
+    background-color: #FAFAFA; 
+    width: 100%;
+    border-bottom: 1px inset rgb(204, 204, 204);
+ 
+}  
+#logotipo{
+    width: 250px;
+    height: 75px;
+    margin-left: 50px;
+}
+.card-header a{
+    font-family: Sansation-Light;
+    text-shadow: 2px 2px 4px #c5c5c5; 
+}
+
+#seta-actions{
+    width: 10px;
+}
+.col-menu{
+    text-align: center;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+.col-menu > a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+.col-menu:hover{
+    background-color: rgb(226, 90, 90);
+}
+
