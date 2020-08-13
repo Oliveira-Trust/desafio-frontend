@@ -300,7 +300,6 @@ table.dataTable td {
   padding-top: 0.755em;
 }
 .dataTables_wrapper .dataTables_paginate {
-  float: right;
   text-align: right;
   padding-top: 0.25em;
 }

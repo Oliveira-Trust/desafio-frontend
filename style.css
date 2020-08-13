@@ -19,6 +19,8 @@
     border:0
     }
 
+/* Cabeçalho */
+
 .cabecalho{
     background-color: #FAFAFA; 
     width: 100%;
@@ -54,6 +56,32 @@
 .col-menu:hover{
     background-color: rgb(211, 211, 211);
 }
+
+/* Tabela */
+
 .dataTables_length>label{
     display:none;
 }
+
+.background-table{
+background-color: #6C0D0D;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 30px;
+padding-bottom: 30px;
+background: linear-gradient( to bottom, #6C0D0D 10%, #fafafa);
+}
+.tamanho-tabela{
+    width: 90%;
+
+    background-color: #FAFAFA;
+
+}
+.dataTables_paginate {
+    display: flex;
+justify-content: center;
+align-items: center;
+background-color: #FAFAFA;
+}
+
