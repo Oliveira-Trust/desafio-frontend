@@ -49,9 +49,11 @@
 .col-menu > a{
     text-decoration: none;
     color: black;
-    font-size: 17px;
+    font-size: 18px;
 }
 .col-menu:hover{
-    background-color: rgb(226, 90, 90);
+    background-color: rgb(211, 211, 211);
 }
-
+.dataTables_length>label{
+    display:none;
+}

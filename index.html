@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./bootstrap//bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/datatables.css"/>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/responsive.dataTables.min.css"/>
     <link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
     <title>Desafio Front-End</title>
     <link rel="icon" href="./img/favicon.ico">
 </head>
 <body>
+
     <header>
         <div class="row cabecalho">
-            <div class="col-7">
+             	
+<!-- Logo -->
+            <div class="col-8">
                 <img id="logotipo" src="./img/logotipo.svg"></img>                
             </div>
-            
+<!-- Menu -->           
             <div class="col-1">
                 <div class=" col-menu container">
                 <a class="item">Tabela</a>
@@ -33,16 +38,57 @@
                 <div class="col-menu container">
                 <a class="item">Enviar Arquivos</a>
                 </div>
-            </div>
-            <div class="col-1.5">
-        
-            </div>
-            
+            </div>        
           </div>
         </div>
     </header>
+<!-- Tabela -->
+    <section class="background-table">
+    <table class="table table-striped table-bordered tabela-funcionarios" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Cargo</th>
+                <th>Setor</th>
+                <th>Tempo de Trabalho</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bruno</td>
+                <td>Vasconcelos Xavier</td>
+                <td>Desenvolvedor Front-End</td>
+                <td>TI</td>
+                <td>2004H</td>
+            </tr>
+            <tr>
+                <td>Caio</td>
+                <td>Batista da Silva</td>
+                <td>Desenvolvedor Back-End</td>
+                <td>TI</td>
+                <td>2004H</td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+<div>
+    <form action="javascript:void(0);">
+        Entre com o formato da data MM/DD/AAAA<br>
+        Data: <input type="text" id="dataInicial"><br>
+        <div id="resultado">
+        Transcorridos <span id="dias">0</span> dias.
+        </div>
+        <input type="submit" onclick="exibirData()" value="Calcular">
+        </form>
+</div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./bootstrap/datatables.js"></script>
+    <script type="text/javascript" src="./bootstrap/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+
 </body>
 </html>
