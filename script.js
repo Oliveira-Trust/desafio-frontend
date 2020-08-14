@@ -1,11 +1,28 @@
+
+// // Posição do header fixa
+// $(window).scroll(function(){
+//     var sticky = $('.sticky'),
+//         scroll = $(window).scrollTop();
+  
+//     if (scroll >= 100) sticky.addClass('fixed');
+//     else sticky.removeClass('fixed');
+//   });
+
+// let dadosDaTabela = 
+//     [
+//     ['Bruno', 'Xavier', 'Desenvolvedor Front-End', 'TI', '25/10/2005'],
+//     ['Renato', 'Caruso','Desenvolvedor Back-End', 'TI', '15/05/1989']
+//     ]
+
 $(document).ready(function() {
-    $('.tabela-funcionarios').DataTable({
+    $('#tabela-funcionarios').DataTable({
+        // data: dadosDaTabela,
+        dom: 'rtp',
         language:{
             "sEmptyTable": "Nenhum registro encontrado",
             "sLoadingRecords": "Carregando...",
             "sProcessing": "Processando...",
             "sZeroRecords": "Nenhum registro encontrado",
-            "sSearch": "Pesquisar",
             "oPaginate": {
                 "sNext": "Próximo",
                 "sPrevious": "Anterior",
@@ -17,22 +34,34 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-        "searching": false,
-        "info":     false,
-        "sLengthMenu": false
-        
     });
-
-
-
-    
 } );
+
+function adicionar_funcionario(event)
+{
+    let nome = document.getElementById('nome').value
+    let sobrenome = document.getElementById('sobrenome').value
+    let cargo = document.getElementById('cargo').value
+    let setor = document.getElementById('setor').value
+    let dataDeEntrada = document.getElementById('dataDeEntrada').value
+    let valorDataISO = formataDataBrParaISO(dataDeEntrada)
+    let valorTempoDeTrabalho = calculaDiferencaDataEmDias(valorDataISO)
+
+    let listaDeEntradas = []
+    let novoFuncionario = [nome, sobrenome, cargo, setor, valorTempoDeTrabalho + ' dia' + (valorTempoDeTrabalho > 1 ? 's' : '')]
+    listaDeEntradas.push(novoFuncionario)
+    let objetoDataTable = $('#tabela-funcionarios').DataTable()
+    objetoDataTable.rows.add(listaDeEntradas).draw()
+
+}
+
+
 
 // Date.prototype.formatoBrasileiroString = function(){ return this.toLocaleString('pt-br', {year: 'numeric', month: 'numeric', day: 'numeric'}) }
 
 function formataDataBrParaISO(valorDataBr)
 {
-    const [dia, mes, ano] = valorDataBr.split('/')
+    let [ano, mes, dia] = valorDataBr.split('-')
     return [mes, dia, ano].join('/')
 }
 
@@ -47,11 +76,11 @@ function calculaDiferencaDataEmDias(valorDataInicial)
     return difDiasParaHoje
 }
 
-function exibirData()
-{
-    var valorDataInicialBr = document.getElementById("dataInicial").value
-    var valorDataInicialISO = formataDataBrParaISO(valorDataInicialBr)
-    var difDiasParaHoje = calculaDiferencaDataEmDias(valorDataInicialISO)
-    document.getElementById('dias').textContent = difDiasParaHoje
-}
+// function exibirData()
+// {
+//     var valorDataInicialBr = document.getElementById("dataInicial").value
+//     var valorDataInicialISO = formataDataBrParaISO(valorDataInicialBr)
+//     var difDiasParaHoje = calculaDiferencaDataEmDias(valorDataInicialISO)
+//     document.getElementById('dias').textContent = difDiasParaHoje
+// }
 

@@ -23,10 +23,14 @@
 
 .cabecalho{
     background-color: #FAFAFA; 
-    width: 100%;
     border-bottom: 1px inset rgb(204, 204, 204);
- 
 }  
+
+.fixed{
+    position: fixed;
+    
+}
+
 #logotipo{
     width: 250px;
     height: 75px;
@@ -79,9 +83,19 @@ background: linear-gradient( to bottom, #6C0D0D 10%, #fafafa);
 
 }
 .dataTables_paginate {
-    display: flex;
+display: flex;
 justify-content: center;
 align-items: center;
 background-color: #FAFAFA;
 }
 
+/* Seção 2 */
+.box-adicionar{
+    background-color: #fafafa;
+    height: 645px;
+}
+.box-excluir {
+    background-color: #6C0D0D ;
+    opacity: 50%;
+    height: 645px;
+}

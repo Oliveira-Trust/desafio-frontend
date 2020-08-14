@@ -34,7 +34,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-1.5">
+            <div class="col-2">
                 <div class="col-menu container">
                 <a class="item">Enviar Arquivos</a>
                 </div>
@@ -45,7 +45,7 @@
 <!-- Tabela -->
     <section class="background-table">
         <div class="tamanho-tabela">
-            <table class="table table-striped table-bordered tabela-funcionarios" style="width:100%">
+            <table id='tabela-funcionarios' class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -56,118 +56,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Caio</td>
-                        <td>Batista da Silva</td>
-                        <td>Desenvolvedor Back-End</td>
-                        <td>TI</td>
-                        <td><span id="dias"></td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>Vasconcelos Xavier</td>
-                        <td>Desenvolvedor Front-End</td>
-                        <td>TI</td>
-                        <td>2004H</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
     </section>
     <section>
-        <div>
-            <form action="javascript:void(0);">
-                Data: <input type="text" id="dataInicial"><br>
-                Transcorridos <span id="dias">0</span> dias.
-                <input type="submit" onclick="exibirData()" value="Calcular">
-            </form>
-        </div>
-    </section>
+        <div class="row box-formularios">
+            <div class="box-adicionar col-6">
 
+                <form action="javascript:void(0);">
+                    <input type="text" id="nome" name="nome" placeholder="Nome" value=""><br>
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome"value=""><br>
+                    <input type="text" id="cargo" name="cargo" placeholder="Cargo"value=""><br>
+                    <input type="text" id="setor" name="setor" placeholder="Setor"value=""><br>
+                    <input type="date" id="dataDeEntrada" name="dataDeEntrada" placeholder="Data de Entrada"><br>
+                    <input type="submit" onclick="adicionar_funcionario()" value="Adicionar">
+                  </form> 
+
+            </div>
+            <div class="box-excluir col-6">
+
+            </div>
+
+        </div>
+
+<button id="xxx" onclick="caneta()" value="Coew"></button>
+
+
+    </section>
+    <!-- <div>
+        <form action="javascript:void(0);">
+            Data: <input type="text" id="dataInicial"><br>
+            Transcorridos <span id="dias">0</span> dias.
+            <input type="submit" onclick="exibirData()" value="Calcular">
+        </form>
+    </div> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
