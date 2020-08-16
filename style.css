@@ -60,12 +60,13 @@
     text-decoration: none;
     color: black;
     font-size: 18px;
+    cursor: pointer;
 }
 .col-menu:hover{
     background-color: rgb(211, 211, 211);
 }
 
-/* SEÇÃO 1 Tabela */
+/*             SEÇÃO 1 - Tabela                 */
 
 .dataTables_length>label{
     display:none;
@@ -94,7 +95,7 @@ align-items: center;
 background-color: #FAFAFA;
 }
 
-/*                 SEÇÃO 2 - Ações               */
+/*                 SEÇÃO 2 - Ações                */
 .box-formularios{
     height: 545px;
 }
@@ -150,6 +151,13 @@ background-color: #FAFAFA;
     text-align: center;
     display: flex;
     margin: 10px auto;
+    cursor: pointer;
+    
+}
+
+.botao-form:hover{
+    background-color: #a57a7a;
+    
 }
 
 .box-enviar-arquivo{
@@ -178,7 +186,13 @@ font-family: Rokkitt;
     display: flex;
     margin: 10px auto;
     font-size: 18px;  
+    cursor: pointer;
 }
+
+.botao-enviar-arquivo:hover{
+    background-color:#6C0D0D 
+}
+
 .box-footer{
     width: 100%;
     height: 80px;
