@@ -1,4 +1,4 @@
-//Dados da Tabela de 50 funcionários
+//Seção 1 - Dados da Tabela de 50 funcionários
 let dadosDaTabela = 
     [
     ['Marcio', 'Xavier', 'Desenvolvedor Front-End', 'TI', '15 dias'],
@@ -53,7 +53,7 @@ let dadosDaTabela =
     ['Marcelo', 'Silva', 'Desenvolvedor Back-End', 'TI', '69 dias'],
     ]
 
-// Manipulando os funcionalidades do datatable
+// Seção 1 - Manipulando os funcionalidades do datatable
 $(document).ready(function() {
     $('#tabela-funcionarios').DataTable({
         data: dadosDaTabela,
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 
 
-// Função para adicionar funcionário
+// Seção 2 - Função para adicionar funcionário
 function adicionar_funcionario(event)
 {
     let nome = document.getElementById('nome').value
@@ -101,7 +101,7 @@ function adicionar_funcionario(event)
 
 }
 
-//Consulta existencia do funcionario e captura o index, com sweet alert para remoção
+// Seção 2 - Consulta existência do funcionário e captura o index, com sweet alert para remoção
 function consultar_funcionario(event)
 {
     let nomeConsulta = document.getElementById('nomeConsulta').value
@@ -145,21 +145,21 @@ function consultar_funcionario(event)
     }
 }
 
-//Função para excluir funcionário através do index
+// Seção 2 - Função para excluir funcionário através do index
 function remover_funcionario(index, table)
 {
     if(index == 0){table.row(0).remove().draw()}
     else{table.row(index).remove().draw()}
 }
 
-//Recebe o valor de entrada no formato DD/MM/AAAA e passa para o formato ISO MM/DD/AAAA
+// Seção 2 - Recebe o valor de entrada no formato DD/MM/AAAA e passa para o formato ISO MM/DD/AAAA
 function formataDataBrParaISO(valorDataBr)
 {
     let [ano, mes, dia] = valorDataBr.split('-')
     return [mes, dia, ano].join('/')
 }
 
-//Calcula a diferença das datad de entrada no formato ISO com a data atual que tbm é ISO e transforma o valor em dias de trabalho
+// Seção 2 - Calcula a diferença das datas de entrada no formato ISO com a data atual que tbm é ISO e transforma o valor em dias de trabalho
 function calculaDiferencaDataEmDias(valorDataInicial)
 {
 	var objetoDataInicial = new Date(valorDataInicial)
@@ -171,7 +171,7 @@ function calculaDiferencaDataEmDias(valorDataInicial)
     return difDiasParaHoje
 }
 
-//Animação de envio de arquivo
+// Seção 3 - Animação de envio de arquivo
 $("input#arquivo").change(function () {
     swal("Enviado!", "Seu arquivo foi enviado com sucesso!", "success")
 });

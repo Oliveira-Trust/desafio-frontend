@@ -18,10 +18,9 @@
     list-style:none;
     border:0
     }
-    
-    html {
-        scroll-behavior: smooth;
-      }
+html {
+    scroll-behavior: smooth;
+}
 
 /* Cabeçalho */
 
@@ -38,23 +37,14 @@
 
 
 .content-cabecalho{
-height: 80px;
-background-color: #6C0D0D;
+    height: 80px;
+    background-color: #6C0D0D;
 }
 
 #logotipo{
     width: 250px;
     height: 75px;
     margin-left: 50px;
-
-}
-.card-header a{
-    font-family: Sansation-Light;
-    text-shadow: 2px 2px 4px #c5c5c5; 
-}
-
-#seta-actions{
-    width: 10px;
 }
 .col-menu{
     text-align: center;
@@ -75,7 +65,6 @@ background-color: #6C0D0D;
     align-items: center;
     padding: 0px 30px;
     border-radius: 5px;
-
 }
 .col-menu >a:hover{
     background-color: rgb(211, 211, 211);
@@ -83,26 +72,19 @@ background-color: #6C0D0D;
 
 /*             SEÇÃO 1 - Tabela                 */
 
-.dataTables_length>label{
-    display:none;
-}
-
 .background-table{
-
-display: flex;
-justify-content: center;
-align-items: center;
-padding-top: 30px;
-padding-bottom: 30px;
-background-color: #6C0D0D;
-background: linear-gradient( to bottom, #6C0D0D 10%, #fafafa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #6C0D0D;
+    background: linear-gradient( to bottom, #6C0D0D 10%, #fafafa);
 }
-
 .tamanho-tabela{
     width: 90%;
     background-color: #FAFAFA;
 }
-
 .dataTables_paginate {
 display: flex;
 justify-content: center;
@@ -110,7 +92,8 @@ align-items: center;
 background-color: #FAFAFA;
 }
 
-/*                 SEÇÃO 2 - Ações                */
+/*               SEÇÃO 2 - Ações                */
+
 .box-formularios{
     height: 545px;
 }
@@ -127,13 +110,11 @@ background-color: #FAFAFA;
 /* fundo vermelho */
 .box-excluir {
     background-color: #d4a0a0 ;
-
 }
 /* fundo fafafa */
 .box-adicionar{
     background-color: #fafafa;
 }
-
 .forms-de-acao{
     border-radius: 3px;
     width: 300px;
@@ -144,14 +125,12 @@ background-color: #FAFAFA;
     flex-direction: column;
     justify-content: center;   
 }
-
 .form-adicionar{
     background-color: #C6C6C6;
 }
 .form-excluir{
     background-color: #FAFAFA;
 }
-
 .titulos-acao{
     font-family: Rokkitt;
     text-align: center;
@@ -159,7 +138,6 @@ background-color: #FAFAFA;
     margin-bottom: 20px;
     color: #420C01;
 }
-
 .botao-form{
     width: 100px;
     height: 35px;
@@ -171,14 +149,13 @@ background-color: #FAFAFA;
     justify-content: center;
     margin: 30px auto;
     cursor: pointer;
-    box-shadow: 3px 3px 3px 0px rgb(63, 63, 63);
-    
+    box-shadow: 3px 3px 3px 0px rgb(63, 63, 63); 
+}
+.botao-form:hover{
+    background-color: #a57a7a;  
 }
 
-.botao-form:hover{
-    background-color: #a57a7a;
-    
-}
+/*             Seção 3 - Enviar Arquivo             */
 
 .box-enviar-arquivo{
     width: 100%;
@@ -188,16 +165,13 @@ background-color: #FAFAFA;
     flex-direction: column;
     justify-content: center; 
 }
-
 .titulo-enviar-arquivo{
-text-align: center;
-margin-bottom: 50px;
-color: #FAFAFA;
-font-family: Rokkitt;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #FAFAFA;
+    font-family: Rokkitt;
 }
-
 #botao-enviar-arquivo{
-
     padding: 6px 10px;
     width: 200px;
     background-color: #a57a7a;
@@ -208,11 +182,8 @@ font-family: Rokkitt;
     display: block;
     margin: 10px auto 0px auto;
     box-shadow: 3px 3px 3px 0px rgb(63, 63, 63);
-    cursor: pointer;
-    
+    cursor: pointer;  
 }
-
-
 .botao-enviar-arquivo:hover{
     background-color:#6C0D0D 
 }
@@ -229,7 +200,6 @@ input[type="file"] {
     background-color: #fafafa;
     color: #DCC8C8;
 }
-
 .box-footer>h1{
     color: #C4A0A0;
     text-align: center;
@@ -237,7 +207,7 @@ input[type="file"] {
     font-size: 20px;
 }
 
-/* Resposividade */
+/*                Resposividade               */
 
 @media screen and (max-width: 900px) {
     .box-formularios{
@@ -286,3 +256,4 @@ input[type="file"] {
 
         }
     }
+}
