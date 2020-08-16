@@ -1,42 +1,7 @@
-// //header fixo
-// window.onscroll = function() {myFunction()};
-
-// var header = document.getElementById("cabecalho-fixado");
-// var sticky = header.offsetTop;
-
-// function myFunction() {
-//   if (window.pageYOffset > sticky) {
-//     header.classList.add("sticky");
-//   } else {
-//     header.classList.remove("sticky");
-//   }
-// }
-
-// When the user scrolls the page, execute myFunction 
-window.onscroll = function() {myFunction()};
-// Get the header
-var header = document.getElementById("cabecalho-fixado");
-// Get the content area
-var content = document.getElementById("tabela-scroll");
-// Get the offset position of the navbar
-var sticky = header.offsetTop;
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-// here you add sticky -> also add top padding
-    header.classList.add("sticky");
-    header.classList.add("top-padding");
-  } else {
-// here you remove sticky -> also remove top padding
-    header.classList.remove("sticky");
-    header.classList.remove("top-padding");
-  }
-}
-
 //Dados da Tabela de 50 funcionários
 let dadosDaTabela = 
     [
-    ['Bruno', 'Xavier', 'Desenvolvedor Front-End', 'TI', ' 15 dias'],
+    ['Marcio', 'Xavier', 'Desenvolvedor Front-End', 'TI', '15 dias'],
     ['Renato', 'Caruso','Assesoria', 'RH', '250 dias'],
     ['Luan', 'Sapuca', 'Desenvolvedor Front-End', 'TI', '275 dias'],
     ['Sibele', 'Rodrigues', 'Desenvolvedor Back-End', 'TI', '165 dias'],
@@ -88,10 +53,11 @@ let dadosDaTabela =
     ['Marcelo', 'Silva', 'Desenvolvedor Back-End', 'TI', '69 dias'],
     ]
 
-
+// Manipulando os funcionalidades do datatable
 $(document).ready(function() {
     $('#tabela-funcionarios').DataTable({
         data: dadosDaTabela,
+        responsive: true,
         dom: 'rtp',
         language:{
             "sEmptyTable": "Nenhum registro encontrado",
@@ -112,6 +78,9 @@ $(document).ready(function() {
     });
 
 } );
+
+
+
 // Função para adicionar funcionário
 function adicionar_funcionario(event)
 {
@@ -126,10 +95,13 @@ function adicionar_funcionario(event)
     let listaDeEntradas = []
     let novoFuncionario = [nome, sobrenome, cargo, setor, valorTempoDeTrabalho + ' dia' + (valorTempoDeTrabalho > 1 ? 's' : '')]
     listaDeEntradas.push(novoFuncionario)
+    swal("Adicionado!", `${nome} ${sobrenome} foi adicionado com sucesso!`, "success")
     let objetoDataTable = $('#tabela-funcionarios').DataTable()
     objetoDataTable.rows.add(listaDeEntradas).draw()
 
 }
+
+//Consulta existencia do funcionario e captura o index, com sweet alert para remoção
 function consultar_funcionario(event)
 {
     let nomeConsulta = document.getElementById('nomeConsulta').value
@@ -156,7 +128,7 @@ function consultar_funcionario(event)
             title: "Você tem certeza?",
             text: "Uma vez excluído, você não poderá recuperar este registro!",
             icon: "warning",
-            buttons: true,
+            buttons: ["Cancelar", "OK"] ,
             dangerMode: true,
         })
         .then((willDelete) => {
@@ -172,10 +144,12 @@ function consultar_funcionario(event)
         })  
     }
 }
-//Função para excluir funcionário
+
+//Função para excluir funcionário através do index
 function remover_funcionario(index, table)
 {
-    table.row(index).remove().draw()
+    if(index == 0){table.row(0).remove().draw()}
+    else{table.row(index).remove().draw()}
 }
 
 //Recebe o valor de entrada no formato DD/MM/AAAA e passa para o formato ISO MM/DD/AAAA

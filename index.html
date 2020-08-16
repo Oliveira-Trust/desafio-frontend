@@ -14,36 +14,33 @@
 
     <header>
         <div id="cabecalho-fixado" class="row cabecalho">
-             	
-<!-- Logo -->
-            <div class="col-8">
+         	
+            <div class="">
                 <img id="logotipo" src="./img/logotipo.svg"></img>                
             </div>
-
-<!-- Menu -->           
-            <div class="col-1">
-                <div class=" col-menu container">
+    
+            <div class="col-menu ml-auto">
                 <a href="#tabela-scroll" class="item">Tabela</a>
-                </div>
-            </div>
-            <div class="col-1  ">
                 <div class="col-menu dropdown" >
-                <a class=" btn  dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ações</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a href="#adicionar-scroll" class="dropdown-item" >Adicionar Funcionário</a>
-                    <a href="#remover-scroll" class="dropdown-item"> Remover Funcionário</a>
-                  </div>
+                    <a class=" btn  dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ações</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a href="#adicionar-scroll" class="dropdown-item" >Adicionar Funcionário</a>
+                        <a href="#remover-scroll" class="dropdown-item"> Remover Funcionário</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-2">
-                <div class="col-menu container">
                 <a href="#enviar-arquivo-scroll" class="item">Enviar Arquivos</a>
-                </div>
-            </div>        
-          </div>
+            </div>
+        
         </div>
     </header>
-''''<div class=content-cabecalho></div>
+    <div class=content-cabecalho></div>
+
+
+
+
+
+
+
 <!-- Tabela -->
     <section id="tabela-scroll" class="background-table">
         <div class="tamanho-tabela">
@@ -54,7 +51,7 @@
                         <th>Sobrenome</th>
                         <th>Cargo</th>
                         <th>Setor</th>
-                        <th>Tempo de Trabalho</th>
+                        <th>Tempo de Empresa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +63,7 @@
         <div class="row box-formularios">
             <div id="adicionar-scroll" class="box-acoes box-adicionar col-6">
 
-                <h1 class="titulos-acao">Deseja adicinar alguém?</h1>
+                <h1 class="titulos-acao">Deseja Adicionar alguém?</h1>
                 <form action="javascript:void(0);">
                     <input type="text" class='forms-de-acao form-adicionar' id="nome" name="nome" placeholder="Nome" value="">
                     <input type="text" class='forms-de-acao form-adicionar' id="sobrenome" name="sobrenome" placeholder="Sobrenome"value="">
@@ -104,14 +101,6 @@
             <h1>Copyright © 2020 | Bruno Xavier </h1>
         </div>
     </footer>
-
-    <!-- <div>
-        <form action="javascript:void(0);">
-            Data: <input type="text" id="dataInicial"><br>
-            Transcorridos <span id="dias">0</span> dias.
-            <input type="submit" onclick="exibirData()" value="Calcular">
-        </form>
-    </div> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
