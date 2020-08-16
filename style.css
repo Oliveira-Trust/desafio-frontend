@@ -28,11 +28,17 @@
 .cabecalho{
     background-color: #FAFAFA; 
     border-bottom: 1px inset rgb(204, 204, 204);
-}  
-
-.fixed{
     position: fixed;
-    
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform : translate3d(0, 0, 0);
+  }
+
+
+.content-cabecalho{
+height: 57px;
 }
 
 #logotipo{
