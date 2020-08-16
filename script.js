@@ -1,22 +1,14 @@
-
-// // Posição do header fixa
-// $(window).scroll(function(){
-//     var sticky = $('.sticky'),
-//         scroll = $(window).scrollTop();
-  
-//     if (scroll >= 100) sticky.addClass('fixed');
-//     else sticky.removeClass('fixed');
-//   });
-
-// let dadosDaTabela = 
-//     [
-//     ['Bruno', 'Xavier', 'Desenvolvedor Front-End', 'TI', '25/10/2005'],
-//     ['Renato', 'Caruso','Desenvolvedor Back-End', 'TI', '15/05/1989']
-//     ]
+let dadosDaTabela = 
+    [
+    ['Bruno', 'Xavier', 'Desenvolvedor Front-End', 'TI', '25/10/2005'],
+    ['Renato', 'Caruso','Desenvolvedor Back-End', 'TI', '15/05/1989'],
+    ['Luan', 'Sapuca', 'Desenvolvedor Front-End', 'TI', '28/06/1999'],
+    ['Luan', 'Silva', 'Desenvolvedor Front-End', 'TI', '28/06/1999'],
+    ]
 
 $(document).ready(function() {
     $('#tabela-funcionarios').DataTable({
-        // data: dadosDaTabela,
+        data: dadosDaTabela,
         dom: 'rtp',
         language:{
             "sEmptyTable": "Nenhum registro encontrado",
@@ -55,20 +47,53 @@ function adicionar_funcionario(event)
     objetoDataTable.rows.add(listaDeEntradas).draw()
 
 }
-
-function consulta_funcionario(event)
+function consultar_funcionario(event)
 {
+    let nomeConsulta = document.getElementById('nomeConsulta').value
+    let sobrenomeConsulta = document.getElementById('sobrenomeConsulta').value
     
-    objetoDataTable.rows.add('#nome').draw()
-}
+    let table = $('#tabela-funcionarios').DataTable()
 
+    let indice = false
+    let nomeFuncionario, sobrenomeFuncionario
+    table.rows( function (index, data) 
+    {
+        if(data[0] == nomeConsulta && data[1] == sobrenomeConsulta)
+        {
+            indice = index
+            nomeFuncionario = data[0]
+            sobrenomeFuncionario = data[1]
+            return             
+        } 
+    })
+    if(!indice){swal("Erro!", "Funcionário não encontrado!", "error")}
+    else
+    {
+        swal({
+            title: "Você tem certeza?",
+            text: "Uma vez excluído, você não poderá recuperar este registro!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete)
+            {
+                remover_funcionario(indice, table) 
+                swal(`${nomeFuncionario} ${sobrenomeFuncionario} foi excluído do registro!`, {icon: "success"}) 
+            } 
+            else 
+            {
+                swal(`${nomeFuncionario} ${sobrenomeFuncionario} foi mantido no registro!`)
+            }
+        })  
+    }
+}
 //Função para excluir funcionário
-function excluir_funcionario(event)
+function remover_funcionario(index, table)
 {
-    let nome = document.getElementById('nome').value
-    let sobrenome = document.getElementById('sobrenome').value
+    table.row(index).remove().draw()
 }
-
 
 // Função para redefinir o padrão de entrada de ISO para BR
 // Date.prototype.formatoBrasileiroString = function(){ return this.toLocaleString('pt-br', {year: 'numeric', month: 'numeric', day: 'numeric'}) }
@@ -100,3 +125,5 @@ function calculaDiferencaDataEmDias(valorDataInicial)
 //     document.getElementById('dias').textContent = difDiasParaHoje
 // }
 
+
+// 
