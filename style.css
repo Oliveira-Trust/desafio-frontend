@@ -152,6 +152,7 @@ background-color: #FAFAFA;
     display: flex;
     margin: 10px auto;
     cursor: pointer;
+    box-shadow: 3px 3px 3px 0px rgb(63, 63, 63);
     
 }
 
@@ -187,6 +188,7 @@ font-family: Rokkitt;
     margin: 10px auto;
     font-size: 18px;  
     cursor: pointer;
+    box-shadow: 3px 3px 3px 0px rgb(63, 63, 63);
 }
 
 .botao-enviar-arquivo:hover{
