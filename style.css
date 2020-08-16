@@ -18,6 +18,10 @@
     list-style:none;
     border:0
     }
+    
+    html {
+        scroll-behavior: smooth;
+      }
 
 /* Cabeçalho */
 
@@ -61,27 +65,28 @@
     background-color: rgb(211, 211, 211);
 }
 
-/* Tabela */
+/* SEÇÃO 1 Tabela */
 
 .dataTables_length>label{
     display:none;
 }
 
 .background-table{
-background-color: #6C0D0D;
+
 display: flex;
 justify-content: center;
 align-items: center;
 padding-top: 30px;
 padding-bottom: 30px;
+background-color: #6C0D0D;
 background: linear-gradient( to bottom, #6C0D0D 10%, #fafafa);
 }
+
 .tamanho-tabela{
     width: 90%;
-
     background-color: #FAFAFA;
-
 }
+
 .dataTables_paginate {
 display: flex;
 justify-content: center;
@@ -89,13 +94,104 @@ align-items: center;
 background-color: #FAFAFA;
 }
 
-/* Seção 2 */
+/*                 SEÇÃO 2 - Ações               */
+.box-formularios{
+    height: 545px;
+}
+.box-acoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
+.box-acoes>form{
+    margin: 0 auto;
+}
+
+/* fundo vermelho */
+.box-excluir {
+    background-color: #d4a0a0 ;
+
+}
+/* fundo fafafa */
 .box-adicionar{
     background-color: #fafafa;
-    height: 645px;
 }
-.box-excluir {
-    background-color: #6C0D0D ;
-    opacity: 50%;
-    height: 645px;
+
+.forms-de-acao{
+    border-radius: 3px;
+    width: 300px;
+    height: 30px;
+    margin: 10px auto;
+    text-indent: 10px;
+}
+
+.form-adicionar{
+    background-color: #C6C6C6;
+}
+.form-excluir{
+    background-color: #FAFAFA;
+}
+
+.titulos-acao{
+    font-family: Rokkitt;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    color: #420C01;
+}
+
+.botao-form{
+    width: 100px;
+    height: 35px;
+    color: #FAFAFA;
+    background-color: #420C01;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    margin: 10px auto;
+}
+
+.box-enviar-arquivo{
+    width: 100%;
+    height: 400px;
+    background: linear-gradient( to bottom, #6C0D0D 2%, #fafafa);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.titulo-enviar-arquivo{
+text-align: center;
+margin-bottom: 50px;
+color: #FAFAFA;
+font-family: Rokkitt;
+}
+
+.botao-enviar-arquivo{
+    width: 200px;
+    height: 35px;
+    color: #FAFAFA;
+    background-color: #a57a7a ;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    margin: 10px auto;
+    font-size: 18px;  
+}
+.box-footer{
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    color: #DCC8C8;
+}
+
+.box-footer>h1{
+    color: #C4A0A0;
+    text-align: center;
+    font-family: Scada;
+    font-size: 20px;
 }

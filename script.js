@@ -35,8 +35,9 @@ $(document).ready(function() {
             }
         },
     });
-} );
 
+} );
+// Função para adicionar funcionário
 function adicionar_funcionario(event)
 {
     let nome = document.getElementById('nome').value
@@ -55,16 +56,31 @@ function adicionar_funcionario(event)
 
 }
 
+function consulta_funcionario(event)
+{
+    
+    objetoDataTable.rows.add('#nome').draw()
+}
+
+//Função para excluir funcionário
+function excluir_funcionario(event)
+{
+    let nome = document.getElementById('nome').value
+    let sobrenome = document.getElementById('sobrenome').value
+}
 
 
+// Função para redefinir o padrão de entrada de ISO para BR
 // Date.prototype.formatoBrasileiroString = function(){ return this.toLocaleString('pt-br', {year: 'numeric', month: 'numeric', day: 'numeric'}) }
 
+//Recebe o valor de entrada no formato DD/MM/AAAA e passa para o formato ISO MM/DD/AAAA
 function formataDataBrParaISO(valorDataBr)
 {
     let [ano, mes, dia] = valorDataBr.split('-')
     return [mes, dia, ano].join('/')
 }
 
+//Calcula a diferença das datad de entrada no formato ISO com a data atual que tbm é ISO e transforma o valor em dias de trabalho
 function calculaDiferencaDataEmDias(valorDataInicial)
 {
 	var objetoDataInicial = new Date(valorDataInicial)
