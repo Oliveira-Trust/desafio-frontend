@@ -95,9 +95,6 @@ function remover_funcionario(index, table)
     table.row(index).remove().draw()
 }
 
-// Função para redefinir o padrão de entrada de ISO para BR
-// Date.prototype.formatoBrasileiroString = function(){ return this.toLocaleString('pt-br', {year: 'numeric', month: 'numeric', day: 'numeric'}) }
-
 //Recebe o valor de entrada no formato DD/MM/AAAA e passa para o formato ISO MM/DD/AAAA
 function formataDataBrParaISO(valorDataBr)
 {
@@ -117,13 +114,7 @@ function calculaDiferencaDataEmDias(valorDataInicial)
     return difDiasParaHoje
 }
 
-// function exibirData()
-// {
-//     var valorDataInicialBr = document.getElementById("dataInicial").value
-//     var valorDataInicialISO = formataDataBrParaISO(valorDataInicialBr)
-//     var difDiasParaHoje = calculaDiferencaDataEmDias(valorDataInicialISO)
-//     document.getElementById('dias').textContent = difDiasParaHoje
-// }
-
-
-// 
+//Animação de envio de arquivo
+$("input#arquivo").change(function () {
+    swal("Enviado!", "Seu arquivo foi enviado com sucesso!", "success")
+});
