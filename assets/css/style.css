@@ -229,6 +229,15 @@ h3 {
 
 /* ============== FORM =============== */
 
+#form {
+	position:fixed;
+  top: 9rem;
+  width: 100%;
+  z-index: 10;
+  right: auto;
+  left: 66%;
+}
+
 #my-form {
   margin-top: auto;
 }
@@ -434,10 +443,26 @@ footer img {
   }
 }
 
+@media (max-width: 995px) { /* ============== 995px =============== */
+  
+  #form {
+    position: relative;
+    margin: auto 4.5rem;
+    top: auto;
+    width: auto;
+    z-index: 0;
+    left: auto;
+  }
+
 @media (max-width: 768px) { /* ============== 768px =============== */
   
   #form {
+    position: relative;
     margin: auto 4.5rem;
+    top: auto;
+    width: auto;
+    z-index: 0;
+    left: auto;
   }
 
   .file {
@@ -521,6 +546,10 @@ footer img {
 
   /* Home */
   
+  h3 {
+    font-size: 2rem;
+  }
+
   main {
     margin: 0.5rem 2rem;
   }
@@ -541,10 +570,6 @@ footer img {
 
   #form {
     margin: auto 2rem;
-  }
-
-  h3 {
-    font-size: 2rem;
   }
 
   #tbPessoas th {
@@ -595,3 +620,5 @@ footer img {
     margin-right: 1.2rem;
   }
 }
+
+/* ================================================= */
