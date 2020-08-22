@@ -1,0 +1,597 @@
+/* ============== ROOT =============== */
+
+:root {
+  --color-primary: #D40000;
+  --color-primary-dark: #ac0a0a;
+  --color-btn-primary: #007fd4;
+  --color-btn-primary-dark:#095e96;  
+  --color-btn-secondary: #0aa382;
+  --color-btn-seondary-dark: #0b856a;
+  --color-label: #272626;
+  --color-b-primary: #666666;
+  --color-b-secondary: #d6d1d1;
+  --color-text-base: #FFFFFF;
+  --color-text-base2:#535151;
+  --color-nav-hover: #333333;
+  --color-barra-nav:#eeeaea;
+  
+  /* controle das medidas rem */
+}
+
+/* ============== GERAL =============== */
+
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+main {
+  margin: 2rem 2rem;
+  padding-top: 6rem;
+}
+
+h3 {
+  color: var(--color-text-base2);
+  font-size: 2.5rem;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-primary);
+  background: transparent;
+  padding: 1.5rem;
+}
+
+/* ============== LOGIN =============== */
+
+.bg-login {
+  background-image: url(/assets/img/bg2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
+.tp-login {
+  background: rgba(253, 253, 253, 0.5);
+  width: 100%;
+  max-width: 500px;
+  margin: 22rem auto 0 auto;
+  padding: 6rem 6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container {
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.title-container img {
+  width: 32px;
+  height: 32px;
+}
+
+.title-container {
+  color: var(--color-text-base2);
+  font-size: 2.5rem;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+}
+
+.login-text-logo {
+  margin-left: 2rem;
+}
+
+.btn-lg {
+  background-color: var(--color-primary);
+  border: var(--color-primary);
+  margin-top: 2rem;
+  width: 100%;
+  outline:0;
+}
+
+.btn-lg a {
+  color: var(--color-text-base);
+  font-size: 18px;
+}
+
+.login-label {
+  color: var(--color-label);
+  font-size: 16px;
+}
+
+.btn-submit {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  margin-left: auto;
+  padding: 1.5rem 0;
+}
+
+.register {
+  font-family: 'Poppins' sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--color-border-primary);
+  line-height: 1.5;
+  padding-top: 2.5rem;
+  text-align: center;
+}
+
+/* ============== HEADER =============== */
+
+#header {
+  z-index: 997;
+  transition: all 0.7s;
+  margin-bottom: 30px;
+}
+
+#header.header-scrolled {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  background: var(--color-text-base);
+}
+
+/* ============== NAV =============== */
+
+.nav-fixed {
+  position: fixed;
+  width: 100%;
+  top: 0%;
+  z-index: 10;
+}
+
+#barra-navegacao {
+  background-color: var(--color-barra-nav);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.nav-menu {
+  padding: 2rem 1.5rem;
+}
+
+.logotipo {
+  width: 35px;
+  height: 35px;
+  margin-right: 1rem;
+}
+
+.nav-logo {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin-left: 10px;
+}
+
+.nav-logo span {
+  color: var(--color-border-primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav li a {
+  font-size: 1.7rem;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+#header .nav li a:hover {
+  font-size: 1.8rem;
+  color: #333333;
+}
+
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+
+/* ============== TABLE =============== */
+
+#tbPessoas th {
+  color: var(--color-text-base2);
+  font-size: 1.6rem;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+}
+
+.table {
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.table th {
+  text-align: center;
+}
+
+.table td {
+  font-size: 1.6rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* ============== FORM =============== */
+
+#my-form {
+  margin-top: auto;
+}
+
+#form label {
+  color: var(--color-text-base2);
+  font-size: 1.4rem;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+}
+
+label {
+  margin-top: .9rem;
+}
+
+img {
+  width: 45px;
+  height: 45px;
+}
+
+td {
+  border-bottom: 1px solid (--color-border-secondary);
+}
+
+.img-td {
+  width: 15px;
+  height: 15px;
+}
+
+.form-button {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.btn-1 {
+  font-size: 1.4rem;
+  background-color: var(--color-btn-primary);
+  border: none;
+  border-radius: 20px;
+  padding: .7rem 3.5rem;
+  margin: 1.5rem;
+  outline:0  
+}
+
+.btn-2 {
+  font-size: 1.4rem;
+  background-color: var(--color-btn-secondary);
+  border: none;
+  border-radius: 20px;
+  padding: .7rem 3.5rem;
+  outline:0
+}
+
+.btn-2:hover {
+  background-color: var(--color-btn-seondary-dark);
+}
+
+.btn-3 {
+  font-size: 1.4rem;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 20px;
+  padding: .7rem 3.5rem;
+  margin: 1.5rem;
+  outline:0
+}
+
+.btn-3:hover {
+background-color: var(--color-primary-dark);
+}
+
+.link-register {
+  font-family: 'Poppins' sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+/* ============== Upload de Arquivos =============== */
+
+.upload {
+  border-top: 1px solid var(--color-b-secondary);
+}
+
+.file-container {
+  margin-left: 26%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file {
+  line-height: 30px;
+  height: 30px;
+  border: 1px solid var(--color-b-secondary);
+  padding: ;
+  box-sizing: border-box;
+  font-size: 15px;
+  width: 300px;
+}
+
+.btn-4 {
+  color: var(--color-text-base);
+  background-color: var(--color-btn-primary);
+  border: none;
+  border-radius: 20px;
+  padding: .7rem 3rem;
+  margin: 1rem;
+  outline:0
+}
+
+.btn-4:hover {
+  color: var(--color-text-base);
+  background-color: var(--color-btn-primary-dark);
+}
+
+.btn-5 {
+  color: var(--color-text-base);
+  background-color: var(--color-btn-secondary);
+  border: none;
+  border-radius: 20px;
+  padding: .7rem 5rem;
+  margin: 3.5rem .2rem;
+  outline:0
+}
+
+.btn-5:hover {
+  color: var(--color-text-base);
+  background-color: var(--color-btn-seondary-dark);
+}
+
+/* ============== FOOTER =============== */
+
+.page-footer {
+  color: var(--color-b-secondary);
+  position: relative;
+  bottom:0;
+  width:100%;
+  background-color: var(--color-label);
+  height: auto;
+  line-height: 80px;
+}
+
+.page-footer a {
+  font-size: 1.2rem;
+  color: var(--color-text-base);
+  font-style: none;
+}
+
+footer img {
+  width: 25px;
+  height: 25px;
+  margin-right: 1.2rem;
+}
+
+/* ============== RESONSIVE =============== */
+
+@media (max-width: 1024px) {  /* ============== 1024px =============== */
+  
+  h3 {
+    font-size: 2rem;
+  }
+
+  #tbPessoas th {
+    font-size: 1.4rem;
+  }
+
+  #tbPessoas td {
+    font-size: 1.1rem;
+  }
+
+  .file-container {
+    margin-left: 22%;
+  }
+
+  .btn-1 {
+    padding: .7rem 2rem;
+    margin: .5rem;
+  }
+  
+  .btn-2 {
+    padding: .7rem 2rem;
+  }
+  
+  .btn-3 {
+    padding: .7rem 2rem;
+    margin: .5rem;
+  }
+
+  .btn-4 {
+    padding: .7rem 2rem;
+    margin: 1rem;
+  }
+
+  .btn-5 {
+    padding: .7rem 4rem;
+  }
+}
+
+@media (max-width: 768px) { /* ============== 768px =============== */
+  
+  #form {
+    margin: auto 4.5rem;
+  }
+
+  .file {
+    margin-left: 13%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .file-container {
+    margin: auto;
+  }
+
+  .btn-4 {
+    padding: .7rem 2rem;
+    margin: 1rem;
+  }
+
+  .btn-5 {
+    padding: .7rem 4rem;
+  }
+
+}
+
+@media (max-width: 576px) { /* ============== 576px =============== */
+
+  .bg-login {
+    background-image: none;
+    background: var(--color-b-secondary);
+  }
+  
+  .tp-login {
+    background: var(--color-b-secondary);
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  .file {
+    margin-left: 1rem;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .btn-4 {
+    padding: .5rem 1.2rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-5 {
+    padding: .5rem 3.1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+@media (max-width: 425px) { /* ============== 425px =============== */
+
+  /* login */
+
+  .btn-submit {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    margin-left: auto;
+    padding: 1.5rem 0;
+  }
+
+  .btn-lg {
+    font-size: 1.5rem;
+    background-color: var(--color-primary);
+    border: var(--color-primary);
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  /* Home */
+  
+  main {
+    margin: 0.5rem 2rem;
+  }
+
+  .nav-logo span {
+    font-size: 2.5rem;
+  }
+
+  .nav-logo .logotipo {
+    width: 25px;
+    height: 25px;
+    margin-right: 1rem;
+  }
+
+  .btn-nav {
+    margin-top: 2.1rem;
+  }
+
+  #form {
+    margin: auto 2rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  #tbPessoas th {
+    font-size: 0.9rem;
+  }
+
+  #tbPessoas td {
+    font-size: 0.9rem;
+  }
+
+  .file {
+    margin-left: 0.1rem;
+    width: 100%;
+  }
+
+  .btn-4 {
+    padding: .5rem 1.2rem;
+    position: relative;
+    width:46%;
+    margin-top: -2rem;
+    margin-left: .7rem;
+  }
+
+  .btn-5 {
+    padding: .5rem 3.1rem;
+    position: relative;
+    width:46%;
+  }
+
+  #formulario {
+    display: block;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .page-footer {
+    line-height: 40px;
+    margin-top: 0;
+  }
+  
+  .page-footer a {
+    font-size: 1.5rem;
+  }
+  
+  footer img {
+    width: 25px;
+    height: 25px;
+    margin-right: 1.2rem;
+  }
+}

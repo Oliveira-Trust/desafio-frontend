@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">	
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+		<title>Login Oliveira Trust</title>
+		<link rel="shortcut icon" href="/assets/img/favicon.ico" type="Image/png">
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		
+		<!-- Fontes -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	</head>
+
+	<body class="bg-login">
+
+		<!-- Login -->		
+		<div class="box">
+			<div class="tp-login">
+				<div class="title-container">
+					<img src="assets/img/logotipo.png" alt="Logotipo Oliveira Trust" />					
+					<span class="login-text-logo">
+						Oliveira Trust
+					</span>
+				</div>
+				<form>
+					<div class="form-group">
+						<label class="login-label" for="InputEmail">Login</label>
+						<input type="text" runat="server" class="form-control" name="username" placeholder="Usuário" required="" />
+					</div>
+					
+					<div class="form-group">
+						<label class="login-label" for="InputPassword">Senha</label>
+						<input runat="server" type="password" class="form-control" name="password" placeholder="Senha" required="" />
+					</div>
+
+					<div class="btn-submit">
+						<input type="submit" class="btn-lg btn-primary" value="Entrar" onclick="Login(event)" />
+					</div>
+
+					<div class="register">
+						Não possui uma conta? Clique <a href="#"><span class="link-register"> AQUI</span></a>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+		<!-- JS -->
+		<script src="assets/js/login.js"></script>
+		<script src="assets/js/script.js"></script>
+
+	</body>
+</html>

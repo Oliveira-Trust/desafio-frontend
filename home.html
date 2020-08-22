@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">	
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Home Oliveira Trust</title>
+        <link rel="shortcut icon" href="/assets/img/favicon.ico" type="Image/png">
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <!-- Fonte -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        
+    </head>
+    
+    <body>
+        
+        <!-- Header (section 1) -->
+        
+        <header id="header" class="fixed-top">
+            <!-- Navbar -->
+            <div class="nav-fixed d-flex align-items-center">
+                <nav class="nav nav-menu navbar-default d-none d-lg-block">
+                    <div class="lh-100">                         
+                        <div class="navbar-header">
+                            <button type="button" class="btn-nav navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#barra-navegacao">
+                
+                                <span class="sr-only">Alternar menu</span> <!--acessibilidade-->
+                    
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>            
+                            </button>
+
+                            <div class="nav-logo">
+                                <a class="navbar-brand" href="/">
+                                    <img class="logotipo" src="assets/img/logotipo.png" alt="Logotipo Oliveira Trust" />
+                                    <span> Oliveira Trust </span>
+                                </a>
+                            </div>
+                        </div>
+                
+                        <div class="collapse navbar-collapse" id="barra-navegacao">
+                
+                            <ul id="fixed" class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="/home.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#form">Funcionários</a>
+                                </li>
+                                <li>
+                                    <a href="#input-load">Upload</a>
+                                </li>                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        Minha conta <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">            
+                                        <li>
+                                            <a href="index.html">Sair</a>
+                                        </li>
+                                    </ul>
+                                </li>  
+                            </ul>  
+                        </div>  
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main -->
+
+        <main>
+            <div>
+                <div class="row">
+
+                    <!-- Table (section 1) -->
+
+                    <section id="table">
+                        <div id="dGridPessoas" class="col-md-8">
+                            <h3> Listagem de Funcionários </h3>
+                            <table id="tbPessoas" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Sobrenome</th>
+                                        <th scope="col">Cargo</th>
+                                        <th scope="col">Setor</th>
+                                        <th class="th-service" scope="col">Tempo de Serviço</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Form (section 2) -->
+
+                    <section id="form">
+                        <div id="fPessoas" class="col-md-4">                    
+                            <h3>Cadastro de Funcionários</h3>
+                            <form id="myForm">
+                                <div>
+                                    <label for="txtCodigo">Código</label>
+                                    <input type="text" class="form-control" id="txtCodigo" aria-describedby="emailHelp" placeholder="Código" readonly>
+                                </div>
+
+                                <div>
+                                    <label for="txtNome">Nome</label>
+                                    <input type="text" class="form-control" id="txtNome" aria-describedby="emailHelp" placeholder="Nome" required>
+                                </div>
+
+                                <div>
+                                    <label for="txtSobrenome">Sobrenome</label>
+                                    <input type="text" class="form-control" id="txtSobrenome" placeholder="Sobrenome" required>
+                                </div>
+
+                                <div>
+                                    <label for="txtCargo">Cargo</label>                                  
+                                    <input type="text" class="form-control" id="txtCargo" placeholder="Cargo" required>
+                                </div>
+
+                                <div>
+                                    <label for="txtSetor">Setor</label>
+                                    <input type="text" class="form-control" id="txtSetor" placeholder="Setor" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="txtTempo">Tempo de Serviço</label>
+                                    <input type="text" class="form-control" id="txtTempo" placeholder="Tempo"required>
+                                </div>
+
+                                <div class="form-button">
+                                    <button type="button" class="btn-1 btn-primary"
+                                            onclick="cadPessoa(txtNome.value, txtSobrenome.value, txtCargo.value, txtSetor.value, txtTempo.value)">
+                                        Inserir
+                                    </button>
+                                    <button type="button" class="btn-2 btn-primary"
+                                            onclick="altPessoa(txtNome.value, txtSobrenome.value, txtCargo.value, txtSetor.value, txtTempo.value)">
+                                        Alterar
+                                    </button>
+                                    <button type="button" class="btn-3 btn-primary"
+                                            onclick="delRegistro()">
+                                        Excluir
+                                    </button>
+                                </div>
+                            </form> 
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Upload (section 3) -->
+
+            <section>
+                <div id="input-load" class="upload">
+                    <h3> Upload de Arquivos </h3>
+                    <form id="formulario" class="file-container" action="#" method="">
+                        <input type="file" for="arq" name="arquivo" id="arquivo" class="arquivo">
+                        <input type="text" name="file" id="file" class="file" placeholder="Arquivo" readonly="readonly">
+                        <input type="button" class="btn-4" value="Selecionar">
+                        <input type="submit" class="btn-5" name="arq" value="Enviar">
+                    </form> 
+                </div>
+            </section>                
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <div class="footer-copyright text-center">
+                <img src="/assets/img/logo-footer-2.png" alt="Logotipo Oliveira Trust">
+                © 2020 Copyright: Oliveira Trust Developer
+                <a href="http://www.oliveiratrust.com.br/">
+                    www.oliveiratrust.com.br
+                </a>
+            </div>
+        <footer>
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/login.js"></script>
+        
+    </body>
+</html>
