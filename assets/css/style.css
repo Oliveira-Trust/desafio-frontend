@@ -124,15 +124,8 @@ h3 {
 /* ============== HEADER =============== */
 
 #header {
-  z-index: 997;
   transition: all 0.7s;
   margin-bottom: 30px;
-}
-
-#header.header-scrolled {
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
-  background: var(--color-text-base);
 }
 
 /* ============== NAV =============== */
@@ -150,8 +143,8 @@ h3 {
   padding-bottom: 1.5rem;
 }
 
-.nav-menu {
-  padding: 2rem 1.5rem;
+.navbar-right {
+  margin-right: 1.5rem
 }
 
 .logotipo {
@@ -403,10 +396,12 @@ footer img {
 
 @media (max-width: 1024px) {  /* ============== 1024px =============== */
   
+  /* subtitle */
   h3 {
     font-size: 2rem;
   }
 
+  /* section table */
   #tbPessoas th {
     font-size: 1.4rem;
   }
@@ -415,9 +410,7 @@ footer img {
     font-size: 1.1rem;
   }
 
-  .file-container {
-    margin-left: 22%;
-  }
+  /* section form */
 
   .btn-1 {
     padding: .7rem 2rem;
@@ -433,6 +426,11 @@ footer img {
     margin: .5rem;
   }
 
+  /* section upload */
+  .file-container {
+    margin-left: 22%;
+  }
+
   .btn-4 {
     padding: .7rem 2rem;
     margin: 1rem;
@@ -445,6 +443,7 @@ footer img {
 
 @media (max-width: 995px) { /* ============== 995px =============== */
   
+  /* section form */
   #form {
     position: relative;
     margin: auto 4.5rem;
@@ -456,6 +455,8 @@ footer img {
 
 @media (max-width: 768px) { /* ============== 768px =============== */
   
+
+  /* section form */
   #form {
     position: relative;
     margin: auto 4.5rem;
@@ -465,6 +466,7 @@ footer img {
     left: auto;
   }
 
+  /* section upload */
   .file {
     margin-left: 13%;
     justify-content: center;
@@ -488,6 +490,8 @@ footer img {
 
 @media (max-width: 576px) { /* ============== 576px =============== */
 
+  /* page login */
+
   .bg-login {
     background-image: none;
     background: var(--color-b-secondary);
@@ -497,10 +501,13 @@ footer img {
     background: var(--color-b-secondary);
   }
 
+  /* subtitle */
+
   h3 {
     font-size: 2.5rem;
   }
 
+  /* section upload */
   .file {
     margin-left: 1rem;
     display: inline-flex;
@@ -525,7 +532,7 @@ footer img {
 
 @media (max-width: 425px) { /* ============== 425px =============== */
 
-  /* login */
+  /* page login */
 
   .btn-submit {
     display: flex;
@@ -544,15 +551,19 @@ footer img {
     width: 100%;
   }
 
-  /* Home */
+  /* title */
   
   h3 {
     font-size: 2rem;
   }
 
+  /* main */
+
   main {
     margin: 0.5rem 2rem;
   }
+
+  /* navbar */
 
   .nav-logo span {
     font-size: 2.5rem;
@@ -568,10 +579,18 @@ footer img {
     margin-top: 2.1rem;
   }
 
+  /* section form */
   #form {
     margin: auto 2rem;
   }
 
+  #formulario {
+    display: block;
+    justify-content: center;
+    align-content: center;
+  }
+
+  /* section table */
   #tbPessoas th {
     font-size: 0.9rem;
   }
@@ -580,6 +599,7 @@ footer img {
     font-size: 0.9rem;
   }
 
+  /* section upload */
   .file {
     margin-left: 0.1rem;
     width: 100%;
@@ -599,12 +619,7 @@ footer img {
     width:46%;
   }
 
-  #formulario {
-    display: block;
-    justify-content: center;
-    align-content: center;
-  }
-
+  /* section footer */
   .page-footer {
     line-height: 40px;
     margin-top: 0;

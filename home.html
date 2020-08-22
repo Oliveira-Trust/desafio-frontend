@@ -26,52 +26,49 @@
         <header id="header" class="fixed-top">
             <!-- Navbar -->
             <div class="nav-fixed d-flex align-items-center">
-                <nav class="nav nav-menu navbar-default d-none d-lg-block">
-                    <div class="lh-100">                         
-                        <div class="navbar-header">
-                            <button type="button" class="btn-nav navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#barra-navegacao">
-                
-                                <span class="sr-only">Alternar menu</span> <!--acessibilidade-->
-                    
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>            
-                            </button>
+                <nav class="nav nav-menu navbar-default d-none d-lg-block">                                          
+                    <div class="navbar-header">
+                        <button type="button" class="btn-nav navbar-toggle collapsed" data-toggle="collapse" data-target="#barra-navegacao">
+                            
+                            <span class="sr-only">Alternar menu</span> <!--acessibilidade-->                
+                            
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>            
+                        </button>
 
-                            <div class="nav-logo">
-                                <a class="navbar-brand" href="/">
-                                    <img class="logotipo" src="assets/img/logotipo.png" alt="Logotipo Oliveira Trust" />
-                                    <span> Oliveira Trust </span>
-                                </a>
-                            </div>
+                        <div class="nav-logo">
+                            <a class="navbar-brand" href="/">
+                                <img class="logotipo" src="assets/img/logotipo.png" alt="Logotipo Oliveira Trust" />
+                                <span> Oliveira Trust </span>
+                            </a>
                         </div>
-                
-                        <div class="collapse navbar-collapse" id="barra-navegacao">
-                
-                            <ul id="fixed" class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="/home.html">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#form">Funcionários</a>
-                                </li>
-                                <li>
-                                    <a href="#input-load">Upload</a>
-                                </li>                
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        Minha conta <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">            
-                                        <li>
-                                            <a href="index.html">Sair</a>
-                                        </li>
-                                    </ul>
-                                </li>  
-                            </ul>  
-                        </div>  
                     </div>
+            
+                    <div id="barra-navegacao" class="collapse navbar-collapse">
+            
+                        <ul id="fixed" class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="#form">Funcionários</a>
+                            </li>
+                            <li>
+                                <a href="#input-load">Upload</a>
+                            </li>                
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Minha conta <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">            
+                                    <li>
+                                        <a href="index.html">Sair</a>
+                                    </li>
+                                </ul>
+                            </li>  
+                        </ul>  
+                    </div>                    
                 </nav>
             </div>
         </header>
@@ -102,7 +99,7 @@
                 <section id="form">
                     <div id="fPessoas" class="col-md-4">                    
                         <h3>Cadastro de Funcionários</h3>
-                        <form id="myForm">
+                        <form action="" method="" id="myForm">
                             <div>
                                 <label for="txtCodigo">Código</label>
                                 <input type="text" class="form-control" id="txtCodigo" aria-describedby="emailHelp" placeholder="Código" readonly>
@@ -115,22 +112,22 @@
 
                             <div>
                                 <label for="txtSobrenome">Sobrenome</label>
-                                <input type="text" class="form-control" id="txtSobrenome" placeholder="Sobrenome" required>
+                                <input type="text" class="form-control" id="txtSobrenome" placeholder="Sobrenome" >
                             </div>
 
                             <div>
                                 <label for="txtCargo">Cargo</label>                                  
-                                <input type="text" class="form-control" id="txtCargo" placeholder="Cargo" required>
+                                <input type="text" class="form-control" id="txtCargo" placeholder="Cargo" >
                             </div>
 
                             <div>
                                 <label for="txtSetor">Setor</label>
-                                <input type="text" class="form-control" id="txtSetor" placeholder="Setor" required>
+                                <input type="text" class="form-control" id="txtSetor" placeholder="Setor" >
                             </div>
                             
                             <div>
                                 <label for="txtTempo">Tempo de Serviço</label>
-                                <input type="text" class="form-control" id="txtTempo" placeholder="Tempo"required>
+                                <input type="text" class="form-control" id="txtTempo" placeholder="Tempo" >
                             </div>
 
                             <div class="form-button">
@@ -171,7 +168,7 @@
             <div class="footer-copyright text-center">
                 <img src="/assets/img/logo-footer-2.png" alt="Logotipo Oliveira Trust">
                 © 2020 Copyright: Oliveira Trust Developer
-                <a href="http://www.oliveiratrust.com.br/">
+                <a href="http://www.oliveiratrust.com.br/" target="_blank">
                     www.oliveiratrust.com.br
                 </a>
             </div>
