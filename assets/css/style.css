@@ -321,7 +321,7 @@ background-color: var(--color-primary-dark);
 }
 
 .file-container {
-  margin-left: 26%;
+  margin-left: 33%;
 }
 
 input[type="file"] {
@@ -627,12 +627,6 @@ footer img {
   
   .page-footer a {
     font-size: 1.5rem;
-  }
-  
-  footer img {
-    width: 25px;
-    height: 25px;
-    margin-right: 1.2rem;
   }
 }
 
