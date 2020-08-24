@@ -45,7 +45,7 @@ h3 {
 /* ============== LOGIN =============== */
 
 .bg-login {
-  background-image: url(/assets/img/bg2.png);
+  background-image: url("/assets/img/bg2.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
@@ -59,6 +59,7 @@ h3 {
   padding: 6rem 6rem;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--color-b-secondary);
 }
 
 .title-container {
