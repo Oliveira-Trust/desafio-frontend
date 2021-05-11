@@ -33,6 +33,7 @@ Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa,
 - Vale Alimentação;
 - Vale Transporte ou Vale Combustível;
 - Plano de Saúde e Odontológico;
+- Seguro de vida;
 - PLR Semestral;
 - Horário Flexível;
 - Parcerias em farmácias
