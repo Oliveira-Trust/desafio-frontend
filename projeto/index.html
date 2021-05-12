@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Oliveira Trust</title>
 
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,10 +14,24 @@
       crossorigin="anonymous"
     />
 
+    <!-- Icons by FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/110e73ee38.js"
+      crossorigin="anonymous"
+    ></script>
+
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <nav class="px-4 navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+    <nav
+      class="
+        px-4
+        navbar navbar-dark
+        bg-dark
+        navbar-expand-lg navbar-light
+        bg-light
+      "
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
           ><img
@@ -35,7 +50,10 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="mx-3 collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+        <div
+          class="mx-3 collapse navbar-collapse justify-content-between"
+          id="navbarNavDropdown"
+        >
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
@@ -66,19 +84,26 @@
               </ul>
             </li>
           </ul>
-          <p class="my-3 text-light">Usuário</p>
+          <p class="my-3 text-light user-name">Usuário</p>
         </div>
       </div>
     </nav>
 
     <div class="container my-5">
       <div class="d-flex">
-        <h2>Funcionários (<span class="counter">0</span>)</h2>
-        <button id="add" class="mx-3 btn btn-primary">Adicionar</button>
-        <button id="remove" class="btn btn-secondary">Remover</button>
+        <h3>Funcionários</h3>
+        <button
+          id="add"
+          class="mx-3 btn btn-primary modal-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Adicionar
+        </button>
       </div>
-      <div class="mt-4 container table-container">
-        <table class="table">
+
+      <div class="mt-4 container table-container table-responsive">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -87,12 +112,53 @@
               <th scope="col">Cargo</th>
               <th scope="col">Setor</th>
               <th scope="col">Desde</th>
+              <th scope="col">Excluir</th>
             </tr>
           </thead>
-          <tbody>
-
-          </tbody>
+          <tbody></tbody>
         </table>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicionar Funcionário</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="">
+              <label for="id" class="form-label">ID:</label>
+              <input type="text" id="id" name="id" class="form-control"/>
+              <label for="nome" class="form-label">Nome:</label>
+              <input type="text" id="nome" name="nome" class="form-control"/>
+              <label for="sobrenome" class="form-label">Sobrenome:</label>
+              <input type="text" id="sobrenome" name="sobrenome" class="form-control"/>
+              <label for="cargo" class="form-label">Cargo:</label>
+              <input type="text" id="cargo" name="cargo" class="form-control"/>
+              <label for="setor" class="form-label">Setor:</label>
+              <input type="text" id="setor" name="setor" class="form-control"/>
+              <label for="data" class="form-label">data:</label>
+              <input type="date" id="data" name="data" class="form-control"/>
+
+              <button type="submit" class="mt-5 btn btn-primary">
+                Adicionar Funcionário
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
 
