@@ -1,5 +1,12 @@
+.title {
+  width: 57%;
+  max-width: 230px;
+}
+
 .table-container {
   max-height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .table thead th {
@@ -7,4 +14,24 @@
   top: 0;
   z-index: 1;
   background: white;
+}
+
+.modal-user {
+  display: block;
+  background: rgba(0, 0, 0, .8);
+}
+
+.send-files-container {
+  display: none;
+}
+
+.send-files-container.active {
+  display: initial;
+}
+
+.toast {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%);
 }
