@@ -2,7 +2,6 @@ function handleData() {
   async function fetchData() {
     const url = './js/data.json';
     const req = await fetch(url);
-    console.log(req);
     const res = await req.json();
     renderData(res);
   }
@@ -10,7 +9,7 @@ function handleData() {
   fetchData();
 
   function addEmployee() {
-    const form = document.forms[0];
+    const form = document.querySelector('.employee-form');
 
     function renderEmployee(data) {
       const table = document.querySelector("table tbody");
@@ -26,6 +25,13 @@ function handleData() {
       }
       const cellBtn = row.insertCell();
       cellBtn.appendChild(createBtnRemove());
+      userAddedSuccessfully();
+    }
+
+    function userAddedSuccessfully() {
+      const toast = document.querySelector('.toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1500);
     }
 
 
@@ -34,6 +40,7 @@ function handleData() {
       const formData = new FormData(form);
       renderEmployee(formData.values());
 
+      listLength();
       removeEmployee();
     }
 
@@ -45,7 +52,7 @@ function handleData() {
   function createBtnRemove() {
     const btnRemove = document.createElement("button");
     btnRemove.setAttribute("class", "btn-inline btn btn-sm btn-danger");
-    btnRemove.innerHTML = "Excluir";
+    btnRemove.innerHTML = "Excluir <i class='ms-2 fas fa-user-slash'></i>";
 
     return btnRemove;
   }
@@ -76,12 +83,97 @@ function handleData() {
         for (let i = 0; i < btnInline.length; i++) {
           btnInline[i].addEventListener("click", () => {
             btnInline[i].parentNode.parentNode.remove();
+            listLength();
           });
         }
-    }, 200); // a little time to await DOM render table rows
+    }, 200); // a little timer to await DOM render table rows
+
   }
 
   removeEmployee();
 }
 
 handleData();
+
+
+function handleModalUserName() {
+  const formUserName = document.querySelector('.user-form');
+
+  function invalidFeedback() {
+    const invalidElement = document.querySelector('.invalid-feedback');
+    invalidElement.style.display = 'block';
+    setTimeout(() => invalidElement.style.display = 'none', 1500)
+  }
+
+  function disableModal() {
+    const modal = document.querySelector('.modal-user');
+    modal.style.display = 'none';
+  }
+
+  function showUserName(userName) {
+    const userDisplay = document.querySelector('.user-display');
+    userDisplay.innerHTML = userName;
+  }
+
+  function storeUserName(userName) {
+    localStorage.setItem('username', userName);
+ }
+
+  function handleSubmitUserName(e) {
+    e.preventDefault();
+
+    if (formUserName.username.value === '') {
+      invalidFeedback();
+    } else {
+      storeUserName(formUserName.username.value)
+      showUserName(formUserName.username.value)
+      disableModal();
+    } 
+  }
+
+  formUserName.addEventListener('submit', handleSubmitUserName);
+}
+
+function handleLocalStorage() {
+  if (localStorage.length < 1)
+    handleModalUserName();
+  else {
+    disableModal();
+    showUserName();
+  }
+
+  function disableModal() {
+    const modal = document.querySelector('.modal-user');
+    modal.style.display = 'none';
+  }
+
+  function showUserName() {
+    const userDisplay = document.querySelector('.user-display');
+    userDisplay.innerHTML = localStorage.getItem('username');
+  }
+}
+
+handleLocalStorage();
+
+
+function showSendFilesContainer() {
+  const btnLink = document.querySelector('.send-files-link');
+
+  btnLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sendFilesContainer = document.querySelector('.send-files-container');
+    sendFilesContainer.classList.add('active');
+    console.log('ok');
+  })
+}
+
+function listLength() {
+  setTimeout(() => {
+    const tableLength = document.querySelectorAll('tbody tr').length;
+    const listCounter = document.querySelector('.list-counter');
+    listCounter.innerHTML = tableLength;
+  }, 200) // Same as the setTimeout in remove function, to await DOM render table
+}
+
+showSendFilesContainer();
+listLength();
