@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Leftbar -->
+            <div class="col-2 nav-border-right">
+                <div class="row">
+                    <nav class="navbar navbar-light bg-white nav-border-bottom">
+                        <div class="container-fluid">
+                            <div class="col">
+                                <a class="navbar-brand">
+                                    <img src="img/favicon.ico" alt="logo" width="25" height="25">
+                                </a>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                                    <i class="bi bi-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <div class="col">
+                                <button class="btn" type="button">
+                                    <i class="bi bi-stack"></i>
+                                    Dashboard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <div class="col">
+                                <button class="btn" type="button">
+                                    <i class="bi bi-people"></i>
+                                    Funcionários
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <div class="col">
+                                <button class="btn" type="button">
+                                    <i class="bi bi-upload"></i>
+                                    Enviar arquivo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <div class="col">
+                                <button class="btn" type="button">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Leftbar -->
+
+            <div class="col">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white nav-border-bottom">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Relação de funcionários</a>
+                            </li>
+                        </ul>
+                        <span class="navbar-text">
+                            <i class="bi bi-person"></i>
+                        </span>
+                    </div>
+                </nav>
+                <!-- Navbar -->
+
+                <!-- Employee Table -->
+                <div class="container">
+                    <div class="row mt-3 mb-1">
+                        <div class="col">
+                            <h2>Funcionários</h2>
+                        </div>
+                        <div class="col d-flex justify-content-end align-items-center">
+                            <button type="button" class="btn btn-success btn-sm">Adicionar funcionário</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Sobrenome</th>
+                                        <th scope="col">Cargo</th>
+                                        <th scope="col">Setor</th>
+                                        <th scope="col">Tempo de empresa</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>TI</td>
+                                        <td>potoco</td>
+                                        <td>5a2m</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal">
+                                                Excluir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>RH</td>
+                                        <td>aaa</td>
+                                        <td>2m</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal">
+                                                Excluir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>Bird</td>
+                                        <td>@twitter</td>
+                                        <td>@twitter</td>
+                                        <td>@twitter</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal">
+                                                Excluir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Employee Table -->
+
+                <!-- Delete Employee Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Aviso!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza que deseja excluir o funcionário?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Delete Employee Modal -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

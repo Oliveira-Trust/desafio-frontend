@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #F1F3F5;
+}
+
+.nav-border-bottom {
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.nav-border-right {
+    border-right: 1px solid #E0E0E0;
+}
