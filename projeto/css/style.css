@@ -1,6 +1,7 @@
 .title {
   width: 57%;
   max-width: 230px;
+  margin-bottom: 0 !important;
 }
 
 .table-container {
@@ -34,4 +35,10 @@
   top: 70px;
   left: 50%;
   transform: translate(-50%);
+}
+
+@media screen and (max-width: 767px) {
+  .main-header {
+    justify-content: space-between;
+  }
 }
