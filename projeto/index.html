@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Oliveira Trust</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -93,8 +93,8 @@
       </div>
     </nav>
 
-    <div class="container my-5">
-      <div class="d-flex">
+    <div class="container mt-5">
+      <div class="d-flex main-header">
         <h4 class="title">Funcionários (<span class="list-counter"></span>)</h4>
         <button
           id="add"
@@ -235,7 +235,7 @@
                 class="form-control"
                 aria-describedby="inputGroupPrepend"
               />
-              <div class="invalid-feedback">Digite um usuário.</div>
+              <div class="invalid-feedback" style="position: fixed;">Digite um usuário.</div>
               <button type="submit" class="mt-5 btn btn-success">
                 Acessar o dashboard
               </button>
@@ -245,7 +245,7 @@
       </div>
     </div>
 
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
