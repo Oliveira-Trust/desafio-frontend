@@ -21,6 +21,7 @@
     ></script>
 
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <nav
@@ -61,7 +62,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Enviar Arquivos</a>
+              <a class="nav-link send-files-link" href="#">Enviar Arquivos</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -84,29 +85,32 @@
               </ul>
             </li>
           </ul>
-          <p class="my-3 text-light user-name">Usuário</p>
+          <p class="my-3 text-light">
+            <i class="fas fa-user me-3"></i
+            ><span class="user-display">Usuário</span>
+          </p>
         </div>
       </div>
     </nav>
 
     <div class="container my-5">
       <div class="d-flex">
-        <h3>Funcionários</h3>
+        <h4 class="title">Funcionários (<span class="list-counter"></span>)</h4>
         <button
           id="add"
-          class="mx-3 btn btn-primary modal-btn"
+          class="ms-3 btn btn-sm btn-primary modal-btn"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
           Adicionar
+          <i class="ms-2 fas fa-user-plus"></i>
         </button>
       </div>
 
-      <div class="mt-4 container table-container table-responsive">
+      <div class="my-4 container table-container table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">ID</th>
               <th scope="col">Nome</th>
               <th scope="col">Sobrenome</th>
               <th scope="col">Cargo</th>
@@ -118,8 +122,17 @@
           <tbody></tbody>
         </table>
       </div>
+
+      <div class="mt-4 send-files-container">
+        <h4 class="my-4">Enviar Arquivos <i class="ms-2 fas fa-file"></i></h4>
+        <div class="container input-group mb-3">
+          <input type="file" class="form-control" id="upload" />
+          <label class="input-group-text" for="upload">Upload</label>
+        </div>
+      </div>
     </div>
 
+    <!-- Add employee modal -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -130,7 +143,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Adicionar Funcionário</h5>
+            <h5 class="modal-title" id="exampleModalLabel">
+              Adicionar Funcionário
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -138,23 +153,91 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <form class="">
-              <label for="id" class="form-label">ID:</label>
-              <input type="text" id="id" name="id" class="form-control"/>
-              <label for="nome" class="form-label">Nome:</label>
-              <input type="text" id="nome" name="nome" class="form-control"/>
-              <label for="sobrenome" class="form-label">Sobrenome:</label>
-              <input type="text" id="sobrenome" name="sobrenome" class="form-control"/>
-              <label for="cargo" class="form-label">Cargo:</label>
-              <input type="text" id="cargo" name="cargo" class="form-control"/>
-              <label for="setor" class="form-label">Setor:</label>
-              <input type="text" id="setor" name="setor" class="form-control"/>
-              <label for="data" class="form-label">data:</label>
-              <input type="date" id="data" name="data" class="form-control"/>
 
-              <button type="submit" class="mt-5 btn btn-primary">
+          <div class="modal-body">
+            <form class="employee-form" method="POST">
+              <label for="nome" class="form-label">Nome:</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                class="form-control"
+                required
+              />
+              <label for="sobrenome" class="form-label">Sobrenome:</label>
+              <input
+                type="text"
+                id="sobrenome"
+                name="sobrenome"
+                class="form-control"
+                required
+              />
+              <label for="cargo" class="form-label">Cargo:</label>
+              <input type="text" id="cargo" name="cargo" class="form-control" />
+              <label for="setor" class="form-label">Setor:</label>
+              <input type="text" id="setor" name="setor" class="form-control" />
+              <label for="data" class="form-label">data:</label>
+              <input
+                type="date"
+                id="data"
+                name="data"
+                class="form-control"
+                required
+              />
+
+              <button type="submit" class="mt-5 btn btn-success">
                 Adicionar Funcionário
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        class="toast align-items-center text-white bg-success border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">Usuário adicionado com sucesso!</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add username modal -->
+    <div
+      class="modal fade modal-user show"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h5>
+              Seja bem vindo ao Dashboard de funcionários da Oliveira Trust
+            </h5>
+            <form class="mt-3 user-form needs-validation" novalidate>
+              <label for="username" class="form-label">Nome de usuário:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                aria-describedby="inputGroupPrepend"
+              />
+              <div class="invalid-feedback">Digite um usuário.</div>
+              <button type="submit" class="mt-5 btn btn-success">
+                Acessar o dashboard
               </button>
             </form>
           </div>
