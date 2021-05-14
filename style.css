@@ -14,3 +14,20 @@ html {
 .nav-border-right {
     border-right: 1px solid #E0E0E0;
 }
+
+i {
+    font-size: 150%;
+}
+
+.icon-span:hover {
+    color: #E0E0E0;
+}
+
+.logout-btn {
+    left: auto;
+    right: auto;
+}
+
+.not-pointer {
+    cursor: auto;
+}

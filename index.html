@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <!-- Required meta tags -->
@@ -21,38 +21,70 @@
 
 <body>
 
+    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
 
     <div class="container-fluid">
-        <div class="row">
-            <!-- Leftbar -->
+        <div class="row nav-border-bottom sticky-top">
+
+            <!-- Navbar Top Left -->
             <div class="col-2 nav-border-right">
+                <nav class="navbar navbar-light bg-white">
+                    <div class="container-fluid">
+                        <div class="col">
+                            <a class="navbar-brand">
+                                <img src="img/favicon.ico" alt="logo" width="25" height="25">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn icon-span" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Navbar Top Left -->
+
+            <!-- Navbar -->
+            <div class="col">
                 <div class="row">
-                    <nav class="navbar navbar-light bg-white nav-border-bottom">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white">
                         <div class="container-fluid">
-                            <div class="col">
-                                <a class="navbar-brand">
-                                    <img src="img/favicon.ico" alt="logo" width="25" height="25">
-                                </a>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <button class="btn" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                                    <i class="bi bi-list"></i>
-                                </button>
-                            </div>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Relação de funcionários</a>
+                                </li>
+                            </ul>
+                            <span class="navbar-text">
+                                <i class="bi bi-person"></i>
+                            </span>
                         </div>
                     </nav>
                 </div>
+            </div>
+            <!-- Navbar -->
+
+        </div>
+        <div class="row">
+
+            <!-- Navbar Left -->
+            <div class="col-2 nav-border-right position-fixed h-100 bg-white">
                 <div class="row">
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col">
-                                <button class="btn" type="button">
-                                    <i class="bi bi-stack"></i>
-                                    Dashboard
+                                <button class="btn fw-bold" type="button">
+                                    CORE
                                 </button>
                             </div>
                         </div>
@@ -62,7 +94,19 @@
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col">
-                                <button class="btn" type="button">
+                                <button class="btn icon-span" type="button">
+                                    <i class="bi bi-stack"></i>
+                                    <span>Dashboard</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <div class="col">
+                                <button class="btn icon-span" type="button">
                                     <i class="bi bi-people"></i>
                                     Funcionários
                                 </button>
@@ -74,7 +118,7 @@
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col">
-                                <button class="btn" type="button">
+                                <button class="btn icon-span" type="button">
                                     <i class="bi bi-upload"></i>
                                     Enviar arquivo
                                 </button>
@@ -82,11 +126,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row fixed-bottom col-2 logout-btn nav-border-right">
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col">
-                                <button class="btn" type="button">
+                                <button class="btn icon-span" type="button">
                                     <i class="bi bi-box-arrow-right"></i>
                                     Logout
                                 </button>
@@ -95,35 +139,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Leftbar -->
+            <!-- Navbar Left -->
 
-            <div class="col">
-                <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-white nav-border-bottom">
-                    <div class="container-fluid">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Relação de funcionários</a>
-                            </li>
-                        </ul>
-                        <span class="navbar-text">
-                            <i class="bi bi-person"></i>
-                        </span>
-                    </div>
-                </nav>
-                <!-- Navbar -->
-
+            <div class="col offset-2">
                 <!-- Employee Table -->
                 <div class="container">
                     <div class="row mt-3 mb-1">
                         <div class="col">
-                            <h2>Funcionários</h2>
+                            <h3>Funcionários</h3>
                         </div>
                         <div class="col d-flex justify-content-end align-items-center">
                             <button type="button" class="btn btn-success btn-sm">Adicionar funcionário</button>
@@ -135,11 +158,11 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Sobrenome</th>
-                                        <th scope="col">Cargo</th>
-                                        <th scope="col">Setor</th>
-                                        <th scope="col">Tempo de empresa</th>
+                                        <th scope="col">NOME</th>
+                                        <th scope="col">SOBRENOME</th>
+                                        <th scope="col">CARGO</th>
+                                        <th scope="col">SETOR</th>
+                                        <th scope="col">TEMPO DE EMPRESA</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -192,6 +215,13 @@
                     </div>
                 </div>
                 <!-- Employee Table -->
+            </div>
+        </div>
+
+        
+        <div class="row">
+
+            <div class="col">
 
                 <!-- Delete Employee Modal -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
@@ -217,6 +247,8 @@
                 <!-- Delete Employee Modal -->
             </div>
         </div>
+        
+
     </div>
 
 </body>
