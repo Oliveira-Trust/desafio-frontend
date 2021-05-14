@@ -19,8 +19,23 @@ i {
     font-size: 150%;
 }
 
+.icon-span {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
 .icon-span:hover {
     color: #E0E0E0;
+}
+
+.icon-span:active {
+    font-weight: bold;
+}
+
+.nav-span {
+    text-decoration: none;
+    color: black;
 }
 
 .logout-btn {
@@ -30,4 +45,24 @@ i {
 
 .not-pointer {
     cursor: auto;
+}
+
+.card-width {
+    width: 85%;
+}
+
+.upload-card {
+    cursor: pointer;
+}
+
+.upload-card:hover {
+    border: 2px solid #198754;
+}
+
+.grey-background {
+    background-color: #F1F3F5;
+}
+
+table {
+    background-color: white;
 }
