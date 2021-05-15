@@ -78,6 +78,22 @@ function selectEmployeeId(i) {
     id = i;
 }
 
+// Adiciona funcionário
+function addEmployee() {
+    var name = document.forms["addForm"].elements["fname"].value;
+    var lastname = document.forms["addForm"].elements["flastname"].value;
+    var cargo = document.forms["addForm"].elements["fcargo"].value;
+    var sector = document.forms["addForm"].elements["fsector"].value;
+    var time = document.forms["addForm"].elements["ftime"].value;
+    var id = employees.length + 1;
+
+    employees.push([id,`${name}`,`${lastname}`,`${cargo}`,`${sector}`,`${time} dias`]);
+
+    console.log([id,name,lastname,cargo,sector,time + " dias"]);
+
+    changePage(currentPage);
+}
+
 // Exclui o funcionário selecionado
 function deleteEmployee() {
     employees.splice(id, 1);

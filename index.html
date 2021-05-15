@@ -201,7 +201,8 @@
                                     <h3>Funcionários</h3>
                                 </div>
                                 <div class="col d-flex justify-content-end align-items-center">
-                                    <button type="button" class="btn btn-success btn-sm">Adicionar funcionário</button>
+                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#addModal">Adicionar funcionário</button>
                                 </div>
                             </div>
                             <div class="row">
@@ -227,7 +228,8 @@
                             <div class="row">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination pagination-sm justify-content-between">
-                                        <li>Mostrando <span id="employee-showed" class="fw-bold"></span> de <span id="employee-total" class="fw-bold"></span>
+                                        <li>Mostrando <span id="employee-showed" class="fw-bold"></span> de <span
+                                                id="employee-total" class="fw-bold"></span>
                                             funcionários</li>
                                         <ul class="pagination justify-content-end">
                                             <li class="page-item" onclick="prevPage()">
@@ -253,6 +255,49 @@
 
             <div class="col">
 
+                <!-- Add Employee Modal -->
+                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addModalLabel">Adicionar funcionário</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form id="addForm" onsubmit="addEmployee()" action="#">
+                            <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="InputName" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" name="fname">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputLastName" class="form-label">Sobrenome</label>
+                                        <input type="text" class="form-control" name="flastname">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputCargo" class="form-label">Cargo</label>
+                                        <input type="text" class="form-control" name="fcargo">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputSector" class="form-label">Setor</label>
+                                        <input type="text" class="form-control" name="fsector">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputTime" class="form-label">Tempo de empresa</label>
+                                        <input type="text" class="form-control" name="ftime">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <input type="submit" class="btn btn-success" value="Adicionar">
+                                <!--<button type="submit" class="btn btn-success" data-bs-dismiss="modal" form="addForm">Adicionar</button>-->
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Employee Modal -->
+
                 <!-- Delete Employee Modal -->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
                     aria-hidden="true">
@@ -269,12 +314,14 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"
                                     data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="deleteEmployee()">Excluir</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                    onclick="deleteEmployee()">Excluir</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Delete Employee Modal -->
+
             </div>
         </div>
 
