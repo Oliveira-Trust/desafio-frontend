@@ -66,3 +66,7 @@ i {
 table {
     background-color: white;
 }
+
+.icon-align {
+    vertical-align: text-bottom;
+}

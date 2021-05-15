@@ -23,6 +23,8 @@
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/24de11fb10.js" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
@@ -35,16 +37,18 @@
             <div class="col-2 nav-border-right">
                 <nav class="navbar navbar-light bg-white">
                     <div class="container-fluid">
-                        <div class="col">
-                            <a class="navbar-brand">
-                                <img src="img/favicon.ico" alt="logo" width="25" height="25">
-                            </a>
+                        <div class="row">
+                            <div class="col">
+                                <a class="navbar-brand">
+                                    <img src="img/favicon.ico" alt="logo" width="25" height="25">
+                                </a>
+                            </div>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <button class="btn icon-span" type="button" data-bs-toggle="offcanvas"
+                            <a class="nav-link icon-span" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                                 <i class="bi bi-list"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </nav>
@@ -91,7 +95,7 @@
                             <div class="col">
                                 <a class="icon-span">
                                     <i class="bi bi-layers"></i>
-                                    <span class="px-2">Dashboard</span>
+                                    <span class="px-2 icon-align">Dashboard</span>
                                 </a>
                             </div>
                         </div>
@@ -103,7 +107,7 @@
                             <div class="col">
                                 <a class="icon-span">
                                     <i class="bi bi-people"></i>
-                                    <span class="px-2">Funcionários</span>
+                                    <span class="px-2 icon-align">Funcionários</span>
                                 </a>
                             </div>
                         </div>
@@ -115,7 +119,7 @@
                             <div class="col">
                                 <a class="icon-span">
                                     <i class="bi bi-upload"></i>
-                                    <span class="px-2">Enviar arquivo</span>
+                                    <span class="px-2 icon-align">Enviar arquivo</span>
                                 </a>
                             </div>
                         </div>
@@ -127,7 +131,7 @@
                             <div class="col">
                                 <a class="icon-span">
                                     <i class="bi bi-box-arrow-right"></i>
-                                    <span class="px-2">Logout</span>
+                                    <span class="px-2 icon-align">Logout</span>
                                 </a>
                             </div>
                         </div>
@@ -148,8 +152,8 @@
                                         <div class="row justify-content-around">
                                             <div class="col-6">
                                                 <div class="card-body">
-                                                <h5 class="card-title">50</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted">Funcionários</h6>
+                                                    <h5 class="card-title">50</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Funcionários</h6>
                                                 </div>
                                             </div>
                                             <div class="col-5 align-self-center d-flex justify-content-center">
@@ -163,8 +167,8 @@
                                         <div class="row justify-content-around">
                                             <div class="col-6">
                                                 <div class="card-body">
-                                                <h5 class="card-title">7</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted">Arquivos</h6>
+                                                    <h5 class="card-title">7</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Arquivos</h6>
                                                 </div>
                                             </div>
                                             <div class="col-5 align-self-center d-flex justify-content-center">
@@ -178,8 +182,8 @@
                                         <div class="row justify-content-around">
                                             <div class="col-6">
                                                 <div class="card-body">
-                                                <h6 class="card-title text-muted">Adicionar</h6>
-                                                <h6 class="card-subtitle mb-2 text-muted">Arquivo</h6>
+                                                    <h6 class="card-title text-muted">Adicionar</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Arquivo</h6>
                                                 </div>
                                             </div>
                                             <div class="col-5 align-self-center d-flex justify-content-center">
@@ -203,7 +207,6 @@
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-sm">
-                                        <caption>Mostrando <span class="fw-bold">10</span> de <span class="fw-bold">50</span> funcionários</caption>
                                         <thead class="table-light">
                                             <tr>
                                                 <th scope="col">ID</th>
@@ -215,52 +218,28 @@
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>TI</td>
-                                                <td>potoco</td>
-                                                <td>5a2m</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                                        Excluir
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>RH</td>
-                                                <td>aaa</td>
-                                                <td>2m</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                                        Excluir
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>Bird</td>
-                                                <td>@twitter</td>
-                                                <td>@twitter</td>
-                                                <td>@twitter</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                                        Excluir
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                        <tbody id="employee-table">
+                                            <!-- Tabela inserida via JavaScript -->
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination pagination-sm justify-content-between">
+                                        <li>Mostrando <span id="employee-showed" class="fw-bold"></span> de <span id="employee-total" class="fw-bold"></span>
+                                            funcionários</li>
+                                        <ul class="pagination justify-content-end">
+                                            <li class="page-item" onclick="prevPage()">
+                                                <a id="previous" class="page-link" href="#" tabindex="-1"
+                                                    aria-disabled="true">Anterior</a>
+                                            </li>
+                                            <li class="page-item" onclick="nextPage()">
+                                                <a id="next" class="page-link" href="#">Próxima</a>
+                                            </li>
+                                        </ul>
+                                    </ul>
+                                </nav>
                             </div>
                             <!-- Employee Table -->
                         </div>
