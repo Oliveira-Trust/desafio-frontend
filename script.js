@@ -1,4 +1,5 @@
 /* Paginação da tabela de funcionários */
+let id;
 let currentPage = 1;
 let employeesPerPage = 5;
 let employees = [[1,"Fabiana","Silva","Desenvolvedora","TI","1095 dias"],
@@ -61,7 +62,7 @@ function changePage(page) {
     }
 
     for (var i = (page-1)*employeesPerPage; i < (page*employeesPerPage); i++) {
-        table.innerHTML += `<tr><th scope="row">${employees[i][0]}</th><td>${employees[i][1]}</td><td>${employees[i][2]}</td><td>${employees[i][3]}</td><td>${employees[i][4]}</td><td>${employees[i][5]}</td><td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Excluir</button></td></tr>`;
+        table.innerHTML += `<tr><th scope="row">${employees[i][0]}</th><td>${employees[i][1]}</td><td>${employees[i][2]}</td><td>${employees[i][3]}</td><td>${employees[i][4]}</td><td>${employees[i][5]}</td><td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="selectEmployeeId(${i})">Excluir</button></td></tr>`;
         contador++;
         pageSpan.innerHTML = "";
         pageSpan.innerHTML = contador;
@@ -71,6 +72,16 @@ function changePage(page) {
 // Retorna o número total de paginas
 function numPages() {
     return Math.ceil(employees.length / employeesPerPage);
+}
+
+function selectEmployeeId(i) {
+    id = i;
+}
+
+// Exclui o funcionário selecionado
+function deleteEmployee() {
+    employees.splice(id, 1);
+    changePage(currentPage);
 }
 
 // Carrega a paginação
