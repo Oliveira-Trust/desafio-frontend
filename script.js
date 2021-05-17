@@ -79,7 +79,7 @@ function selectEmployeeId(i) {
 }
 
 // Adiciona funcionário
-function addEmployee() {
+function addEmployee(event) {
     var name = document.forms["addForm"].elements["fname"].value;
     var lastname = document.forms["addForm"].elements["flastname"].value;
     var cargo = document.forms["addForm"].elements["fcargo"].value;
@@ -89,7 +89,7 @@ function addEmployee() {
 
     employees.push([id,`${name}`,`${lastname}`,`${cargo}`,`${sector}`,`${time} dias`]);
 
-    console.log([id,name,lastname,cargo,sector,time + " dias"]);
+    console.log(employees[6]);
 
     changePage(currentPage);
 }

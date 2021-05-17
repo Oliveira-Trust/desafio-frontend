@@ -39,7 +39,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
-                                <a class="navbar-brand">
+                                <a class="navbar-brand" href="#">
                                     <img src="img/favicon.ico" alt="logo" width="25" height="25">
                                 </a>
                             </div>
@@ -93,7 +93,7 @@
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col">
-                                <a class="icon-span">
+                                <a class="icon-span" href="#">
                                     <i class="bi bi-layers"></i>
                                     <span class="px-2 icon-align">Dashboard</span>
                                 </a>
@@ -105,7 +105,7 @@
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col">
-                                <a class="icon-span">
+                                <a class="icon-span" href="#employeeTable">
                                     <i class="bi bi-people"></i>
                                     <span class="px-2 icon-align">Funcionários</span>
                                 </a>
@@ -196,7 +196,7 @@
                             <!-- Information Cards -->
 
                             <!-- Employee Table -->
-                            <div class="row mt-5 mb-2">
+                            <div class="row mt-5 mb-2" id="employeeTable">
                                 <div class="col">
                                     <h3>Funcionários</h3>
                                 </div>
@@ -264,32 +264,32 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form id="addForm" onsubmit="addEmployee()" action="#">
+                            <form id="addForm" onsubmit="return false">
                             <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="InputName" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" name="fname">
+                                        <input type="text" class="form-control" name="fname" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="InputLastName" class="form-label">Sobrenome</label>
-                                        <input type="text" class="form-control" name="flastname">
+                                        <input type="text" class="form-control" name="flastname" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="InputCargo" class="form-label">Cargo</label>
-                                        <input type="text" class="form-control" name="fcargo">
+                                        <input type="text" class="form-control" name="fcargo" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="InputSector" class="form-label">Setor</label>
-                                        <input type="text" class="form-control" name="fsector">
+                                        <input type="text" class="form-control" name="fsector" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="InputTime" class="form-label">Tempo de empresa</label>
-                                        <input type="text" class="form-control" name="ftime">
+                                        <input type="text" class="form-control" name="ftime" required>
                                     </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-success" value="Adicionar">
+                                <input type="submit" class="btn btn-success" value="Adicionar" onclick="addEmployee()">
                                 <!--<button type="submit" class="btn btn-success" data-bs-dismiss="modal" form="addForm">Adicionar</button>-->
                             </div>
                             </form>
