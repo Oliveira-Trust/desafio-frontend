@@ -81,35 +81,32 @@ input[type="file"] {
     left: 100%;
 }
 
-@media only screen and (max-width: 1450px) {
-    h6 {
-        font-size: 0.85rem;
-    }
-}
-
-@media only screen and (max-width:  1310px) {
-    h6 {
-        font-size: 0.75rem;
-    }
-    .icon-align {
-        font-size: 0.85rem;
-    }
-}
-
-@media only screen and (max-width: 1230px) {
-    h6 {
-        font-size: 0.65rem;
-    }
-    .icon-align {
-        font-size: 0.7rem;
+@media only screen and (max-width: 1400px) {
+    h5, h6, td, th {
+        font-size: 0.9rem;
     }
     i {
-        font-size: 125%;
+        font-size: 135%;
+    }
+    .icon-span {
+        font-size: 0.85rem;
+    }
+    .logo-name {
+        width: 90%;
     }
 }
 
-@media only screen and (max-width: 1145px) {
-    i {
-        font-size: 150%;
+@media only screen and (max-width: 1200px) {
+    .card-width {
+        width: 95%;
+    }
+    .icon-span span {
+        display: none;
+    }
+    .align-icons {
+        text-align-last: center;
+    }
+    .icon-sizing {
+        font-size: 200%;
     }
 }
