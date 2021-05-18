@@ -152,7 +152,7 @@
                                         <div class="row justify-content-around">
                                             <div class="col-6">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">50</h5>
+                                                    <h5 id="numberOfEmployees" class="card-title"><!-- Inserido via JavaScript --></h5>
                                                     <h6 class="card-subtitle mb-2 text-muted">Funcionários</h6>
                                                 </div>
                                             </div>
@@ -167,7 +167,7 @@
                                         <div class="row justify-content-around">
                                             <div class="col-6">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">7</h5>
+                                                    <h5 id="numberOfFiles" class="card-title"><!-- Inserido via JavaScript --></h5>
                                                     <h6 class="card-subtitle mb-2 text-muted">Arquivos</h6>
                                                 </div>
                                             </div>
@@ -244,6 +244,7 @@
                                 </nav>
                             </div>
                             <!-- Employee Table -->
+
                         </div>
                     </div>
                 </div>
@@ -289,7 +290,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-success" value="Adicionar" onclick="addEmployee()">
+                                <input type="submit" class="btn btn-success" value="Adicionar" onclick="addEmployee()" data-bs-dismiss="modal">
                                 <!--<button type="submit" class="btn btn-success" data-bs-dismiss="modal" form="addForm">Adicionar</button>-->
                             </div>
                             </form>

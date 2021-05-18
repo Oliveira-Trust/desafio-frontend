@@ -1,13 +1,18 @@
-/* Paginação da tabela de funcionários */
+/* Tabela de funcionários */
 let id;
 let currentPage = 1;
-let employeesPerPage = 5;
-let employees = [[1,"Fabiana","Silva","Desenvolvedora","TI","1095 dias"],
+let numberOfFiles = 0;
+const employeesPerPage = 10;
+let employees = [[1,"Fabiana","Silva","Desenvolvedora Back-End","TI","1095 dias"],
                 [2,"Gerson","Barroso","Gerente","Vendas","342 dias"],
                 [3,"Arthur","Valls","Estagiário","TI","27 dias"],
                 [4,"Rosângela","Viana","Diretora","Vendas","2793 dias"],
                 [5,"Igor","Souza","Auxiliar","Marketing","198 dias"],
-                [6,"Jorge","Canuto","Trainee","RH","12 dias"]];
+                [6,"Jorge","Canuto","Trainee","RH","12 dias"],
+                [7,"Lívia","Costa","Desenvolvedora Front-End","TI","1025 dias"],
+                [8,"Rafael","Bezerra","Trainee","Cobrança","90 dias"],
+                [9,"Gabriel","Barbosa","Gerente","Finanças","942 dias"],
+                [10,"Guilherme","Paz","Web Designer","TI","297 dias"]];
 
 // Vai para a página anterior
 function prevPage() {
@@ -32,6 +37,8 @@ function changePage(page) {
     var table = document.getElementById("employee-table");
     var pageSpan = document.getElementById("employee-showed");
     var pageTotal = document.getElementById("employee-total");
+    var employeeTotal = document.getElementById("numberOfEmployees");
+    var filesTotal = document.getElementById("numberOfFiles");
     var contador = 0;
 
     if (page < 1) {page = 1;}
@@ -41,6 +48,8 @@ function changePage(page) {
     pageSpan.innerHTML = "";
     pageTotal.innerHTML = "";
     pageTotal.innerHTML = employees.length;
+    employeeTotal.innerHTML = employees.length;
+    filesTotal.innerHTML = numberOfFiles;
 
     if (page == 1) {
         btnPrev.classList.add("disabled");
@@ -74,6 +83,7 @@ function numPages() {
     return Math.ceil(employees.length / employeesPerPage);
 }
 
+// Seleciona o id do funcionário
 function selectEmployeeId(i) {
     id = i;
 }
@@ -89,8 +99,6 @@ function addEmployee(event) {
 
     employees.push([id,`${name}`,`${lastname}`,`${cargo}`,`${sector}`,`${time} dias`]);
 
-    console.log(employees[6]);
-
     changePage(currentPage);
 }
 
@@ -104,4 +112,4 @@ function deleteEmployee() {
 window.onload = function() {
     changePage(1);
 };
-/* Paginação da tabela de funcionários */
+/* Tabela de funcionários */

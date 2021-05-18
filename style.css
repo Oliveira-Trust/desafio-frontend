@@ -70,3 +70,9 @@ table {
 .icon-align {
     vertical-align: text-bottom;
 }
+
+input[type="file"] {
+    position: fixed;
+    right: 100%;
+    left: 100%;
+}
