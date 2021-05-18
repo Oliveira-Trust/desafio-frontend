@@ -15,6 +15,10 @@ html {
     border-right: 1px solid #E0E0E0;
 }
 
+.nav-border-left {
+    border-left: 1px solid #E0E0E0;
+}
+
 i {
     font-size: 150%;
 }
@@ -75,4 +79,37 @@ input[type="file"] {
     position: fixed;
     right: 100%;
     left: 100%;
+}
+
+@media only screen and (max-width: 1450px) {
+    h6 {
+        font-size: 0.85rem;
+    }
+}
+
+@media only screen and (max-width:  1310px) {
+    h6 {
+        font-size: 0.75rem;
+    }
+    .icon-align {
+        font-size: 0.85rem;
+    }
+}
+
+@media only screen and (max-width: 1230px) {
+    h6 {
+        font-size: 0.65rem;
+    }
+    .icon-align {
+        font-size: 0.7rem;
+    }
+    i {
+        font-size: 125%;
+    }
+}
+
+@media only screen and (max-width: 1145px) {
+    i {
+        font-size: 150%;
+    }
 }
