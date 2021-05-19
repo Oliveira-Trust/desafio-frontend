@@ -81,6 +81,18 @@ input[type="file"] {
     left: 100%;
 }
 
+.card-col {
+    flex: 1 0 0%;
+}
+
+.card-col-center {
+    justify-content: center;
+}
+
+.card-col-end {
+    justify-content: flex-end;
+}
+
 @media only screen and (max-width: 1400px) {
     h5, h6, td, th {
         font-size: 0.9rem;
@@ -108,5 +120,16 @@ input[type="file"] {
     }
     .icon-sizing {
         font-size: 200%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .logo-name {
+        display: none;
+    }
+    .card-col {
+        flex: 0 0 auto;
+        width: 83.3333333333%;
+        justify-content: center;
     }
 }

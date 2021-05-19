@@ -35,26 +35,30 @@
 
             <!-- Navbar Top Left -->
             <div class="col-2 nav-border-right">
-                <nav class="navbar navbar-light bg-white">
-                    <div class="container-fluid mt-2">
-                        <div class="row">
-                            <div class="col">
+                <div class="row mt-2">
+                    <div class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <div class="col align-icons">
                                 <a class="navbar-brand" href="#">
                                     <img src="img/favicon.ico" alt="logo" width="25" height="25">
                                     <img class="logo-name" src="img/logotipo-name.png" alt="logo text" width="150">
                                 </a>
                             </div>
                         </div>
-                        <!--
-                        <div class="col d-flex justify-content-end">
-                            <a class="nav-link icon-span" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                                <i class="bi bi-list"></i>
+                    </div>
+                </div>
+                <!--
+                <nav class="navbar navbar-light bg-white">
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <a class="navbar-brand" href="#">
+                                <img src="img/favicon.ico" alt="logo" width="25" height="25">
+                                <img class="logo-name" src="img/logotipo-name.png" alt="logo text" width="150">
                             </a>
                         </div>
-                        -->
                     </div>
                 </nav>
+                -->
             </div>
             <!-- Navbar Top Left -->
 
@@ -63,7 +67,7 @@
                 <div class="row">
                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
                         <div class="container-fluid">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav me-auto mb-0">
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold text-dark" aria-current="page" href="#">DASHBOARD</a>
                                 </li>
@@ -149,13 +153,15 @@
                         <div class="container">
 
                             <!-- Information Cards -->
-                            <div class="row mt-5">
-                                <div class="col d-flex align-items-center">
+                            <div class="row mt-5 justify-content-center">
+                                <div class="card-col d-flex align-items-center mt-4">
                                     <div class="card card-width">
                                         <div class="row justify-content-around">
                                             <div class="col-8">
                                                 <div class="card-body">
-                                                    <h5 id="numberOfEmployees" class="card-title"><!-- Inserido via JavaScript --></h5>
+                                                    <h5 id="numberOfEmployees" class="card-title">
+                                                        <!-- Inserido via JavaScript -->
+                                                    </h5>
                                                     <h6 class="card-subtitle mb-2 text-muted">Funcionários</h6>
                                                 </div>
                                             </div>
@@ -165,12 +171,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col d-flex justify-content-center align-items-center">
+                                <div class="card-col card-col-center d-flex align-items-center mt-4">
                                     <div class="card card-width">
                                         <div class="row justify-content-around">
                                             <div class="col-8">
                                                 <div class="card-body">
-                                                    <h5 id="numberOfFiles" class="card-title"><!-- Inserido via JavaScript --></h5>
+                                                    <h5 id="numberOfFiles" class="card-title">
+                                                        <!-- Inserido via JavaScript -->
+                                                    </h5>
                                                     <h6 class="card-subtitle mb-2 text-muted">Arquivos</h6>
                                                 </div>
                                             </div>
@@ -180,7 +188,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col d-flex justify-content-end align-items-center">
+                                <div class="card-col card-col-end d-flex align-items-center mt-4">
                                     <div class="card card-width upload-card">
                                         <div class="row justify-content-around">
                                             <div class="col-8">
@@ -269,7 +277,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <form id="addForm" onsubmit="return false">
-                            <div class="modal-body">
+                                <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="InputName" class="form-label">Nome</label>
                                         <input type="text" class="form-control" name="fname" required>
@@ -290,12 +298,14 @@
                                         <label for="InputTime" class="form-label">Tempo de empresa</label>
                                         <input type="text" class="form-control" name="ftime" required>
                                     </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-success" value="Adicionar" onclick="addEmployee()" data-bs-dismiss="modal">
-                                <!--<button type="submit" class="btn btn-success" data-bs-dismiss="modal" form="addForm">Adicionar</button>-->
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <input type="submit" class="btn btn-success" value="Adicionar"
+                                        onclick="addEmployee()" data-bs-dismiss="modal">
+                                    <!--<button type="submit" class="btn btn-success" data-bs-dismiss="modal" form="addForm">Adicionar</button>-->
+                                </div>
                             </form>
                         </div>
                     </div>
