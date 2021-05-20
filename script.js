@@ -1,18 +1,17 @@
-/* Tabela de funcionários */
 let id;
 let currentPage = 1;
 let numberOfFiles = 0;
 const employeesPerPage = 10;
-let employees = [[1,"Fabiana","Silva","Desenvolvedora Back-End","TI","1095 dias"],
-                [2,"Gerson","Barroso","Gerente","Vendas","342 dias"],
-                [3,"Arthur","Valls","Estagiário","TI","27 dias"],
-                [4,"Rosângela","Viana","Diretora","Vendas","2793 dias"],
-                [5,"Igor","Souza","Auxiliar","Marketing","198 dias"],
-                [6,"Jorge","Canuto","Trainee","RH","12 dias"],
-                [7,"Lívia","Costa","Desenvolvedora Front-End","TI","1025 dias"],
-                [8,"Rafael","Bezerra","Trainee","Cobrança","90 dias"],
-                [9,"Gabriel","Barbosa","Gerente","Finanças","942 dias"],
-                [10,"Guilherme","Paz","Web Designer","TI","297 dias"]];
+let employees = [[1, "Fabiana", "Silva", "Desenvolvedora Back-End", "TI", "1095 dias"],
+[2, "Gerson", "Barroso", "Gerente", "Vendas", "342 dias"],
+[3, "Arthur", "Valls", "Estagiário", "TI", "27 dias"],
+[4, "Rosângela", "Viana", "Diretora", "Vendas", "2793 dias"],
+[5, "Igor", "Souza", "Auxiliar", "Marketing", "198 dias"],
+[6, "Jorge", "Canuto", "Trainee", "RH", "12 dias"],
+[7, "Lívia", "Costa", "Desenvolvedora Front-End", "TI", "1025 dias"],
+[8, "Rafael", "Bezerra", "Trainee", "Cobrança", "90 dias"],
+[9, "Gabriel", "Barbosa", "Gerente", "Finanças", "942 dias"],
+[10, "Guilherme", "Paz", "Web Designer", "TI", "297 dias"]];
 
 // Vai para a página anterior
 function prevPage() {
@@ -41,8 +40,8 @@ function changePage(page) {
     var filesTotal = document.getElementById("numberOfFiles");
     var contador = 0;
 
-    if (page < 1) {page = 1;}
-    if (page > numPages()) {page = numPages();}
+    if (page < 1) { page = 1; }
+    if (page > numPages()) { page = numPages(); }
 
     table.innerHTML = "";
     pageSpan.innerHTML = "";
@@ -70,7 +69,7 @@ function changePage(page) {
         btnNext.classList.add("text-dark");
     }
 
-    for (var i = (page-1)*employeesPerPage; i < (page*employeesPerPage); i++) {
+    for (var i = (page - 1) * employeesPerPage; i < (page * employeesPerPage); i++) {
         table.innerHTML += `<tr><th scope="row">${employees[i][0]}</th><td>${employees[i][1]}</td><td>${employees[i][2]}</td><td>${employees[i][3]}</td><td>${employees[i][4]}</td><td>${employees[i][5]}</td><td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="selectEmployeeId(${i})">Excluir</button></td></tr>`;
         contador++;
         pageSpan.innerHTML = "";
@@ -97,7 +96,7 @@ function addEmployee(event) {
     var time = document.forms["addForm"].elements["ftime"].value;
     var id = employees.length + 1;
 
-    employees.push([id,`${name}`,`${lastname}`,`${cargo}`,`${sector}`,`${time} dias`]);
+    employees.push([id, `${name}`, `${lastname}`, `${cargo}`, `${sector}`, `${time} dias`]);
 
     changePage(currentPage);
 }
@@ -109,7 +108,13 @@ function deleteEmployee() {
 }
 
 // Carrega a paginação
-window.onload = function() {
+window.onload = function () {
     changePage(1);
 };
-/* Tabela de funcionários */
+
+// Altera o número de arquivos
+function addFile() {
+    numberOfFiles++;
+    console.log("chegou");
+    changePage(currentPage);
+}

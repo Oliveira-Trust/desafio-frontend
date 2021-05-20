@@ -65,6 +65,11 @@ i {
 
 .grey-background {
     background-color: #F1F3F5;
+    overflow-x: hidden;
+}
+
+.text-align-last-center {
+    text-align-last: center;
 }
 
 table {
@@ -91,6 +96,21 @@ input[type="file"] {
 
 .card-col-end {
     justify-content: flex-end;
+}
+
+.drag-drop {
+    width: 95%;
+    border: 2px dashed lightgreen;
+    margin: 2.5% 0;
+}
+
+.drag-drop:hover {
+    border: 2px dashed green;
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -135,5 +155,15 @@ input[type="file"] {
 }
 
 @media only screen and (max-width: 768px) {
+    td, th {
+        font-size: 0.75rem;
+    }
+    .btn-sm {
+        font-size: .75rem;
+        padding: .15rem .25rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
     
 }

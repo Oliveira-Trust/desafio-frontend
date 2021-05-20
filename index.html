@@ -112,7 +112,7 @@
                     <div class="navbar navbar-light bg-white">
                         <div class="container-fluid">
                             <div class="col align-icons">
-                                <a class="icon-span">
+                                <a class="icon-span" data-bs-toggle="modal" data-bs-target="#addFileModal">
                                     <i class="bi bi-upload icon-sizing"></i>
                                     <span class="px-2 icon-align">Enviar arquivo</span>
                                 </a>
@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
                                 <div class="card-col card-col-end d-flex align-items-center mt-4">
-                                    <div class="card card-width upload-card">
+                                    <div class="card card-width upload-card" data-bs-toggle="modal" data-bs-target="#addFileModal">
                                         <div class="row justify-content-around">
                                             <div class="col-8">
                                                 <div class="card-body">
@@ -323,6 +323,38 @@
                     </div>
                 </div>
                 <!-- Delete Employee Modal -->
+
+                <!-- Load File Modal -->
+                <div class="modal fade" id="addFileModal" tabindex="-1" aria-labelledby="addFileModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addFileModalLabel">Adicionar arquivo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body align-self-center drag-drop" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                                <label for="file-upload" class="w-100 cursor-pointer">
+                                    <div class="row text-align-last-center">
+                                        <i class="bi bi-cloud-upload"></i>
+                                    </div>
+                                    <div class="row text-align-last-center">
+                                        <p>Escolher arquivo</p>
+                                    </div>
+                                </label>
+                                <input id="file-upload" type="file" onchange="addFile()">
+                            </div>
+                            <!--
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger">Save changes</button>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Load File Modal -->
 
             </div>
         </div>
