@@ -40,7 +40,7 @@
                         <div class="container-fluid">
                             <div class="col align-icons">
                                 <a class="navbar-brand" href="#">
-                                    <img src="img/favicon.ico" alt="logo" width="25" height="25">
+                                    <img class="nav-img" src="img/favicon.ico" alt="logo">
                                     <img class="logo-name" src="img/logotipo-name.png" alt="logo text" width="150">
                                 </a>
                             </div>
@@ -57,10 +57,10 @@
                         <div class="container-fluid">
                             <ul class="navbar-nav me-auto mb-0">
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold text-dark" aria-current="page" href="#">DASHBOARD</a>
+                                    <a class="nav-link fw-bold text-dark nav-text" aria-current="page" href="#">DASHBOARD</a>
                                 </li>
                             </ul>
-                            <span class="navbar-text text-dark">
+                            <span class="navbar-text text-dark nav-text">
                                 Welcome <span class="fw-bold">Caio</span> (admin)
                                 <i class="bi bi-person px-1"></i>
                             </span>
@@ -292,7 +292,6 @@
                                         data-bs-dismiss="modal">Cancelar</button>
                                     <input type="submit" class="btn btn-success" value="Adicionar"
                                         onclick="addEmployee()" data-bs-dismiss="modal">
-                                    <!--<button type="submit" class="btn btn-success" data-bs-dismiss="modal" form="addForm">Adicionar</button>-->
                                 </div>
                             </form>
                         </div>
@@ -345,12 +344,6 @@
                                 </label>
                                 <input id="file-upload" type="file" onchange="addFile()">
                             </div>
-                            <!--
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger">Save changes</button>
-                            </div>
-                            -->
                         </div>
                     </div>
                 </div>

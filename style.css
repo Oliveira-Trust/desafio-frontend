@@ -19,6 +19,11 @@ html {
     border-left: 1px solid #E0E0E0;
 }
 
+.nav-img {
+    width: 25px;
+    height: 25px;
+}
+
 i {
     font-size: 150%;
 }
@@ -165,5 +170,14 @@ input[type="file"] {
 }
 
 @media only screen and (max-width: 576px) {
-    
+    .nav-span, .nav-text {
+        font-size: 0.75rem;
+    }
+    .icon-sizing {
+        font-size: 150%;
+    }
+    .nav-img {
+        width: 20px;
+        height: 20px;
+    }
 }

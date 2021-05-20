@@ -2,16 +2,56 @@ let id;
 let currentPage = 1;
 let numberOfFiles = 0;
 const employeesPerPage = 10;
-let employees = [[1, "Fabiana", "Silva", "Desenvolvedora Back-End", "TI", "1095 dias"],
+let employees = [[1, "Fabiana", "Silva", "Desenvolvedor Back-End", "TI", "1095 dias"],
 [2, "Gerson", "Barroso", "Gerente", "Vendas", "342 dias"],
 [3, "Arthur", "Valls", "Estagiário", "TI", "27 dias"],
-[4, "Rosângela", "Viana", "Diretora", "Vendas", "2793 dias"],
+[4, "Rosângela", "Viana", "Diretor", "Vendas", "2793 dias"],
 [5, "Igor", "Souza", "Auxiliar", "Marketing", "198 dias"],
 [6, "Jorge", "Canuto", "Trainee", "RH", "12 dias"],
-[7, "Lívia", "Costa", "Desenvolvedora Front-End", "TI", "1025 dias"],
+[7, "Lívia", "Costa", "Desenvolvedor Front-End", "TI", "1025 dias"],
 [8, "Rafael", "Bezerra", "Trainee", "Cobrança", "90 dias"],
 [9, "Gabriel", "Barbosa", "Gerente", "Finanças", "942 dias"],
-[10, "Guilherme", "Paz", "Web Designer", "TI", "297 dias"]];
+[10, "Guilherme", "Paz", "Web Designer", "TI", "297 dias"],
+[11, "Marcos", "Silveira", "Gestor", "Processos", "572 dias"],
+[12, "Janaína", "Costa", "Gerente", "Produção", "1200 dias"],
+[13, "Thiago", "Machado", "Recrutador", "RH", "57 dias"],
+[14, "Robson", "Tavares", "Analista", "Marketing", "207 dias"],
+[15, "Rafael", "Carvalho", "Analista", "TI", "111 dias"],
+[16, "Hugo", "Souza", "Representante", "Marketing", "777 dias"],
+[17, "Isadora", "Miranda", "Desenvolvedor Front-End", "TI", "127 dias"],
+[18, "Samuel", "Rosa", "Manutenção", "Administração", "852 dias"],
+[19, "Fernando", "Correia", "Trainee", "Vendas", "42 dias"],
+[20, "Rafaela", "Almeida", "Estagiário", "TI", "7 dias"],
+[21, "Fabiana", "Silva", "Desenvolvedor Back-End", "TI", "1095 dias"],
+[22, "Gerson", "Barroso", "Gerente", "Vendas", "342 dias"],
+[23, "Arthur", "Valls", "Estagiário", "TI", "27 dias"],
+[24, "Rosângela", "Viana", "Diretor", "Vendas", "2793 dias"],
+[25, "Igor", "Souza", "Auxiliar", "Marketing", "198 dias"],
+[26, "Jorge", "Canuto", "Trainee", "RH", "12 dias"],
+[27, "Lívia", "Costa", "Desenvolvedor Front-End", "TI", "1025 dias"],
+[28, "Rafael", "Bezerra", "Trainee", "Cobrança", "90 dias"],
+[29, "Gabriel", "Barbosa", "Gerente", "Finanças", "942 dias"],
+[30, "Guilherme", "Paz", "Web Designer", "TI", "297 dias"],
+[31, "Marcos", "Silveira", "Gestor", "Processos", "572 dias"],
+[32, "Janaína", "Costa", "Gerente", "Produção", "1200 dias"],
+[33, "Thiago", "Machado", "Recrutador", "RH", "57 dias"],
+[34, "Robson", "Tavares", "Analista", "Marketing", "207 dias"],
+[35, "Rafael", "Carvalho", "Analista", "TI", "111 dias"],
+[36, "Hugo", "Souza", "Representante", "Marketing", "777 dias"],
+[37, "Isadora", "Miranda", "Desenvolvedor Front-End", "TI", "127 dias"],
+[38, "Samuel", "Rosa", "Manutenção", "Administração", "852 dias"],
+[39, "Fernando", "Correia", "Trainee", "Vendas", "42 dias"],
+[40, "Rafaela", "Almeida", "Estagiário", "TI", "7 dias"],
+[41, "Fernando", "Correia", "Trainee", "Vendas", "42 dias"],
+[42, "Rafaela", "Almeida", "Estagiário", "TI", "7 dias"],
+[43, "Fabiana", "Silva", "Desenvolvedor Back-End", "TI", "1095 dias"],
+[44, "Gerson", "Barroso", "Gerente", "Vendas", "342 dias"],
+[45, "Arthur", "Valls", "Estagiário", "TI", "27 dias"],
+[46, "Rosângela", "Viana", "Diretor", "Vendas", "2793 dias"],
+[47, "Igor", "Souza", "Auxiliar", "Marketing", "198 dias"],
+[48, "Jorge", "Canuto", "Trainee", "RH", "12 dias"],
+[49, "Lívia", "Costa", "Desenvolvedor Front-End", "TI", "1025 dias"],
+[50, "Rafael", "Bezerra", "Trainee", "Cobrança", "90 dias"]];
 
 // Vai para a página anterior
 function prevPage() {
@@ -115,6 +155,7 @@ window.onload = function () {
 // Altera o número de arquivos
 function addFile() {
     numberOfFiles++;
-    console.log("chegou");
+    window.alert("Arquivo enviado com sucesso!");
+
     changePage(currentPage);
 }
