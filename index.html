@@ -20,7 +20,7 @@
 </head>
 
 <body>
-
+    
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/24de11fb10.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
@@ -37,7 +37,7 @@
             <div class="col-2 nav-border-right">
                 <div class="row mt-2">
                     <div class="navbar navbar-light bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid justify-content-center">
                             <div class="col align-icons">
                                 <a class="navbar-brand" href="#">
                                     <img class="nav-img" src="img/favicon.ico" alt="logo">
@@ -61,7 +61,9 @@
                                 </li>
                             </ul>
                             <span class="navbar-text text-dark nav-text">
-                                Welcome <span class="fw-bold">Caio</span> (admin)
+                                <span class="section-display-none">Welcome</span>
+                                <span class="fw-bold section-display-none"> Caio </span> 
+                                <span class="section-display-none">(admin)</span>
                                 <i class="bi bi-person px-1"></i>
                             </span>
                         </div>
@@ -75,9 +77,9 @@
 
             <!-- Navbar Left -->
             <div class="col-2 nav-border-right position-fixed h-100 bg-white">
-                <div class="row mt-4">
+                <div class="row mt-4 section-display-none">
                     <div class="navbar navbar-light bg-white">
-                        <div class="container-fluid justify-content-center">
+                        <div class="container-fluid justify-icon">
                             <div class="col align-icons">
                                 <span class="nav-span fw-bold">SEÇÕES</span>
                             </div>
@@ -86,7 +88,7 @@
                 </div>
                 <div class="row">
                     <div class="navbar navbar-light bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid justify-icon">
                             <div class="col align-icons">
                                 <a class="icon-span" href="#">
                                     <i class="bi bi-layers icon-sizing"></i>
@@ -98,7 +100,7 @@
                 </div>
                 <div class="row">
                     <div class="navbar navbar-light bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid justify-icon">
                             <div class="col align-icons">
                                 <a class="icon-span" href="#employeeTable">
                                     <i class="bi bi-people icon-sizing"></i>
@@ -110,7 +112,7 @@
                 </div>
                 <div class="row">
                     <div class="navbar navbar-light bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid justify-icon">
                             <div class="col align-icons">
                                 <a class="icon-span" data-bs-toggle="modal" data-bs-target="#addFileModal">
                                     <i class="bi bi-upload icon-sizing"></i>
@@ -122,7 +124,7 @@
                 </div>
                 <div class="row fixed-bottom col-2 logout-btn nav-border-right">
                     <div class="navbar navbar-light bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid justify-icon">
                             <div class="col align-icons">
                                 <a class="icon-span">
                                     <i class="bi bi-box-arrow-right icon-sizing"></i>
@@ -144,49 +146,50 @@
                             <div class="row mt-5 justify-content-center">
                                 <div class="card-col d-flex align-items-center mt-4">
                                     <div class="card card-width">
-                                        <div class="row justify-content-around">
+                                        <div class="row justify-content-around card-row-width">
                                             <div class="col-8">
                                                 <div class="card-body">
                                                     <h5 id="numberOfEmployees" class="card-title">
                                                         <!-- Inserido via JavaScript -->
                                                     </h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Funcionários</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted section-display-none">Funcionários</h6>
                                                 </div>
                                             </div>
                                             <div class="col-4 align-self-center d-flex justify-content-center">
-                                                <i class="fas fa-users"></i>
+                                                <i class="fas fa-users card-icon-sizing"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-col card-col-center d-flex align-items-center mt-4">
                                     <div class="card card-width">
-                                        <div class="row justify-content-around">
+                                        <div class="row justify-content-around card-row-width">
                                             <div class="col-8">
                                                 <div class="card-body">
                                                     <h5 id="numberOfFiles" class="card-title">
                                                         <!-- Inserido via JavaScript -->
                                                     </h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Arquivos</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted section-display-none">Arquivos</h6>
                                                 </div>
                                             </div>
                                             <div class="col-4 align-self-center d-flex justify-content-center">
-                                                <i class="fas fa-copy"></i>
+                                                <i class="fas fa-copy card-icon-sizing"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-col card-col-end d-flex align-items-center mt-4">
                                     <div class="card card-width upload-card" data-bs-toggle="modal" data-bs-target="#addFileModal">
-                                        <div class="row justify-content-around">
+                                        <div class="row justify-content-around card-row-width">
                                             <div class="col-8">
                                                 <div class="card-body">
-                                                    <h6 class="card-title text-muted">Adicionar</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Arquivo</h6>
+                                                    <h6 class="card-title text-muted section-display-none">Adicionar</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted section-display-none">Arquivo</h6>
+                                                    <h4 class="card-subtitle mb-2 card-icon-sizing section-display-inline-block">+</h4>
                                                 </div>
                                             </div>
                                             <div class="col-4 align-self-center d-flex justify-content-center">
-                                                <i class="bi bi-cloud-upload-fill"></i>
+                                                <i class="bi bi-cloud-upload-fill card-icon-sizing"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -200,8 +203,10 @@
                                     <h3>Funcionários</h3>
                                 </div>
                                 <div class="col d-flex justify-content-end align-items-center">
-                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#addModal">Adicionar funcionário</button>
+                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
+                                        <span class="deleteResponsiveSpan">Adicionar funcionário</span>
+                                        <i class="bi bi-person-plus addResponsiveIcon"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="row">
@@ -227,16 +232,25 @@
                             <div class="row">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination pagination-sm justify-content-between">
-                                        <li>Mostrando <span id="employee-showed" class="fw-bold"></span> de <span
-                                                id="employee-total" class="fw-bold"></span>
-                                            funcionários</li>
+                                        <li>
+                                            <span class="deleteResponsiveSpan">Mostrando</span>
+                                            <span id="employee-showed" class="fw-bold pageSpanSizing"></span> 
+                                            <span class="ipag"> de </span>
+                                            <span id="employee-total" class="fw-bold pageSpanSizing"></span>
+                                            <span class="deleteResponsiveSpan">páginas</span>
+                                        </li>
                                         <ul class="pagination justify-content-end">
                                             <li class="page-item" onclick="prevPage()">
-                                                <a id="previous" class="page-link" href="#" tabindex="-1"
-                                                    aria-disabled="true">Anterior</a>
+                                                <a id="previous" class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                                    <span class="deleteResponsiveSpan">Anterior</span>
+                                                    <span class="addResponsiveIcon"><</span>
+                                                </a>
                                             </li>
                                             <li class="page-item" onclick="nextPage()">
-                                                <a id="next" class="page-link" href="#">Próxima</a>
+                                                <a id="next" class="page-link" href="#">
+                                                    <span class="deleteResponsiveSpan">Próxima</span>
+                                                    <span class="addResponsiveIcon">></span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </ul>

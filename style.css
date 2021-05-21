@@ -118,6 +118,18 @@ input[type="file"] {
     cursor: pointer;
 }
 
+.addResponsiveIcon {
+    display: none;
+}
+
+.section-display-inline-block {
+    display: none;
+}
+
+.justify-icon {
+    justify-content: center!important;
+}
+
 @media only screen and (max-width: 1400px) {
     h5, h6, td, th {
         font-size: 0.9rem;
@@ -179,5 +191,38 @@ input[type="file"] {
     .nav-img {
         width: 20px;
         height: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h6, .pageSpanSizing {
+        font-size: 0.8rem;
+    }
+    .deleteResponsiveSpan {
+        display: none;
+    }
+    .addResponsiveIcon {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    h3 {
+        font-size: 1rem;
+    }
+    .justify-icon {
+        justify-content: flex-end!important;
+    }
+    .section-display-none {
+        display: none;
+    }
+    .section-display-inline-block {
+        display: inline-block;
+    }
+    .card-icon-sizing {
+        font-size: 120%;
+    }
+    .card-row-width {
+        width: 100%;
     }
 }

@@ -78,7 +78,6 @@ function changePage(page) {
     var pageTotal = document.getElementById("employee-total");
     var employeeTotal = document.getElementById("numberOfEmployees");
     var filesTotal = document.getElementById("numberOfFiles");
-    var contador = 0;
 
     if (page < 1) { page = 1; }
     if (page > numPages()) { page = numPages(); }
@@ -86,7 +85,8 @@ function changePage(page) {
     table.innerHTML = "";
     pageSpan.innerHTML = "";
     pageTotal.innerHTML = "";
-    pageTotal.innerHTML = employees.length;
+    pageSpan.innerHTML = currentPage;
+    pageTotal.innerHTML = numPages();
     employeeTotal.innerHTML = employees.length;
     filesTotal.innerHTML = numberOfFiles;
 
@@ -111,9 +111,6 @@ function changePage(page) {
 
     for (var i = (page - 1) * employeesPerPage; i < (page * employeesPerPage); i++) {
         table.innerHTML += `<tr><th scope="row">${employees[i][0]}</th><td>${employees[i][1]}</td><td>${employees[i][2]}</td><td>${employees[i][3]}</td><td>${employees[i][4]}</td><td>${employees[i][5]}</td><td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="selectEmployeeId(${i})">Excluir</button></td></tr>`;
-        contador++;
-        pageSpan.innerHTML = "";
-        pageSpan.innerHTML = contador;
     }
 }
 
