@@ -1,0 +1,47 @@
+img{
+    width: 20%;
+    margin-right: .5rem;
+    padding-bottom: 5px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+// a {
+//     text-decoration: none;
+//     cursor: pointer;
+//     // color: inherit;
+// }
+
+.menu-nav {
+    display: flex;
+    font-weight: bold;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.menu-nav-item {
+    margin-top: 1.5rem;
+}
+
+.menu-nav-item:hover {
+    
+    font-size: 110%;
+}
+
+.logo {
+    font-weight: bold;
+    display: flex;
+    margin-right: 5rem;
+}
+
+.logoname {
+    font-size: 2rem;
+    margin: 5px;
+}
+
+i{
+    margin-right: 5px;
+}
