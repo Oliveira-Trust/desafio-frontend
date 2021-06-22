@@ -1,0 +1,52 @@
+<div class="list">
+    <h2>Funcionários ({{employeeSortService.getTotal | async}})</h2>
+    <br>
+    <form>
+        <div class="form-group form-inline">
+            Pesquisar: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="employeeSortService.searchTerm"/>
+            <span class="ml-3" *ngIf="employeeSortService.getLoading | async">Carregando...</span>
+        </div>
+    
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col" sortable="name" >Nome</th>
+                <th scope="col" sortable="surname" >Sobrenome</th>
+                <th scope="col" sortable="position" >Cargo</th>
+                <th scope="col" sortable="departament" >Setor</th>
+                <th scope="col" sortable="date" >Admissão</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of employeesList | async">
+                <td scope="row">{{item.name}}</td>
+                <td>{{item.surname}}</td>
+                <td>{{item.position}}</td>
+                <td>{{item.departament}}</td>
+                <td>{{item.date}}</td>
+                <td class="row-buttons">
+                    <i class="bi bi-pencil"></i>
+                    <i class="bi bi-trash-fill" style="color: red;"></i>
+                </td>
+            </tr>
+        </tbody>
+        
+    </table>
+
+
+    <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+          [collectionSize]="(total | async)!" [(page)]="employeeSortService.page" [pageSize]="employeeSortService.pageSize">
+        </ngb-pagination>
+    
+        <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="employeeSortService.pageSize">
+          <option [ngValue]="10">10 itens por página</option>
+          <option [ngValue]="25">25 itens por página</option>
+          <option [ngValue]="50">50 itens por página</option>
+        </select>
+      </div>
+    </form>
+    
+</div>

@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -16,12 +17,16 @@ import { UserMenuComponent } from "./user-menu/user-menu.component";
     ],
     imports: [
         CommonModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         NgbModule
     ],
     exports:[
-        HeaderComponent
+        HeaderComponent,
+        MenuComponent,
+        UserMenuComponent,
+        DashboardListComponent
     ]
 })
 export class DashboardModule {}
