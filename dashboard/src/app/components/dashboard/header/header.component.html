@@ -20,14 +20,23 @@
     </div>
    
     <div class="menu-nav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="navbar-nav nav-link" style="cursor: pointer;">
+        <ul class="navbar-nav mr-auto ">
+            <li ngbDropdown class="nav-item">
+                <a class="navbar-nav nav-link user-menu" id="dropdown-user" ngbDropdownToggle style="cursor: pointer;">
                     <i class="bi bi-person-circle"></i> 
-                    Perfil
+                    Nome do Usuário
                 </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown-user">
+                    <button ngbDropdownItem>Meu Perfil</button>
+                    <button ngbDropdownItem>Item do Menu</button>
+                    <div class="dropdown-divider"></div>
+                    <button ngbDropdownItem>Desconectar</button>
+                  </div>
             </li>
         </ul>
         
     </div>
+
+
+
 </nav>
