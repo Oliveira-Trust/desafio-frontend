@@ -27,13 +27,13 @@ export class CreateEmployeeComponent {
       surname: ['', Validators.required],
       position: ['', Validators.required],
       departament: ['', Validators.required],
-      date:['', Validators.required]
+      date:['', [Validators.required]]
     })
   }
 
   saveEmployee(){
     this.submitted = true;
-    if(this.form.valid) {
+    if(this.form.valid) { console.log(this.form.value)
       this.dashboardService.postEmployee(this.form.value)
       this.modalService.dismissAll();
     }

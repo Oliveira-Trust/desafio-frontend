@@ -35,12 +35,12 @@
           
           <label for="date">Data de Admissão</label>
           <div class="input-group">
-            <input id="date" class="form-control" placeholder="yyyy-mm-dd" formControlName="date" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
+            <input id="date" type="date" class="form-control" 
+            placeholder="dd/mm/aaaa" formControlName="date"
+            >
           </div>
-          <div class="form-error" *ngIf="submitted && form.controls.date.invalid">Este campo é obrigatório.</div>
+          <div class="form-error" *ngIf="submitted && form.controls.date.invalid && !form.value.date">Este campo é obrigatório.</div>
+          <div class="form-error" *ngIf="submitted && form.controls.date.invalid && form.value.date">Insira uma data válida.</div>
 
         </div>
       </form>
