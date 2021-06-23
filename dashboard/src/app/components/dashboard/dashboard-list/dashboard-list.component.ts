@@ -1,4 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from "@angular/core";
+import {DecimalPipe} from '@angular/common';
 import { Observable } from "rxjs";
 import { DasboardService } from "../dashboard.service";
 import { EmployeesService } from "./directives/sort.service";

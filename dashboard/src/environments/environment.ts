@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   url: 'http://url/',
   extensions: {
-      getEmployees: 'getEmployees'
+      getEmployees: 'getEmployees',
+      postEmployee: 'postEmployee'
   }
 };
 

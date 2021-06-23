@@ -1,5 +1,7 @@
 import { Component, Input } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { DasboardService } from "../dashboard.service";
 
 @Component({
     selector:'app-create-employee',
@@ -8,26 +10,48 @@ import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 })
 export class CreateEmployeeComponent {
 
-    closeResult = '';
+    public form!: FormGroup;
+    public submitted: boolean = false;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal, 
+    private fb: FormBuilder,
+    private dashboardService: DasboardService
+    ) {
+    this.createForm();
+  }
+
+  createForm(){
+    this.form = this.fb.group({
+      name:['', Validators.required],
+      surname: ['', Validators.required],
+      position: ['', Validators.required],
+      departament: ['', Validators.required],
+      date:['', Validators.required]
+    })
+  }
+
+  saveEmployee(){
+    this.submitted = true;
+    if(this.form.valid) {
+      this.dashboardService.postEmployee(this.form.value)
+      this.modalService.dismissAll();
+    }
+  }
+
+  resetForm() {
+    this.submitted = false;
+    this.createForm();
+  }
 
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.resetForm();
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.resetForm();
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+
 
 }

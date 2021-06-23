@@ -6,20 +6,47 @@
       </button>
     </div>
     <div class="modal-body">
-      <form>
+      <form [formGroup]="form">
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
+          
+          <label for="name">Nome</label>
           <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <input id="name" type="text" class="form-control" placeholder="João" formControlName="name">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.name.invalid">Este campo é obrigatório.</div>
+          
+          <label for="name">Sobrenome</label>
+          <div class="input-group">
+            <input id="surname" type="text" class="form-control" placeholder="Silva Santos" formControlName="surname">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.surname.invalid">Este campo é obrigatório.</div>
+          
+          <label for="name">Cargo</label>
+          <div class="input-group">
+            <input id="position" type="text" class="form-control" placeholder="Gerente" formControlName="position">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.position.invalid">Este campo é obrigatório.</div>
+          
+          <label for="name">Setor</label>
+          <div class="input-group">
+            <input id="departament" type="text" class="form-control" placeholder="Recursos Humanos" formControlName="departament">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.departament.invalid">Este campo é obrigatório.</div>
+          
+          <label for="date">Data de Admissão</label>
+          <div class="input-group">
+            <input id="date" class="form-control" placeholder="yyyy-mm-dd" formControlName="date" name="dp" ngbDatepicker #dp="ngbDatepicker">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
             </div>
           </div>
+          <div class="form-error" *ngIf="submitted && form.controls.date.invalid">Este campo é obrigatório.</div>
+
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="saveEmployee()">Save</button>
     </div>
   </ng-template>
 
