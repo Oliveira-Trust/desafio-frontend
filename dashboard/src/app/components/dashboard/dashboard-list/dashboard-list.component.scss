@@ -4,10 +4,6 @@
     margin-top: 2rem;
 }
 
-// table {
-//     margin: 5rem;
-    
-// }
 .row-buttons {
     display: flex;
     justify-content: space-evenly;
@@ -17,3 +13,9 @@
 i:hover {
     border: 1px, solid, yellow;
 }
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+}
+

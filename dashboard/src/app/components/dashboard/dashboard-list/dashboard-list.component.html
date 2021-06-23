@@ -1,5 +1,8 @@
 <div class="list">
-    <h2>Funcionários ({{employeeSortService.getTotal | async}})</h2>
+    <div class=" dashboard-header">
+        <h2>Funcionários ({{employeeSortService.getTotal | async}})</h2>
+        <app-create-employee></app-create-employee>
+    </div>
     <br>
     <form>
         <div class="form-group form-inline">
@@ -50,3 +53,5 @@
     </form>
     
 </div>
+
+
