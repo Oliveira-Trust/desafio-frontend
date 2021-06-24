@@ -30,8 +30,8 @@
                 <td>{{employee.departament}}</td>
                 <td>{{employee.date}}</td>
                 <td class="row-buttons">
-                    <i class="bi bi-pencil"></i>
-                    <app-modal-delete (delete)="delete(employee)"></app-modal-delete>
+                    <app-edit-employee (openModal)="selectEmployee(employee)"></app-edit-employee>
+                    <app-modal-delete (openModal)="selectEmployee(employee)" (delete)="delete(employee)"></app-modal-delete>
                 </td>
             </tr>
         </tbody>

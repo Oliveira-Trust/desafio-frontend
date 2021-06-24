@@ -1,0 +1,53 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Alterar Funcionário</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form">
+        <div class="form-group">
+          
+          <label for="name">Nome</label>
+          <div class="input-group">
+            <input id="name" type="text" class="form-control" placeholder="João" formControlName="name">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.name.invalid">Este campo é obrigatório.</div>
+          
+          <label for="name">Sobrenome</label>
+          <div class="input-group">
+            <input id="surname" type="text" class="form-control" placeholder="Silva Santos" formControlName="surname">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.surname.invalid">Este campo é obrigatório.</div>
+          
+          <label for="name">Cargo</label>
+          <div class="input-group">
+            <input id="position" type="text" class="form-control" placeholder="Gerente" formControlName="position">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.position.invalid">Este campo é obrigatório.</div>
+          
+          <label for="name">Setor</label>
+          <div class="input-group">
+            <input id="departament" type="text" class="form-control" placeholder="Recursos Humanos" formControlName="departament">
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.departament.invalid">Este campo é obrigatório.</div>
+          
+          <label for="date">Data de Admissão</label>
+          <div class="input-group">
+            <input id="date" type="date" class="form-control" 
+            placeholder="dd/mm/aaaa" formControlName="date"
+            >
+          </div>
+          <div class="form-error" *ngIf="submitted && form.controls.date.invalid && !form.value.date">Este campo é obrigatório.</div>
+          <div class="form-error" *ngIf="submitted && form.controls.date.invalid && form.value.date">Insira uma data válida.</div>
+
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="saveEmployee()">Save</button>
+    </div>
+  </ng-template>
+ 
+<i class="bi bi-pencil" (click)="open(content)" ></i>

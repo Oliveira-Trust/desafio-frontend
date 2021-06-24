@@ -7,6 +7,7 @@ import { NgbdSortableHeader, SortColumn, SortDirection, SortEvent } from "./dire
 import { EmployeesDTO } from "./dto/employees.dto";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DeleteModalComponent } from "./modal-delete/modal-delete.component";
+import { StateService } from "src/app/shared/state.service";
 
 @Component({
     selector: 'app-dashboard-list',
@@ -24,7 +25,8 @@ export class DashboardListComponent implements OnInit{
     constructor(
         private dashboardService: DasboardService,
         public employeeSortService: EmployeesService,
-        private modalService: NgbModal
+        private modalService: NgbModal,
+        private stateService: StateService
         
     ){ 
         this.employeesList = employeeSortService.getEmployees;
@@ -50,6 +52,10 @@ export class DashboardListComponent implements OnInit{
       delete(employee:EmployeesDTO) {
         this.dashboardService.deleteEmployee(employee);
         this.employeeSortService.reload();
+      }
+
+      selectEmployee(employee: EmployeesDTO){
+        this.stateService.setSelectedEmployee(employee);
       }
 
       
