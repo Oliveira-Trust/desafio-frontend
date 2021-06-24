@@ -18,7 +18,7 @@ Para instalar as dependências devemos começar com o Angular CLI através do co
 npm install -g @angular/cli
 ````
 
-Devemos então executar o comando com o terminal acessando a pasta desafio-frontend:
+Devemos então executar o comando com o terminal acessando a pasta raiz (/oliveira-trust/desafio-frontend/dashboard):
 
 ````
 npm install
@@ -26,7 +26,7 @@ npm install
 
 Ele instalará as dependências de desenvolvimento.
 
-Finalmente, na pasta raiz (/oliveira-trust/desafio-frontend), temos de executar:
+Finalmente, na pasta raiz, temos de executar:
 
 ````
 ng serve -o
