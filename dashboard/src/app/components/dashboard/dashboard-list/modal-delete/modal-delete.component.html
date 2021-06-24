@@ -1,0 +1,21 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Excluir Funcionário</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <h3>Atenção!</h3>
+        <p>Você deseja excluir o funcionário?</p>
+        <p>Todas as informações atreladas a este funcionário serão permanentemente excluídas.</p>
+        <p style="color: red;">Esta operação NÃO pode ser desfeita.</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Excluir</button>
+    </div>
+</ng-template>
+
+<i class="bi bi-trash-fill" style="color: red;"
+  (click)="open(content)"></i>

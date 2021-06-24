@@ -7,7 +7,8 @@ export const environment = {
   url: 'http://url/',
   extensions: {
       getEmployees: 'getEmployees',
-      postEmployee: 'postEmployee'
+      postEmployee: 'postEmployee',
+      deleteEmployee: 'deleteEmployee'
   }
 };
 

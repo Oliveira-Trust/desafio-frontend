@@ -52,6 +52,8 @@ export class EmployeesService {
   set sortColumn(sortColumn: SortColumn) { this._set({sortColumn}); }
   set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
 
+  reload() { this._search$.next() }
+
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
     this._search$.next();

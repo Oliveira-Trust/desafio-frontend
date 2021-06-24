@@ -23,15 +23,15 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let item of employeesList | async">
-                <td scope="row">{{item.name}}</td>
-                <td>{{item.surname}}</td>
-                <td>{{item.position}}</td>
-                <td>{{item.departament}}</td>
-                <td>{{item.date}}</td>
+            <tr *ngFor="let employee of employeesList | async">
+                <td scope="row">{{employee.name}}</td>
+                <td>{{employee.surname}}</td>
+                <td>{{employee.position}}</td>
+                <td>{{employee.departament}}</td>
+                <td>{{employee.date}}</td>
                 <td class="row-buttons">
                     <i class="bi bi-pencil"></i>
-                    <i class="bi bi-trash-fill" style="color: red;"></i>
+                    <app-modal-delete (delete)="delete(employee)"></app-modal-delete>
                 </td>
             </tr>
         </tbody>
@@ -53,5 +53,7 @@
     </form>
     
 </div>
+
+
 
 

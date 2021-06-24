@@ -7,6 +7,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { CreateEmployeeComponent } from "./create-employee/create-employee.component";
 import { DashboardListComponent } from "./dashboard-list/dashboard-list.component";
+import { DeleteModalComponent } from "./dashboard-list/modal-delete/modal-delete.component";
 import { HeaderComponent } from "./header/header.component";
 
 
@@ -16,6 +17,7 @@ export const opts: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
         HeaderComponent,
         DashboardListComponent,
         CreateEmployeeComponent,
+        DeleteModalComponent
         
     ],
     imports: [
