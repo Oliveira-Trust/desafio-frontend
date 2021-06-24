@@ -1,5 +1,5 @@
 <app-header (emitTab)="selectTab($event)"></app-header>
 
-<app-landing-page></app-landing-page> 
+<app-landing-page *ngIf="tab == 0"></app-landing-page> 
 
 <app-dashboard-list *ngIf="tab == 1"></app-dashboard-list>
