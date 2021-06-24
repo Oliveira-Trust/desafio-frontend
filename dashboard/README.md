@@ -1,27 +1,34 @@
-# Dashboard
+# Teste Dashboard - Oliveira Trust
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Este projeto foi desenvolvido como teste para a vaga de desenvolvedor na Oliveira Trust.
+O projeto foi desenvolvido em Angular 11. O objetivo dele é criar um Dashboard bonito e funcional.
 
-## Development server
+## Tecnologias
+As seguintes ferramentas foram usadas na construção do projeto:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [Angular](https://angular.io/)
+- [Ng-Bootstrap](https://ng-bootstrap.github.io/#/home)
+- [RxJS](https://rxjs.dev/)
 
-## Code scaffolding
+## Execução
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para instalar as dependências devemos começar com o Angular CLI através do comando:
 
-## Build
+````
+npm install -g @angular/cli
+````
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Devemos então executar o comando com o terminal acessando a pasta desafio-frontend:
 
-## Running unit tests
+````
+npm install
+````
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ele instalará as dependências de desenvolvimento.
 
-## Running end-to-end tests
+Finalmente, na pasta raiz (/oliveira-trust/desafio-frontend), temos de executar:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+````
+ng serve -o
+````
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

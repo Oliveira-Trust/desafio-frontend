@@ -1,0 +1,37 @@
+.landing-page {
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .landing-page-title {
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 700;
+    text-align: center;
+    color: #002A5E;
+    margin-top: 50px;
+  }
+  
+  .landing-page-description {
+    color: #707070;
+    margin: 0;
+    padding: 0;
+    margin: 16px 0;
+    line-height: 25px;
+    font-weight: 400;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .landing-page-description p {
+      margin: 60px 0;
+  }
+  
+  a {
+      text-decoration: none;
+      
+  }

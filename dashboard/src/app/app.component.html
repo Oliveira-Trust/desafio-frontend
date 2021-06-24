@@ -1,3 +1,5 @@
-<app-header></app-header>
+<app-header (emitTab)="selectTab($event)"></app-header>
 
-<app-dashboard-list></app-dashboard-list>
+<app-landing-page></app-landing-page> 
+
+<app-dashboard-list *ngIf="tab == 1"></app-dashboard-list>

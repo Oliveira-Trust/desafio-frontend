@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dashboard';
+
+  public tab = 0;
+
+  selectTab(tab:number){
+    this.tab = tab;
+  }
 }
