@@ -8,7 +8,8 @@ export const environment = {
   extensions: {
       getEmployees: 'getEmployees',
       postEmployee: 'postEmployee',
-      deleteEmployee: 'deleteEmployee'
+      deleteEmployee: 'deleteEmployee',
+      patchEmployee: 'patchEmployee'
   }
 };
 

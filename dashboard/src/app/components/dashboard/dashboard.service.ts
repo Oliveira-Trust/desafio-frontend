@@ -35,6 +35,15 @@ export class DasboardService {
         
     }
 
+    patchEmployee(employee: EmployeesDTO){
+        // const url = environment.url + environment.extensions.patchEmployee + `${employee.id}`;
+        // return this.http.patch(url,employee);
+
+        const index = this.employeeState.findIndex(obj => obj.id == employee.id);
+        this.employeeState.splice(index,1,employee);
+        return this.employeeState;
+    }
+
     deleteEmployee(employee: EmployeesDTO){
         // const url = environment.url + environment.extensions.deleteEmployee + `${employee.id}`;
         // return this.http.delete(url);
@@ -42,4 +51,6 @@ export class DasboardService {
         this.employeeState.splice(index,1);
         return this.employeeState;
     }
+
+
 }

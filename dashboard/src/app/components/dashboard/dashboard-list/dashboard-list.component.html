@@ -1,7 +1,7 @@
 <div class="list">
     <div class=" dashboard-header">
         <h2>Funcionários ({{employeeSortService.getTotal | async}})</h2>
-        <app-create-employee></app-create-employee>
+        <app-create-employee (reloadList)='reloadList()'></app-create-employee>
     </div>
     <br>
     <form>
@@ -28,9 +28,9 @@
                 <td>{{employee.surname}}</td>
                 <td>{{employee.position}}</td>
                 <td>{{employee.departament}}</td>
-                <td>{{employee.date}}</td>
+                <td>{{formatDate(employee.date)}}</td>
                 <td class="row-buttons">
-                    <app-edit-employee (openModal)="selectEmployee(employee)"></app-edit-employee>
+                    <app-edit-employee (openModal)="selectEmployee(employee)" (reloadList)="reloadList()"></app-edit-employee>
                     <app-modal-delete (openModal)="selectEmployee(employee)" (delete)="delete(employee)"></app-modal-delete>
                 </td>
             </tr>

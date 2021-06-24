@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
 import { DasboardService } from "../dashboard.service";
 
 @Component({
@@ -12,6 +13,8 @@ export class CreateEmployeeComponent {
 
     public form!: FormGroup;
     public submitted: boolean = false;
+
+    @Output() reloadList = new EventEmitter();
 
   constructor(
     private modalService: NgbModal, 
@@ -33,9 +36,10 @@ export class CreateEmployeeComponent {
 
   saveEmployee(){
     this.submitted = true;
-    if(this.form.valid) { console.log(this.form.value)
+    if(this.form.valid) { 
       this.dashboardService.postEmployee(this.form.value)
       this.modalService.dismissAll();
+      this.reloadList.emit();
     }
   }
 

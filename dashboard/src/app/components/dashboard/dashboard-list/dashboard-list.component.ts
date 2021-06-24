@@ -49,13 +49,25 @@ export class DashboardListComponent implements OnInit{
         this.employeeSortService.sortDirection = direction;
       }
 
+      reloadList(){
+        this.employeeSortService.reload();
+      }
+
       delete(employee:EmployeesDTO) {
         this.dashboardService.deleteEmployee(employee);
-        this.employeeSortService.reload();
+        this.reloadList();
       }
 
       selectEmployee(employee: EmployeesDTO){
         this.stateService.setSelectedEmployee(employee);
+      }
+
+      formatDate(date:string){
+        if(date.includes('-')){
+          const newDate = date.split('-').reverse().join('/');
+          return newDate;
+        }
+        return date;
       }
 
       

@@ -14,7 +14,8 @@ export class EditEmployeeComponent {
     public form!: FormGroup;
     public submitted: boolean = false;
 
-    @Output() openModal = new EventEmitter()
+    @Output() openModal = new EventEmitter();
+    @Output() reloadList = new EventEmitter();
 
   constructor(
     private modalService: NgbModal, 
@@ -56,8 +57,9 @@ export class EditEmployeeComponent {
   saveEmployee(){
     this.submitted = true;
     if(this.form.valid) { console.log(this.form.value)
-      this.dashboardService.postEmployee(this.form.value)
+      this.dashboardService.patchEmployee(this.form.value)
       this.modalService.dismissAll();
+      this.reloadList.emit();
     }
   }
 
