@@ -19,7 +19,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -44,7 +44,12 @@ export default {
   ],
 
   // Style Resources module configuration: https://github.com/nuxt-community/style-resources-module
-  styleResources: {},
+  styleResources: {
+    scss: [
+      '~/assets/scss/abstracts/_variables.scss',
+      '~/assets/scss/abstracts/_mixins.scss',
+    ],
+  },
 
   // Google Fonts module configuration: https://google-fonts.nuxtjs.org/setup
   googleFonts: {
