@@ -47,10 +47,19 @@ export default {
   styleResources: {},
 
   // Google Fonts module configuration: https://google-fonts.nuxtjs.org/setup
-  googleFonts: {},
+  googleFonts: {
+    families: {
+      Comfortaa: [200, 400, 500, 600, 700, 900],
+    },
+  },
 
   // Font Awesome module configuration: https://github.com/nuxt-community/fontawesome-module
-  fontawesome: {},
+  fontawesome: {
+    icons: {
+      regular: ['faEnvelope', 'faTrashAlt', 'faUser'],
+      solid: ['faCog', 'faUpload', 'faUser']
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
