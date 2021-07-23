@@ -1,0 +1,129 @@
+/// Cor branca
+$cor-branca: rgb(255, 255, 255);
+
+/// Cor preta
+$cor-preta: rgb(0, 0, 0);
+
+/// Número de colunas de grid
+$tamanho-colunas-grid: 12;
+
+/// Map de breakpoints
+/// @prop {String} keys - Nomes de identificação dos breakpoints
+/// @prop {Number} values - Os valores em pixels dos breakpoints
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  'xxl': 1536px,
+);
+
+/// Map que irá gerar as classes para a propriedade 'position'
+/// @prop {String} keys - Nomes das classes para a propriedade 'position'
+/// @prop {String} values - Os valores para a propriedade 'position'
+$position: (
+  'absolute': absolute,
+  'fixed': fixed,
+  'relative': relative,
+);
+
+/// Map que irá gerar as classes para a propriedade 'display'
+/// @prop {String} keys - Nomes das classes para a propriedade 'display'
+/// @prop {String} values - Os valores para a propriedade 'display'
+$display: (
+  'block': block,
+  'flex': flex,
+  'grid': grid,
+  'inline': inline,
+  'inline-block': inline-block,
+  'none': none,
+);
+
+/// Map que irá gerar as classes para a propriedade 'flex-direction'
+/// @prop {String} keys - Nomes das classes para a propriedade 'flex-direction'
+/// @prop {String} values - Os valores para a propriedade 'flex-direction'
+$flex-direction: (
+  'flex-column': column,
+  'flex-row': row,
+);
+
+/// Map que irá gerar as classes para a propriedade 'align-items'
+/// @prop {String} keys - Nomes das classes para a propriedade 'align-items'
+/// @prop {String} values - Os valores para a propriedade 'align-items'
+$align-items: (
+  'items-baseline': baseline,
+  'items-center': center,
+  'items-end': flex-end,
+  'items-start': flex-start,
+  'items-stretch': stretch,
+);
+
+/// Map que irá gerar as classes para a propriedade 'justify-content'
+/// @prop {String} keys - Nomes das classes para a propriedade 'justify-content'
+/// @prop {String} values - Os valores para a propriedade 'justify-content'
+$justify-content: (
+  'justify-center': center,
+  'justify-end': flex-end,
+  'justify-evenly': space-evenly,
+  'justify-space-around': space-around,
+  'justify-space-between': space-between,
+  'justify-start': flex-start,
+);
+
+/// Map que irá gerar as classes para a propriedade 'height'
+/// @prop {String} keys - Nomes das classes para a propriedade 'height'
+/// @prop {String} values - Os valores para a propriedade 'height'
+$height: (
+  'h-0': 0,
+  'h-10': 10%,
+  'h-20': 20%,
+  'h-30': 30%,
+  'h-40': 40%,
+  'h-50': 50%,
+  'h-60': 60%,
+  'h-70': 70%,
+  'h-80': 80%,
+  'h-90': 90%,
+  'h-full': 100%,
+  'h-auto': auto,
+);
+
+/// Map que irá gerar as classes para a propriedade 'width'
+/// @prop {String} keys - Nomes das classes para a propriedade 'width'
+/// @prop {String} values - Os valores para a propriedade 'width'
+$width: (
+  'w-0': 0,
+  'w-10': 10%,
+  'w-20': 20%,
+  'w-30': 30%,
+  'w-40': 40%,
+  'w-50': 50%,
+  'w-60': 60%,
+  'w-70': 70%,
+  'w-80': 80%,
+  'w-90': 90%,
+  'w-full': 100%,
+  'w-auto': auto,
+);
+
+/// Map que irá gerar as classes para a propriedade 'text-align'
+/// @prop {String} keys - Nomes das classes para a propriedade 'text-align'
+/// @prop {String} values - Os valores para a propriedade 'text-align'
+$text-align: (
+  'text-center': center,
+  'text-left': left,
+  'text-right': right,
+  'text-justify': justify,
+);
+
+/// Map que irá gerar as classes para a propriedade 'font-weigh'
+/// @prop {String} keys - Nomes das classes para a propriedade 'font-weigh'
+/// @prop {String} values - Os valores para a propriedade 'font-weigh'
+$font-weight: (
+  'font-extralight': 200,
+  'font-normal': 400,
+  'font-medium': 500,
+  'font-semibold': 600,
+  'font-bold': 700,
+  'font-black': 900,
+);

@@ -1,0 +1,30 @@
+@use 'sass:map';
+
+/// Gera um map com os valores para a criação de classes de espaçamnto
+@function cria-valores-espacamento($prefixo, $is-margin: false) {
+  $espacamentos: ();
+
+  @for $i from 0 through 16 {
+    $seletor: #{$prefixo}-#{$i};
+    $espacamentos: map.set($espacamentos, $seletor, $i * 4px);
+  }
+
+  @if $is-margin {
+    $seletor: #{$prefixo}-auto;
+    $espacamentos: map.set($espacamentos, $seletor, auto);
+  }
+
+  @return $espacamentos;
+}
+
+/// Gera um map com os valores para a criação de classes de colunas de grid
+@function cria-valores-colunas-grid() {
+  $grid: ();
+
+  @for $i from 1 through $tamanho-colunas-grid {
+    $seletor: grid-columns-#{$i};
+    $grid: map.set($grid, $seletor, repeat($i, minmax(0, 1fr)));
+  }
+
+  @return $grid;
+}

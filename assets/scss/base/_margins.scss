@@ -1,0 +1,57 @@
+/*
+* Gera todas as classes para a propriedade 'margin'
+*/
+$margins-all: cria-valores-espacamento('ma', true);
+@include gera-classes($margins-all) using ($value) {
+  margin: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'margin-top'
+*/
+$margins-top: cria-valores-espacamento('mt', true);
+@include gera-classes($margins-top) using ($value) {
+  margin-top: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'margin-right'
+*/
+$margins-right: cria-valores-espacamento('mr', true);
+@include gera-classes($margins-right) using ($value) {
+  margin-right: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'margin-bottom'
+*/
+$margins-bottom: cria-valores-espacamento('mb', true);
+@include gera-classes($margins-bottom) using ($value) {
+  margin-bottom: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'margin-left'
+*/
+$margins-left: cria-valores-espacamento('ml', true);
+@include gera-classes($margins-left) using ($value) {
+  margin-left: $value;
+}
+
+/*
+* Gera todas as classes para as propriedades 'margin-top' e 'margin-bottom' juntas
+*/
+$margins-y: cria-valores-espacamento('my', true);
+@include gera-classes($margins-y) using ($value) {
+  margin-bottom: $value;
+  margin-top: $value;
+}
+
+/*
+* Gera todas as classes para as propriedades 'margin-right' e 'margin-left' juntas
+*/
+$margins-x: cria-valores-espacamento('mx', true);
+@include gera-classes($margins-x) using ($value) {
+  margin-left: $value;
+  margin-right: $value;
+}

@@ -1,0 +1,25 @@
+/**
+* Define o 'box-sizing' do elemento raíz
+*/
+html {
+  box-sizing: border-box;
+}
+
+/**
+* Faz todos os elementos herdarem o 'box-sizing' do elemento raíz 'html'
+*/
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+* Retira a margin imposta pelo browser
+*/
+body,
+h1,
+h2,
+p {
+  margin: 0;
+}

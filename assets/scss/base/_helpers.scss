@@ -1,0 +1,140 @@
+/**
+* Retira decoração de links
+*/
+.decoration-none {
+  text-decoration: none;
+}
+
+/*
+* Previne visualização de elementos fora do limite
+*/
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/*
+* Gera todas as classes de container, que limitam o tamanho máximo do elemento.
+* Assim se mantendo similiar ao menor tamanho de tela de um breakpoint
+*/
+.container {
+  width: 100%;
+
+  @each $key, $value in $breakpoints {
+    @include regra-responsiva($key) {
+      max-width: $value;
+    }
+  }
+}
+
+/*
+* Define a cor do texto como branca
+*/
+.white--text {
+  color: $cor-branca;
+}
+
+/*
+* Define a cor do texto como preta
+*/
+.black--text {
+  color: rgb(0, 0, 0);
+}
+
+/*
+* Remove tipo de lista
+*/
+.list-none {
+  list-style-type: none;
+}
+
+/*
+* Remove completamente as bordas de um elemento
+*/
+.border-0 {
+  border: 0;
+}
+
+/*
+* Transforma o cursor do mouse em pointer
+*/
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/*
+* Gera todas as classes para a propriedade 'position'
+*/
+@include gera-classes($position) using ($value) {
+  position: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'display'
+*/
+@include gera-classes($display) using ($value) {
+  display: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'grid-template-columns'
+*/
+$grid-columns: cria-valores-colunas-grid();
+@include gera-classes($grid-columns) using ($value) {
+  grid-template-columns: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'flex-direction'
+*/
+@include gera-classes($flex-direction) using ($value) {
+  flex-direction: $value;
+}
+
+/*
+* Classe para a propriedade 'flex-wrap'
+*/
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/*
+* Gera todas as classes para a propriedade 'align-items'
+*/
+@include gera-classes($align-items) using ($value) {
+  align-items: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'justify-content'
+*/
+@include gera-classes($justify-content) using ($value) {
+  justify-content: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'height'
+*/
+@include gera-classes($height) using ($value) {
+  height: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'width'
+*/
+@include gera-classes($width) using ($value) {
+  width: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'text-align'
+*/
+@include gera-classes($text-align) using ($value) {
+  text-align: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'flex-direction'
+*/
+@include gera-classes($font-weight) using ($value) {
+  font-weight: $value;
+}

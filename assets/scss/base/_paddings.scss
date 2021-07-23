@@ -1,0 +1,57 @@
+/*
+* Gera todas as classes para a propriedade 'padding'
+*/
+$paddings-all: cria-valores-espacamento('pa');
+@include gera-classes($paddings-all) using ($value) {
+  padding: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'padding-top'
+*/
+$paddings-top: cria-valores-espacamento('pt');
+@include gera-classes($paddings-top) using ($value) {
+  padding-top: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'padding-right'
+*/
+$paddings-right: cria-valores-espacamento('pr');
+@include gera-classes($paddings-right) using ($value) {
+  padding-right: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'padding-bottom'
+*/
+$paddings-bottom: cria-valores-espacamento('pb');
+@include gera-classes($paddings-bottom) using ($value) {
+  padding-bottom: $value;
+}
+
+/*
+* Gera todas as classes para a propriedade 'padding-left'
+*/
+$paddings-left: cria-valores-espacamento('pl');
+@include gera-classes($paddings-left) using ($value) {
+  padding-left: $value;
+}
+
+/*
+* Gera todas as classes para as propriedades 'padding-top' e 'padding-bottom' juntas
+*/
+$paddings-y: cria-valores-espacamento('py');
+@include gera-classes($paddings-y) using ($value) {
+  padding-bottom: $value;
+  padding-top: $value;
+}
+
+/*
+* Gera todas as classes para as propriedades 'padding-right' e 'padding-left' juntas
+*/
+$paddings-x: cria-valores-espacamento('px');
+@include gera-classes($paddings-x) using ($value) {
+  padding-left: $value;
+  padding-right: $value;
+}

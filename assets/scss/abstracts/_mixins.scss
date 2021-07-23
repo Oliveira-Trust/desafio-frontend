@@ -1,0 +1,44 @@
+/// Gera as classes de utilidade e suas respectivas classes responsivas
+/// @param {Map} $classes - Mapa com o nome das classe e seu valor
+@mixin gera-classes($classes) {
+  @include gera-classes-propriedade($classes) using ($value) {
+    @content($value);
+  }
+
+  @each $key, $value in $breakpoints {
+    @include gera-classes-propriedade($classes, $key, $value) using ($value) {
+      @content($value);
+    }
+  }
+}
+
+/// Gera classes default que funcionam quando classe responsiva não é encontrada, caso $breakpoint e $width não são passados,
+/// caso contrário gera a classe responsiva de acordo com o $breakpoint e a sua respectiva $width
+/// @param {String} $classes - O nome da classe a ser gerada
+/// @param {String} $breakpoint - O nome do breakpoint para concatenação ao nome da classe
+/// @param {Number} $width - O menor tamanho de tela para a criação do media query
+@mixin gera-classes-propriedade($classes, $breakpoint: null, $width: null) {
+  @each $key, $value in $classes {
+    @if not $breakpoint or not $width {
+      .#{$key} {
+        @content($value);
+      }
+    } @else {
+      .#{$breakpoint}\:#{$key} {
+        @include regra-responsiva($breakpoint) {
+          @content($value);
+        }
+      }
+    }
+  }
+}
+
+/// Mixin que implementa uma regra a partir do breakpoint determinado
+/// @param {String} $breakpoint - O nome do breakpoint para concatenação ao nome da classe
+@mixin regra-responsiva($breakpoint) {
+  $min-width: map-get($breakpoints, $breakpoint);
+
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
