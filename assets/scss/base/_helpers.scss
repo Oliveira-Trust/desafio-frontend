@@ -61,6 +61,13 @@
   cursor: pointer;
 }
 
+/**
+* Torna o background de um elemento transparente
+*/
+.bg-transparent {
+  background-color: transparent;
+}
+
 /*
 * Gera todas as classes para a propriedade 'position'
 */

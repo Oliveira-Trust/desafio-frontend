@@ -10,6 +10,9 @@ $tamanho-colunas-grid: 12;
 /// Coloração dos links ativos/hover
 $cor-primaria: rgb(212, 0, 0);
 
+/// Background da coloração principal com opacidade
+$backgroud-primario-opaco: rgba($cor-primaria, 0.25);
+
 /// Map de breakpoints
 /// @prop {String} keys - Nomes de identificação dos breakpoints
 /// @prop {Number} values - Os valores em pixels dos breakpoints

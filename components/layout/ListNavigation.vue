@@ -86,7 +86,7 @@ export default class ListNavigationComponent extends Vue {
   }
 
   &__item--active > div > &__icon::after {
-    background: rgba($cor-primaria, 0.25);
+    background: $backgroud-primario-opaco;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
     bottom: 0;

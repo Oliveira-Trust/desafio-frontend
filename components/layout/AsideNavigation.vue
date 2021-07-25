@@ -2,13 +2,18 @@
   <aside
     class="
       aside
-      none
       overflow-hidden
-      w-50
-      lg:sticky lg:flex lg:flex-column lg:w-20
+      w-70
+      sm:w-50
+      md:w-40
+      lg:sticky lg:flex lg:flex-column lg:w-40 xl:w-20
     "
+    :class="{ 'absolute': hiddenMobile, 'fixed visible': !hiddenMobile }"
   >
-    <div class="aside__logo flex justify-center w-full py-5">
+    <div class="aside__logo flex justify-center items-center w-full py-5">
+      <i class="header__menu mr-4 lg:none" @click="hiddenMobile = true">
+        <font-awesome-icon :icon="['fas', 'bars']" />
+      </i>
       <img src="/logotipo.svg" class="w-80" />
     </div>
     <nav class="aside__nav h-full">
@@ -18,10 +23,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, PropSync, Component } from 'nuxt-property-decorator'
 
 @Component
 export default class AsideNavigationComponent extends Vue {
+  @PropSync('isHiddenMobile', { type: Boolean, default: true }) readonly hiddenMobile!: boolean
+
   menu = [
     {
       icon: ['fas', 'home'],
@@ -70,10 +77,22 @@ export default class AsideNavigationComponent extends Vue {
 
 <style lang="scss" scoped>
 .aside {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: $cor-branca;
+  border-right: 1px solid rgba($cor-preta, 0.1);
   bottom: 0;
   max-height: 100vh;
   top: 0;
+  transform: translateX(calc(-100% - 1px));
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+
+  @include regra-responsiva('lg') {
+    transform: translateX(0);
+  }
+
+  &.visible {
+    transform: translateX(0);
+  }
 
   &__nav {
     overflow-y: auto;
