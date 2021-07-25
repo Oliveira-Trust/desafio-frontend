@@ -68,6 +68,30 @@
   background-color: transparent;
 }
 
+/**
+* Determina o tamanho pequeno de um ícone
+*/
+.sm-icon {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+
+/**
+* Determina o tamanho grande de um ícone
+*/
+.lg-icon {
+  height: 1.5rem !important;
+  width: 1.5rem !important;
+}
+
+/**
+* Determina o tamanho extra grande de um ícone
+*/
+.xxl-icon {
+  height: 3rem !important;
+  width: 3rem !important;
+}
+
 /*
 * Gera todas as classes para a propriedade 'position'
 */

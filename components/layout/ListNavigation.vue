@@ -15,7 +15,10 @@
           class="navigation-list__icon relative mr-4"
           :class="{ 'navigation-list__icon--small': isSublist }"
         >
-          <font-awesome-icon :icon="item.icon" />
+          <font-awesome-icon
+            :icon="item.icon"
+            :class="{ 'sm-icon': isSublist, 'lg-icon': !isSublist }"
+          />
         </i>
         <div class="navigation-list__title pt-1">
           <nuxt-link
@@ -43,7 +46,7 @@
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator'
 
-interface ItemsMenu {
+interface IItemsMenu {
   icon: string[]
   link: string
   title: string
@@ -58,7 +61,7 @@ interface ItemsMenu {
   name: 'SubListNavigation',
 })
 export default class ListNavigationComponent extends Vue {
-  @Prop({ type: Array, required: true }) readonly items!: ItemsMenu[]
+  @Prop({ type: Array, required: true }) readonly items!: IItemsMenu[]
   @Prop({ type: Boolean, default: false }) readonly isSublist!: boolean
 
   isActive(link: string, index: number) {
@@ -69,16 +72,6 @@ export default class ListNavigationComponent extends Vue {
 
 <style lang="scss" scoped>
 .navigation-list {
-  &__icon > svg {
-    height: 1.25rem;
-    width: 1.25rem;
-  }
-
-  &__icon--small > svg {
-    height: 1rem;
-    width: 1rem;
-  }
-
   &__item__header:hover a,
   &__item__header:hover svg,
   &__item--active > div > &__icon {
