@@ -62,8 +62,8 @@ export default {
   fontawesome: {
     icons: {
       regular: ['faEnvelope', 'faTrashAlt', 'faUser'],
-      solid: ['faCog', 'faHome', 'faUpload', 'faUser']
-    }
+      solid: ['faCog', 'faHome', 'faInfoCircle', 'faUpload', 'faUsers'],
+    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
