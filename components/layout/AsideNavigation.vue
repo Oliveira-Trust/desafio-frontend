@@ -6,9 +6,10 @@
       w-70
       sm:w-50
       md:w-40
-      lg:sticky lg:flex lg:flex-column lg:w-40 xl:w-20
+      lg:sticky lg:flex lg:flex-column lg:w-40
+      xl:w-20
     "
-    :class="{ 'absolute': hiddenMobile, 'fixed visible': !hiddenMobile }"
+    :class="{ absolute: hiddenMobile, 'fixed visible': !hiddenMobile }"
   >
     <div class="aside__logo flex justify-center items-center w-full py-5">
       <i class="header__menu mr-4 lg:none" @click="hiddenMobile = true">
@@ -27,7 +28,8 @@ import { Vue, PropSync, Component } from 'nuxt-property-decorator'
 
 @Component
 export default class AsideNavigationComponent extends Vue {
-  @PropSync('isHiddenMobile', { type: Boolean, default: true }) readonly hiddenMobile!: boolean
+  @PropSync('isHiddenMobile', { type: Boolean, default: true })
+  readonly hiddenMobile!: boolean
 
   menu = [
     {
