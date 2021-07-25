@@ -30,7 +30,7 @@
               class="header__notificao flex py-2 px-2"
             >
               <i v-if="notificao.icon" class="mr-2">
-                <font-awesome-icon class="sm-icon" :icon="notificao.icon"/>
+                <font-awesome-icon class="sm-icon" :icon="notificao.icon" />
               </i>
               <p
                 class="

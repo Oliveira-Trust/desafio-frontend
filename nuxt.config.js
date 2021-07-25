@@ -61,7 +61,14 @@ export default {
   // Font Awesome module configuration: https://github.com/nuxt-community/fontawesome-module
   fontawesome: {
     icons: {
-      regular: ['faBell', 'faClock', 'faEnvelope', 'faFile', 'faTrashAlt', 'faUser'],
+      regular: [
+        'faBell',
+        'faClock',
+        'faEnvelope',
+        'faFile',
+        'faTrashAlt',
+        'faUser',
+      ],
       solid: [
         'faBars',
         'faCog',
