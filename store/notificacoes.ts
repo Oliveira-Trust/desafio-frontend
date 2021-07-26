@@ -1,7 +1,11 @@
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Module, VuexModule } from 'nuxt-property-decorator'
 
-@Component
-export class NotificacoesMixin extends Vue {
+@Module({
+  name: 'notificacoes',
+  namespaced: true,
+  stateFactory: true,
+})
+export default class NotificacoesModule extends VuexModule {
   notificacoes = [
     {
       icon: ['far', 'envelope'],

@@ -1,9 +1,13 @@
-import { Vue, Component } from 'nuxt-property-decorator'
-import { IUsuario } from '~/types/IUsuario'
+import { Module, VuexModule, VuexMutation } from 'nuxt-property-decorator'
+import { IFuncionario } from '~/types/IFuncionario'
 
-@Component
-export class FuncionariosMixin extends Vue {
-  funcionarios: IUsuario[] = [
+@Module({
+  name: 'funcionarios',
+  namespaced: true,
+  stateFactory: true,
+})
+export default class FuncionariosModule extends VuexModule {
+  funcionarios: IFuncionario[] = [
     {
       nome: 'Cynthia',
       sobrenome: 'Grimes',
@@ -355,4 +359,9 @@ export class FuncionariosMixin extends Vue {
       contratado: 33,
     },
   ]
+
+  @VuexMutation
+  ADICIONA_FUNCIONARIO(funcionario: IFuncionario) {
+    this.funcionarios.push(funcionario)
+  }
 }

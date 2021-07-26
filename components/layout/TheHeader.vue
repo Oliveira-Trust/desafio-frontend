@@ -54,11 +54,15 @@
 </template>
 
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator'
-import { NotificacoesMixin } from '~/mixins/notificacoes'
+import { Component, Vue, namespace } from 'nuxt-property-decorator'
+
+const notificacoesStore = namespace('notificacoes')
 
 @Component
-export default class HeaderComponent extends mixins(NotificacoesMixin) {}
+export default class HeaderComponent extends Vue {
+  @notificacoesStore.State
+  readonly notificacoes!: Array<{ icon: string[]; text: string }>
+}
 </script>
 
 <style lang="scss" scoped>
