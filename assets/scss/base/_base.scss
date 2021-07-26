@@ -15,10 +15,19 @@ html {
 }
 
 /**
+* Indica a font a ser usada
+*/
+body,
+button {
+  font-family: 'Comfortaa', cursive;
+}
+
+/**
 * Retira a margin imposta pelo browser
 */
 body,
 h1,
+h3,
 h4,
 ul,
 p {

@@ -3,6 +3,9 @@
     <LayoutAsideNavigation :is-hidden-mobile.sync="menuHiddenMobile" />
     <div class="flex flex-column w-full">
       <LayoutTheHeader @toogle-menu="toogleMenu" />
+      <main class="container mx-auto pa-6">
+        <Nuxt />
+      </main>
     </div>
   </div>
 </template>
@@ -22,7 +25,6 @@ export default class DefaultLayout extends Vue {
 
 <style lang="scss" scoped>
 .app-layout {
-  font-family: 'Comfortaa', cursive;
   min-height: 100vh;
 }
 
