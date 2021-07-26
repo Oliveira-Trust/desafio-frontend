@@ -30,7 +30,33 @@
     <section>
       <div class="flex justify-space-between items-end">
         <h3>Relação de Funcionários</h3>
-        <button class="btn pa-2">Adicionar Funcionário</button>
+        <button class="btn cursor-pointer pa-2" @click="modal = true">
+          Adicionar Funcionário
+        </button>
+        <VModal v-model="modal" class-width="w-40">
+          <template #header>
+            <div class="flex justify-space-between">
+              <h1>Criação de funcionários</h1>
+              <button
+                class="cursor-pointer bg-transparent border-0"
+                @click="modal = false"
+              >
+                <font-awesome-icon class="sm-icon" :icon="['fas', 'times']" />
+              </button>
+            </div>
+          </template>
+          <template #body>
+            <VForm ref="formComponent" :campos="camposFormulario" @form-validado="modal = false" />
+          </template>
+          <template #footer>
+            <button
+              class="btn cursor-pointer pa-2"
+              @click="formulario.validaFuncionario()"
+            >
+              Adicionar
+            </button>
+          </template>
+        </VModal>
       </div>
       <VTable class="mt-5" :headers="headersTable" :items="funcionarios">
         <template #contratado="{ value }">
@@ -47,18 +73,29 @@
 </template>
 
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator'
-import { IHeaderTable } from '~/types/IHeaderTable'
+import { Ref, Component, Vue, namespace } from 'nuxt-property-decorator'
+import FormComponent from '~/components/VForm.vue'
 
-import { FuncionariosMixin } from '~/mixins/funcionarios'
-import { NotificacoesMixin } from '~/mixins/notificacoes'
+import { IHeaderTable } from '~/types/IHeaderTable'
+import { ICampoFormulario } from '~/types/ICampoFormulario'
+import { IFuncionario } from '~/types/IFuncionario'
+
+const funcionariosStore = namespace('funcionarios')
+const notificacoesStore = namespace('notificacoes')
 
 @Component
-export default class IndexPage extends mixins(
-  FuncionariosMixin,
-  NotificacoesMixin
-) {
+export default class IndexPage extends Vue {
+  @Ref('formComponent') readonly formulario!: FormComponent
+
+  @funcionariosStore.State
+  readonly funcionarios!: IFuncionario[]
+
+  @notificacoesStore.State
+  readonly notificacoes!: Array<{ icon: string[]; text: string }>
+
+  modal = false
   arquivosEnviados = []
+
   headersTable: IHeaderTable[] = [
     {
       code: 'nome',
@@ -86,6 +123,55 @@ export default class IndexPage extends mixins(
       text: 'Ações',
       alignment: 'center',
       alignHeader: true,
+    },
+  ]
+
+  camposFormulario: ICampoFormulario[] = [
+    {
+      id: 'nome',
+      label: 'Nome',
+      field: 'input',
+      type: 'text',
+      classWidth: 'w-50',
+    },
+    {
+      id: 'sobrenome',
+      label: 'Sobrenome',
+      field: 'input',
+      type: 'text',
+      classWidth: 'w-50',
+    },
+    {
+      id: 'cargo',
+      label: 'Cargo',
+      field: 'select',
+      options: [
+        'Desenvolvedor Full-Stack Júnior',
+        'Desenvolvedor Full-Stack Pleno',
+        'Desenvolvedor Full-Stack Sênior',
+        'Desenvolvedor Front-End Júnior',
+        'Desenvolvedor Front-End Pleno',
+        'Desenvolvedor Front-End Sênior',
+        'Desenvolvedor Back-End Júnior',
+        'Desenvolvedor Back-End Pleno',
+        'Desenvolvedor Back-End Sênior',
+        'Lead Tech',
+      ],
+      classWidth: 'w-full',
+    },
+    {
+      id: 'setor',
+      label: 'Setor',
+      field: 'select',
+      options: ['Pagamento', 'Produto', 'API', 'Componentes'],
+      classWidth: 'w-40',
+    },
+    {
+      id: 'contratado',
+      label: 'Tempo de contratado (em meses)',
+      field: 'input',
+      type: 'number',
+      classWidth: 'w-60',
     },
   ]
 }

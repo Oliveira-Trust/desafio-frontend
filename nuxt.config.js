@@ -75,6 +75,7 @@ export default {
         'faExclamationCircle',
         'faHome',
         'faInfoCircle',
+        'faTimes',
         'faUpload',
         'faUser',
         'faUsers',
