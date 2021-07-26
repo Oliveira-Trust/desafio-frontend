@@ -46,7 +46,7 @@
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator'
 import { IHeaderTable } from '~/types/IHeaderTable'
-import { IUsuario } from '~/types/IUsuario'
+import { IFuncionario } from '~/types/IFuncionario'
 
 @Component
 export default class TableComponent extends Vue {
@@ -59,7 +59,7 @@ export default class TableComponent extends Vue {
   readonly headers!: IHeaderTable[]
 
   @Prop({ type: Array, required: true })
-  readonly items!: IUsuario[]
+  readonly items!: IFuncionario[]
 
   page = 0
   itemsPerPage = 10

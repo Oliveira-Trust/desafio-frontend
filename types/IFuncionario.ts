@@ -1,4 +1,4 @@
-export interface IUsuario {
+export interface IFuncionario {
   nome: string
   sobrenome: string
   cargo: string
