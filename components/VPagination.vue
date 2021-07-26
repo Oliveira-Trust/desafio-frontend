@@ -82,7 +82,6 @@
           pagination__goto
           absolute
           cursor-pointer
-          bg-transparent
           py-1
           px-2
         "
@@ -145,7 +144,7 @@ export default class PaginationComponent extends Vue {
   verificaPagina() {
     let inputValue = parseInt(this.currentPageInput, 10)
 
-    if (inputValue < 1) {
+    if (isNaN(inputValue) || inputValue < 1) {
       inputValue = 1
       this.currentPage = 0
     } else if (inputValue > this.total) {
