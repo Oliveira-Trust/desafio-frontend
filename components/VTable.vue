@@ -1,16 +1,37 @@
 <template>
-  <div class="table-wrapper">
+  <div class="table-wrapper flex flex-column items-center lg:items-end">
     <table class="table w-full">
       <thead>
         <tr>
-          <td class="table__header font-medium px-6 py-3" v-for="header in headers" :key="header.code" :class="{ 'text-center': header.alignment === 'center' && header.alignHeader, 'text-right': header.alignment === 'right' && header.alignHeader }">
+          <td
+            v-for="header in headers"
+            :key="header.code"
+            class="table__header font-medium px-6 py-3"
+            :class="{
+              'text-center':
+                header.alignment === 'center' && header.alignHeader,
+              'text-right': header.alignment === 'right' && header.alignHeader,
+            }"
+          >
             {{ header.text }}
           </td>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(row, index) in rows" :key="index" class="table__row font-extralight">
-          <td v-for="header in headers" :key="header.code" class="px-6 py-4" :class="{ 'text-center': header.alignment === 'center', 'text-right': header.alignment === 'right' }">
+        <tr
+          v-for="(row, index) in rows"
+          :key="index"
+          class="table__row font-extralight"
+        >
+          <td
+            v-for="header in headers"
+            :key="header.code"
+            class="px-6 py-4"
+            :class="{
+              'text-center': header.alignment === 'center',
+              'text-right': header.alignment === 'right',
+            }"
+          >
             <slot :name="header.code" :value="row[header.code]">
               <span>{{ row[header.code] }}</span>
             </slot>
@@ -18,6 +39,7 @@
         </tr>
       </tbody>
     </table>
+    <VPagination v-model="page" class="mt-4" :total="totalPages" />
   </div>
 </template>
 
@@ -28,11 +50,28 @@ import { IUsuario } from '~/types/IUsuario'
 
 @Component
 export default class TableComponent extends Vue {
-  @Prop({ type: Array, required: true, validator: (value) => value.filter((h: IHeaderTable) => !h.text || !h.code).length === 0 })
+  @Prop({
+    type: Array,
+    required: true,
+    validator: (value) =>
+      value.filter((h: IHeaderTable) => !h.text || !h.code).length === 0,
+  })
   readonly headers!: IHeaderTable[]
 
   @Prop({ type: Array, required: true })
-  readonly rows!: IUsuario[]
+  readonly items!: IUsuario[]
+
+  page = 0
+  itemsPerPage = 10
+
+  get rows() {
+    const start = this.page * this.itemsPerPage
+    return this.items.slice(start, start + this.itemsPerPage)
+  }
+
+  get totalPages() {
+    return Math.ceil(this.items.length / this.itemsPerPage)
+  }
 }
 </script>
 

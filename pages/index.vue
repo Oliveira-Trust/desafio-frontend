@@ -32,7 +32,7 @@
         <h3>Relação de Funcionários</h3>
         <button class="btn pa-2">Adicionar Funcionário</button>
       </div>
-      <VTable class="mt-5" :headers="headersTable" :rows="funcionarios">
+      <VTable class="mt-5" :headers="headersTable" :items="funcionarios">
         <template #contratado="{ value }">
           <span>{{ value }} meses</span>
         </template>
@@ -42,7 +42,6 @@
           </i>
         </template>
       </VTable>
-      <div class="skeleton skeleton-pagination w-60 mt-4 ml-auto lg:w-20" />
     </section>
   </div>
 </template>
@@ -55,36 +54,39 @@ import { FuncionariosMixin } from '~/mixins/funcionarios'
 import { NotificacoesMixin } from '~/mixins/notificacoes'
 
 @Component
-export default class IndexPage extends mixins(FuncionariosMixin, NotificacoesMixin) {
+export default class IndexPage extends mixins(
+  FuncionariosMixin,
+  NotificacoesMixin
+) {
   arquivosEnviados = []
   headersTable: IHeaderTable[] = [
     {
       code: 'nome',
-      text: 'Nome'
+      text: 'Nome',
     },
     {
       code: 'sobrenome',
-      text: 'Sobrenome'
+      text: 'Sobrenome',
     },
     {
       code: 'cargo',
-      text: 'Cargo'
+      text: 'Cargo',
     },
     {
       code: 'setor',
-      text: 'Setor'
+      text: 'Setor',
     },
     {
       code: 'contratado',
       text: 'Tempo contratado',
-      alignment: 'right'
+      alignment: 'right',
     },
     {
       code: 'action',
       text: 'Ações',
       alignment: 'center',
-      alignHeader: true
-    }
+      alignHeader: true,
+    },
   ]
 }
 </script>
