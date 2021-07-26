@@ -1,6 +1,6 @@
 export interface IHeaderTable {
-  code: string,
-  text: string,
-  alignment?: string,
+  code: string
+  text: string
+  alignment?: string
   alignHeader?: boolean
 }
