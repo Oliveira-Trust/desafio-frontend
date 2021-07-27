@@ -1,14 +1,15 @@
 <template>
   <div v-if="isOpen" class="modal fixed">
-    <div class="modal__overlay w-full h-full overflow-hidden" />
+    <div class="modal__overlay w-full h-full overflow-hidden" @click="isOpen = false" />
     <div class="modal__wrapper absolute ma-auto" :class="`${classWidth}`">
-      <div class="modal__header py-8 px-4">
+      <div v-if="$slots.header" class="modal__header py-8 px-4">
         <slot name="header" />
       </div>
-      <div class="modal__body w-full py-8 px-4" :class="classWidth">
+      <div v-if="$slots.body" class="modal__body w-full py-8 px-4" :class="classWidth">
         <slot name="body" />
       </div>
       <div
+        v-if="$slots.footer"
         class="modal__footer w-full flex justify-end py-8 px-4"
         :class="classWidth"
       >

@@ -19,8 +19,8 @@
       </thead>
       <tbody>
         <tr
-          v-for="(row, index) in rows"
-          :key="index"
+          v-for="row in rows"
+          :key="row[itemKey]"
           class="table__row font-extralight"
         >
           <td
@@ -32,7 +32,11 @@
               'text-right': header.alignment === 'right',
             }"
           >
-            <slot :name="header.code" :value="row[header.code]">
+            <slot
+              :name="header.code"
+              :itemKey="row[itemKey]"
+              :value="row[header.code]"
+            >
               <span>{{ row[header.code] }}</span>
             </slot>
           </td>
@@ -60,6 +64,9 @@ export default class TableComponent extends Vue {
 
   @Prop({ type: Array, required: true })
   readonly items!: IFuncionario[]
+
+  @Prop({ type: String, default: 'id' })
+  readonly itemKey!: string
 
   page = 0
   itemsPerPage = 10

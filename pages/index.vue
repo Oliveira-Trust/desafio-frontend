@@ -30,31 +30,30 @@
     <section>
       <div class="flex justify-space-between items-end">
         <h3>Relação de Funcionários</h3>
-        <button class="btn cursor-pointer pa-2" @click="modal = true">
+        <VButton @click="modalAdicao = true">
           Adicionar Funcionário
-        </button>
-        <VModal v-model="modal" class-width="w-40">
+        </VButton>
+        <VModal v-model="modalAdicao" class-width="w-40">
           <template #header>
             <div class="flex justify-space-between">
               <h1>Criação de funcionários</h1>
               <button
                 class="cursor-pointer bg-transparent border-0"
-                @click="modal = false"
+                @click="modalAdicao = false"
               >
                 <font-awesome-icon class="sm-icon" :icon="['fas', 'times']" />
               </button>
             </div>
           </template>
           <template #body>
-            <VForm ref="formComponent" :campos="camposFormulario" @form-validado="modal = false" />
+            <VForm
+              ref="formComponent"
+              :campos="camposFormulario"
+              @form-validado="modalAdicao = false"
+            />
           </template>
           <template #footer>
-            <button
-              class="btn cursor-pointer pa-2"
-              @click="formulario.validaFuncionario()"
-            >
-              Adicionar
-            </button>
+            <VButton @click="formulario.validaFuncionario()">Salvar</VButton>
           </template>
         </VModal>
       </div>
@@ -62,12 +61,21 @@
         <template #contratado="{ value }">
           <span>{{ value }} meses</span>
         </template>
-        <template #action>
-          <i class="cursor-pointer">
+        <template #action="{ itemKey }">
+          <i class="cursor-pointer" @click="confirmaRemocao(itemKey)">
             <font-awesome-icon class="sm-icon" :icon="['far', 'trash-alt']" />
           </i>
         </template>
       </VTable>
+      <VModal v-model="modalRemocao" class-width="w-40">
+        <template #body>
+          <p class="text-center">Deseja mesmo remover este usuário?</p>
+          <div class="text-center mt-6">
+            <VButton :text="true" @click="fechaRemocao">Cancelar Remoção</VButton>
+            <VButton class="ml-3" @click="remocaoConfirmada">Confirmar Remoção</VButton>
+          </div>
+        </template>
+      </VModal>
     </section>
   </div>
 </template>
@@ -90,11 +98,17 @@ export default class IndexPage extends Vue {
   @funcionariosStore.State
   readonly funcionarios!: IFuncionario[]
 
+  @funcionariosStore.Mutation('DELETE_FUNCIONARIO')
+  readonly removeFuncionario!: (id: number) => void
+
   @notificacoesStore.State
   readonly notificacoes!: Array<{ icon: string[]; text: string }>
 
-  modal = false
+  modalAdicao = false
   arquivosEnviados = []
+
+  modalRemocao = false
+  promiseRemocao: Promise<number> | undefined = undefined
 
   headersTable: IHeaderTable[] = [
     {
@@ -174,6 +188,23 @@ export default class IndexPage extends Vue {
       classWidth: 'w-60',
     },
   ]
+
+  confirmaRemocao(idFuncionario: number) {
+    this.modalRemocao = true
+    this.promiseRemocao = new Promise((resolve) => resolve(idFuncionario))
+  }
+
+  remocaoConfirmada() {
+    this.promiseRemocao?.then((idFuncionario: number) => {
+      this.removeFuncionario(idFuncionario)
+      this.fechaRemocao()
+    })
+  }
+
+  fechaRemocao() {
+    this.modalRemocao = false
+    this.promiseRemocao = undefined
+  }
 }
 </script>
 
@@ -181,13 +212,6 @@ export default class IndexPage extends Vue {
 .card-infos {
   column-gap: 48px;
   row-gap: 24px;
-}
-
-.btn {
-  background-color: $backgroud-primario-opaco;
-  border: 1px solid $cor-primaria;
-  border-radius: 4px;
-  color: $cor-primaria;
 }
 
 .skeleton {
