@@ -78,13 +78,7 @@
     />
     <div class="relative flex items-center mt-4 sm:mt-0">
       <button
-        class="
-          pagination__goto
-          absolute
-          cursor-pointer
-          py-1
-          px-2
-        "
+        class="pagination__goto absolute cursor-pointer py-1 px-2"
         @click="verificaPagina"
       >
         ir
