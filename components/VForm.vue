@@ -51,6 +51,7 @@ export default class FormComponent extends Vue {
   erros: Array<{ code: string; message: string }> = []
 
   novoFuncionario: IFuncionario = {
+    id: -1,
     nome: '',
     sobrenome: '',
     cargo: '',
@@ -93,6 +94,7 @@ export default class FormComponent extends Vue {
       this.$emit('form-validado')
 
       this.novoFuncionario = {
+        id: -1,
         nome: '',
         sobrenome: '',
         cargo: '',

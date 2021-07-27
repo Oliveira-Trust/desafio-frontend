@@ -9,6 +9,7 @@ import { IFuncionario } from '~/types/IFuncionario'
 export default class FuncionariosModule extends VuexModule {
   funcionarios: IFuncionario[] = [
     {
+      id: 1,
       nome: 'Cynthia',
       sobrenome: 'Grimes',
       cargo: 'Desenvolvedor Full-Stack Sênior',
@@ -16,6 +17,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 16,
     },
     {
+      id: 2,
       nome: 'Ivor',
       sobrenome: 'Owens',
       cargo: 'Desenvolvedor Front-End Pleno',
@@ -23,6 +25,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 29,
     },
     {
+      id: 3,
       nome: 'Reed',
       sobrenome: 'Frederick',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -30,6 +33,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 42,
     },
     {
+      id: 4,
       nome: 'Ina',
       sobrenome: 'Baker',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -37,6 +41,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 32,
     },
     {
+      id: 5,
       nome: 'Kermit',
       sobrenome: 'Morris',
       cargo: 'Desenvolvedor Full-Stack Júnior',
@@ -44,6 +49,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 9,
     },
     {
+      id: 6,
       nome: 'Ryder',
       sobrenome: 'Patterson',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -51,6 +57,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 44,
     },
     {
+      id: 7,
       nome: 'Brent',
       sobrenome: 'Klein',
       cargo: 'Desenvolvedor Front-End Sênior',
@@ -58,6 +65,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 9,
     },
     {
+      id: 8,
       nome: 'Jillian',
       sobrenome: 'Moss',
       cargo: 'Desenvolvedor Full-Stack Pleno',
@@ -65,6 +73,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 40,
     },
     {
+      id: 9,
       nome: 'Shafira',
       sobrenome: 'Rocha',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -72,6 +81,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 42,
     },
     {
+      id: 10,
       nome: 'Philip',
       sobrenome: 'Leach',
       cargo: 'Desenvolvedor Full-Stack Pleno',
@@ -79,6 +89,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 22,
     },
     {
+      id: 11,
       nome: 'Lisandra',
       sobrenome: 'Guy',
       cargo: 'Desenvolvedor Full-Stack Júnior',
@@ -86,6 +97,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 46,
     },
     {
+      id: 12,
       nome: 'Jillian',
       sobrenome: 'Henderson',
       cargo: 'Desenvolvedor Full-Stack Sênior',
@@ -93,6 +105,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 22,
     },
     {
+      id: 13,
       nome: 'Clark',
       sobrenome: 'Carrillo',
       cargo: 'Desenvolvedor Back-End Pleno',
@@ -100,6 +113,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 43,
     },
     {
+      id: 14,
       nome: 'Myles',
       sobrenome: 'Kerr',
       cargo: 'Desenvolvedor Full-Stack Júnior',
@@ -107,6 +121,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 43,
     },
     {
+      id: 15,
       nome: 'Charles',
       sobrenome: 'Carr',
       cargo: 'Desenvolvedor Full-Stack Pleno',
@@ -114,6 +129,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 2,
     },
     {
+      id: 16,
       nome: 'Bernard',
       sobrenome: 'Rush',
       cargo: 'Desenvolvedor Full-Stack Sênior',
@@ -121,6 +137,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 33,
     },
     {
+      id: 17,
       nome: 'Ulysses',
       sobrenome: 'Collins',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -128,6 +145,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 45,
     },
     {
+      id: 18,
       nome: 'Macaulay',
       sobrenome: 'Perez',
       cargo: 'Desenvolvedor Front-End Sênior',
@@ -135,6 +153,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 40,
     },
     {
+      id: 19,
       nome: 'Anika',
       sobrenome: 'Cobb',
       cargo: 'Desenvolvedor Full-Stack Sênior',
@@ -142,6 +161,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 41,
     },
     {
+      id: 20,
       nome: 'Cyrus',
       sobrenome: 'Dean',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -149,6 +169,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 27,
     },
     {
+      id: 21,
       nome: 'Rashad',
       sobrenome: 'Nash',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -156,6 +177,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 8,
     },
     {
+      id: 22,
       nome: 'Delilah',
       sobrenome: 'Whitehead',
       cargo: 'Desenvolvedor Front-End Sênior',
@@ -163,6 +185,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 33,
     },
     {
+      id: 23,
       nome: 'Kato',
       sobrenome: 'Fischer',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -170,6 +193,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 24,
     },
     {
+      id: 24,
       nome: 'Quynn',
       sobrenome: 'Webster',
       cargo: 'Desenvolvedor Front-End Pleno',
@@ -177,6 +201,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 41,
     },
     {
+      id: 25,
       nome: 'Catherine',
       sobrenome: 'Chapman',
       cargo: 'Desenvolvedor Back-End Júnior',
@@ -184,6 +209,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 24,
     },
     {
+      id: 26,
       nome: 'Baker',
       sobrenome: 'Mcleod',
       cargo: 'Desenvolvedor Back-End Júnior',
@@ -191,6 +217,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 27,
     },
     {
+      id: 27,
       nome: 'Maris',
       sobrenome: 'Castaneda',
       cargo: 'Desenvolvedor Front-End Pleno',
@@ -198,6 +225,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 16,
     },
     {
+      id: 28,
       nome: 'Velma',
       sobrenome: 'Steele',
       cargo: 'Desenvolvedor Full-Stack Júnior',
@@ -205,6 +233,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 24,
     },
     {
+      id: 29,
       nome: 'Hanna',
       sobrenome: 'Meyers',
       cargo: 'Desenvolvedor Front-End Sênior',
@@ -212,6 +241,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 31,
     },
     {
+      id: 30,
       nome: 'Paula',
       sobrenome: 'Carver',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -219,6 +249,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 13,
     },
     {
+      id: 31,
       nome: 'Anjolie',
       sobrenome: 'Mcintosh',
       cargo: 'Desenvolvedor Front-End Sênior',
@@ -226,6 +257,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 30,
     },
     {
+      id: 32,
       nome: 'Angelica',
       sobrenome: 'Hurst',
       cargo: 'Desenvolvedor Back-End Júnior',
@@ -233,6 +265,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 24,
     },
     {
+      id: 33,
       nome: 'Herman',
       sobrenome: 'Stark',
       cargo: 'Desenvolvedor Back-End Júnior',
@@ -240,6 +273,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 14,
     },
     {
+      id: 34,
       nome: 'Brady',
       sobrenome: 'Skinner',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -247,6 +281,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 45,
     },
     {
+      id: 35,
       nome: 'Wayne',
       sobrenome: 'Duran',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -254,6 +289,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 17,
     },
     {
+      id: 36,
       nome: 'Mohammad',
       sobrenome: 'Hewitt',
       cargo: 'Desenvolvedor Full-Stack Sênior',
@@ -261,6 +297,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 2,
     },
     {
+      id: 37,
       nome: 'Mona',
       sobrenome: 'Tate',
       cargo: 'Desenvolvedor Full-Stack Sênior',
@@ -268,6 +305,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 18,
     },
     {
+      id: 38,
       nome: 'Gage',
       sobrenome: 'Knox',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -275,6 +313,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 6,
     },
     {
+      id: 39,
       nome: 'Wynter',
       sobrenome: 'Dominguez',
       cargo: 'Desenvolvedor Front-End Sênior',
@@ -282,6 +321,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 25,
     },
     {
+      id: 40,
       nome: 'Joan',
       sobrenome: 'Macias',
       cargo: 'Lead Tech',
@@ -289,6 +329,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 17,
     },
     {
+      id: 41,
       nome: 'Ramona',
       sobrenome: 'Bradley',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -296,6 +337,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 1,
     },
     {
+      id: 42,
       nome: 'Armand',
       sobrenome: 'Leblanc',
       cargo: 'Desenvolvedor Full-Stack Pleno',
@@ -303,6 +345,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 19,
     },
     {
+      id: 43,
       nome: 'Elmo',
       sobrenome: 'Shaw',
       cargo: 'Desenvolvedor Front-End Júnior',
@@ -310,6 +353,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 10,
     },
     {
+      id: 44,
       nome: 'Wayne',
       sobrenome: 'Jordan',
       cargo: 'Desenvolvedor Full-Stack Pleno',
@@ -317,6 +361,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 2,
     },
     {
+      id: 45,
       nome: 'Dieter',
       sobrenome: 'Logan',
       cargo: 'Desenvolvedor Full-Stack Pleno',
@@ -324,6 +369,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 4,
     },
     {
+      id: 46,
       nome: 'Daphne',
       sobrenome: 'Roy',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -331,6 +377,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 23,
     },
     {
+      id: 47,
       nome: 'Hayley',
       sobrenome: 'Guzman',
       cargo: 'Desenvolvedor Full-Stack Júnior',
@@ -338,6 +385,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 39,
     },
     {
+      id: 48,
       nome: 'Emily',
       sobrenome: 'Browning',
       cargo: 'Desenvolvedor Back-End Pleno',
@@ -345,6 +393,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 21,
     },
     {
+      id: 49,
       nome: 'Desirae',
       sobrenome: 'Santos',
       cargo: 'Lead Tech',
@@ -352,6 +401,7 @@ export default class FuncionariosModule extends VuexModule {
       contratado: 13,
     },
     {
+      id: 50,
       nome: 'Brenda',
       sobrenome: 'Rush',
       cargo: 'Desenvolvedor Back-End Sênior',
@@ -363,5 +413,10 @@ export default class FuncionariosModule extends VuexModule {
   @VuexMutation
   ADICIONA_FUNCIONARIO(funcionario: IFuncionario) {
     this.funcionarios.push(funcionario)
+  }
+
+  @VuexMutation
+  DELETE_FUNCIONARIO(id: number) {
+    this.funcionarios = this.funcionarios.filter((f) => f.id !== id)
   }
 }
