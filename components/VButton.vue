@@ -1,5 +1,9 @@
 <template>
-  <button class="btn cursor-pointer pa-2 border-0" :class="{ 'btn--text bg-transparent': text }" @click="$emit('click')">
+  <button
+    class="btn cursor-pointer pa-2 border-0"
+    :class="{ 'btn--text bg-transparent': text }"
+    @click="$emit('click')"
+  >
     <slot />
   </button>
 </template>
