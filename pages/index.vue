@@ -30,9 +30,7 @@
     <section>
       <div class="flex justify-space-between items-end">
         <h3>Relação de Funcionários</h3>
-        <VButton @click="modalAdicao = true">
-          Adicionar Funcionário
-        </VButton>
+        <VButton @click="modalAdicao = true"> Adicionar Funcionário </VButton>
         <VModal v-model="modalAdicao" class-width="w-40">
           <template #header>
             <div class="flex justify-space-between">
@@ -71,11 +69,18 @@
         <template #body>
           <p class="text-center">Deseja mesmo remover este usuário?</p>
           <div class="text-center mt-6">
-            <VButton :text="true" @click="fechaRemocao">Cancelar Remoção</VButton>
-            <VButton class="ml-3" @click="remocaoConfirmada">Confirmar Remoção</VButton>
+            <VButton :text="true" @click="fechaRemocao"
+              >Cancelar Remoção</VButton
+            >
+            <VButton class="ml-3" @click="remocaoConfirmada"
+              >Confirmar Remoção</VButton
+            >
           </div>
         </template>
       </VModal>
+    </section>
+    <section class="mt-6">
+      <VDropzone />
     </section>
   </div>
 </template>
@@ -88,12 +93,16 @@ import { IHeaderTable } from '~/types/IHeaderTable'
 import { ICampoFormulario } from '~/types/ICampoFormulario'
 import { IFuncionario } from '~/types/IFuncionario'
 
+const arquivosStore = namespace('arquivos')
 const funcionariosStore = namespace('funcionarios')
 const notificacoesStore = namespace('notificacoes')
 
 @Component
 export default class IndexPage extends Vue {
   @Ref('formComponent') readonly formulario!: FormComponent
+
+  @arquivosStore.State('arquivos')
+  arquivosEnviados!: File[]
 
   @funcionariosStore.State
   readonly funcionarios!: IFuncionario[]
@@ -105,8 +114,6 @@ export default class IndexPage extends Vue {
   readonly notificacoes!: Array<{ icon: string[]; text: string }>
 
   modalAdicao = false
-  arquivosEnviados = []
-
   modalRemocao = false
   promiseRemocao: Promise<number> | undefined = undefined
 

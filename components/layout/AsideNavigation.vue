@@ -55,11 +55,6 @@ export default class AsideNavigationComponent extends Vue {
       title: 'Mensagens',
     },
     {
-      icon: ['fas', 'upload'],
-      link: '/',
-      title: 'Upload',
-    },
-    {
       icon: ['far', 'user'],
       link: '/',
       title: 'Perfil',
