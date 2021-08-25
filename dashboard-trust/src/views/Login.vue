@@ -14,6 +14,7 @@
             <b-form>
               <b-form-group label="E-mail:">
                 <b-form-input
+                  v-model="dados_acesso.login"
                   id="input-1"
                   type="email"
                   placeholder="email@dominio.com"
@@ -22,6 +23,7 @@
               </b-form-group>
               <b-form-group label="Senha:">
                 <b-form-input
+                  v-model="dados_acesso.senha"
                   id="input-2"
                   type="password"
                   placeholder="super senha"
@@ -35,6 +37,7 @@
                   >esqueci minha senha</small
                 >
                 <b-button
+                  @click.prevent="logar()"
                   class="float-right px-5"
                   type="submit"
                   variant="outline-light"
@@ -61,6 +64,22 @@ export default {
   components: {
     Header,
     Banner,
+  },
+  data() {
+    return {
+      dados_acesso: {
+        carregando: false,
+        login: "",
+        senha: null,
+      },
+    };
+  },
+  methods: {
+    logar() {
+      this.$store.dispatch("obterUsuario", this.dados_acesso).then(() => {
+        this.$router.push({ name: "Home" });
+      });
+    },
   },
 };
 </script>

@@ -18,16 +18,13 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown v-if="usuario" right>
+          <b-nav-item-dropdown v-if="usuario.nome" right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
               <b-avatar class="mr-2" :text="iniciais"></b-avatar>
-              <em>Junior Araújo</em>
+              <em>{{ usuario.nome }}</em>
             </template>
-            <b-dropdown-item href="#">Adicionar Funcionário</b-dropdown-item>
-            <b-dropdown-item>
-              <router-link to="/login">Sair</router-link>
-            </b-dropdown-item>
+            <b-dropdown-item @click="sair()">Sair</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -36,16 +33,26 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Header",
+  computed: {
+    ...mapState(["usuario"]),
+  },
   data() {
     return {
-      usuario: null,
-      iniciais: "",
+      iniciais: "JA",
     };
   },
-  methods: {},
-  created() {},
+  methods: {
+    sair() {
+      this.$store.dispatch("deslogarUsuario");
+      window.localStorage.removeItem("user");
+      window.localStorage.removeItem("password");
+      this.$router.push({ name: "Login" });
+    },
+  },
 };
 </script>
 

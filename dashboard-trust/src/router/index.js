@@ -8,13 +8,20 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    redirect: { name: "Login" },
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/dashboard",
+    name: "Home",
+    component: Home,
+    meta: {
+      login: true,
+    },
   },
 ];
 
@@ -25,6 +32,21 @@ const router = new VueRouter({
   scrollBehavior() {
     return window.scrollTo({ top: 0, behavior: "smooth" });
   },
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.login)) {
+    if (
+      window.localStorage.user !== "cabralwd@icloud.com" &&
+      window.localStorage.password !== "123"
+    ) {
+      next("/login");
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
