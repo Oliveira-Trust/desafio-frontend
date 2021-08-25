@@ -7,31 +7,6 @@
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
 
-// Consulta de media queries
-@mixin tamanho-tela($size) {
-  @if $size==apenas-celular {
-    @media (max-width: 575.98px) {
-      @content;
-    }
-  } @else if $size==celular {
-    @media (min-width: 576px) {
-      @content;
-    }
-  } @else if $size==tablet {
-    @media (min-width: 768px) {
-      @content;
-    }
-  } @else if $size==desktop {
-    @media (min-width: 992px) {
-      @content;
-    }
-  } @else if $size==desktop-up {
-    @media (min-width: 1200px) {
-      @content;
-    }
-  }
-}
-
 * {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -39,12 +14,16 @@
   --red-2: #f10000ff;
   --rosso-corsa: #e30000ff;
   --rosso-corsa-2: #d40000ff;
-  --international-orange-engineering: #c60000ff;
-  --international-orange-engineering-2: #b80000ff;
-  --rufous: #aa0000ff;
-  --rufous-2: #9b0000ff;
-  --dark-red: #8d0000ff;
-  --maroon-web: #7f0000ff;
+  --rich-black-fogra-29: #001219ff;
+  --blue-sapphire: #005f73ff;
+  --viridian-green: #0a9396ff;
+  --middle-blue-green: #94d2bdff;
+  --medium-champagne: #e9d8a6ff;
+  --gamboge: #ee9b00ff;
+  --alloy-orange: #ca6702ff;
+  --mahogany: #bb3e03ff;
+  --rufous: #ae2012ff;
+  --ruby-red: #9b2226ff;
   --light: #ffffff;
   --dark: #353535;
   --gray: #4f4f4f;
@@ -52,7 +31,7 @@
 
 html,
 body {
-  height: 105vh;
+  min-height: 105vh;
 }
 
 img {
@@ -69,13 +48,17 @@ img {
     color: var(--light);
     margin-bottom: 80px;
 
-    @include tamanho-tela(tablet) {
+    small {
+      font-size: 1.225rem;
+    }
+
+    @media screen and (min-width: 768px) {
       font-size: 2.18rem;
       margin-bottom: 50px;
       text-align: initial;
     }
 
-    @include tamanho-tela(desktop) {
+    @media screen and (min-width: 992px) {
       margin-bottom: 50px;
     }
   }

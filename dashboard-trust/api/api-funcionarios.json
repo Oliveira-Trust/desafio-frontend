@@ -1,0 +1,20 @@
+{
+  "usuario": [
+    {
+      "id": "cabralwd@icloud.com",
+      "nome": "Junior Araújo",
+      "email": "cabralwd@icloud.com",
+      "senha": "123"
+    }
+  ],
+  "funcionarios": [
+    {
+      "id": 1,
+      "nome_completo": "Marcelo Almeida",
+      "cargo": "diretor executivo",
+      "setor": "financeiro",
+      "tempo": "2 anos",
+      "tem_arquivo": false
+    }
+  ]
+}

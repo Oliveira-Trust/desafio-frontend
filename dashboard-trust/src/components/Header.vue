@@ -7,8 +7,10 @@
       fixed="top"
       class="shadow-sm"
     >
-      <b-navbar-brand to="/">
-        <img src="../assets/logotipo.svg" alt="" />
+      <b-navbar-brand>
+        <router-link to="/">
+          <img src="../assets/logotipo.svg" alt="" />
+        </router-link>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -23,7 +25,9 @@
               <em>Junior Araújo</em>
             </template>
             <b-dropdown-item href="#">Adicionar Funcionário</b-dropdown-item>
-            <b-dropdown-item href="#">Sair</b-dropdown-item>
+            <b-dropdown-item>
+              <router-link to="/login">Sair</router-link>
+            </b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

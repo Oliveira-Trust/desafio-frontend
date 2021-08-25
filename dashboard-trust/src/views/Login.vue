@@ -9,7 +9,7 @@
             <h1 class="titulo">Olá, infome seu login e senha</h1>
           </b-col>
         </b-row>
-        <b-row class="fundo-login py-5 px-3 rounded lg">
+        <b-row class="fundo-login py-5 px-3 rounded lg shadow">
           <b-col lg="4">
             <b-form>
               <b-form-group label="E-mail:">
@@ -22,7 +22,7 @@
               </b-form-group>
               <b-form-group label="Senha:">
                 <b-form-input
-                  id="input-1"
+                  id="input-2"
                   type="password"
                   placeholder="super senha"
                   required
@@ -38,12 +38,12 @@
                   class="float-right px-5"
                   type="submit"
                   variant="outline-light"
-                  >logar</b-button
+                  >fazer login</b-button
                 >
               </div>
             </b-form>
           </b-col>
-          <b-col lg="8" class="my-5 mt-lg-0">
+          <b-col lg="8" class="mt-5 mt-lg-0">
             <img src="https://i.ibb.co/zngBVGC/Mask-Group.jpg" alt="" />
           </b-col>
         </b-row>
@@ -67,7 +67,11 @@ export default {
 
 <style lang="scss" scoped>
 .fundo-login {
-  background: var(--maroon-web);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 95, 115, 1) 0%,
+    rgba(174, 32, 18, 1) 100%
+  );
   color: var(--light);
 }
 </style>
