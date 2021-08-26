@@ -34,6 +34,9 @@ yarn lint
 
 ```
 json-server --watch api/api-funcionarios.json --port 3004 (in dashborard-trust paste)
+
+usuário: cabralwd@icloud.com
+senha: 123
 ```
 
 ### Customize configuration

@@ -2,27 +2,119 @@
   "usuario": [
     {
       "id": "cabralwd@icloud.com",
-      "nome": "Junior Araújo",
+      "nome": "Junior Araújo Cabral Dias",
       "email": "cabralwd@icloud.com",
       "senha": "123"
     }
   ],
-  "funcionarios": [
+  "cargos": [
     {
-      "nome_completo": "Junior Araújo",
-      "cargo": "Gerente de contas",
-      "setor": "Contabilidade",
-      "tempo": "2021-05-05",
-      "tem_arquivo": false,
+      "value": "Gerente de contas",
       "id": 1
     },
     {
-      "nome_completo": "Marcos Fonseca",
-      "cargo": "Gerente de contas",
-      "setor": "Contabilidade",
-      "tempo": "2021-08-27",
+      "value": "Consultor de vendas",
+      "id": 2
+    },
+    {
+      "value": "Agente administrativo",
+      "id": 3
+    },
+    {
+      "value": "Operador de teleatendimento",
+      "id": 4
+    },
+    {
+      "value": "Promotor de vendas",
+      "id": 5
+    },
+    {
+      "value": "Agente de segurança",
+      "id": 6
+    },
+    {
+      "value": "Operador de estufas mecânicas",
+      "id": 7
+    },
+    {
+      "value": "Auxiliar de encanador",
+      "id": 8
+    },
+    {
+      "value": "Analista Big Data",
+      "id": 9
+    },
+    {
+      "value": "Fisioterapeuta geral",
+      "id": 10
+    },
+    {
+      "value": "Auxiliar de eletrônica",
+      "id": 11
+    }
+  ],
+  "setores": [
+    {
+      "value": "Automotivo",
+      "id": 1
+    },
+    {
+      "value": "Saúde",
+      "id": 2
+    },
+    {
+      "value": "Tecnologia",
+      "id": 3
+    },
+    {
+      "value": "Imobiliário",
+      "id": 4
+    },
+    {
+      "value": "Comunicações",
+      "id": 5
+    },
+    {
+      "value": "Consumo Cíclico",
+      "id": 6
+    },
+    {
+      "value": "Financeiro",
+      "id": 7
+    },
+    {
+      "value": "Aéreo",
+      "id": 8
+    },
+    {
+      "value": "Outros",
+      "id": 9
+    }
+  ],
+  "funcionarios": [
+    {
+      "nome_completo": "Amanda Gomes",
+      "cargo": "Operador de teleatendimento",
+      "setor": "Comunicações",
+      "tempo": "2015-08-06",
+      "tem_arquivo": true,
+      "id": 1
+    },
+    {
+      "nome_completo": "Junior Araújo",
+      "cargo": "Operador de estufas mecânicas",
+      "setor": "Aéreo",
+      "tempo": "2016-08-04",
       "tem_arquivo": false,
       "id": 2
+    },
+    {
+      "nome_completo": "Marcos Lima",
+      "cargo": "Promotor de vendas",
+      "setor": "Aéreo",
+      "tempo": "2021-07-01",
+      "tem_arquivo": false,
+      "id": 3
     }
   ]
 }

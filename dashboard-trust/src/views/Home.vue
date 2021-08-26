@@ -19,7 +19,7 @@
               class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
             >
               <div>
-                <h3 class="m-0 p-0">50</h3>
+                <h3 class="m-0 p-0">{{ funcionarios.length }}</h3>
                 <p>Funcionários</p>
               </div>
             </div>
@@ -29,7 +29,7 @@
               class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
             >
               <div>
-                <h3 class="m-0 p-0">12</h3>
+                <h3 class="m-0 p-0">{{ mostrarQtdCargos }}</h3>
                 <p>Cargos</p>
               </div>
             </div>
@@ -39,7 +39,7 @@
               class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
             >
               <div>
-                <h3 class="m-0 p-0">5</h3>
+                <h3 class="m-0 p-0">{{ mostrarQtdSetores }}</h3>
                 <p>Setores</p>
               </div>
             </div>
@@ -63,11 +63,12 @@
         </b-row>
 
         <div id="formulario"></div>
-        <b-form class="formulario" v-show="mostrarForm">
+        <b-form class="formulario" v-show="mostrarForm" :validated="true">
           <b-row tag="section">
             <b-col lg="2">
               <b-form-group label="Nome completo:">
                 <b-form-input
+                  v-model="novoUsuario.nome_completo"
                   id="input-1"
                   type="text"
                   placeholder="Nome e Sobrenome"
@@ -78,33 +79,63 @@
             <b-col lg="2">
               <b-form-group label="Cargo:">
                 <b-form-select
-                  v-model="cargos.selected"
+                  required
+                  v-model="novoUsuario.cargo"
                   :options="cargos.options"
-                ></b-form-select>
+                >
+                  <template #first>
+                    <b-form-select-option :value="null" disabled
+                      >Escolha o cargo</b-form-select-option
+                    >
+                  </template>
+                </b-form-select>
               </b-form-group>
             </b-col>
             <b-col lg="2">
               <b-form-group label="Setor:">
                 <b-form-select
-                  v-model="setores.selected"
+                  required
+                  v-model="novoUsuario.setor"
                   :options="setores.options"
-                ></b-form-select>
+                >
+                  <template #first>
+                    <b-form-select-option :value="null" disabled
+                      >Escolha o setor</b-form-select-option
+                    >
+                  </template>
+                </b-form-select>
               </b-form-group>
             </b-col>
             <b-col lg="4">
               <b-form-group label="Data de admissão:">
                 <b-form-datepicker
+                  required
                   id="example-datepicker"
-                  v-model="dataAdmissao"
+                  v-model="novoUsuario.tempo"
+                  locale="pt"
+                  :close-button="true"
+                  close-button-variant="danger"
+                  :dark="false"
+                  :hide-header="true"
+                  label-help="Use as setas do teclado para controlar"
+                  label-close-button="fechar calendário"
+                  label-next-month="próximo mês"
+                  label-prev-month="mês anterior"
+                  label-next-year="próximo ano"
+                  label-prev-year="ano anterior"
+                  label-no-date-selected="Selecione uma data"
+                  :max="new Date()"
                   class="mb-2"
                 ></b-form-datepicker>
               </b-form-group>
             </b-col>
             <b-col lg="2">
               <b-button
+                @click="enviarFuncionario"
                 class="w-100 botao-adicionar mb-5 mb-lg-0"
                 type="submit"
                 variant="success"
+                :disabled="liberarBotao"
                 >Adicionar</b-button
               >
             </b-col>
@@ -113,48 +144,70 @@
       </b-container>
 
       <b-container class="funcionarios">
-        <b-row class="align-items-center">
+        <b-row v-if="funcionarios.length">
           <b-col>
-            <b-row class="item">
+            <b-row
+              class="item"
+              v-for="funcionario in funcionarios.slice().reverse()"
+              :key="funcionario.id"
+            >
               <b-col lg="3" class="d-flex align-items-center"
                 ><p class="p-0 m-0">
-                  <span>Nome:</span> Marcelo Almeida
+                  <span>Nome:</span> {{ funcionario.nome_completo }}
                 </p></b-col
               >
               <b-col lg="3" class="d-flex align-items-center"
                 ><p class="p-0 m-0">
-                  <span>Cargo:</span> Diretor Executivo
+                  <span>Cargo:</span> {{ funcionario.cargo }}
                 </p></b-col
               >
               <b-col lg="2" class="d-flex align-items-center"
-                ><p class="p-0 m-0"><span>Setor:</span> Financeiro</p></b-col
+                ><p class="p-0 m-0">
+                  <span>Setor:</span> {{ funcionario.setor }}
+                </p></b-col
               >
               <b-col lg="2" class="d-flex align-items-center"
-                ><p class="p-0 m-0"><span>Tempo:</span> 2 anos</p></b-col
+                ><p class="p-0 m-0">
+                  <span>Tempo:</span> {{ funcionario.tempo | FormatandoData }}
+                </p></b-col
               >
 
               <b-col
                 lg="2"
                 class="d-flex align-items-center justify-content-end"
               >
-                <b-button class="mr-2" size="sm" variant="success"
+                <b-button
+                  v-if="funcionario.tem_arquivo"
+                  class="mr-2"
+                  size="sm"
+                  variant="success"
+                  v-b-tooltip.hover.top="'Tem 1 arquivo'"
                   ><b-icon icon="paperclip"></b-icon
                 ></b-button>
 
                 <b-button
-                  @click="subirArquivo()"
+                  @click="subirArquivo(funcionario)"
                   class="mr-2"
                   size="sm"
                   variant="warning"
                   ><b-icon icon="cloud-upload"></b-icon
                 ></b-button>
 
-                <b-button size="sm" variant="danger"
+                <b-button
+                  @click="removerFuncionario(funcionario.id)"
+                  size="sm"
+                  variant="danger"
                   ><b-icon icon="trash"></b-icon
                 ></b-button>
               </b-col>
             </b-row>
           </b-col>
+        </b-row>
+
+        <b-row v-else>
+          <h6 class="text-center w-100">
+            Não há funcionários cadastrados!
+          </h6>
         </b-row>
       </b-container>
     </main>
@@ -163,6 +216,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 
@@ -175,24 +229,52 @@ export default {
   data() {
     return {
       mostrarForm: false,
-      dataAdmissao: null,
+      funcionarios: [],
       cargos: {
-        selected: null,
-        options: [
-          { value: null, text: "Escolha o cargo" },
-          { value: "Gerente de contas", text: "Gerente de contas" },
-        ],
+        options: [],
       },
       setores: {
-        selected: null,
-        options: [
-          { value: null, text: "Escolha o setor" },
-          { value: "Contabilidade", text: "Contabilidade" },
-        ],
+        options: [],
+      },
+      novoUsuario: {
+        nome_completo: null,
+        cargo: null,
+        setor: null,
+        tempo: null,
+        tem_arquivo: false,
       },
     };
   },
+  computed: {
+    liberarBotao() {
+      if (
+        this.novoUsuario.nome_completo &&
+        this.novoUsuario.cargo &&
+        this.novoUsuario.setor &&
+        this.novoUsuario.tempo
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    mostrarQtdCargos() {
+      return this.removerDuplicados(this.funcionarios, "cargo");
+    },
+    mostrarQtdSetores() {
+      return this.removerDuplicados(this.funcionarios, "setor");
+    },
+  },
   methods: {
+    removerDuplicados(obj, chave) {
+      let lista = new Set();
+
+      obj.forEach((item) => {
+        lista.add(item[`${chave}`]);
+      });
+
+      return [...lista.values()].length;
+    },
     abrirForm() {
       let topSet = document.querySelector("#formulario").offsetTop;
       this.mostrarForm = !this.mostrarForm;
@@ -201,7 +283,7 @@ export default {
         window.scrollTo({ top: topSet, behavior: "smooth" });
       }
     },
-    subirArquivo() {
+    subirArquivo(funcionario) {
       Swal.fire({
         icon: "question",
         title: "Selecione um arquivo",
@@ -216,11 +298,19 @@ export default {
         },
       }).then((result) => {
         if (result.value) {
-          Swal.fire({
-            icon: "success",
-            title: "Arquivo enviado com sucesso",
-            confirmButtonColor: "#28a745",
-          });
+          // Apenas para exemplificar o contexto, nessa API Fake não da pra subir arquivos.
+          axios
+            .patch(`http://localhost:3004/funcionarios/${funcionario.id}`, {
+              tem_arquivo: true,
+            })
+            .then(() => {
+              this.listarFuncionarios();
+              Swal.fire({
+                icon: "success",
+                title: "Arquivo enviado com sucesso",
+                confirmButtonColor: "#28a745",
+              });
+            });
         } else {
           Swal.fire({
             icon: "error",
@@ -230,6 +320,67 @@ export default {
         }
       });
     },
+    listarFuncionarios() {
+      axios.get("http://localhost:3004/funcionarios").then((response) => {
+        this.funcionarios = response.data;
+      });
+    },
+    listarCargos() {
+      axios.get("http://localhost:3004/cargos").then((response) => {
+        let cargos = [];
+        response.data.forEach((element) => {
+          cargos.push({ value: element.value, text: element.value });
+        });
+        this.cargos.options = cargos;
+      });
+    },
+    listarSetores() {
+      axios.get("http://localhost:3004/setores").then((response) => {
+        let setores = [];
+        response.data.forEach((element) => {
+          setores.push({ value: element.value, text: element.value });
+        });
+        this.setores.options = setores;
+      });
+    },
+    enviarFuncionario() {
+      axios
+        .post("http://localhost:3004/funcionarios", this.novoUsuario)
+        .then(() => {
+          this.listarFuncionarios();
+          this.novoUsuario.nome_completo = null;
+          this.novoUsuario.cargo = null;
+          this.novoUsuario.setor = null;
+          this.novoUsuario.tempo = null;
+          this.novoUsuario.tem_arquivo = false;
+        })
+        .catch((error) => {
+          window.alert(error);
+        });
+    },
+    removerFuncionario(id) {
+      Swal.fire({
+        icon: "question",
+        title: "tem certeza que deseja excluir esse funcionário?",
+        confirmButtonText: "sim",
+        confirmButtonColor: "#dc3545",
+        showCloseButton: true,
+      }).then((result) => {
+        if (result.isConfirmed)
+          axios.delete(`http://localhost:3004/funcionarios/${id}`).then(() => {
+            this.listarFuncionarios();
+          });
+      });
+    },
+  },
+  created() {
+    this.listarFuncionarios();
+    this.listarSetores();
+    this.listarCargos();
+
+    if (window.localStorage.user) {
+      this.$store.dispatch("manterLogado");
+    }
   },
 };
 </script>
@@ -287,7 +438,7 @@ export default {
     margin: 0;
     font-size: 0.9rem;
 
-    &:nth-child(1n) {
+    &:nth-child(2n + 1) {
       background: var(--gray);
       color: var(--light);
     }

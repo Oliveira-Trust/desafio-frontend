@@ -21,7 +21,7 @@
           <b-nav-item-dropdown v-if="usuario.nome" right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <b-avatar class="mr-2" :text="iniciais"></b-avatar>
+              <b-avatar class="mr-2" :text="iniciaisNome"></b-avatar>
               <em>{{ usuario.nome }}</em>
             </template>
             <b-dropdown-item @click="sair()">Sair</b-dropdown-item>
@@ -39,11 +39,11 @@ export default {
   name: "Header",
   computed: {
     ...mapState(["usuario"]),
-  },
-  data() {
-    return {
-      iniciais: "JA",
-    };
+    iniciaisNome() {
+      let nome_completo = this.usuario.nome.split(" ");
+      let iniciais = nome_completo[0].charAt(0) + nome_completo[1].charAt(0);
+      return iniciais;
+    },
   },
   methods: {
     sair() {
