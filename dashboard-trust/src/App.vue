@@ -26,7 +26,7 @@
   --ruby-red: #9b2226ff;
   --light: #ffffff;
   --dark: #353535;
-  --gray: #4f4f4f;
+  --gray: #dbdbdb;
 }
 
 html,
@@ -62,5 +62,29 @@ img {
       margin-bottom: 50px;
     }
   }
+}
+
+.page-item {
+  .page-link {
+    color: var(--rich-black-fogra-29) !important;
+  }
+
+  &.active {
+    .page-link {
+      color: var(--light) !important;
+      background-color: var(--rufous) !important;
+      border-color: var(--rufous) !important;
+    }
+  }
+}
+
+.fade-titulo-enter-to,
+.fade-titulo-leave-to {
+  transition: all 0.6s;
+}
+
+.fade-titulo-enter,
+.fade-titulo-leave-to {
+  opacity: 0;
 }
 </style>

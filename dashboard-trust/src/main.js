@@ -22,6 +22,13 @@ Vue.filter("FormatandoData", (data) => {
   ).fromNow();
 });
 
+Vue.filter("NomeSobrenome", (nomeCompleto) => {
+  let nomeAnterior = nomeCompleto.split(" "),
+    primeirosNomes = `${nomeAnterior[0]} ${nomeAnterior[1]}`;
+
+  return primeirosNomes;
+});
+
 Vue.config.productionTip = false;
 
 new Vue({

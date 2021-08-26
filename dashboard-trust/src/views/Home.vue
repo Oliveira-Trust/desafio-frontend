@@ -6,47 +6,53 @@
       <b-container>
         <b-row>
           <b-col>
-            <h1 class="titulo">
-              Bem vindo! <br />
-              <small>Veja o balanço atual:</small>
-            </h1>
+            <transition name="fade-titulo" mode="out-in" appear>
+              <h1 class="titulo">
+                Bem vindo! <br />
+                <small>Veja o balanço atual:</small>
+              </h1>
+            </transition>
           </b-col>
         </b-row>
 
-        <b-row tag="section" class="dashboard">
-          <b-col lg="4" class="mb-4 mb-lg-0">
-            <div
-              class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
-            >
-              <div>
-                <h3 class="m-0 p-0">{{ funcionarios.length }}</h3>
-                <p>Funcionários</p>
+        <!-- dashboard -->
+        <transition name="fade-dash" mode="out-in" appear>
+          <b-row tag="section" class="dashboard">
+            <b-col lg="4" class="mb-4 mb-lg-0">
+              <div
+                class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
+              >
+                <div>
+                  <h3 class="m-0 p-0">{{ funcionarios.length }}</h3>
+                  <p>Funcionários</p>
+                </div>
               </div>
-            </div>
-          </b-col>
-          <b-col lg="4" class="mb-4 mb-lg-0">
-            <div
-              class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
-            >
-              <div>
-                <h3 class="m-0 p-0">{{ mostrarQtdCargos }}</h3>
-                <p>Cargos</p>
+            </b-col>
+            <b-col lg="4" class="mb-4 mb-lg-0">
+              <div
+                class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
+              >
+                <div>
+                  <h3 class="m-0 p-0">{{ mostrarQtdCargos }}</h3>
+                  <p>Cargos</p>
+                </div>
               </div>
-            </div>
-          </b-col>
-          <b-col lg="4">
-            <div
-              class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
-            >
-              <div>
-                <h3 class="m-0 p-0">{{ mostrarQtdSetores }}</h3>
-                <p>Setores</p>
+            </b-col>
+            <b-col lg="4">
+              <div
+                class="infos d-flex justify-content-center align-items-center rounded-lg shadow-lg"
+              >
+                <div>
+                  <h3 class="m-0 p-0">{{ mostrarQtdSetores }}</h3>
+                  <p>Setores</p>
+                </div>
               </div>
-            </div>
-          </b-col>
-        </b-row>
+            </b-col>
+          </b-row>
+        </transition>
       </b-container>
 
+      <!-- Adicionar Funcionário -->
       <b-container class="add-funcionario">
         <b-row tag="section" class="mb-4">
           <b-col md="8">
@@ -57,150 +63,188 @@
               to="#formulario"
               class="add"
               @click.native="abrirForm()"
-              >Novo Funcionário <b-icon icon="plus-circle" class="ml-2"></b-icon
+              >{{ textoBotaoNovoFuncionario }}
+              <b-icon
+                v-if="!mostrarForm"
+                icon="plus-circle"
+                class="ml-2"
+              ></b-icon>
+              <b-icon v-else icon="arrow-up-circle" class="ml-2"></b-icon
             ></router-link>
           </b-col>
         </b-row>
 
         <div id="formulario"></div>
-        <b-form class="formulario" v-show="mostrarForm" :validated="true">
-          <b-row tag="section">
-            <b-col lg="2">
-              <b-form-group label="Nome completo:">
-                <b-form-input
-                  v-model="novoUsuario.nome_completo"
-                  id="input-1"
-                  type="text"
-                  placeholder="Nome e Sobrenome"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-            <b-col lg="2">
-              <b-form-group label="Cargo:">
-                <b-form-select
-                  required
-                  v-model="novoUsuario.cargo"
-                  :options="cargos.options"
+        <transition name="fade-form" mode="out-in">
+          <b-form class="formulario" v-show="mostrarForm" :validated="true">
+            <b-row tag="section">
+              <b-col lg="3">
+                <b-form-group label="Nome completo:">
+                  <b-form-input
+                    v-model="novoUsuario.nome_completo"
+                    id="input-1"
+                    type="text"
+                    placeholder="Nome e Sobrenome"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+              <b-col lg="2">
+                <b-form-group label="Cargo:">
+                  <b-form-select
+                    required
+                    v-model="novoUsuario.cargo"
+                    :options="cargos.options"
+                  >
+                    <template #first>
+                      <b-form-select-option :value="null" disabled
+                        >Escolha o cargo</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+              </b-col>
+              <b-col lg="2">
+                <b-form-group label="Setor:">
+                  <b-form-select
+                    required
+                    v-model="novoUsuario.setor"
+                    :options="setores.options"
+                  >
+                    <template #first>
+                      <b-form-select-option :value="null" disabled
+                        >Escolha o setor</b-form-select-option
+                      >
+                    </template>
+                  </b-form-select>
+                </b-form-group>
+              </b-col>
+              <b-col lg="3">
+                <b-form-group label="Data de admissão:">
+                  <b-form-datepicker
+                    required
+                    id="example-datepicker"
+                    v-model="novoUsuario.tempo"
+                    locale="pt"
+                    :close-button="false"
+                    :date-format-options="{
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    }"
+                    close-button-variant="danger"
+                    :dark="false"
+                    :hide-header="true"
+                    label-help="Use as setas do teclado para controlar"
+                    label-close-button="fechar calendário"
+                    label-next-month="próximo mês"
+                    label-prev-month="mês anterior"
+                    label-next-year="próximo ano"
+                    label-prev-year="ano anterior"
+                    label-no-date-selected="Selecione uma data"
+                    selected-variant="danger"
+                    nav-button-variant="dark"
+                    :max="new Date()"
+                    class="mb-2"
+                  ></b-form-datepicker>
+                </b-form-group>
+              </b-col>
+              <b-col lg="2">
+                <b-button
+                  @click.prevent="enviarFuncionario"
+                  class="w-100 botao-adicionar mb-5 mb-lg-0"
+                  type="submit"
+                  variant="success"
+                  :disabled="liberarBotao"
+                  >Adicionar</b-button
                 >
-                  <template #first>
-                    <b-form-select-option :value="null" disabled
-                      >Escolha o cargo</b-form-select-option
-                    >
-                  </template>
-                </b-form-select>
-              </b-form-group>
-            </b-col>
-            <b-col lg="2">
-              <b-form-group label="Setor:">
-                <b-form-select
-                  required
-                  v-model="novoUsuario.setor"
-                  :options="setores.options"
-                >
-                  <template #first>
-                    <b-form-select-option :value="null" disabled
-                      >Escolha o setor</b-form-select-option
-                    >
-                  </template>
-                </b-form-select>
-              </b-form-group>
-            </b-col>
-            <b-col lg="4">
-              <b-form-group label="Data de admissão:">
-                <b-form-datepicker
-                  required
-                  id="example-datepicker"
-                  v-model="novoUsuario.tempo"
-                  locale="pt"
-                  :close-button="true"
-                  close-button-variant="danger"
-                  :dark="false"
-                  :hide-header="true"
-                  label-help="Use as setas do teclado para controlar"
-                  label-close-button="fechar calendário"
-                  label-next-month="próximo mês"
-                  label-prev-month="mês anterior"
-                  label-next-year="próximo ano"
-                  label-prev-year="ano anterior"
-                  label-no-date-selected="Selecione uma data"
-                  :max="new Date()"
-                  class="mb-2"
-                ></b-form-datepicker>
-              </b-form-group>
-            </b-col>
-            <b-col lg="2">
-              <b-button
-                @click="enviarFuncionario"
-                class="w-100 botao-adicionar mb-5 mb-lg-0"
-                type="submit"
-                variant="success"
-                :disabled="liberarBotao"
-                >Adicionar</b-button
-              >
-            </b-col>
-          </b-row>
-        </b-form>
+              </b-col>
+            </b-row>
+          </b-form>
+        </transition>
       </b-container>
 
+      <!-- Lista de Funcionários -->
       <b-container class="funcionarios">
         <b-row v-if="funcionarios.length">
           <b-col>
-            <b-row
-              class="item"
-              v-for="funcionario in funcionarios.slice().reverse()"
-              :key="funcionario.id"
-            >
-              <b-col lg="3" class="d-flex align-items-center"
-                ><p class="p-0 m-0">
-                  <span>Nome:</span> {{ funcionario.nome_completo }}
-                </p></b-col
-              >
-              <b-col lg="3" class="d-flex align-items-center"
-                ><p class="p-0 m-0">
-                  <span>Cargo:</span> {{ funcionario.cargo }}
-                </p></b-col
-              >
-              <b-col lg="2" class="d-flex align-items-center"
-                ><p class="p-0 m-0">
-                  <span>Setor:</span> {{ funcionario.setor }}
-                </p></b-col
-              >
-              <b-col lg="2" class="d-flex align-items-center"
-                ><p class="p-0 m-0">
-                  <span>Tempo:</span> {{ funcionario.tempo | FormatandoData }}
-                </p></b-col
-              >
+            <transition-group name="fade" mode="out-in">
+              <div id="funcionarios-lista" key="funcionario">
+                <b-row
+                  class="item"
+                  :per-page="itensPorPagina"
+                  :current-page="paginaAtual"
+                  v-for="funcionario in listaFuncionarios"
+                  :key="funcionario.id"
+                >
+                  <b-col lg="3" class="d-flex align-items-center"
+                    ><p class="p-0 m-0">
+                      <span>Nome:</span>
+                      {{ funcionario.nome_completo | NomeSobrenome }}
+                    </p></b-col
+                  >
+                  <b-col lg="3" class="d-flex align-items-center"
+                    ><p class="p-0 m-0">
+                      <span>Cargo:</span> {{ funcionario.cargo }}
+                    </p></b-col
+                  >
+                  <b-col lg="2" class="d-flex align-items-center"
+                    ><p class="p-0 m-0">
+                      <span>Setor:</span> {{ funcionario.setor }}
+                    </p></b-col
+                  >
+                  <b-col lg="2" class="d-flex align-items-center"
+                    ><p class="p-0 m-0">
+                      <span>Admissão:</span>
+                      {{ funcionario.tempo | FormatandoData }}
+                    </p></b-col
+                  >
 
-              <b-col
-                lg="2"
-                class="d-flex align-items-center justify-content-end"
-              >
-                <b-button
-                  v-if="funcionario.tem_arquivo"
-                  class="mr-2"
-                  size="sm"
-                  variant="success"
-                  v-b-tooltip.hover.top="'Tem 1 arquivo'"
-                  ><b-icon icon="paperclip"></b-icon
-                ></b-button>
+                  <b-col
+                    lg="2"
+                    class="d-flex align-items-center justify-content-end"
+                  >
+                    <b-button
+                      v-if="funcionario.tem_arquivo"
+                      class="mr-2"
+                      size="sm"
+                      variant="success"
+                      v-b-tooltip.hover.top="'Tem 1 arquivo'"
+                      ><b-icon icon="paperclip"></b-icon
+                    ></b-button>
 
-                <b-button
-                  @click="subirArquivo(funcionario)"
-                  class="mr-2"
-                  size="sm"
-                  variant="warning"
-                  ><b-icon icon="cloud-upload"></b-icon
-                ></b-button>
+                    <b-button
+                      @click="subirArquivo(funcionario)"
+                      class="mr-2"
+                      size="sm"
+                      variant="warning"
+                      ><b-icon icon="cloud-upload"></b-icon
+                    ></b-button>
 
-                <b-button
-                  @click="removerFuncionario(funcionario.id)"
-                  size="sm"
-                  variant="danger"
-                  ><b-icon icon="trash"></b-icon
-                ></b-button>
-              </b-col>
-            </b-row>
+                    <b-button
+                      @click="removerFuncionario(funcionario.id)"
+                      size="sm"
+                      variant="danger"
+                      ><b-icon icon="trash"></b-icon
+                    ></b-button>
+                  </b-col>
+                </b-row>
+              </div>
+              <b-pagination
+                v-model="paginaAtual"
+                :per-page="itensPorPagina"
+                :total-rows="linhas"
+                key="paginacao"
+                aria-controls="funcionarios-lista"
+                pills
+                align="center"
+                class="mt-5"
+                first-text="Primeiro"
+                prev-text="Voltar"
+                next-text="Avançar"
+                last-text="Último"
+              ></b-pagination>
+            </transition-group>
           </b-col>
         </b-row>
 
@@ -229,6 +273,8 @@ export default {
   data() {
     return {
       mostrarForm: false,
+      paginaAtual: 1,
+      itensPorPagina: 5,
       funcionarios: [],
       cargos: {
         options: [],
@@ -263,6 +309,20 @@ export default {
     },
     mostrarQtdSetores() {
       return this.removerDuplicados(this.funcionarios, "setor");
+    },
+    listaFuncionarios() {
+      const items = this.funcionarios.slice().reverse();
+
+      return items.slice(
+        (this.paginaAtual - 1) * this.itensPorPagina,
+        this.paginaAtual * this.itensPorPagina
+      );
+    },
+    linhas() {
+      return this.funcionarios.length;
+    },
+    textoBotaoNovoFuncionario() {
+      return !this.mostrarForm ? "Novo Funcionário" : "Cancelar Adição";
     },
   },
   methods: {
@@ -347,6 +407,7 @@ export default {
       axios
         .post("http://localhost:3004/funcionarios", this.novoUsuario)
         .then(() => {
+          this.paginaAtual = 1;
           this.listarFuncionarios();
           this.novoUsuario.nome_completo = null;
           this.novoUsuario.cargo = null;
@@ -413,10 +474,13 @@ export default {
 
   .add {
     text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
     color: var(--dark);
 
     &:hover {
       text-decoration: none;
+      color: var(--gamboge);
     }
   }
 
@@ -440,12 +504,48 @@ export default {
 
     &:nth-child(2n + 1) {
       background: var(--gray);
-      color: var(--light);
+      color: var(--dark);
     }
 
     span {
       font-weight: 700;
     }
   }
+}
+
+.fade-move {
+  transition: transform 0.5s;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-form-enter-active,
+.fade-form-leave-active {
+  transition: all 0.3s;
+}
+
+.fade-form-enter,
+.fade-form-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -50px, 0);
+}
+
+.fade-dash-enter-active,
+.fade-dash-leave-active {
+  transition: all 1s;
+}
+
+.fade-dash-enter,
+.fade-dash-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 50px, 0);
 }
 </style>
