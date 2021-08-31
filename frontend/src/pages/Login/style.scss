@@ -1,0 +1,57 @@
+@import '@/assets/scss/_main';
+
+.login {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        width: 300px;
+    }
+
+    .content-login {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 400px;
+        height: 380px;
+        border: 3px solid $darkgray;
+        background-color: $lightgray;
+    }
+
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    form {
+        padding: 40px;
+    }
+
+    input {
+        border: 2px solid $gray;
+        margin-bottom: 20px;
+
+        &::placeholder {
+            color: lightgrey;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+
+    .btn-primary {
+        background: $red;
+        outline: none;
+        border-style: none;
+        margin-top: 20px;
+        
+        &:focus {
+            outline: none;
+            border-style: none;
+        }
+    }
+}

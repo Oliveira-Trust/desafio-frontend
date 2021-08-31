@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap'); 
+@import './colors';
+
+
+.main {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background-color: $white;
+    font-family: 'Lato', 'sans-serif';
+}
+
+.content-pages {
+    padding: 15px;
+    width: 60%;
+    margin-left: 27%;
+}
