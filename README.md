@@ -1,50 +1,112 @@
-### A Oliveira Trust:
-A Oliveira Trust é uma das maiores empresas do setor Financeiro com muito orgulho, desde 1991, realizamos as maiores transações do mercado de Títulos e Valores Mobiliários.
+<p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
+ </p>
 
-Somos uma empresa em que valorizamos o nosso colaborador em primeiro lugar, sempre! Alinhando isso com a nossa missão "Promover a satisfação dos nossos clientes e o desenvolvimento pessoal e profissional da nossa equipe", estamos construindo times excepcionais em Tecnologia, Comercial, Engenharia de Software, Produto, Financeiro, Jurídico e Data Science.
+## Desafio para candidatos à vaga de Desenvolvedor Front End (Jr/Pleno/Sênior).
+Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente
+da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua
+capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código
+legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar
+o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀
 
-Estamos buscando uma pessoa que seja movida a desafios, que saiba trabalhar em equipe e queira revolucionar o mercado financeiro!
+Não deixe de enviar o seu teste mesmo que incompleto!
 
-Front-end? Back-end? Full Stack? Analista de dados? Queremos conhecer gente boa, que goste de colocar a mão na massa, seja responsável e queira fazer história!
+## Tecnologias a serem utilizadas:
+* Vuejs (Fornecemos uma estrutura básica do aplicativo) 
+* CSS
+* HTML
 
-#### O que você precisa saber para entrar no nosso time: 🚀
-- Trabalhar com frameworks/libs (Vuejs, Jquery, Bootstrap)
-- Conhecimento com Javascript (VanillaJs) e novas features do EcmaScript
-- Bons conhecimentos em CSS3: Grid-layout, flexbox, animações, responsivo
-- Implementar API's com nossas interfaces
-- Conhecer alguma ferramenta para teste de requisição (Postman, insomnia)
+## Entrega:
+Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo
+e depois envie-nos o pull request. 
+Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado
+fazer o pull request.
 
-#### O que seria legal você saber também: 🚀
- - VueJs
- - SASS
- - Webpack
- - Conhecimento e interesse em UX / UI.
+Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 
-#### Ao entrar nessa jornada com o nosso time, você vai: 🚀
-- Trabalhar em uma equipe de tecnologia, em um ambiente leve e descontraído e vivenciar a experiência de mudar o mercado financeiro;
-- Dress code da forma que você se sentir mais confortável;
-- Flexibilidade para home office e horários;
-- Acesso a cursos patrocinados pela empresa;
+## O que vamos avaliar:
+- Legibilidade do código
+- Percepção da identidade do produto
+- Modularização
+- Lógica para aplicar a regra de negócio
+- Implementação das APIs
 
-#### Benefícios 🚀
-- Salário compatível com o mercado;
-- Vale Refeição;
-- Vale Alimentação;
-- Vale Transporte ou Vale Combustível;
-- Plano de Saúde e Odontológico;
-- Seguro de vida;
-- PLR Semestral;
-- Horário Flexível;
-- Parcerias em farmácias
+## Instruções para o desafio:
+Você deve implementar um aplicativo feito com Vuejs utilizando uma API de usuários fornecida no próprio projeto e uma API externa de conversão de moedas.
 
-#### Local: 🚀
-Barra da Tijuca, Rio de Janeiro, RJ
+## Obrigatórios:
+- Acompanhar identidade visual do [protótipo fornecido](http://prototipo-btc-carteiras.s3-website-sa-east-1.amazonaws.com/)
+- Listar os dados da API de usuários em uma tabela
+    - Deve conter todos os dados que achar relevante pela API (http://localhost:3004/users)
+    - Botões funcionais de editar(modal) e deletar registro p/ cada elemento
+- Possibilidade de adicionar novas carteiras através de um modal
+- Paginação da listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#paginate) do json-server)
+- Adicionar um filtro para listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#full-text-search) do json-server)
+- Conversão do saldo Bitcoin (BTC) de cada carteira para moeda escolhida. Ex.: BTC para BRL, USD, etc
 
-#### Conheça mais sobre nós! :sunglasses:
-- Website (https://www.oliveiratrust.com.br/)
-- LinkedIn (https://www.linkedin.com/company/oliveiratrust/)
+Pode utilizar qualquer API para conversão de moedas, mas recomendamos essa aqui: [https://docs.awesomeapi.com.br/api-de-moedas](https://docs.awesomeapi.com.br/api-de-moedas) pela facilidade e boa documentação.
 
-A Oliveira Trust acredita na inclusão e na promoção da diversidade em todas as suas formas. Temos como valores o respeito e valorização das pessoas e combatemos qualquer tipo de discriminação. Incentivamos a todos que se identifiquem com o perfil e requisitos das vagas disponíveis que candidatem, sem qualquer distinção.
+#### Exemplo de conversão da moeda:
+- **Parâmetros de entrada**:
+    - Moeda de origem: Bitcoin (BTC)
+    - Moeda de destino: Real (BRL)
+    - Valor para conversão ex.: BTC 0.2242509
+- **Parâmetros de saída**:
+    - Moeda de origem: Bitcoin (BTC)
+    - Moeda de destino: Real (BRL)
+    - Valor para conversão ex.: BTC 0.2242509
+    - Valor comprado em "Moeda de destino" ex.: R$ 53.054,00
+- **Critérios de aceitação**:
+    - Ao criar ou editar uma carteira, deve ser possível inserir um valor de compra tendo como resultado o valor que será adquirido na criptomoeda de destino.
+    
+#### Informações úteis da API de conversão de moedas:
+- Conversão BTC para BRL
+    - https://economia.awesomeapi.com.br/json/last/BTC-BRL
+- Moedas para conversão
+    - https://docs.awesomeapi.com.br/api-de-moedas#moedas-com-conversao-para
+- Tradução das moedas
+    - https://economia.awesomeapi.com.br/json/available/uniq
+- Combinações possíveis
+    - https://economia.awesomeapi.com.br/json/available
+- Legendas
+    - https://docs.awesomeapi.com.br/api-de-moedas#legendas
+    
+## Bônus
+- Validação dos inputs para funcionalidade de criar e editar carteira
+- Gerenciamento de estado (vuex)
+- Exportar dados da lista em CSV (Você pode utlizar alguma biblioteca npm para esta funcionalidade)
 
-## Pronto para o desafio? 🚀🚀🚀🚀
-https://github.com/Oliveira-Trust/desafio-frontend/blob/master/VAGA.md
+## Configurações do projeto
+
+É necessário possuir a biblioteca json-server instalada em sua máquina:
+
+```
+npm install -g json-server
+```
+Acesse a [documentação](https://github.com/typicode/json-server#getting-started) do json-server para entender melhor como manipular a API.
+
+Também será necessário instalar as dependências do projeto executando:
+
+```
+npm install
+```
+
+Finalmente podemos rodar o projeto e a API utilizando apenas um comando:
+
+```
+npm start
+```
+
+A api a ser consumida está rodando no endereço:
+
+```
+http://localhost:3004/users
+```
+
+e a aplicação em Vue.Js no endereço:
+
+```
+http://localhost:8080/
+```
+
+## Boa sorte! 🚀
