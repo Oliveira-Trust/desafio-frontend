@@ -16,11 +16,29 @@ body {
 				line-height: 80px;
 				margin: 0;
 				padding: 0;
-				font-size: 1.2rem;
+				font-size: 0;
 
 				img {
 					width: 250px;
 					margin-right: 1rem;
+				}
+
+				@media screen and (min-width: 940px) {
+					font-size: 1.1rem;
+				}
+			}
+
+			.btn-opened {
+				display: none;
+			}
+
+			@media screen and (min-width: 940px) {
+				.btn-opened {
+					display: block;
+				}
+
+				.btn-responsive {
+					display: none;
 				}
 			}
 
@@ -29,7 +47,47 @@ body {
 		.home-content {
 			padding: 2rem 0;
 			min-height: calc(100vh - 160px);
-			
+
+			.modal-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				min-height: 100vh;
+				background-color: rgba(#333, .3);
+				z-index: 1049;
+				cursor: pointer;
+
+				.modal {
+					display: block !important;
+					position: static !important;
+
+					.modal-dialog {
+						margin: 0 !important;
+						width: 100%;
+						max-width: 100%;
+						min-width: 100%;
+						min-height: 100vh;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						z-index: 1550;
+
+						.modal-content {
+							width: 300px;
+							max-width: 300px;
+						}
+
+						@media screen and (min-width: 940px) {
+							.modal-content {
+								width: 50%;
+								max-width: 500px;
+							}
+						}
+					}
+				}
+			}
+
 			.card-body {
 				margin-bottom: 1rem;
 
@@ -47,7 +105,10 @@ body {
 
 				.home-pagination {
 					display: flex;
-					align-items: center;
+					justify-content: space-between !important;
+					align-items: center !important;
+					font-size: .9rem;
+					margin-top: 1rem;
 				}
 			}
 		}

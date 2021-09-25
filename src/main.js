@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'vue-loading-overlay/dist/vue-loading.css';
-import methods from '@/utils/methods'
+import { methods } from '@/utils/methods'
 import routes from '@/routes'
 import store from '@/store'
 

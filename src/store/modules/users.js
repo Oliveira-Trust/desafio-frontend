@@ -6,9 +6,18 @@ const state = {
 
 const treatDataTable = data => {
 	if (data && Array.isArray(data)) {
-		data.map((item, index) => {
-			item.index = index + 1
-		}) 
+		try {
+			data.map((item, index) => {
+				item.index = index + 1
+				item.bitcoin = new Intl.NumberFormat('pt-br', {
+                    style: 'currency',
+                    currency: 'BTC',
+                    minimumFractionDigits: 2,
+                }).format(item.valor_carteira)
+			})
+		} catch (error) {
+			console.error(error)
+		}
 	}
 	return data
 }
@@ -26,16 +35,22 @@ const getters = {
 }
 
 const actions = {
-	setUser: ({ commit }, payload) => commit('setUser', payload),
-	setUserSearch: ({ commit }, payload) => commit('setUserSearch', payload),
-	setUserCollection: ({ commit }, payload) => commit('setUserCollection', payload),
+	setUser: ({
+		commit
+	}, payload) => commit('setUser', payload),
+	setUserSearch: ({
+		commit
+	}, payload) => commit('setUserSearch', payload),
+	setUserCollection: ({
+		commit
+	}, payload) => commit('setUserCollection', payload),
 }
 
 export default {
-    namespaced: true,
-    stateFactory: true,
-    state,
-    mutations,
-    getters,
-    actions,
+	namespaced: true,
+	stateFactory: true,
+	state,
+	mutations,
+	getters,
+	actions,
 }

@@ -2,35 +2,70 @@
     <div class="card card-body">
         <h5>Filtros</h5>
 
-        <form @submit.prevent="search">
+        <form @submit.prevent="submitForm">
             <div class="row">
                 <div class="col col-12 col-md-4 form-group">
+                    <label>Nome</label>
                     <input
                         type="text"
                         class="form-control"
                         placeholder="Nome"
-						v-model="form.name"
+                        v-model="form.name"
+                        @focus="clearErrors('name')"
+                        :class="{
+                            'is-invalid': form.errors.name,
+                        }"
                     />
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ form.errors.name }}</strong>
+                    </span>
                 </div>
                 <div class="col col-12 col-md-4 form-group">
+                    <label>E-mail</label>
                     <input
-                        type="text"
+                        type="email"
                         class="form-control"
                         placeholder="E-mail"
-						v-model="form.email"
+                        v-model="form.email"
+                        :class="{
+                            'is-invalid': form.errors.email,
+                        }"
+                        @focus="clearErrors('email')"
                     />
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ form.errors.email }}</strong>
+                    </span>
                 </div>
                 <div class="col col-12 col-md-4 form-group">
+                    <label>Data de nascimento</label>
                     <input
                         type="date"
                         class="form-control"
                         placeholder="Data de nascimento"
-						v-model="form.birthDate"
+                        v-model="form.birthDate"
+						@focus="clearErrors('birthDate')"
+                        :class="{
+                            'is-invalid': form.errors.birthDate,
+                        }"
                     />
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ form.errors.birthDate }}</strong>
+                    </span>
                 </div>
                 <div class="col col-12 form-group">
-					<el-button @click.prevent="search" :loading="loading" class="float-right" type="info" icon="el-icon-search">Pesquisar</el-button>
-					<el-button @click.prevent="clearForm" class="float-right mr-2">Limpar</el-button>
+                    <el-button
+                        @click.prevent="submitForm"
+                        :loading="loading"
+                        class="float-right"
+                        type="info"
+                        icon="el-icon-search"
+                        >Pesquisar</el-button
+                    >
+                    <el-button
+                        @click.prevent="clearForm"
+                        class="float-right mr-2"
+                        >Limpar</el-button
+                    >
                 </div>
             </div>
         </form>
@@ -40,55 +75,98 @@
 <script>
 import http from '@/http'
 import { mapActions, mapGetters } from 'vuex'
+import validator from '@/utils/validator'
 
 export default {
     data() {
         return {
-			loading: false,
+            loading: false,
             form: {
                 name: '',
                 email: '',
                 birthDate: '',
+                errors: {
+                    name: '',
+                    email: '',
+                    birthDate: '',
+                },
             },
         }
     },
-	computed: {
-		...mapGetters({
-			user: 'users/user',
-			userSearch: 'users/userSearch',
-			userCollection: 'users/userCollection',
-		})
-	},
+    computed: {
+        ...mapGetters({
+            user: 'users/user',
+            userSearch: 'users/userSearch',
+            userCollection: 'users/userCollection',
+        }),
+    },
     methods: {
-		...mapActions({
-			setUser: 'users/setUser',
-			setUserSearch: 'users/setUserSearch',
-			setUserCollection: 'users/setUserCollection',
-		}),
-		clearForm() {
-			Object.entries(this.form).map(([k,v]) => {
-				this.form[k] = ''
-			})
-		},
+        ...mapActions({
+            setUser: 'users/setUser',
+            setUserSearch: 'users/setUserSearch',
+            setUserCollection: 'users/setUserCollection',
+        }),
+        clearForm() {
+            Object.entries(this.form).map(([k, v]) => {
+                if (k !== 'errors') {
+					this.form[k] = ''
+				}
+            })
+        },
+        searchQuery() {
+            let query = ''
+            let filter = []
+            const { name: n, email: e, birthDate: bd } = this.form
+
+            if (n !== '') {
+                filter.push('q=' + n)
+            }
+            if (e !== '') {
+                filter.push('q=' + e)
+            }
+            if (bd !== '') {
+                filter.push('q=' + bd)
+            }
+
+            if (filter.length > 0) {
+                query = '&' + filter.join('&')
+            }
+
+            return query
+        },
+        validateForm() {
+            const { form } = this
+            const rules = {
+                email: ['email'],
+                birthDate: ['currentDate', 'minDate'],
+            }
+            return validator.validate(form, form.errors, rules)
+        },
+        submitForm() {
+            if (this.validateForm()) {
+                return this.search()
+            }
+        },
         async search() {
-			this.loading = true
+            this.loading = true
             const { getUsers } = http.users
-			this.setUserCollection(null)
+            this.setUserCollection(null)
+            const query = this.searchQuery()
             try {
-                const req = await getUsers()
+                const req = await getUsers(query)
 
                 this.setUserSearch(this.form)
 
-				if (Array.isArray(req) && req.length > 0) {
-					this.setUserCollection(req)
-				} else {
-					this.userCollection('-')
-				}
-				
+                if (Array.isArray(req) && req.length > 0) {
+                    this.setUserCollection(req)
+                } else {
+                    this.userCollection('-')
+                }
             } catch (error) {
+                this.userCollection('-')
                 console.error(error)
             }
-			this.loading = false
+            this.loading = false
         },
     },
 }

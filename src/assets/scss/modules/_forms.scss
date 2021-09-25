@@ -1,3 +1,11 @@
 .home-main .header form .el-input__inner:focus {
 	border-color: $primary-color;
 }
+.el-form-item {
+	margin-bottom: 1rem !important;
+}
+.el-form-item__label {
+	text-transform: uppercase;
+	font-weight: 400;
+	line-height: 20px !important;
+}

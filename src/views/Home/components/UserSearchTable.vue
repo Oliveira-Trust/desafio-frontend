@@ -2,9 +2,13 @@
     <div class="card card-body data-table">
         <h5>
             Resultado
-            <button @click.prevent="exportCSV" class="btn btn-default">
-                Exportar CSV
-            </button>
+
+            <el-button
+                @click.prevent="exportCSV"
+                class="float-right"
+                type="info"
+                >Exportar CSV</el-button
+            >
         </h5>
 
         <div class="row mb-3">
@@ -66,7 +70,7 @@
                     <el-button
                         @click.prevent="action('edit', props.row)"
                         type="info"
-                        icon="el-icon-search"
+                        icon="el-icon-edit"
                         circle
                     ></el-button>
                     <el-button
@@ -100,7 +104,10 @@
 
 <script>
 import Pagination from '@/components/Pagination'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+import http from '@/http'
+import messages from '@/utils/messages'
+import XLSX from 'xlsx'
 
 export default {
     components: {
@@ -108,8 +115,9 @@ export default {
     },
     data() {
         return {
+            loading: false,
             pagination: {
-                perPage: 10,
+                perPage: 5,
                 currentPage: 1,
                 perPageOptions: [5, 10, 20, 30],
                 total: 0,
@@ -119,9 +127,24 @@ export default {
             tableColumns: [
                 { prop: 'index', label: '#', minWidth: 90, sortable: false },
                 { prop: 'nome', label: 'Nome', minWidth: 200, sortable: true },
-                { prop: 'sobrenome', label: 'Sobrenome', minWidth: 200, sortable: true },
-                { prop: 'email', label: 'E-mail', minWidth: 200, sortable: true },
-                { prop: 'bitcoin', label: 'Bitcoin', minWidth: 130, sortable: true },
+                {
+                    prop: 'sobrenome',
+                    label: 'Sobrenome',
+                    minWidth: 200,
+                    sortable: true,
+                },
+                {
+                    prop: 'email',
+                    label: 'E-mail',
+                    minWidth: 200,
+                    sortable: true,
+                },
+                {
+                    prop: 'bitcoin',
+                    label: 'Bitcoin',
+                    minWidth: 130,
+                    sortable: true,
+                },
             ],
             tableData: [],
         }
@@ -170,15 +193,63 @@ export default {
         },
     },
     methods: {
+        ...mapActions({
+            setUser: 'users/setUser',
+            setShowUserCreateForm: 'components/setShowUserCreateForm',
+        }),
         action(action, row) {
-            console.log(action, row)
+            if (action === 'delete') {
+                this.deleteData(row)
+            }
+            if (action === 'edit') {
+                this.editData(row)
+            }
+        },
+        editData(row) {
+            this.setUser(row), this.setShowUserCreateForm(true)
+        },
+        async deleteData(row) {
+            this.loading = true
+            const { id } = row
+            const { deleteUser } = http.users
+
+            try {
+                const req = await deleteUser(id)
+                this.$emit('delete')
+                this.$message({
+                    message: messages.delete,
+                    type: 'success',
+                })
+            } catch (error) {
+                console.error(error)
+            }
+
+            this.loading = false
         },
         tableSort({ prop, order }) {
-            // this.globalSort(this.tableData, prop, order)
+            this.globalSort(this.tableData, prop, order)
             this.pagination.currentPage = 1
         },
         exportCSV() {
-            console.log('export csv')
+            const { tableData: data } = this
+
+            if (Array.isArray(data) && data.length > 0) {
+                let headers = ['Nome', 'Sobrenome', 'E-mail']
+                let table = []
+                table.push(headers)
+                data.map((item) =>
+                    table.push([item.nome, item.sobrenome, item.email])
+                )
+                const ws = XLSX.utils.aoa_to_sheet(table)
+                const wb = XLSX.utils.book_new()
+                XLSX.utils.book_append_sheet(wb, ws, 'usuarios')
+                XLSX.writeFile(wb, 'usuarios.csv')
+            } else {
+                this.$message({
+                    message: 'Nenhum dado encontrado',
+                    type: 'warning',
+                })
+            }
         },
         upCollection() {
             const { userCollection: collection } = this
