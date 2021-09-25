@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+		<loading
+            :active.sync="loading"
+            :can-cancel="false"
+            :is-full-page="true"
+            blur="20px"
+            color="#e2e2e2"
+            :lock-scroll="true"
+        ></loading>
+
+        <router-view name="header"></router-view>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
+        <router-view name="footer"></router-view>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// Loading some plugin css asynchronously
+import { mapGetters } from 'vuex'
+import Loading from 'vue-loading-overlay'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    components: {
+        Loading,
+    },
+    computed: {
+        ...mapGetters({
+            loading: 'request/loadingRequest',
+        }),
+    }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

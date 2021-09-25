@@ -1,0 +1,18 @@
+$home-content-bg-color: #e2e2e2 !default;
+
+$primary-color: #7A9E9F !default;
+$success-color: #6bd098 !default;
+$danger-color:  #dc3545 !default;
+$warning-color: #fbc658 !default;
+$default-color: #666666 !default;
+$info-color:    #c2c2c2 !default;
+
+$primary-states-color: darken($primary-color, 10%) !default;
+$success-states-color: darken($success-color, 10%) !default;
+$danger-states-color:  darken($danger-color, 10%) !default;
+$warning-states-color: darken($warning-color, 10%) !default;
+$default-states-color: darken($default-color, 10%) !default;
+$info-states-color:    darken($info-color, 10%) !default;
+
+$white-color:   #ffffff !default;
+$black-color:   #000000 !default;

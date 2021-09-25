@@ -1,0 +1,64 @@
+body {
+	background-color: $home-content-bg-color;
+
+	.home-layout {
+		.home-header {
+			height: 80px;
+			background-color: $white-color;
+
+			.container {
+				display: flex;
+				align-items: center;
+			}
+
+			h1 {
+				flex: 1;
+				line-height: 80px;
+				margin: 0;
+				padding: 0;
+				font-size: 1.2rem;
+
+				img {
+					width: 250px;
+					margin-right: 1rem;
+				}
+			}
+
+		}
+
+		.home-content {
+			padding: 2rem 0;
+			min-height: calc(100vh - 160px);
+			
+			.card-body {
+				margin-bottom: 1rem;
+
+				h5 {
+					margin-bottom: 1rem;
+					font-weight: bold;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+
+					a {
+						float: right;
+					}
+				}
+
+				.home-pagination {
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+
+		.home-footer {
+			height: 80px;
+			line-height: 80px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+	}
+}
