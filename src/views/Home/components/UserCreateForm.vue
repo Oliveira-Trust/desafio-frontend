@@ -149,6 +149,7 @@ import { Money } from 'v-money'
 import http from '@/http'
 import axios from 'axios'
 import messages from '@/utils/messages'
+import moment from 'moment'
 
 export default {
     components: {
@@ -230,7 +231,7 @@ export default {
                 email: form.email,
                 endereco: null,
                 data_nascimento: null,
-                data_abertura: null,
+                data_abertura: moment().format('YYYY-MM-DDTHH:mm:ssZ'),
                 endereco_carteira: null,
                 valor_carteira: form.wallet_value,
             }

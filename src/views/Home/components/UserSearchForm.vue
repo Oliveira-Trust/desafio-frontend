@@ -37,19 +37,19 @@
                     </span>
                 </div>
                 <div class="col col-12 col-md-4 form-group">
-                    <label>Data de nascimento</label>
+                    <label>Data de cadastro</label>
                     <input
                         type="date"
                         class="form-control"
                         placeholder="Data de nascimento"
-                        v-model="form.birthDate"
-						@focus="clearErrors('birthDate')"
+                        v-model="form.openDate"
+						@focus="clearErrors('openDate')"
                         :class="{
-                            'is-invalid': form.errors.birthDate,
+                            'is-invalid': form.errors.openDate,
                         }"
                     />
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ form.errors.birthDate }}</strong>
+                        <strong>{{ form.errors.openDate }}</strong>
                     </span>
                 </div>
                 <div class="col col-12 form-group">
@@ -76,6 +76,7 @@
 import http from '@/http'
 import { mapActions, mapGetters } from 'vuex'
 import validator from '@/utils/validator'
+import messages from '@/utils/messages'
 
 export default {
     data() {
@@ -84,11 +85,11 @@ export default {
             form: {
                 name: '',
                 email: '',
-                birthDate: '',
+                openDate: '',
                 errors: {
                     name: '',
                     email: '',
-                    birthDate: '',
+                    openDate: '',
                 },
             },
         }
@@ -116,7 +117,7 @@ export default {
         searchQuery() {
             let query = ''
             let filter = []
-            const { name: n, email: e, birthDate: bd } = this.form
+            const { name: n, email: e, openDate: bd } = this.form
 
             if (n !== '') {
                 filter.push('q=' + n)
@@ -138,7 +139,7 @@ export default {
             const { form } = this
             const rules = {
                 email: ['email'],
-                birthDate: ['currentDate', 'minDate'],
+                openDate: ['currentDate', 'minDate'],
             }
             return validator.validate(form, form.errors, rules)
         },
@@ -160,7 +161,11 @@ export default {
                 if (Array.isArray(req) && req.length > 0) {
                     this.setUserCollection(req)
                 } else {
-                    this.userCollection('-')
+					this.$message({
+						message: messages.searchReturnError,
+						type: 'warning'
+					})
+                    this.setUserCollection('-')
                 }
             } catch (error) {
                 this.userCollection('-')

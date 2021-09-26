@@ -37,7 +37,7 @@ Você deve implementar um aplicativo feito com Vuejs utilizando uma API de usuá
 ## Obrigatórios:
 - Acompanhar identidade visual do [protótipo fornecido](http://prototipo-btc-carteiras.s3-website-sa-east-1.amazonaws.com/)
 - Listar os dados da API de usuários em uma tabela
-    - Deve conter todos os dados que achar relevante pela API (http://localhost:3004/users)
+    - Deve conter todos os dados que achar relevante pela API (http://localhost:5000/users)
     - Botões funcionais de editar(modal) e deletar registro p/ cada elemento
 - Possibilidade de adicionar novas carteiras através de um modal
 - Paginação da listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#paginate) do json-server)
@@ -100,13 +100,13 @@ npm start
 A api a ser consumida está rodando no endereço:
 
 ```
-http://localhost:3004/users
+http://localhost:5000/users
 ```
 
 e a aplicação em Vue.Js no endereço:
 
 ```
-http://localhost:8080/
+http://localhost:3000/
 ```
 
 ## Boa sorte! 🚀

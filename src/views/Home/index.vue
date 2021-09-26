@@ -46,6 +46,7 @@ export default {
     },
     methods: {
         updateTable() {
+            this.$refs.searchForm.clearForm()
             this.$refs.searchForm.search()
         },
     },
