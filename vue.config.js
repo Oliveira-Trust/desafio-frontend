@@ -7,7 +7,6 @@ module.exports = {
             alias: {
                 '@': path.join(__dirname, 'src'),
                 'src': path.join(__dirname, 'src'),
-                'chart.js': 'chart.js/dist/Chart.js'
             }
         },
         plugins: [
