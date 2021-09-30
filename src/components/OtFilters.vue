@@ -1,43 +1,63 @@
 <template>
   <ot-card title="Filtros">
     <div class="filters-container">
-      <div>
-        <label class="mb-2" for="name">Nome</label>
-        <b-form-input
-          id="name"
-          type="text"
-          placeholder="Maria silva"
-          v-model.trim="userName"
-        />
-      </div>
+      <filter-input
+        input-id="name"
+        label="Nome"
+        placeholder="Maria Silva"
+        type="text"
+        :disabled="isFetchingData"
+        :value="nameFilter"
+        @input="setNameFilter"
+        @clear-filter="cleanNameFilter"
+      />
 
-      <div>
-        <label class="mb-2" for="email">Email</label>
-        <b-form-input
-          id="email"
-          type="email"
-          placeholder="email@email.com"
-          v-model.trim="userEmail"
-        />
-      </div>
+      <filter-input
+        input-id="email"
+        label="Email"
+        placeholder="email@email.com"
+        type="email"
+        :disabled="isFetchingData"
+        :value="emailFilter"
+        @input="setEmailFilter"
+        @clear-filter="cleanEmailFilter"
+      />
 
-      <div>
-        <label class="mb-2" for="date">Data de abertura</label>
-        <b-form-input id="date" type="date" v-model="creationDate" />
-      </div>
+      <filter-input
+        input-id="date"
+        label="Data de abertura"
+        type="date"
+        :disabled="isFetchingData"
+        :value="dateFilter"
+        @input="setDateFilter"
+        @clear-filter="cleanDateFilter"
+      />
 
-      <b-btn class="search-btn" size="md">Pesquisar</b-btn>
+      <b-btn
+        class="search-btn as-block-md"
+        size="md"
+        :disabled="isFetchingData"
+        @click="getWallets"
+      >
+        Pesquisar
+      </b-btn>
     </div>
   </ot-card>
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from "vuex";
+
 import OtCard from "./OtCard.vue";
+import FilterInput from "./OtFilters/FilterInput.vue";
 
 export default {
   name: "OtFilters",
 
-  components: { OtCard },
+  components: {
+    OtCard,
+    FilterInput
+  },
 
   data() {
     return {
@@ -45,6 +65,21 @@ export default {
       userEmail: "",
       creationDate: ""
     };
+  },
+
+  computed: {
+    ...mapState(["nameFilter", "emailFilter", "dateFilter", "isFetchingData"])
+  },
+
+  methods: {
+    ...mapMutations(["setNameFilter", "setEmailFilter", "setDateFilter"]),
+
+    ...mapActions([
+      "getWallets",
+      "cleanNameFilter",
+      "cleanEmailFilter",
+      "cleanDateFilter"
+    ])
   }
 };
 </script>
@@ -64,13 +99,11 @@ export default {
 
 @media (max-width: 768px) {
   .filters-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .filters-container {
     grid-template-columns: 1fr;
+  }
+
+  .as-block-md {
+    width: 100%;
   }
 }
 </style>
