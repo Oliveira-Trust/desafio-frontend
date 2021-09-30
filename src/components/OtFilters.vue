@@ -1,7 +1,5 @@
 <template>
-  <section class="container">
-    <h1>Filtros</h1>
-
+  <ot-card title="Filtros">
     <div class="filters-container">
       <div>
         <label class="mb-2" for="name">Nome</label>
@@ -24,18 +22,22 @@
       </div>
 
       <div>
-        <label class="mb-2" for="date">Data de criação</label>
+        <label class="mb-2" for="date">Data de abertura</label>
         <b-form-input id="date" type="date" v-model="creationDate" />
       </div>
 
       <b-btn class="search-btn" size="md">Pesquisar</b-btn>
     </div>
-  </section>
+  </ot-card>
 </template>
 
 <script>
+import OtCard from "./OtCard.vue";
+
 export default {
   name: "OtFilters",
+
+  components: { OtCard },
 
   data() {
     return {
@@ -48,17 +50,6 @@ export default {
 </script>
 
 <style scoped>
-section {
-  padding: 25px;
-  background-color: white;
-  border-radius: 5px;
-}
-
-h1 {
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-
 .filters-container {
   width: 100%;
   display: grid;

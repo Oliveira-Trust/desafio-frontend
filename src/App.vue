@@ -4,6 +4,7 @@
 
     <main>
       <ot-filters class="mt-3" />
+      <ot-table class="mt-3" />
     </main>
   </div>
 </template>
@@ -11,13 +12,15 @@
 <script>
 import OtFilters from "./components/OtFilters.vue";
 import OtHeader from "./components/OtHeader.vue";
+import OtTable from "./components/OtTable.vue";
 
 export default {
   name: "App",
 
   components: {
     OtHeader,
-    OtFilters
+    OtFilters,
+    OtTable
   }
 };
 </script>
