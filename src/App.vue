@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    My App
+    <ot-header />
   </div>
 </template>
 
 <script>
+import OtHeader from "./components/OtHeader.vue";
+
 export default {
-  name: 'App',
-}
+  name: "App",
+
+  components: {
+    OtHeader
+  }
+};
 </script>
