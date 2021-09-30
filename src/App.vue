@@ -35,7 +35,7 @@ export default {
 
 main {
   width: 100%;
-  background-color: var(--bs-gray-200);
+  background-color: var(--bs-gray-300);
   flex: auto;
 }
 </style>

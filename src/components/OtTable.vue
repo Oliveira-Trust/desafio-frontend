@@ -1,26 +1,45 @@
 <template>
   <ot-card title="Carteiras">
-    <b-table striped :fields="fields" :items="items">
+    <b-table striped :fields="fields" :items="items" :busy="isLoading">
       <template #cell(data_abertura)="{ value }">
         {{ getFormattedDate(value) }}
       </template>
+
       <template #cell(valor_carteira)="{ value }">
         {{ getFormattedBitcoin(value) }}
       </template>
+
       <template #cell(actions)>
-        <b-btn size="sm" variant="link">
+        <b-btn class="mr-1" size="sm" variant="link">
           <b-icon-pencil-fill />
         </b-btn>
+
         <b-btn size="sm" variant="link">
           <b-icon-trash-fill />
         </b-btn>
       </template>
+
+      <template #table-busy>
+        <div class="text-center text-primary my-2">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong class="m-2">Carregando...</strong>
+        </div>
+      </template>
     </b-table>
+
+    <b-pagination
+      :total-rows="totalRows"
+      :per-page="itemsPerPage"
+      v-model="currentPage"
+      @input="requestWallets"
+    />
   </ot-card>
 </template>
 
 <script>
 import OtCard from "./OtCard.vue";
+
+import { getWallets } from "../services/api";
 
 export default {
   name: "OtTable",
@@ -37,20 +56,25 @@ export default {
         "data_abertura",
         { key: "actions", label: "Ações" }
       ],
-      items: [
-        {
-          id: 1,
-          nome: "Doroteya",
-          sobrenome: "Powder",
-          email: "dpowder0@wisc.edu",
-          endereco: "6906 Merchant Center",
-          data_nascimento: "1996-01-03T14:28:31Z",
-          data_abertura: "2018-05-16T15:50:23Z",
-          valor_carteira: 3.83526236,
-          endereco_carteira: "1Q956unZUz1RHVtUrZbEZSXgu65RLMF5h3"
-        }
-      ]
+      items: [],
+      currentPage: 1,
+      totalRows: 1,
+      itemsPerPage: 5,
+      isLoading: false
     };
+  },
+
+  async beforeMount() {
+    this.isLoading = true;
+
+    const { data, total } = await getWallets(
+      this.currentPage,
+      this.itemsPerPage
+    );
+
+    this.totalRows = total;
+    this.items = data;
+    this.isLoading = false;
   },
 
   methods: {
@@ -70,6 +94,15 @@ export default {
 
     getFormattedBitcoin(value) {
       return String(value).replace(".", ",");
+    },
+
+    async requestWallets() {
+      this.isLoading = true;
+
+      const { data } = await getWallets(this.currentPage, this.itemsPerPage);
+
+      this.items = data;
+      this.isLoading = false;
     }
   }
 };
