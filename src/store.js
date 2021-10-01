@@ -109,6 +109,18 @@ export default new Vuex.Store({
       dispatch("getWallets");
     },
 
+    async deleteWallet({ dispatch }, payload) {
+      this.isFetchingData = true;
+
+      await fetch(`http://localhost:3004/users/${payload.id}`, {
+        method: "DELETE"
+      });
+
+      this.isFetchingData = false;
+
+      dispatch("getWallets");
+    },
+
     cleanNameFilter({ commit, dispatch }) {
       commit("setNameFilter", "");
       dispatch("getWallets");

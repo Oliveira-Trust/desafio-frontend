@@ -21,7 +21,7 @@
               <b-icon-pencil-square />
             </b-btn>
 
-            <b-btn size="sm" variant="link">
+            <b-btn size="sm" variant="link" @click="deleteWallet(item)">
               <b-icon-trash-fill />
             </b-btn>
           </div>
@@ -80,7 +80,7 @@ export default {
   methods: {
     ...mapMutations(["setWalletsPage"]),
 
-    ...mapActions(["getWallets"]),
+    ...mapActions(["getWallets", "deleteWallet"]),
 
     getFormattedDate(date) {
       const options = {
