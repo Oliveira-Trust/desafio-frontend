@@ -10,9 +10,14 @@
           {{ getFormattedBitcoin(value) }}
         </template>
 
-        <template #cell(actions)>
+        <template #cell(actions)="{ item }">
           <div class="d-flex">
-            <b-btn class="mr-1" size="sm" variant="link">
+            <b-btn
+              class="mr-1"
+              size="sm"
+              variant="link"
+              @click="$emit('edit-wallet', item)"
+            >
               <b-icon-pencil-square />
             </b-btn>
 

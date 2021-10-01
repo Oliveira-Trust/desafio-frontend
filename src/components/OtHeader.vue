@@ -9,7 +9,7 @@
       <h1>BTC Carteiras</h1>
     </div>
 
-    <b-btn class="add-wallet-btn" size="sm" v-b-modal.wallet-modal>
+    <b-btn class="add-wallet-btn" size="sm" @click="$emit('create-wallet')">
       Adicionar Carteira
     </b-btn>
   </header>

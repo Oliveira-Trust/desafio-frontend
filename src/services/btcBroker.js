@@ -4,5 +4,5 @@ export async function getCurrentBtcValue() {
   );
   const data = await response.json();
 
-  return parseInt(data.BTCBRL.ask.replace(".", ""));
+  return parseInt(data.BTCBRL.low.replace(".", ""));
 }

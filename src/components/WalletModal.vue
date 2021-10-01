@@ -4,7 +4,7 @@
     :title="`${isEditMode ? 'Editar' : 'Cadastrar'} carteira`"
     centered
     hide-header-close
-    ref="modal"
+    :visible="open"
   >
     <b-form-group label="Nome" label-for="wallet-user-name">
       <b-input
@@ -86,6 +86,11 @@ export default {
     wallet: {
       type: Object,
       default: () => ({})
+    },
+
+    open: {
+      type: Boolean,
+      required: true
     }
   },
 
@@ -109,6 +114,18 @@ export default {
   },
 
   watch: {
+    open(open) {
+      if (open && this.isEditMode) {
+        Object.keys(this.input).forEach(key => {
+          if (key == "valor_carteira") {
+            this.input.reais = this.wallet[key] * this.btcValue;
+          } else {
+            this.input[key] = this.wallet[key];
+          }
+        });
+      }
+    },
+
     "input.reais": function(value) {
       this.input.valor_carteira = parseFloat(
         (value / this.btcValue).toFixed(10)
@@ -117,10 +134,10 @@ export default {
   },
 
   methods: {
-    ...mapActions(["addWallet"]),
+    ...mapActions(["addWallet", "updateWallet"]),
 
     closeModal() {
-      this.$refs.modal.hide();
+      this.$emit("close");
       this.input = {
         nome: "",
         sobrenome: "",
@@ -131,7 +148,10 @@ export default {
     },
 
     sendForm() {
-      if (!this.isEditMode) {
+      if (this.isEditMode) {
+        this.updateWallet({ ...this.input, id: this.wallet.id });
+        this.closeModal();
+      } else {
         const data_abertura = new Date().toISOString();
 
         this.addWallet({ ...this.input, data_abertura });

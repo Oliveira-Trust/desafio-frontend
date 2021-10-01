@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <ot-header />
+    <ot-header @create-wallet="openModal" />
 
     <main>
       <ot-filters class="mt-3" />
-      <ot-table class="mt-3" />
+      <ot-table class="mt-3" @edit-wallet="openModal" />
     </main>
 
-    <wallet-modal />
+    <wallet-modal
+      :open="openModalWallet"
+      :wallet="currentWallet"
+      @close="openModalWallet = false"
+    />
   </div>
 </template>
 
@@ -25,6 +29,20 @@ export default {
     OtFilters,
     OtTable,
     WalletModal
+  },
+
+  data() {
+    return {
+      openModalWallet: false,
+      currentWallet: {}
+    };
+  },
+
+  methods: {
+    openModal(wallet) {
+      this.openModalWallet = true;
+      this.currentWallet = wallet ?? {};
+    }
   }
 };
 </script>

@@ -78,6 +78,8 @@ export default new Vuex.Store({
     },
 
     async addWallet({ dispatch }, payload) {
+      this.isFetchingData = true;
+
       await fetch("http://localhost:3004/users", {
         method: "POST",
         body: JSON.stringify(payload),
@@ -85,6 +87,24 @@ export default new Vuex.Store({
           "Content-Type": "application/json"
         }
       });
+
+      this.isFetchingData = false;
+
+      dispatch("getWallets");
+    },
+
+    async updateWallet({ dispatch }, payload) {
+      this.isFetchingData = true;
+
+      await fetch(`http://localhost:3004/users/${payload.id}`, {
+        method: "PUT",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      this.isFetchingData = false;
 
       dispatch("getWallets");
     },
