@@ -13,7 +13,7 @@
         <template #cell(actions)>
           <div class="d-flex">
             <b-btn class="mr-1" size="sm" variant="link">
-              <b-icon-pencil-fill />
+              <b-icon-pencil-square />
             </b-btn>
 
             <b-btn size="sm" variant="link">
@@ -68,7 +68,7 @@ export default {
     ...mapState(["wallets", "walletsTotal", "walletsLimit", "isFetchingData"])
   },
 
-  async beforeMount() {
+  beforeMount() {
     this.getWallets();
   },
 

@@ -1,7 +1,6 @@
 <template>
-  <b-input-group class="align-items-end">
-    <div class="flex-fill">
-      <label class="mb-2" :for="inputId">{{ label }}</label>
+  <b-form-group class="align-items-end" :label="label" :label-for="inputId">
+    <b-input-group class="mt-2">
       <b-form-input
         trim
         :id="inputId"
@@ -9,15 +8,16 @@
         :placeholder="placeholder"
         :value="value"
         :disabled="disabled"
+        debounce="250"
         v-model="filterInput"
       />
-    </div>
-    <template #append>
-      <b-btn squared variant="outline-danger" @click="clearFilter">
-        <b-icon-trash />
-      </b-btn>
-    </template>
-  </b-input-group>
+      <template #append>
+        <b-btn squared variant="outline-danger" @click="clearFilter">
+          <b-icon-trash />
+        </b-btn>
+      </template>
+    </b-input-group>
+  </b-form-group>
 </template>
 
 <script>

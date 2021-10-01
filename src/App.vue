@@ -6,6 +6,8 @@
       <ot-filters class="mt-3" />
       <ot-table class="mt-3" />
     </main>
+
+    <wallet-modal />
   </div>
 </template>
 
@@ -13,6 +15,7 @@
 import OtFilters from "./components/OtFilters.vue";
 import OtHeader from "./components/OtHeader.vue";
 import OtTable from "./components/OtTable.vue";
+import WalletModal from "./components/WalletModal.vue";
 
 export default {
   name: "App",
@@ -20,7 +23,8 @@ export default {
   components: {
     OtHeader,
     OtFilters,
-    OtTable
+    OtTable,
+    WalletModal
   }
 };
 </script>

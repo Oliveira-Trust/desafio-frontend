@@ -71,10 +71,22 @@ export default new Vuex.Store({
       const data = await response.json();
       const total = response.headers.get("X-Total-Count");
 
-      commit("setWalletsTotal", +total);
+      commit("setWalletsTotal", parseInt(total));
       commit("setWallets", data);
 
       this.isFetchingData = false;
+    },
+
+    async addWallet({ dispatch }, payload) {
+      await fetch("http://localhost:3004/users", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      dispatch("getWallets");
     },
 
     cleanNameFilter({ commit, dispatch }) {
