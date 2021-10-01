@@ -6,7 +6,12 @@
     hide-header-close
     :visible="open"
   >
-    <b-form-group label="Nome" label-for="wallet-user-name">
+    <b-form-group
+      label="Nome"
+      label-for="wallet-user-name"
+      invalid-feedback="Campo é obrigatório"
+      :state="sateUserName"
+    >
       <b-input
         class="mt-2"
         id="wallet-user-name"
@@ -21,6 +26,8 @@
       class="mt-3"
       label="Sobrenome"
       label-for="wallet-user-surname"
+      invalid-feedback="Campo é obrigatório"
+      :state="sateUserSurname"
     >
       <b-input
         class="mt-2"
@@ -32,7 +39,13 @@
       />
     </b-form-group>
 
-    <b-form-group class="mt-3" label="Email" label-for="wallet-user-email">
+    <b-form-group
+      class="mt-3"
+      label="Email"
+      label-for="wallet-user-email"
+      :invalid-feedback="invalidEmail"
+      :state="sateUserEmail"
+    >
       <b-input
         class="mt-2"
         id="wallet-user-email"
@@ -43,7 +56,13 @@
       />
     </b-form-group>
 
-    <b-form-group class="mt-3" label="Nome" label-for="wallet-user-value">
+    <b-form-group
+      class="mt-3"
+      label="Nome"
+      label-for="wallet-user-value"
+      invalid-feedback="Insira um valor positivo"
+      :state="sateUserValueWallet"
+    >
       <b-row>
         <b-col cols="6">
           <b-input
@@ -67,7 +86,7 @@
       <b-btn class="text-decoration-none" variant="link" @click="closeModal">
         Cancelar
       </b-btn>
-      <b-btn @click="sendForm">
+      <b-btn :disabled="disableSend" @click="sendForm">
         {{ isEditMode ? "Alterar" : "Adicionar" }}
       </b-btn>
     </template>
@@ -110,6 +129,37 @@ export default {
   computed: {
     isEditMode() {
       return !!Object.keys(this.wallet).length;
+    },
+
+    sateUserName() {
+      return !!this.input.nome;
+    },
+
+    sateUserSurname() {
+      return !!this.input.sobrenome;
+    },
+
+    sateUserEmail() {
+      return /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(this.input.email);
+    },
+
+    invalidEmail() {
+      return !this.input.email
+        ? "Campo é obrigatório"
+        : "Insira um email válido";
+    },
+
+    sateUserValueWallet() {
+      return this.input.valor_carteira >= 0;
+    },
+
+    disableSend() {
+      return (
+        !this.sateUserName ||
+        !this.sateUserSurname ||
+        !this.sateUserEmail ||
+        !this.sateUserValueWallet
+      );
     }
   },
 
