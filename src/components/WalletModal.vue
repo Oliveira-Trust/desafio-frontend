@@ -199,7 +199,7 @@ export default {
 
     sendForm() {
       if (this.isEditMode) {
-        this.updateWallet({ ...this.input, id: this.wallet.id });
+        this.updateWallet({ ...this.wallet, ...this.input });
         this.closeModal();
       } else {
         const data_abertura = new Date().toISOString();

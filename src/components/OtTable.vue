@@ -1,7 +1,13 @@
 <template>
   <ot-card title="Carteiras">
     <div class="table-container mb-3">
-      <b-table striped :fields="fields" :items="wallets" :busy="isFetchingData">
+      <b-table
+        id="wallet-table"
+        striped
+        :fields="fields"
+        :items="wallets"
+        :busy="isFetchingData"
+      >
         <template #cell(data_abertura)="{ value }">
           {{ getFormattedDate(value) }}
         </template>
@@ -36,12 +42,17 @@
       </b-table>
     </div>
 
-    <b-pagination
-      :total-rows="walletsTotal"
-      :per-page="walletsLimit"
-      v-model="currentPage"
-      @input="handleChangePagination"
-    />
+    <div class="d-flex justify-content-between align-items-end">
+      <b-pagination
+        class="mb-0"
+        :total-rows="walletsTotal"
+        :per-page="walletsLimit"
+        v-model="currentPage"
+        @input="handleChangePagination"
+      />
+
+      <b-btn size="md" @click="exportCSV">Exportar CSV</b-btn>
+    </div>
   </ot-card>
 </template>
 
@@ -49,6 +60,39 @@
 import { mapState, mapMutations, mapActions } from "vuex";
 
 import OtCard from "./OtCard.vue";
+
+const downloadFile = (text, fileName) => {
+  const link = document.createElement("a");
+  link.setAttribute(
+    "href",
+    `data:text/csv;charset=utf-8,${encodeURIComponent(text)}`
+  );
+  link.setAttribute("download", fileName);
+
+  link.style.display = "none";
+  document.body.appendChild(link);
+
+  link.click();
+
+  document.body.removeChild(link);
+};
+
+const tableToCsv = table => {
+  const rows = table.querySelectorAll("tr");
+
+  return [].slice
+    .call(rows)
+    .map(row => {
+      let cells = [...row.querySelectorAll("th,td")];
+      cells = cells.slice(0, cells.length - 1);
+
+      return [].slice
+        .call(cells)
+        .map(cell => cell.textContent.replace(",", "."))
+        .join(",");
+    })
+    .join("\n");
+};
 
 export default {
   name: "OtTable",
@@ -103,6 +147,13 @@ export default {
     handleChangePagination() {
       this.setWalletsPage(this.currentPage);
       this.getWallets();
+    },
+
+    exportCSV() {
+      const table = document.getElementById("wallet-table");
+      const csv = tableToCsv(table);
+
+      downloadFile(csv, "table.csv");
     }
   }
 };
