@@ -35,7 +35,7 @@ Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 Você deve implementar um aplicativo feito com Vuejs utilizando uma API de usuários fornecida no próprio projeto e uma API externa de conversão de moedas.
 
 ## Obrigatórios:
-- Acompanhar identidade visual do [protótipo fornecido](http://prototipo-btc-carteiras.s3-website-sa-east-1.amazonaws.com/)
+- Acompanhar identidade visual do [protótipo fornecido](https://www.figma.com/proto/AO265OINopUSibxX8Dd4A6/Desafio-Front-End?page-id=0%3A1&node-id=2%3A362&viewport=314%2C48%2C0.15&scaling=contain&starting-point-node-id=2%3A362)
 - Listar os dados da API de usuários em uma tabela
     - Deve conter todos os dados que achar relevante pela API (http://localhost:3004/users)
     - Botões funcionais de editar(modal) e deletar registro p/ cada elemento
