@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "axios-case-converter": "^0.9.0",
     "core-js": "^3.19.3",
     "epic-spinners": "^1.1.0",
     "node-sass": "^6.0.0",
