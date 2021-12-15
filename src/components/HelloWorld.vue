@@ -1,15 +1,17 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      <ot-input v-model="email" :rules="rules" />For a guide and recipes on how to configure / customize this project,
+    <div>
+      <ot-input v-model="email" :rules="rules" />
+      <ot-button>Enviar</ot-button>
+      <p>For a guide and recipes on how to configure / customize this project</p>
       <br />check out the
       <a
         href="https://cli.vuejs.org"
         target="_blank"
         rel="noopener"
       >vue-cli documentation</a>.
-    </p>
+    </div>
     <h3>Installed CLI Plugins</h3>
     <ul>
       <li>
