@@ -9,13 +9,13 @@ const router = new Router({
     routes: [
         {
             path: "/",
-            // component: () => import("./layouts/Default.vue"),
+            component: () => import("./layouts/default.vue"),
             meta: { requireAuth: false }, // validação de autenticação
             children: [
                 {
                     path: '/',
                     name: 'App',
-                    component: () => import(/* webpackChunkName: "Login" */ '@/App.vue'),
+                    component: () => import(/* webpackChunkName: "Login" */ '@/components/HelloWorld.vue'),
                 },
                 // {
                 //     path: '/login',
