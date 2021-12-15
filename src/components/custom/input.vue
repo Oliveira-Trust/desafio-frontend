@@ -1,5 +1,5 @@
 <template>
-    <div class="input-component" :style="cssProps">
+    <div class="input-component flex flex-col" :style="cssProps">
         <input
             class="text-input"
             :disabled="disabled"
@@ -16,7 +16,7 @@
             v-on:keyup.enter="$emit('enter', true)"
         />
         <transition name="slide-fade">
-            <p style="color: red" v-if="show">{{ messageError }}</p>
+            <div class="error-message flex justify-start" v-if="show">{{ messageError }}</div>
         </transition>
     </div>
 </template>
@@ -54,10 +54,6 @@ export default {
             type: String,
             default: '#FFF'
         },
-        focusColor: {
-            type: String,
-            default: '#a5a5a5'
-        },
     },
     data: () => ({
         show: false,
@@ -92,19 +88,24 @@ export default {
                 this.sucess = true;
             }
             this.$emit('valid', !this.show);
+        },
+        colorInput () {
+            if (this.sucess) {
+                return '#68CE6C'
+            }
+            else if (this.show) {
+                return 'red'
+            }
+            else {
+                return '#dbdbdb'
+            }
         }
     },
     computed: {
         cssProps () {
             return {
-                '--colorInput': this.show ? 'red' : this.focusColor,
-                '--colorCircle': this.show ? 'red' : '#007BFF',
-                '--colorCircleText': this.show ? 'red' : 'none',
-                '--borderColor': this.sucess ? '#68CE6C' : '#dbdbdb',
+                '--borderColor': this.colorInput(),
                 '--focusColor': !this.disabled ? '1px solid #0ca0fd' : '1px solid #dbdbdb',
-                '--focusShadowBox': !this.disabled
-                    ? 'none'
-                    : 'none'
             };
         }
     }
@@ -121,7 +122,6 @@ export default {
 }
 .input-component input:hover {
     border: var(--focusColor);
-    box-shadow: var(--focusShadowBox);
 }
 .input-component .text-input {
     border: 1px solid var(--borderColor);
@@ -134,15 +134,29 @@ export default {
 .input-component .text-input:focus {
     outline: none;
 }
-.row .input-field input:focus,
-input.unit-price:focus,
-.input-field input:focus {
-    border: 1px solid var(--colorInput) !important;
-}
 
 .input-component .text-input::placeholder {
     color: #a5a5a5;
     font-size: 14px;
     line-height: 19px;
+}
+
+.error-message {
+    color: red;
+    width: 100%;
+}
+
+// Animation
+
+.slide-fade-enter-active {
+    transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
 }
 </style>

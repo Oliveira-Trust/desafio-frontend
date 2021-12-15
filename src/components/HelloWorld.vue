@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      <ot-input />For a guide and recipes on how to configure / customize this project,
+      <ot-input v-model="email" :rules="rules" />For a guide and recipes on how to configure / customize this project,
       <br />check out the
       <a
         href="https://cli.vuejs.org"
@@ -73,6 +73,14 @@
 <script>
 export default {
   name: 'HelloWorld',
+  data: () => ({
+    rules: {
+      type: 'email',
+      required: true,
+      name: 'E-mail'
+    },
+    email: ''
+  }),
   props: {
     msg: String
   }
