@@ -10,8 +10,12 @@
     "start": "npm-run-all --parallel serve api"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "core-js": "^3.19.3",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-cookies": "^1.7.4",
+    "vue-router": "^3.5.3",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.15",
