@@ -9,7 +9,7 @@ const router = new Router({
     routes: [
         {
             path: "/",
-            component: () => import("./layouts/Default.vue"),
+            // component: () => import("./layouts/Default.vue"),
             meta: { requireAuth: false }, // validação de autenticação
             children: [
                 {
@@ -30,18 +30,18 @@ const router = new Router({
 
             ]
         },
-        {
-            path: "/",
-            component: () => import("./layouts/Default.vue"),
-            meta: { requireAuth: true }, // validação de autenticação
-            children: [
-                // {
-                //     path: "/dashboard",
-                //     name: "Dashboard",
-                //     component: () => import("@/views/Home.vue"),
-                // },
-            ]
-        },
+        // {
+        //     path: "/",
+        //     component: () => import("./layouts/Default.vue"),
+        //     meta: { requireAuth: true }, // validação de autenticação
+        //     children: [
+        //         {
+        //             path: "/dashboard",
+        //             name: "Dashboard",
+        //             component: () => import("@/views/Home.vue"),
+        //         },
+        //     ]
+        // },
 
     ]
 });
