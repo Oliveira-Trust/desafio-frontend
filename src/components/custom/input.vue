@@ -14,6 +14,7 @@
             @focus="focusInput"
             @blur="validate(), $emit('onblur')"
             v-on:keyup.enter="$emit('enter', true)"
+            :placeholder="placeholderText"
         />
         <transition name="slide-fade">
             <div class="error-message flex justify-start" v-if="show">{{ messageError }}</div>
@@ -127,7 +128,7 @@ export default {
     border: 1px solid var(--borderColor);
     border-radius: 3px;
     padding: 0;
-    padding-left: var(--paddingLeftLink);
+    padding-left: 18px;
     line-height: 36px;
     width: 100%;
 }

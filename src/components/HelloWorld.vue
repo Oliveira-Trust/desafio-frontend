@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div>
-      <ot-input v-model="email" :rules="rules" />
+      <ot-input v-model="email" :rules="rules" placeholder-text="E-mail" />
       <ot-button>Enviar</ot-button>
       <p>For a guide and recipes on how to configure / customize this project</p>
       <br />check out the
