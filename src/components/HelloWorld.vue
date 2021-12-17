@@ -22,7 +22,15 @@
 					<div>naruto</div>
 				</div>
 			</ot-modal>
-			<ot-table :headers="headers" :items="items" :loading="loading" />
+			<ot-table
+				:headers="headers"
+				:items="users.results"
+				:totalOfItems="users.total"
+				:pages="users.count"
+				:loading="loading"
+				@select-page="users.activePage = $event"
+				:activePage="users.activePage"
+			/>
 		</div>
 	</div>
 </template>
@@ -55,7 +63,13 @@ export default {
 				label: 'Bitcoin'
 			},
 		],
-		items: [],
+		users: {
+			results: [],
+			count: 0,
+			total: 0,
+			activePage: 1
+
+		},
 		email: '',
 		modal: false,
 		loading: false,
@@ -65,9 +79,8 @@ export default {
 	},
 	async created () {
 		this.loading = !this.loading;
-		const { results, count } = await getUsersList('?_page=1')
-		this.items = results;
-		console.log(results, count)
+		const { results, count, total } = await getUsersList('?_page=1')
+		this.users = { ...this.users, results, count, total };
 		this.loading = !this.loading;
 	}
 }
