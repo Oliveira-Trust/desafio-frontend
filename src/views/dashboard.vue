@@ -1,5 +1,31 @@
 <template>
     <div>
+        <div class="flex justify-between items-center mb-8">
+            <div class="title">BTC Carteira</div>
+            <div>
+                <ot-button>Adicionar Carteira</ot-button>
+            </div>
+        </div>
+        <div class="card flex justify-between items-center">
+            <div class="search-input">
+                <ot-input placeholder-text="Nome" v-model="name" />
+            </div>
+            <div class="search-input">
+                <ot-input placeholder-text="Sobrenome" v-model="surname" />
+            </div>
+            <div class="search-input">
+                <ot-input placeholder-text="E-mail" v-model="email" />
+            </div>
+            <div class="flex justify-end">
+                <ot-button
+                    @click="(getUsersList(), resetPage())"
+                    :loading="loadMore"
+                    variant="ot-blue-outline"
+                >
+                    <font-awesome-icon class="icon" icon="search" />Buscar
+                </ot-button>
+            </div>
+        </div>
         <ot-table
             :headers="headers"
             :items="usersList.results"
@@ -8,7 +34,9 @@
             :loading="loading"
             @select-page="activePage = $event"
             :activePage="activePage"
-        />
+        >
+            <div slot="action-btn">Editar e Deletar</div>
+        </ot-table>
     </div>
 </template>
 
@@ -40,6 +68,10 @@ export default {
                 value: 'valorCarteira',
                 label: 'Bitcoin'
             },
+            {
+                value: 'action-btn',
+                label: ''
+            },
         ],
         email: '',
         name: '',
@@ -47,6 +79,7 @@ export default {
         activePage: 1,
         modal: false,
         loading: false,
+        loadMore: false,
     }),
     async created () {
         this.loading = !this.loading
@@ -56,26 +89,29 @@ export default {
     methods: {
         ...mapActions('users', ['getUsers']),
         async getUsersList () {
+            this.loadMore = !this.loadMore
             try {
                 const queriesStrings = await this.prepareQueriesStrings();
                 await this.getUsers(queriesStrings);
             } catch (error) {
                 console.error({ text: 'Erro ao fazer a chamada de usuários', type: 'error' });
+            } finally {
+                this.loadMore = !this.loadMore
             }
 
         },
         async prepareQueriesStrings () {
             let queriesStrings = '';
-
+            // creates the search filter, based on cascade
             if (this.email.length) {
-                queriesStrings = appendQueryString(queriesStrings, `_email=${this.email}`);
+                queriesStrings = appendQueryString(queriesStrings, `email_like=${this.email}`);
             }
 
             if (this.name.length) {
-                queriesStrings = appendQueryString(queriesStrings, `_nome=${this.name}`);
+                queriesStrings = appendQueryString(queriesStrings, `nome_like=${this.name}`);
             }
             if (this.surname.length) {
-                queriesStrings = appendQueryString(queriesStrings, `_sobrenome=${this.surname}`);
+                queriesStrings = appendQueryString(queriesStrings, `sobrenome_like=${this.surname}`);
             }
 
             if (this.activePage) {
@@ -84,6 +120,9 @@ export default {
 
             return queriesStrings;
         },
+        resetPage () {
+            this.activePage = 1;
+        }
     },
     computed: {
         ...mapState('users', ['usersList'])
@@ -97,5 +136,23 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.title {
+    font-size: 22px;
+    font-weight: bold;
+}
+.icon {
+    margin-right: 10px;
+}
+.card {
+    border: 1px #fff solid;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+.search-input {
+    width: 27%;
+}
 </style>
