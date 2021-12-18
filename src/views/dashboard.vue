@@ -1,6 +1,6 @@
 <template>
     <div>
-        <managerUser :show="modal" @close="modal = false" />
+        <managerUser :user="_selectUser" :show="modal" @close="modal = false" />
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
@@ -55,7 +55,7 @@
 <script>
 import { appendQueryString } from '@/utils/';
 import { mapActions, mapState } from "vuex";
-import managerUser from "@/components/dashboard/modal/manager-user.vue"
+import managerUser from "@/components/dashboard/modal/manager-user"
 export default {
     name: 'Dashboard',
     components: {
@@ -96,6 +96,7 @@ export default {
         modal: false,
         loading: false,
         loadMore: false,
+        _selectUser: false
     }),
     async created () {
         this.loading = !this.loading

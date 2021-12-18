@@ -21,8 +21,9 @@ export const getUsersList = async (queryString = '') => {
     return { results: data, count, total: Number(total) }
 }
 
-export const getBtcToBrl = async () => {
+export const getBtcToBrlValue = async () => {
     const api = configCoins();
     const { data } = await api.get('last/BTC-BRL');
-    console.log(data);
+    let value = Number(data.btcbrl.high * 100);
+    return value
 }

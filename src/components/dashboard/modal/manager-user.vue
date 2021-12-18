@@ -15,7 +15,11 @@
                 <ot-input v-model="form.email" placeholder-text="E-mail" />
             </div>
             <div class="input-componet flex justify-start items-center">
-                <ot-input v-model="form.valorCarteira" placeholder-text="Valor de Compra" />
+                <ot-input
+                    inputType="number"
+                    v-model="form.valorCarteira"
+                    placeholder-text="Valor de Compra"
+                />
                 <div class="bitcoin">BTC {{ bitcoin }}</div>
             </div>
         </div>
@@ -27,7 +31,7 @@
 </template>
 
 <script>
-import { getBtcToBrl } from '@/services';
+import { getBtcToBrlValue } from '@/services';
 export default {
     name: 'managerUser',
     props: {
@@ -46,14 +50,16 @@ export default {
             sobrenome: '',
             email: '',
             valorCarteira: '',
-        }
+        },
+        bitcoinValue: 0,
     }),
     computed: {
         title () {
             return this.user ? 'Editar' : 'Adicionar';
         },
         bitcoin () {
-            return 0;
+            const value = (this.form.valorCarteira / this.bitcoinValue);
+            return value ? value : 0;
         }
     },
     watch: {
@@ -71,9 +77,9 @@ export default {
 
         },
         'form.valorCarteira': async function (newVal, oldVal) {
-            console.log(newVal, oldVal);
             if (newVal != oldVal) {
-                await getBtcToBrl();
+                const value = await getBtcToBrlValue();
+                this.bitcoinValue = value;
             }
         }
     }
