@@ -57,7 +57,7 @@
             <div class="registers">
                 {{ totalOfItems }}
                 Registro
-                <span v-show="totalOfItems > 1">s</span>
+                <span v-if="totalOfItems > 1">s</span>
             </div>
             <div class="flex">
                 <span

@@ -15,7 +15,7 @@ const router = new Router({
                 {
                     path: '/',
                     name: 'App',
-                    component: () => import(/* webpackChunkName: "Login" */ '@/components/HelloWorld.vue'),
+                    component: () => import(/* webpackChunkName: "Dashboard" */ '@/views/dashboard'),
                 },
                 // {
                 //     path: '/login',
