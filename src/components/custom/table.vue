@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto">
+    <div>
         <table class="fade">
             <thead>
                 <tr class="tr-head">

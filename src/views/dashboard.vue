@@ -1,9 +1,10 @@
 <template>
     <div>
+        <managerUser :show="modal" @close="modal = false" />
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
-                <ot-button>Adicionar Carteira</ot-button>
+                <ot-button @click="modal = true">Adicionar Carteira</ot-button>
             </div>
         </div>
         <div class="card flex justify-between items-center">
@@ -26,25 +27,40 @@
                 </ot-button>
             </div>
         </div>
-        <ot-table
-            :headers="headers"
-            :items="usersList.results"
-            :totalOfItems="usersList.total"
-            :pages="usersList.count"
-            :loading="loading"
-            @select-page="activePage = $event"
-            :activePage="activePage"
-        >
-            <div slot="action-btn">Editar e Deletar</div>
-        </ot-table>
+        <div class="card">
+            <div class="flex justify-between items-center">
+                <div class="title-table">Carteiras</div>
+                <div>
+                    <ot-button variant="ot-blue-outline">Exportar CSV</ot-button>
+                </div>
+            </div>
+            <ot-table
+                :headers="headers"
+                :items="usersList.results"
+                :totalOfItems="usersList.total"
+                :pages="usersList.count"
+                :loading="loading"
+                @select-page="activePage = $event"
+                :activePage="activePage"
+            >
+                <div class="flex justify-around" slot="action-btn">
+                    <font-awesome-icon class="action-icon" icon="pencil-alt" />
+                    <font-awesome-icon class="action-icon" icon="trash" />
+                </div>
+            </ot-table>
+        </div>
     </div>
 </template>
 
 <script>
 import { appendQueryString } from '@/utils/';
 import { mapActions, mapState } from "vuex";
+import managerUser from "@/components/dashboard/modal/manager-user.vue"
 export default {
     name: 'Dashboard',
+    components: {
+        managerUser
+    },
     data: () => ({
         rules: {
             type: 'email',
@@ -154,5 +170,11 @@ export default {
 }
 .search-input {
     width: 27%;
+}
+.title-table {
+    font-weight: bold;
+}
+.action-icon {
+    cursor: pointer;
 }
 </style>
