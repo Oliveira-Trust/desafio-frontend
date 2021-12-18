@@ -101,7 +101,7 @@ export default {
 
         },
         async prepareQueriesStrings () {
-            let queriesStrings = '';
+            let queriesStrings = appendQueryString('', '_limit=10');
             // creates the search filter, based on cascade
             if (this.email.length) {
                 queriesStrings = appendQueryString(queriesStrings, `email_like=${this.email}`);
