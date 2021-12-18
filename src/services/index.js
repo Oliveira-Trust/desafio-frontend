@@ -1,4 +1,4 @@
-import { configAxios } from '@/utils/api-instance';
+import { configAxios, configCoins } from '@/utils/api-instance';
 
 export const getUsersList = async (queryString = '') => {
     const api = configAxios();
@@ -19,4 +19,10 @@ export const getUsersList = async (queryString = '') => {
         }
     }
     return { results: data, count, total: Number(total) }
+}
+
+export const getBtcToBrl = async () => {
+    const api = configCoins();
+    const { data } = await api.get('last/BTC-BRL');
+    console.log(data);
 }
