@@ -28,7 +28,7 @@ export default {
     name: 'Button',
     props: {
         variant: {
-            // ot-blue, ot-blue-outline,
+            // ot-blue, ot-blue-outline, ot-red
             type: String,
             default: 'ot-blue'
         },
@@ -214,6 +214,22 @@ export default {
 
 .ot-button.ot-blue-outline.loading span {
     color: transparent;
+}
+
+// BTN RED
+
+.ot-button.ot-red {
+    color: #fff;
+    background-color: #f7002a;
+    text-transform: capitalize;
+}
+
+.ot-button.ot-red.loading span {
+    color: transparent;
+}
+
+.ot-button.ot-red:hover {
+    background-color: #f70029;
 }
 
 /* BUTTON  SIZES*/

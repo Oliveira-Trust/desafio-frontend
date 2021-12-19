@@ -75,7 +75,7 @@ export default {
     color: #000;
 }
 .notification-content.error {
-    background: red;
+    background: #f7002a;
     color: #fff;
 }
 .notification-content.success {

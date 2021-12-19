@@ -75,6 +75,10 @@ export default {
         show: {
             type: Boolean,
             default: false
+        },
+        userId: {
+            type: Number,
+            default: 0
         }
     },
     data: () => ({

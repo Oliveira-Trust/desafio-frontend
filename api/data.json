@@ -550,22 +550,6 @@
       "data_abertura": "2018-07-17T20:49:51Z",
       "valor_carteira": 0.2242509,
       "endereco_carteira": "1MqLZnNHywy2S21VNJyvAGJLC8TopdE9eS"
-    },
-    {
-      "nome": "gustavo",
-      "sobrenome": "garcia",
-      "email": "gustavo@email.com",
-      "value_brl": "R$ 888.888,88",
-      "valor_carteira": 3.313337309338144,
-      "id": 51
-    },
-    {
-      "nome": "lais ",
-      "sobrenome": "pontes",
-      "email": "lais@email.com",
-      "value_brl": "R$ 5.666,66",
-      "valor_carteira": 0.021122500708225855,
-      "id": 52
     }
   ]
 }

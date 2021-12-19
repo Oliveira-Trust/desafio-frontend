@@ -6,6 +6,12 @@
             @close="modal = false"
             @reload-table="getUsersList"
         />
+        <deleteUser
+            :userId="userId"
+            :show="modalDelete"
+            @close="modalDelete = false"
+            @reload-table="getUsersList"
+        />
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
@@ -56,7 +62,7 @@
                             icon="pencil-alt"
                         />
                         <font-awesome-icon
-                            @click="openModal(item)"
+                            @click="openModalDeleteUser(item.id)"
                             class="action-icon"
                             icon="trash"
                         />
@@ -71,10 +77,12 @@
 import { appendQueryString } from '@/utils/';
 import { mapActions, mapState } from "vuex";
 import managerUser from "@/components/dashboard/modal/manager-user"
+import deleteUser from "@/components/dashboard/modal/delete-user"
 export default {
     name: 'Dashboard',
     components: {
-        managerUser
+        managerUser,
+        deleteUser
     },
     data: () => ({
         rules: {
@@ -108,10 +116,12 @@ export default {
         name: '',
         surname: '',
         activePage: 1,
+        userId: 1,
         modal: false,
         loading: false,
         loadMore: false,
-        selectUser: false
+        selectUser: false,
+        modalDelete: false
     }),
     async created () {
         this.loading = !this.loading
@@ -162,6 +172,10 @@ export default {
                 this.selectUser = false;
             }
             this.modal = true;
+        },
+        openModalDeleteUser (id) {
+            this.userId = id;
+            this.modalDelete = true;
         }
     },
     computed: {
@@ -177,6 +191,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
 .title {
     font-size: 22px;
     font-weight: bold;
