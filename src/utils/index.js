@@ -1,3 +1,4 @@
+import { ExportToCsv } from 'export-to-csv';
 export const appendQueryString = (url, value) => {
     if (!value) {
         return url;
@@ -15,3 +16,21 @@ export const convertBrlInNumber = value => {
 export const convertBtcToNumber = value => {
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 }
+
+export const downloadBlobCsv = (name, data) => {
+    const options = {
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        filename: name,
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+    };
+
+    const csvExporter = new ExportToCsv(options);
+
+    csvExporter.generateCsv(data);
+};

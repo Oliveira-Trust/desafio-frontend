@@ -1,13 +1,18 @@
 <template>
     <div>
-        <managerUser :user="selectUser" :show="modal" @close="modal = false" />
+        <managerUser
+            :user="selectUser"
+            :show="modal"
+            @close="modal = false"
+            @reload-table="getUsersList"
+        />
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
-                <ot-button @click="openModal">Adicionar Carteira</ot-button>
+                <ot-button :loading="loadMore" @click="openModal">Adicionar Carteira</ot-button>
             </div>
         </div>
-        <div class="card flex justify-between items-center">
+        <div class="card input-container">
             <div class="search-input">
                 <ot-input placeholder-text="Nome" v-model="name" />
             </div>
@@ -31,7 +36,7 @@
             <div class="flex justify-between items-center">
                 <div class="title-table">Carteiras</div>
                 <div>
-                    <ot-button variant="ot-blue-outline">Exportar CSV</ot-button>
+                    <ot-button @click="exportUserCsv" variant="ot-blue-outline">Exportar CSV</ot-button>
                 </div>
             </div>
             <ot-table
@@ -114,7 +119,7 @@ export default {
         this.loading = !this.loading
     },
     methods: {
-        ...mapActions('users', ['getUsers']),
+        ...mapActions('users', ['getUsers', 'exportUserCsv']),
         async getUsersList () {
             this.loadMore = !this.loadMore
             try {
@@ -190,10 +195,22 @@ export default {
 .search-input {
     width: 27%;
 }
+.input-container {
+    @apply flex justify-between items-center;
+    @media screen and (max-width: 992px) {
+        @apply grid grid-cols-1;
+    }
+}
 .title-table {
     font-weight: bold;
 }
 .action-icon {
     cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+    .search-input {
+        width: 100% !important;
+        margin-bottom: 25px;
+    }
 }
 </style>

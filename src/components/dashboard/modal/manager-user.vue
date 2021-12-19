@@ -124,6 +124,7 @@ export default {
     },
     methods: {
         ...mapActions('users', ['updateUser', 'createUser']),
+        ...mapActions('notification', ['showNotification']),
         async validateForm () {
             // Let's ask the input component if it follows the validation rules
             this.isValidForm = !this.isValidForm
@@ -142,17 +143,20 @@ export default {
                 } else {
                     await this.createUser(user);
                 }
+                this.showNotification({ message: `Usuário ${this.message} com sucesso`, type: 'success' })
             } catch (e) {
-                console.error(e)
+                this.showNotification({ message: 'Um erro aconteceu', type: 'error' });
             } finally {
                 this.loading = !this.loading;
+                this.$emit('reload-table');
+                this.$emit('close');
             }
         },
         makePost () {
+            const data = { ...this.form };
+            delete data.valueBrl;
             return {
-                nome: this.form.nome,
-                sobrenome: this.form.sobrenome,
-                email: this.form.email,
+                ...data,
                 valorCarteira: this.bitcoin
             }
         },

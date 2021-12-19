@@ -17,6 +17,7 @@
     "axios-case-converter": "^0.9.0",
     "core-js": "^3.19.3",
     "epic-spinners": "^1.1.0",
+    "export-to-csv": "^0.2.1",
     "node-sass": "^6.0.0",
     "sass-loader": "^10",
     "v-money": "^0.8.1",

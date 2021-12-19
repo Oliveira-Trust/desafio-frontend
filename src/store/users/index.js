@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
 import { getUsersList, updateUserInList, deleteUserInList, createUserInList } from "@/services/users"
+import { downloadBlobCsv } from "@/utils"
 // Registro de Cookies
 Vue.use(VueCookies);
 
@@ -15,6 +16,9 @@ export const mutations = {
         state.usersList = users;
         Vue.$cookies.set('usersList', state.usersList);
     },
+    EXPORT_CSV (state) {
+        downloadBlobCsv('usuarios', state.usersList.results);
+    }
 }
 
 export const actions = {
@@ -31,4 +35,7 @@ export const actions = {
     async deleteUser (_, id) {
         await deleteUserInList(id);
     },
+    exportUserCsv ({ commit }) {
+        commit('EXPORT_CSV');
+    }
 }
