@@ -46,8 +46,12 @@
                     @click="(getUsersList(), resetPage())"
                     :loading="loadMore"
                     variant="ot-blue-outline"
+                    class="mr-5"
                 >
                     <font-awesome-icon class="icon" icon="search" />Buscar
+                </ot-button>
+                <ot-button @click="clearFilters" :loading="loadMore" variant="ot-blue-outline">
+                    <font-awesome-icon class="icon" icon="clear" />Limpar
                 </ot-button>
             </div>
         </div>
@@ -192,6 +196,12 @@ export default {
         openModalDeleteUser (id) {
             this.userId = id;
             this.modalDelete = true;
+        },
+        async clearFilters () {
+            this.email = ''
+            this.name = ''
+            this.surname = ''
+            await this.getUsersList();
         }
     },
     computed: {
@@ -228,7 +238,7 @@ export default {
     margin-bottom: 30px;
 }
 .search-input {
-    width: 27%;
+    width: 22%;
 }
 .input-container {
     @apply flex justify-between items-center;

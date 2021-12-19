@@ -557,6 +557,13 @@
       "email": "llll@lululu.com",
       "valor_carteira": 1.8722454588686395,
       "id": 51
+    },
+    {
+      "nome": "teste",
+      "sobrenome": "teste",
+      "email": "teste@teste.com",
+      "valor_carteira": 0,
+      "id": 52
     }
   ]
 }

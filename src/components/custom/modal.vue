@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div id="modal" class="modal-mask" v-show="show">
+        <div id="modal" class="modal-mask" v-if="show">
             <div class="modal-wrapper">
                 <div
                     class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden"

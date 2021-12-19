@@ -1,5 +1,5 @@
 <template>
-    <div class="page-flexbox-wrapper">
+    <div class="page-flexbox-wrappernp">
         <header-component />
         <main class="container mx-auto mb-10 sm:px-0 px-5">
             <ot-notification

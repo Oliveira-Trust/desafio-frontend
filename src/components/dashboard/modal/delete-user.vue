@@ -10,7 +10,7 @@
             </div>
             <div class="title flex-wrap">Excluir Carteira</div>
             <div class="sub-title">Tem certeza que deseja excluir essa Carteira?</div>
-            <div class="sub-title">Esta ação não poderá ser desfieta.</div>
+            <div class="sub-title">Esta ação não poderá ser desfeita.</div>
         </div>
         <div class="btn-container grid" slot="footer">
             <ot-button

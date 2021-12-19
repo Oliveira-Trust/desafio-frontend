@@ -273,19 +273,7 @@ export default {
 .ot-button.disabled {
     background-color: #dbdbdb !important;
     color: #707070 !important;
-}
-.ot-button.ot-dark-blue-outline.disabled {
-    background-color: #dbdbdb !important;
-    color: #707070 !important;
-    box-shadow: none !important;
-}
-
-.ot-button.ot-blue-outline.disabled {
-    box-shadow: none !important;
-}
-
-.ot-button.ot-blue-outline-exclusive.disabled {
-    box-shadow: none !important;
+    cursor: not-allowed;
 }
 
 /* CUSTOM LOADING */

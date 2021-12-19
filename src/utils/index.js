@@ -17,6 +17,11 @@ export const convertBtcToNumber = value => {
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 }
 
+export const convertNumberToBRL = number => {
+
+    return Number(number).toLocaleString('pt-BR')
+};
+
 export const downloadBlobCsv = (name, data) => {
     const options = {
         fieldSeparator: ',',

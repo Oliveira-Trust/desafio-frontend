@@ -42,7 +42,10 @@
                     hasMoney
                     @valid="rules.valueBrl.valid = $event"
                 />
-                <div class="bitcoin">BTC {{ bitcoin }}</div>
+                <div class="bitcoin flex justify-start items-center">BTC {{ bitcoin }}</div>
+            </div>
+            <div>
+                <b>Valor de 1 Bitcoin: R$ {{ convertNumberToBRL(bitcoinValue) }}</b>
             </div>
         </div>
         <div class="flex justify-end" slot="footer">
@@ -56,14 +59,14 @@
                 :disabled="!validationForm"
                 :loading="loading"
                 @click="validateForm"
-            >Adicionar</ot-button>
+            >{{ titleBtn }}</ot-button>
         </div>
     </ot-modal>
 </template>
 
 <script>
 import { getBtcToBrlValue } from '@/services/coins';
-import { convertBrlInNumber, convertBtcToNumber } from '@/utils';
+import { convertBrlInNumber, convertBtcToNumber, convertNumberToBRL } from '@/utils';
 import { mapActions } from 'vuex';
 export default {
     name: 'managerUser',
@@ -129,6 +132,7 @@ export default {
     methods: {
         ...mapActions('users', ['updateUser', 'createUser']),
         ...mapActions('notification', ['showNotification']),
+        convertNumberToBRL,
         async validateForm () {
             // Let's ask the input component if it follows the validation rules
             this.isValidForm = !this.isValidForm
@@ -169,6 +173,9 @@ export default {
         title () {
             return this.user ? 'Editar' : 'Adicionar';
         },
+        titleBtn () {
+            return this.user ? 'Atualizar' : 'Adicionar';
+        },
         message () {
             return this.user ? 'Editado' : 'Criado';
         },
@@ -186,6 +193,7 @@ export default {
             if (this.user) {
                 const valueBrl = (parseFloat(this.user.valorCarteira * this.bitcoinValue))
                 this.form = { ...this.user, valueBrl: convertBtcToNumber(valueBrl) };
+                this.isValidForm = !this.isValidForm;
 
             } else {
                 this.form = {
