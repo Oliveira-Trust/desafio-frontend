@@ -4,6 +4,7 @@ import input from '@/components/custom/input';
 import button from '@/components/custom/button';
 import modal from '@/components/custom/modal';
 import table from '@/components/custom/table';
+import notification from '@/components/custom/notification';
 
 export default () => {
     // register globally
@@ -11,4 +12,5 @@ export default () => {
     Vue.component('ot-button', button);
     Vue.component('ot-modal', modal);
     Vue.component('ot-table', table);
+    Vue.component('ot-notification', notification);
 };
