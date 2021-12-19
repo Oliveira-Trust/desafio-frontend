@@ -20,3 +20,18 @@ export const getUsersList = async (queryString = '') => {
     }
     return { results: data, count, total: Number(total) }
 }
+
+export const updateUserInList = async (user) => {
+    const api = configAxios();
+    await api.patch(`users/${user.id}`, user);
+};
+
+export const deleteUserInList = async (id) => {
+    const api = configAxios();
+    await api.delete(`users/${id}`);
+};
+
+export const createUserInList = async (user) => {
+    const api = configAxios();
+    await api.post(`users/`, user);
+};

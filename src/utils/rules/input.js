@@ -2,9 +2,9 @@ export const validateInput = (rule, value) => {
     switch (rule.type) {
         case 'email':
             return emailValidate(rule, value);
-        case 'password':
-            return passwordValidate(rule, value);
         case 'text':
+            return textValidate(rule, value);
+        default:
             return textValidate(rule, value);
     }
 };
@@ -31,19 +31,6 @@ export const emailValidate = (rule, value) => {
         return `Insira um ${rule.name} válido.`;
     }
 
-    return '';
-};
-export const passwordValidate = (rule, value) => {
-    if (rule.required) {
-        if (value.trim('').split('').length == 0) {
-            return `O campo ${rule.name} é obrigatório.`;
-        }
-    }
-    if (rule.length) {
-        if (rule.length > value.split('').length) {
-            return `Por favor, forneça ao menos ${rule.length} caracteres.`;
-        }
-    }
     return '';
 };
 export const textValidate = (rule, value) => {

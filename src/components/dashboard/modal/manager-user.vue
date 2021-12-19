@@ -6,27 +6,57 @@
                 <div class="line"></div>
             </div>
             <div class="input-componet">
-                <ot-input v-model="form.nome" placeholder-text="Nome" />
+                <ot-input
+                    :valid="isValidForm"
+                    :rules="rules.nome"
+                    v-model="form.nome"
+                    placeholder-text="Nome"
+                    @valid="rules.nome.valid = $event"
+                />
             </div>
             <div class="input-componet">
-                <ot-input v-model="form.sobrenome" placeholder-text="Sobrenome" />
+                <ot-input
+                    :valid="isValidForm"
+                    v-model="form.sobrenome"
+                    :rules="rules.sobrenome"
+                    placeholder-text="Sobrenome"
+                    @valid="rules.sobrenome.valid = $event"
+                />
             </div>
             <div class="input-componet">
-                <ot-input v-model="form.email" placeholder-text="E-mail" />
+                <ot-input
+                    :valid="isValidForm"
+                    v-model="form.email"
+                    :rules="rules.email"
+                    placeholder-text="E-mail"
+                    @valid="rules.email.valid = $event"
+                />
             </div>
             <div class="input-componet flex justify-start items-center">
                 <ot-input
+                    :valid="isValidForm"
                     inputType="text"
                     v-model="form.valueBrl"
+                    :rules="rules.valueBrl"
                     placeholder-text="Valor de Compra"
                     hasMoney
+                    @valid="rules.valueBrl.valid = $event"
                 />
                 <div class="bitcoin">BTC {{ bitcoin }}</div>
             </div>
         </div>
         <div class="flex justify-end" slot="footer">
-            <ot-button class="mr-5" @click="$emit('close')" variant="ot-blue-outline">Cancelar</ot-button>
-            <ot-button>Adicionar</ot-button>
+            <ot-button
+                :disabled="loading"
+                class="mr-5"
+                @click="$emit('close')"
+                variant="ot-blue-outline"
+            >Cancelar</ot-button>
+            <ot-button
+                :disabled="!validationForm"
+                :loading="loading"
+                @click="validateForm"
+            >Adicionar</ot-button>
         </div>
     </ot-modal>
 </template>
@@ -34,6 +64,7 @@
 <script>
 import { getBtcToBrlValue } from '@/services/coins';
 import { convertBrlInNumber, convertBtcToNumber } from '@/utils';
+import { mapActions } from 'vuex';
 export default {
     name: 'managerUser',
     props: {
@@ -54,21 +85,92 @@ export default {
             valueBrl: '',
             valorCarteira: 0
         },
+        rules: {
+            nome: {
+                required: true,
+                type: 'text',
+                valid: true,
+                length: 3,
+                name: 'Nome'
+            },
+            sobrenome: {
+                required: true,
+                type: 'text',
+                valid: true,
+                length: 3,
+                name: 'Sobrenome'
+            },
+            email: {
+                required: true,
+                type: 'email',
+                valid: true,
+                name: 'E-mail'
+            },
+            valueBrl: {
+                required: true,
+                type: 'text',
+                valid: true,
+                name: 'Valor da Carteira'
+            },
+        },
         bitcoinValue: 0,
         valueBrl: 0,
+        loading: false,
+        isValidForm: false,
     }),
     async created () {
         const value = await getBtcToBrlValue();
         this.bitcoinValue = value;
     },
+    methods: {
+        ...mapActions('users', ['updateUser', 'createUser']),
+        async validateForm () {
+            // Let's ask the input component if it follows the validation rules
+            this.isValidForm = !this.isValidForm
+            // set timeout for components to respond in time
+            await setTimeout(() => { }, 500)
+            if (this.validationForm) {
+                await this.actionRequest();
+            }
+        },
+        async actionRequest () {
+            this.loading = !this.loading;
+            try {
+                const user = this.makePost();
+                if (this.user) {
+                    await this.updateUser(user);
+                } else {
+                    await this.createUser(user);
+                }
+            } catch (e) {
+                console.error(e)
+            } finally {
+                this.loading = !this.loading;
+            }
+        },
+        makePost () {
+            return {
+                nome: this.form.nome,
+                sobrenome: this.form.sobrenome,
+                email: this.form.email,
+                valorCarteira: this.bitcoin
+            }
+        },
+    },
     computed: {
         title () {
             return this.user ? 'Editar' : 'Adicionar';
+        },
+        message () {
+            return this.user ? 'Editado' : 'Criado';
         },
         bitcoin () {
             const valueBrl = convertBrlInNumber(this.form.valueBrl);
             const value = valueBrl / this.bitcoinValue;
             return value && valueBrl >= 1 ? value : 0;
+        },
+        validationForm () {
+            return this.rules.nome.valid && this.rules.sobrenome.valid && this.rules.email.valid && this.rules.valueBrl.valid;
         }
     },
     watch: {

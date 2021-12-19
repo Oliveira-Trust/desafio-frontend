@@ -125,6 +125,14 @@ export default {
                 '--focusColor': !this.disabled ? '1px solid #0ca0fd' : '1px solid #dbdbdb',
             };
         }
+    },
+    watch: {
+        valid: {
+            deep: true,
+            handler () {
+                this.validate();
+            }
+        },
     }
 }
 </script>
