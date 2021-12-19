@@ -17,31 +17,9 @@ const router = new Router({
                     name: 'App',
                     component: () => import(/* webpackChunkName: "Dashboard" */ '@/views/dashboard'),
                 },
-                // {
-                //     path: '/login',
-                //     name: 'Login',
-                //     component: () => import(/* webpackChunkName: "Login" */ '@/views/Login.vue'),
-                // },
-                // {
-                //     path: '/register',
-                //     name: 'Register',
-                //     component: () => import(/* webpackChunkName: "Login" */ '@/views/Register.vue'),
-                // },
 
             ]
         },
-        // {
-        //     path: "/",
-        //     component: () => import("./layouts/Default.vue"),
-        //     meta: { requireAuth: true }, // validação de autenticação
-        //     children: [
-        //         {
-        //             path: "/dashboard",
-        //             name: "Dashboard",
-        //             component: () => import("@/views/Home.vue"),
-        //         },
-        //     ]
-        // },
 
     ]
 });
