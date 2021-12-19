@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
-import { getUsersList } from "@/services"
+import { getUsersList } from "@/services/users"
 // Registro de Cookies
 Vue.use(VueCookies);
 

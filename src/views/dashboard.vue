@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
-                <ot-button @click="modal = true">Adicionar Carteira</ot-button>
+                <ot-button @click="openModal">Adicionar Carteira</ot-button>
             </div>
         </div>
         <div class="card flex justify-between items-center">
@@ -43,10 +43,20 @@
                 @select-page="activePage = $event"
                 :activePage="activePage"
             >
-                <div class="flex justify-around" slot="action-btn">
-                    <font-awesome-icon class="action-icon" icon="pencil-alt" />
-                    <font-awesome-icon class="action-icon" icon="trash" />
-                </div>
+                <template v-slot:actionBtn="{ item }">
+                    <div class="flex justify-around">
+                        <font-awesome-icon
+                            @click="openModal(item)"
+                            class="action-icon"
+                            icon="pencil-alt"
+                        />
+                        <font-awesome-icon
+                            @click="openModal(item)"
+                            class="action-icon"
+                            icon="trash"
+                        />
+                    </div>
+                </template>
             </ot-table>
         </div>
     </div>
@@ -85,7 +95,7 @@ export default {
                 label: 'Bitcoin'
             },
             {
-                value: 'action-btn',
+                value: 'actionBtn',
                 label: ''
             },
         ],
@@ -139,6 +149,14 @@ export default {
         },
         resetPage () {
             this.activePage = 1;
+        },
+        openModal (user = false) {
+            if (user) {
+                this.selectUser = user;
+            } else {
+                this.selectUser = false;
+            }
+            this.modal = true;
         }
     },
     computed: {

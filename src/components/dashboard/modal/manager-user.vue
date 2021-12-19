@@ -17,7 +17,7 @@
             <div class="input-componet flex justify-start items-center">
                 <ot-input
                     inputType="text"
-                    v-model="form.valorCarteira"
+                    v-model="form.valueBrl"
                     placeholder-text="Valor de Compra"
                     hasMoney
                 />
@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import { getBtcToBrlValue } from '@/services';
-import { convertBrlInNumber } from '@/utils';
+import { getBtcToBrlValue } from '@/services/coins';
+import { convertBrlInNumber, convertBtcToNumber } from '@/utils';
 export default {
     name: 'managerUser',
     props: {
@@ -51,36 +51,44 @@ export default {
             nome: '',
             sobrenome: '',
             email: '',
-            valorCarteira: '',
+            valueBrl: '',
+            valorCarteira: 0
         },
         bitcoinValue: 0,
+        valueBrl: 0,
     }),
+    async created () {
+        const value = await getBtcToBrlValue();
+        this.bitcoinValue = value;
+    },
     computed: {
         title () {
             return this.user ? 'Editar' : 'Adicionar';
         },
         bitcoin () {
-            const valorCarteira = convertBrlInNumber(this.form.valorCarteira);
-            console.log(valorCarteira, this.bitcoinValue)
-            const value = valorCarteira / this.bitcoinValue;
-            return value && valorCarteira >= 1 ? value : 0;
+            const valueBrl = convertBrlInNumber(this.form.valueBrl);
+            const value = valueBrl / this.bitcoinValue;
+            return value && valueBrl >= 1 ? value : 0;
         }
     },
     watch: {
         user () {
             if (this.user) {
-                this.form = { ...this.user };
+                const valueBrl = (parseFloat(this.user.valorCarteira * this.bitcoinValue))
+                this.form = { ...this.user, valueBrl: convertBtcToNumber(valueBrl) };
+
             } else {
                 this.form = {
                     nome: '',
                     sobrenome: '',
                     email: '',
-                    valorCarteira: '',
+                    valueBrl: '',
+                    valorCarteira: 0,
                 }
             }
 
         },
-        'form.valorCarteira': async function (newVal, oldVal) {
+        'form.valueBrl': async function (newVal, oldVal) {
             if (newVal != oldVal) {
                 const value = await getBtcToBrlValue();
                 this.bitcoinValue = value;

@@ -1,5 +1,4 @@
-import { configAxios, configCoins } from '@/utils/api-instance';
-import { convertBrlInNumber } from '@/utils';
+import { configAxios } from '@/utils/api-instance';
 
 export const getUsersList = async (queryString = '') => {
     const api = configAxios();
@@ -20,11 +19,4 @@ export const getUsersList = async (queryString = '') => {
         }
     }
     return { results: data, count, total: Number(total) }
-}
-
-export const getBtcToBrlValue = async () => {
-    const api = configCoins();
-    const { data } = await api.get('last/BTC-BRL');
-    let value = convertBrlInNumber(data.btcbrl.bid);
-    return value
 }
