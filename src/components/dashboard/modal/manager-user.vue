@@ -16,9 +16,10 @@
             </div>
             <div class="input-componet flex justify-start items-center">
                 <ot-input
-                    inputType="number"
+                    inputType="text"
                     v-model="form.valorCarteira"
                     placeholder-text="Valor de Compra"
+                    hasMoney
                 />
                 <div class="bitcoin">BTC {{ bitcoin }}</div>
             </div>
@@ -32,6 +33,7 @@
 
 <script>
 import { getBtcToBrlValue } from '@/services';
+import { convertBrlInNumber } from '@/utils';
 export default {
     name: 'managerUser',
     props: {
@@ -58,8 +60,10 @@ export default {
             return this.user ? 'Editar' : 'Adicionar';
         },
         bitcoin () {
-            const value = (this.form.valorCarteira / this.bitcoinValue);
-            return value ? value : 0;
+            const valorCarteira = convertBrlInNumber(this.form.valorCarteira);
+            console.log(valorCarteira, this.bitcoinValue)
+            const value = valorCarteira / this.bitcoinValue;
+            return value && valorCarteira >= 1 ? value : 0;
         }
     },
     watch: {

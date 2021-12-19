@@ -7,3 +7,8 @@ export const appendQueryString = (url, value) => {
         return url + '&' + value;
     }
 };
+export const convertBrlInNumber = (value) => {
+    return value
+        .replace(/[^\d,]+/g, '') // Remove unnecessary characters.
+        .replace(',', '.');      // Change the decimal separator(`,` -> `.`)
+}

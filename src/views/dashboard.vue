@@ -1,6 +1,6 @@
 <template>
     <div>
-        <managerUser :user="_selectUser" :show="modal" @close="modal = false" />
+        <managerUser :user="selectUser" :show="modal" @close="modal = false" />
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
@@ -96,7 +96,7 @@ export default {
         modal: false,
         loading: false,
         loadMore: false,
-        _selectUser: false
+        selectUser: false
     }),
     async created () {
         this.loading = !this.loading

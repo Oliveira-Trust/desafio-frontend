@@ -15,6 +15,7 @@
             @blur="validate(), $emit('onblur')"
             v-on:keyup.enter="$emit('enter', true)"
             :placeholder="placeholderText"
+            v-money="validateMoney()"
         />
         <transition name="slide-fade">
             <div class="error-message flex justify-start" v-if="show">{{ messageError }}</div>
@@ -28,6 +29,10 @@ export default {
     name: 'otInput',
     props: {
         valid: {
+            type: Boolean,
+            default: false
+        },
+        hasMoney: {
             type: Boolean,
             default: false
         },
@@ -63,9 +68,20 @@ export default {
             target: false,
             color: ''
         },
+        money: {
+            decimal: ',',
+            thousands: '.',
+            prefix: 'R$ ',
+            suffix: '',
+            precision: 2,
+            masked: false
+        },
         messageError: ''
     }),
     methods: {
+        validateMoney () {
+            return this.hasMoney ? this.money : false;
+        },
         focusInput () {
             this.focus.color = this.show ? 'red' : this.focusColor;
             if (this.focus.target) {
