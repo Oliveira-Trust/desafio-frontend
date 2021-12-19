@@ -12,6 +12,7 @@
             @close="modalDelete = false"
             @reload-table="getUsersList"
         />
+        <exportCsv :show="modalCsv" @close="modalCsv = false" @reload-table="getUsersList" />
         <div class="flex justify-between items-center mb-8">
             <div class="title">BTC Carteira</div>
             <div>
@@ -20,13 +21,25 @@
         </div>
         <div class="card input-container">
             <div class="search-input">
-                <ot-input placeholder-text="Nome" v-model="name" />
+                <ot-input
+                    @enter="(getUsersList(), resetPage())"
+                    placeholder-text="Nome"
+                    v-model="name"
+                />
             </div>
             <div class="search-input">
-                <ot-input placeholder-text="Sobrenome" v-model="surname" />
+                <ot-input
+                    @enter="(getUsersList(), resetPage())"
+                    placeholder-text="Sobrenome"
+                    v-model="surname"
+                />
             </div>
             <div class="search-input">
-                <ot-input placeholder-text="E-mail" v-model="email" />
+                <ot-input
+                    @enter="(getUsersList(), resetPage())"
+                    placeholder-text="E-mail"
+                    v-model="email"
+                />
             </div>
             <div class="flex justify-end">
                 <ot-button
@@ -42,7 +55,7 @@
             <div class="flex justify-between items-center">
                 <div class="title-table">Carteiras</div>
                 <div>
-                    <ot-button @click="exportUserCsv" variant="ot-blue-outline">Exportar CSV</ot-button>
+                    <ot-button @click="modalCsv = true" variant="ot-blue-outline">Exportar CSV</ot-button>
                 </div>
             </div>
             <ot-table
@@ -78,11 +91,13 @@ import { appendQueryString } from '@/utils/';
 import { mapActions, mapState } from "vuex";
 import managerUser from "@/components/dashboard/modal/manager-user"
 import deleteUser from "@/components/dashboard/modal/delete-user"
+import exportCsv from "@/components/dashboard/modal/export-csv"
 export default {
     name: 'Dashboard',
     components: {
         managerUser,
-        deleteUser
+        deleteUser,
+        exportCsv
     },
     data: () => ({
         rules: {
@@ -121,7 +136,8 @@ export default {
         loading: false,
         loadMore: false,
         selectUser: false,
-        modalDelete: false
+        modalDelete: false,
+        modalCsv: false,
     }),
     async created () {
         this.loading = !this.loading

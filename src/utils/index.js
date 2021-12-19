@@ -25,6 +25,7 @@ export const downloadBlobCsv = (name, data) => {
         showLabels: true,
         showTitle: true,
         filename: name,
+        title: 'Usuários da Oliveira Trust',
         useTextFile: false,
         useBom: true,
         useKeysAsHeaders: true,

@@ -550,6 +550,13 @@
       "data_abertura": "2018-07-17T20:49:51Z",
       "valor_carteira": 0.2242509,
       "endereco_carteira": "1MqLZnNHywy2S21VNJyvAGJLC8TopdE9eS"
+    },
+    {
+      "nome": "Construção",
+      "sobrenome": "teste",
+      "email": "llll@lululu.com",
+      "valor_carteira": 1.8722454588686395,
+      "id": 51
     }
   ]
 }

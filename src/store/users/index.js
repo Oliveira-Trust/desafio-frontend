@@ -35,7 +35,11 @@ export const actions = {
     async deleteUser (_, id) {
         await deleteUserInList(id);
     },
-    exportUserCsv ({ commit }) {
+    async exportUserCsv ({ commit, dispatch }, type) {
+        if (type == 'all') {
+            await dispatch('getUsers');
+        }
         commit('EXPORT_CSV');
+
     }
 }
