@@ -168,6 +168,12 @@ export default {
                 valorCarteira: this.bitcoin
             }
         },
+        resetValidation () {
+            this.rules.nome.valid = true;
+            this.rules.sobrenome.valid = true;
+            this.rules.email.valid = true
+            this.rules.valueBrl.valid = true;
+        }
     },
     computed: {
         title () {
@@ -193,8 +199,6 @@ export default {
             if (this.user) {
                 const valueBrl = (parseFloat(this.user.valorCarteira * this.bitcoinValue))
                 this.form = { ...this.user, valueBrl: convertBtcToNumber(valueBrl) };
-                this.isValidForm = !this.isValidForm;
-
             } else {
                 this.form = {
                     nome: '',
@@ -211,6 +215,9 @@ export default {
                 const value = await getBtcToBrlValue();
                 this.bitcoinValue = value;
             }
+        },
+        show () {
+            this.resetValidation();
         }
     }
 

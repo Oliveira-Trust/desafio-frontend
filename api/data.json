@@ -79,17 +79,6 @@
       "endereco_carteira": "1KtzVYvWjZDv8guMMX1GSrkxbLYg89fLhU"
     },
     {
-      "id": 8,
-      "nome": "Tudor",
-      "sobrenome": "Espy",
-      "email": "tespy7@ifeng.com",
-      "endereco": "48894 Spenser Circle",
-      "data_nascimento": "1983-03-27T13:49:03Z",
-      "data_abertura": "2017-12-17T06:25:37Z",
-      "valor_carteira": 2.95072841,
-      "endereco_carteira": "1CnqC8KeWwTbNJy53HtsC2KBqBnwKMhRzp"
-    },
-    {
       "id": 9,
       "nome": "Hewie",
       "sobrenome": "Dawson",
@@ -526,7 +515,7 @@
       "endereco": "83 Eagan Terrace",
       "data_nascimento": "1982-04-19T14:32:11Z",
       "data_abertura": "2018-11-03T18:00:37Z",
-      "valor_carteira": 1.1091229,
+      "valor_carteira": 1,
       "endereco_carteira": "1NacTWbA2a1WrC55ViLRV1GkMoMVpVoKWS"
     },
     {
@@ -564,6 +553,13 @@
       "email": "teste@teste.com",
       "valor_carteira": 0,
       "id": 52
+    },
+    {
+      "nome": "gustavo",
+      "sobrenome": "teste",
+      "email": "teste@email.com",
+      "valor_carteira": 0,
+      "id": 53
     }
   ]
 }

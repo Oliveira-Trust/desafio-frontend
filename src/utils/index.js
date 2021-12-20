@@ -18,7 +18,6 @@ export const convertBtcToNumber = value => {
 }
 
 export const convertNumberToBRL = number => {
-
     return Number(number).toLocaleString('pt-BR')
 };
 

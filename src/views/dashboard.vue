@@ -71,6 +71,8 @@
                 @select-page="activePage = $event"
                 :activePage="activePage"
             >
+                <template v-slot:bitcoinValue="{ item }">{{ item.valorCarteira }}</template>
+
                 <template v-slot:actionBtn="{ item }">
                     <div class="flex justify-around">
                         <font-awesome-icon
@@ -123,7 +125,7 @@ export default {
                 label: 'E-mail'
             },
             {
-                value: 'valorCarteira',
+                value: 'bitcoinValue',
                 label: 'Bitcoin'
             },
             {
