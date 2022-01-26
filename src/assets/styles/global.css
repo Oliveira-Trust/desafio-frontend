@@ -1,0 +1,54 @@
+@import './theme.css';
+@import './reset.css';
+@import './modal.css';
+
+
+.container {
+  position: relative;
+  min-height: 100%;
+  margin: 0 10%;
+}
+
+.container-flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1.3rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.material-design-icon {
+  display: flex;
+  position: relative;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.m-b-2 {
+  margin-bottom: 2rem;
+}
+
+.flex-center {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
