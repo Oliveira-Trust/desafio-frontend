@@ -3,7 +3,7 @@
     <input
       :type="type"
       :placeholder="placeholder"
-      class='field'
+      :class="['field', { error: error }]"
       :style="styleObject"
       :value="value"
       :name="name"
@@ -25,6 +25,10 @@ export default {
     label: {
       type: String,
       default: "text",
+    },
+    error: {
+      type: Boolean,
+      default: false,
     },
     name: {
       type: String,
@@ -55,6 +59,10 @@ export default {
   position: relative;
   width: 100%;
   height: 2.7rem;
+}
+
+.field.error {
+  border: 1px solid var(--color-error);
 }
 .field {
   position: absolute;

@@ -14,7 +14,7 @@ export const calculateAmountBRL = (amountPriceBRL, priceBTC) => {
 
 export const deconvertCurrency = value => {
   if (typeof value !== 'string') return value;
-  return reverseFormat('pt-BR', 'BRL', value);
+  return reverseFormat('pt-BR', 'BRL', value) || 0;
 
 };
 
