@@ -4,7 +4,12 @@
       @submit.prevent="filtrarUsers"
       class="container-flex-center-between card"
     >
-      <App-Input class="InputField" v-model="filtro.nome" label="Nome" name="nome" />
+      <App-Input
+        class="InputField"
+        v-model="filtro.nome"
+        label="Nome"
+        name="nome"
+      />
 
       <App-Input
         class="InputField"
@@ -20,9 +25,12 @@
         name="email"
       />
 
-      <App-Button class="container-flex-center-between" variation="secondary">
-        <!-- class="btn btn-default btn-default-shadow btn-search" -->
-        <SearchIcon :size="17" class="icone-search"/>
+      <App-Button
+        class="container-flex-center-between"
+        variation="secondary"
+        @click="filtrarUsers"
+      >
+        <SearchIcon :size="17" class="icone-search" />
         Buscar
       </App-Button>
     </form>
@@ -43,19 +51,17 @@ export default {
   },
   methods: {
     filtrarUsers() {
-      this.controle = "";
-      let nome = this.filtro.nome && `nome_like=${this.filtro.nome}`;
-      this.controle = nome && "&";
+      let nome = this.filtro.nome && `&nome_like=${this.filtro.nome}`;
 
       let sobrenome =
-        this.filtro.sobrenome &&
-        `${this.controle}sobrenome_like=${this.filtro.sobrenome}`;
-      this.controle = nome && "&";
+        this.filtro.sobrenome && `&sobrenome_like=${this.filtro.sobrenome}`;
 
-      let email =
-        this.filtro.email && `${this.controle}emil_like=${this.filtro.email}`;
+      let email = this.filtro.email && `&emil_like=${this.filtro.email}`;
 
-      this.$emit("filtrarUsers", { busca: `${nome}${sobrenome}${email}` });
+      this.$emit(
+        "filtrarUsers",
+        `${nome || ""}${sobrenome || ""}${email || ""}`
+      );
     },
   },
 };

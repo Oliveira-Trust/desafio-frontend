@@ -8,6 +8,7 @@ const DEFAULT_API_URLS = {
 const JSONSERVER = axios.create({
   baseURL: DEFAULT_API_URLS.JSONSERVER,
 });
+
 const BITCOIN = axios.create({
   baseURL: DEFAULT_API_URLS.BITCOIN,
 });

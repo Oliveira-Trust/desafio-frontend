@@ -13,7 +13,7 @@
       <tr v-if="naoExisteCateiras" align="center">
         <td colspan="5">Nenhuma carteira adicionada</td>
       </tr>
-      <tr v-for="wallet in wallets" :key="wallet.id">
+      <tr v-for="wallet in listWallets" :key="wallet.id">
         <td data-title="Nome" v-text="wallet.nome"></td>
         <td data-title="Sobrenome" v-text="wallet.sobrenome"></td>
         <td data-title="Email" v-text="wallet.email"></td>
@@ -42,25 +42,36 @@ import ModalRemove from "../layouts/ModalRemove.vue";
 export default {
   name: "App-TableWallets",
   props: {
-    wallets: [],
+    listWallets: {
+      type: Array,
+      default: () => [],
+    },
+    removeWallet: {
+      type: Function,
+    },
+    editWallet: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     openModalEditar(wallet) {
       ModalService.open(ModalRegister, {
-        form: wallet,
+        form: { ...wallet },
       }).then((retorno) => {
-        this.editar(retorno);
+        this.editWallet(retorno);
       });
     },
+
     openModalRemover(wallet) {
-      ModalService.open(ModalRemove, { form: wallet }).then((retorno) => {
-        this.remover(retorno.id);
+      ModalService.open(ModalRemove, { form: wallet }).then((wallet) => {
+        this.removeWallet(wallet);
       });
     },
   },
   computed: {
     naoExisteCateiras() {
-      return this.wallets.length == 0;
+      return this.listWallets.length == 0;
     },
   },
 };

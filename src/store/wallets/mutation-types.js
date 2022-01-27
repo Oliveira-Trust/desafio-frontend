@@ -1,0 +1,7 @@
+export const LOAD_LIST_PAGINATION = "LOAD_LIST_PAGINATION";
+export const LOAD_LIST_ALL = "LOAD_LIST_ALL";
+
+export const SELECT_PAGE = "SELECT_PAGE";
+export const TOTAL_RECORDS = "TOTAL_RECORDS";
+export const FILTER = "FILTER";
+export const DELETE_WALLET = "DELETE_WALLET";

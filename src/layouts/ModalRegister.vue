@@ -30,15 +30,13 @@
         <div class="group-amount">
           <App-Input
             class="modal-input w-50"
+            typeInput="money"
             type="text"
-            v-model="form.valor_carteira"
+            v-model="fieldValue"
             label="Valor de compra"
-            name="valorCompra"
+            name="valueReal"
           />
-          <div class="w-50 amount">
-            BTC
-            <span v-text="'Bitcoin'"></span>
-          </div>
+          <div class="w-50 amount">{{ displayQuantityBTC }}</div>
         </div>
       </section>
     </template>
@@ -52,8 +50,57 @@
 </template>
 
 <script>
+import * as API from "@/services/ApiBitcoin";
+import * as methods from "@/utils/methods";
+
 export default {
   name: "App-ModalRegister",
+  async created() {
+    await this.startFields("BTC", "BRL", this.form.valor_carteira);
+  },
+  data() {
+    return {
+      amountBRL: 0,
+      getPriceBuy: 0,
+    };
+  },
+  computed: {
+    fieldValue: {
+      get() {
+        return methods.convertCurrency(this.amountBRL, "BRL");
+      },
+      set(value) {
+        this.updateBTC(value);
+        return value;
+      },
+    },
+    displayQuantityBTC() {
+      return methods.convertCurrency(this.form.valor_carteira, "BTC");
+    },
+  },
+  methods: {
+    async startFields(currencyOrigin, currencyDestination, quantityBTC) {
+      const { amountBRL, amountDesconvert, constValueBITCOIN } =
+        await API.currencyConversion(
+          currencyOrigin,
+          currencyDestination,
+          quantityBTC
+        );
+
+      this.getPriceBuy = constValueBITCOIN;
+      this.amountBRL = amountBRL;
+      this.form.valor_carteira = amountDesconvert;
+    },
+
+    updateBTC(value) {
+      this.form.valor_carteira = methods.calculateAmountBRL(
+        methods.deconvertCurrency(value),
+        this.getPriceBuy
+      );
+      // this.form.valor_carteira = await API.buyBTC("BTC", "BRL", value);
+      // this.form.valor_carteira = await API.buyBTC("BTC", "BRL", value);
+    },
+  },
   props: {
     close: {
       type: Function,

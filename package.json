@@ -10,6 +10,8 @@
     "start": "npm-run-all --parallel serve api"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.34",
+    "@vuelidate/validators": "^2.0.0-alpha.26",
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "v-money": "^0.8.1",

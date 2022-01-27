@@ -1,6 +1,10 @@
 <template>
   <div class="container-flex-center-between" v-if="displayPages">
-    <App-Button variation="icone" size="small" @click="pageChanged(currentPage - 1)">
+    <App-Button
+      variation="icone"
+      size="small"
+      @click="pageChanged(currentPage - 1)"
+    >
       <ArrowLeftIcon :size="18" fillColor="var(--color-default)" />
     </App-Button>
 
@@ -15,7 +19,11 @@
       {{ pagina }}
     </App-Button>
 
-    <App-Button variation="icone" size="small" @click="pageChanged(currentPage - 1)">
+    <App-Button
+      variation="icone"
+      size="small"
+      @click="pageChanged(currentPage + 1)"
+    >
       <ArrowRightIcon :size="18" fillColor="var(--color-default)" />
     </App-Button>
   </div>
@@ -38,7 +46,7 @@ export default {
       type: [String, Number],
       default: 1,
     },
-    total: {
+    totalRecords: {
       type: [String, Number],
       required: true,
     },
@@ -52,11 +60,11 @@ export default {
   },
   computed: {
     displayPages() {
-      return this.total > this.limit;
+      return this.totalRecords > this.limit;
     },
 
     numberOfPages() {
-      return Math.ceil(this.total / this.limit);
+      return Math.ceil(this.totalRecords / this.limit);
     },
     listPages() {
       if (this.numberOfPages <= 1) return [1];
@@ -67,14 +75,20 @@ export default {
     },
   },
   methods: {
+    limitMaxPage(page) {
+      return (this.numberOfPages < page);
+    },
+    limitMinPage(page) {
+      return (this.numberOfPages < page);
+    },
     pageChanged(offset) {
-      this.$emit("change-page", offset);
+      if (this.limitMaxPage(offset)) offset = offset - 1;
+      if (this.limitMinPage(offset)) offset = offset + 1;
+      this.$emit("changePage", { page: offset });
     },
   },
 };
 </script>
 
 <style scoped>
-.pages {
-}
 </style>

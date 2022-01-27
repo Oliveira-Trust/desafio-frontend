@@ -29,7 +29,11 @@
         >
           Excluir
         </App-Button>
-        <App-Button variation="default" class="w-100 text-center" @click="dismiss()">
+        <App-Button
+          variation="default"
+          class="w-100 text-center"
+          @click="dismiss()"
+        >
           Cancelar
         </App-Button>
       </div>
@@ -49,7 +53,7 @@ export default {
       type: Function,
       required: true,
     },
-    formulario: {
+    form: {
       type: Object,
       default: () => {},
     },
