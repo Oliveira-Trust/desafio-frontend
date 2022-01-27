@@ -28,10 +28,8 @@
           name="email"
         />
         <div class="group-amount">
-          <App-Input
+          <App-InputMoney
             class="modal-input w-50"
-            typeInput="money"
-            type="text"
             v-model="fieldValue"
             label="Valor de compra"
             name="valueReal"
@@ -93,12 +91,11 @@ export default {
     },
 
     updateBTC(value) {
-      this.form.valor_carteira = methods.calculateAmountBRL(
+       let number = methods.calculateAmountBRL(
         methods.deconvertCurrency(value),
         this.getPriceBuy
       );
-      // this.form.valor_carteira = await API.buyBTC("BTC", "BRL", value);
-      // this.form.valor_carteira = await API.buyBTC("BTC", "BRL", value);
+      this.form.valor_carteira = number;
     },
   },
   props: {

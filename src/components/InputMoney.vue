@@ -1,13 +1,13 @@
 <template>
   <div class="input-field">
     <input
-      :type="type"
       :placeholder="placeholder"
-      class='field'
-      :style="styleObject"
-      :value="value"
+      class="field"
       :name="name"
       :id="name"
+      v-bind:v-model="value"
+      :value="value"
+      v-money="money"
       @input="updateValue($event.target.value)"
     />
     <label class="input-field-label" :for="name" v-text="label"></label>
@@ -17,10 +17,22 @@
 
 <script>
 export default {
-  name: "App-Input",
+  name: "App-InputMoney",
+  data() {
+    return {
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: "R$ ",
+        precision: 2,
+        masked: false,
+      },
+    };
+  },
   props: {
     value: {
-      default: null,
+      type: String,
+      default: "",
     },
     label: {
       type: String,
@@ -30,17 +42,9 @@ export default {
       type: String,
       default: "text",
     },
-    type: {
-      type: String,
-      default: "text",
-    },
     placeholder: {
       type: String,
       default: " ",
-    },
-    styleObject: {
-      type: Object,
-      default: () => {},
     },
   },
   methods: {
