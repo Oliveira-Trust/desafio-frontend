@@ -10,8 +10,13 @@
     "start": "npm-run-all --parallel serve api"
   },
   "dependencies": {
+    "axios": "^0.24.0",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-axios": "^3.4.0",
+    "vue-json-csv": "^1.2.12",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
