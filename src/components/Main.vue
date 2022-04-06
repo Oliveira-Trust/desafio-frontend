@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <Header />
     <Search />
     <Table v-bind:users="users"></Table>
   </div>
@@ -9,12 +10,14 @@
 import api from "../api";
 import Table from './Table.vue'
 import Search from './Search.vue'
+import Header from './Header.vue'
 
 export default {
   name: 'Main',
   components: {
     Table,
-    Search
+    Search,
+    Header
   },
   data() {
       return {
