@@ -10,6 +10,10 @@
     "start": "npm-run-all --parallel serve api"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^2.0.6",
+    "@heroicons/vue": "^1.0.6",
     "autoprefixer": "^9.8.8",
     "axios": "^0.26.1",
     "core-js": "^3.6.5",

@@ -3,6 +3,7 @@
     <Header />
     <Search />
     <Table v-bind:users="users"></Table>
+    <Footer />
   </div>
 </template>
 
@@ -11,13 +12,15 @@ import api from "../api";
 import Table from './Table.vue'
 import Search from './Search.vue'
 import Header from './Header.vue'
+import Footer from './Footer.vue'
 
 export default {
   name: 'Main',
   components: {
     Table,
     Search,
-    Header
+    Header,
+    Footer
   },
   data() {
       return {
@@ -30,7 +33,7 @@ export default {
   methods: {
       getUsersData() {
       api
-         .get("/users")
+         .get("/users?_limit=10")
          .then((response) => {
            console.log(response);
            this.users = response.data;
@@ -43,6 +46,5 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 </style>

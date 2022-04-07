@@ -5,6 +5,11 @@
             <div class="logo">
                 <img :src="logo" />
             </div>
+            <div class="user-info flex">
+                <img :src="user" />
+                <span>Otávio Oliveira</span>
+                <font-awesome-icon class="icon" icon="sign-out-alt" />
+            </div>
         </div>
     </nav>
   </header>
@@ -29,13 +34,34 @@ export default {
       background: #fff;
       
       .header-container {
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        height: 54px;
+        max-width: 1200px;
+        box-sizing: border-box;
+        padding: 20px 0;
+        
 
         .logo {
           width: 180px;
           height: 33px;
+        }
+
+        .user-info {
+          align-items: center;
+
+          img {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+          }
+
+          span {
+            margin-right: 10px;
+          }
+
+          .icon {
+            cursor: pointer;
+          }
         }
       }
     }
