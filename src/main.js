@@ -9,6 +9,11 @@ const store = new Vuex.Store({
   state: {
     users: [],
   },
+  getters: {
+    getUsers (state) {
+      return state.users;
+    },
+  },
 });
 
 new Vue({
