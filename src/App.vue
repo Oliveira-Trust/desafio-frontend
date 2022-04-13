@@ -12,6 +12,9 @@ export default {
   components: {
     UsersTable
   },
+  async created () {
+    await this.$store.dispatch('pullUsers');
+  },
 }
 </script>
 
