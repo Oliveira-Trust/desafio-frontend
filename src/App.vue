@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <NavBar />
+    <h1>BTC Carteiras</h1>
     <div class="users-table-card">
       <Card>
         <UsersTable/>
@@ -28,6 +29,10 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  padding: 30px 80px;
+}
+
 .users-table-card {
   padding: 80px;
 }
