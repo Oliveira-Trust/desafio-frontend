@@ -86,6 +86,10 @@ table tr:nth-child(odd) td {
   background-color: #F4F4F4;
 }
 
+table tr:nth-child(odd):hover td {
+  background-color: #f5f9ff;
+}
+
 .user-row > td:first-child {
   border-left: 2px solid transparent;
 }
