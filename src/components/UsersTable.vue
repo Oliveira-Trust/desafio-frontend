@@ -9,7 +9,7 @@
         <th>Bitcoin</th>
         <th></th>
       </tr>
-      <tr v-for="user in users" :key="user.id">
+      <tr class="user-row" v-for="user in users" :key="user.id">
         <td>{{ user.nome }}</td>
         <td>{{ user.sobrenome }}</td>
         <td>{{ user.email }}</td>
@@ -84,6 +84,34 @@ th {
 
 table tr:nth-child(odd) td {
   background-color: #F4F4F4;
+}
+
+.user-row > td:first-child {
+  border-left: 2px solid transparent;
+}
+
+.user-row:hover > td:first-child {
+  border-left: 2px solid #2570e8;
+}
+
+.user-row:hover {
+  background-color: #f5f9ff;
+}
+
+.users-table__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-table__actions__column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-table__actions__action-button {
+  margin: 4px;
 }
 
 </style>
