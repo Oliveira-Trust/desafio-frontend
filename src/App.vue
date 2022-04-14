@@ -34,7 +34,7 @@ h1 {
 }
 
 .users-table-card {
-  padding: 80px;
+  padding: 20px 80px;
 }
 </style>
 
