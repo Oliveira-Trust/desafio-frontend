@@ -1,8 +1,20 @@
 <template>
   <div class="users-table">
-    <ul>
-      <li v-for="user in users" :key="user.id"><p>{{ user.nome }}</p></li>
-    </ul>
+    <h2>Carteiras</h2>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>Bitcoin</th>
+      </tr>
+      <tr v-for="user in users" :key="user.id">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.sobrenome }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.valor_carteira }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -21,12 +33,29 @@ export default {
 p {
   color: black;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+h2 {
+  margin-bottom: 20px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+table {
+  width: 100%;
 }
+
+td {
+  height: 50px;
+  padding: 2px;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+th {
+  text-align: left;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+table tr:nth-child(odd) td {
+  background-color: #F4F4F4;
+}
+
 </style>
