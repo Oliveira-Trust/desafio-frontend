@@ -7,25 +7,53 @@
         <th>Sobrenome</th>
         <th>Email</th>
         <th>Bitcoin</th>
+        <th></th>
       </tr>
       <tr v-for="user in users" :key="user.id">
         <td>{{ user.nome }}</td>
         <td>{{ user.sobrenome }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.valor_carteira }}</td>
+        <td class="users-table__actions__column">
+          <div class="users-table__actions">
+            <IconButton
+              class="users-table__actions__action-button"
+              name="pencil-alt"
+              @onClick="handleEditClick(user)"
+            />
+            <IconButton
+              class="users-table__actions__action-button"
+              name="trash-alt"
+              @onClick="handleDeleteClick(user)"
+            />
+          </div>
+        </td>
       </tr>
     </table>
   </div>
 </template>
 
 <script>
+import IconButton from './IconButton.vue'
+
 export default {
   name: 'UsersTable',
+  components: {
+    IconButton,
+  },
   computed: {
     users () {
       return this.$store.getters.getUsers;
     }
   },
+  methods: {
+    handleEditClick (user) {
+      console.log('edit', user);
+    },
+    handleDeleteClick (user) {
+      console.log('delete', user);
+    },
+  }
 }
 </script>
 
