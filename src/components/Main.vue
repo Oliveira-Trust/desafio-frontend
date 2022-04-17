@@ -14,6 +14,32 @@
         <Button label="Exportar CSV" v-bind:hasIcon="false" buttonClass="btn-outline"/>
       </div>
       <Table v-bind:users="users"></Table>
+      <div class="divider"></div>
+      <vue-ads-pagination
+            :total-items="30"
+            :max-visible-pages="10"
+            :page="page"
+            :loading="loading"
+            @page-change="pageChange"
+            @range-change="rangeChange"
+        >
+            <template slot-scope="props">
+                <div class="vue-ads-pr-2 vue-ads-leading-loose">
+                    {{ props.total }} registro(s)
+                </div>
+            </template>
+            <template
+                slot="buttons"
+                slot-scope="props"
+            >
+                <vue-ads-page-button
+                    v-for="(button, key) in props.buttons"
+                    :key="key"
+                    v-bind="button"
+                    @page-change="page = button.page"
+                />
+            </template>
+        </vue-ads-pagination>
     </div>
     <Footer />
   </div>
@@ -27,6 +53,8 @@ import Header from './Header.vue'
 import Footer from './Footer.vue'
 import Button from './Button.vue'
 
+import VueAdsPagination, { VueAdsPageButton } from 'vue-ads-pagination';
+
 export default {
   name: 'Main',
   components: {
@@ -34,11 +62,15 @@ export default {
     Search,
     Header,
     Footer,
-    Button
+    Button,
+    VueAdsPagination,
+    VueAdsPageButton
   },
   data() {
       return {
-          users: []
+          users: [],
+          loading: false,
+          page: 1
       }
   },
   created() {
@@ -55,7 +87,15 @@ export default {
          .catch((error) => {
            console.log(error);
          });
-      }
+      },
+      pageChange (page) {
+        this.page = page;
+        console.log(page);
+      },
+        
+      rangeChange (start, end) {
+        console.log(start, end);
+      },
   },
 }
 </script>
@@ -108,6 +148,21 @@ export default {
           font-size: 18px;
         }
       }
+
+      .divider {
+        padding-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #f4f4f5;
+      }
     }
+  }
+
+  .vue-ads-bg-teal-500 {
+    background-color: #2d7bff;
+    border-radius: 3px;
+  }
+
+  .vue-ads-text-xs {
+    font-size: 14px;
   }
 </style>
