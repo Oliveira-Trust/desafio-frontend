@@ -20,10 +20,10 @@
           <td class="px-8 py-4">{{ row.email}}</td>
           <td class="px-8 py-4">{{ row.valor_carteira}}</td>
           <td class="px-8 py-4">
-            <font-awesome-icon class="icon" icon="sign-out-alt" />
+            <font-awesome-icon icon="fa-solid fa-pen" />
           </td>
           <td class="px-8 py-4">
-            <font-awesome-icon class="icon" icon="sign-out-alt" />
+            <font-awesome-icon icon="fa-solid fa-trash" />
           </td>
         </tr>
       </template>

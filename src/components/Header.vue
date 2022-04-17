@@ -8,7 +8,7 @@
             <div class="user-info">
                 <img :src="user" />
                 <span>Otávio Oliveira</span>
-                <font-awesome-icon class="icon" icon="sign-out-alt" />
+                <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" />
             </div>
         </div>
     </div>

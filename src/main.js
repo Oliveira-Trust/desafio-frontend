@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import '@/scss/main.scss';
 
-Vue.config.productionTip = false
+import { library } from '@fortawesome/fontawesome-svg-core';
+/* import specific icons */
+import { faArrowRightFromBracket, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faArrowRightFromBracket, faPen, faTrash);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-library.add(fas);
+
+Vue.config.productionTip = false;
 
 new Vue({
   router,
