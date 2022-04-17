@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="footer flex justify-center">
+    <div class="footer">
       <span>Fintools | Desafio Front-End</span>
     </div>
   </footer>
@@ -15,6 +15,8 @@ export default {
 <style lang="scss" scoped>
 
   .footer {
+    display: flex;
+    justify-content: center;
     padding: 20px 0;
     
     span {

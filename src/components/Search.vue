@@ -1,9 +1,9 @@
 <template>
-  <div class="search-container flex">
-    <div class="search flex shadow-lg">
-      <Input inputValue="" inputType="text" inputPlaceholder="Nome"/>
-      <Input inputValue="" inputType="text" inputPlaceholder="Sobrenome"/>
-      <Input inputValue="" inputType="text" inputPlaceholder="E-mail"/>
+  <div class="search-container">
+    <div class="search shadow-lg">
+      <Input inputValue="" inputType="text" inputLabel="Nome"/>
+      <Input inputValue="" inputType="text" inputLabel="Sobrenome"/>
+      <Input inputValue="" inputType="text" inputLabel="E-mail"/>
 
       <Button label="Buscar" />
     </div>
@@ -27,10 +27,12 @@ export default {
 
 <style lang="scss" scoped>
   .search-container {
-    width: 100%;
+    display: flex;
     justify-content: center;
+    width: 100%;
 
     .search {
+      display: flex;
       box-sizing: border-box;
       padding: 20px;
       margin: 24px 0;

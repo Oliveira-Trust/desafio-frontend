@@ -1,17 +1,17 @@
 <template>
   <header>
-    <nav class="header">
-        <div class="header-container mx-auto flex">
+    <div class="header">
+        <div class="header-container mx-auto">
             <div class="logo">
                 <img :src="logo" />
             </div>
-            <div class="user-info flex">
+            <div class="user-info">
                 <img :src="user" />
                 <span>Otávio Oliveira</span>
                 <font-awesome-icon class="icon" icon="sign-out-alt" />
             </div>
         </div>
-    </nav>
+    </div>
   </header>
 </template>
 
@@ -34,6 +34,7 @@ export default {
       background: #fff;
       
       .header-container {
+        display: flex;
         justify-content: space-between;
         align-items: center;
         max-width: 1200px;
@@ -47,6 +48,7 @@ export default {
         }
 
         .user-info {
+          display: flex;
           align-items: center;
 
           img {

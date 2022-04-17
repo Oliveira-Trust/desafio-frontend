@@ -1,6 +1,11 @@
 <template>
   <div class="main">
     <Header />
+    <div class="add-user-container">
+      <div class="add-user">
+        <span>BTC Carteiras</span>
+      </div>
+    </div>
     <Search />
     <Table v-bind:users="users"></Table>
     <Footer />
@@ -47,4 +52,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .main {
+    .add-user-container {
+      display: flex;
+      justify-content: center;
+
+      .add-user{
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        width: 100%;
+      }
+    }
+  }
 </style>

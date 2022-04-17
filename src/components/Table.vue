@@ -88,7 +88,7 @@ export default {
       }
 
       tr:nth-child(even) {
-        background: #f6f7fb;
+        background: #f5f6f8;
       }
 
       tr:nth-child(odd) {
