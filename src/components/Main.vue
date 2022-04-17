@@ -21,8 +21,7 @@
             :page="page"
             :loading="loading"
             @page-change="pageChange"
-            @range-change="rangeChange"
-        >
+            @range-change="rangeChange">
             <template slot-scope="props">
                 <div class="vue-ads-pr-2 vue-ads-leading-loose">
                     {{ props.total }} registro(s)
@@ -70,16 +69,16 @@ export default {
       return {
           users: [],
           loading: false,
-          page: 1
+          page: 0
       }
   },
   created() {
-      this.getUsersData();
+      this.getUsersData(this.page);
   },
   methods: {
-      getUsersData() {
+      getUsersData(page) {
       api
-         .get("/users?_limit=10")
+         .get(`/users?_page=${page + 1}&_limit=10`)
          .then((response) => {
            console.log(response);
            this.users = response.data;
@@ -90,10 +89,10 @@ export default {
       },
       pageChange (page) {
         this.page = page;
-        console.log(page);
       },
         
       rangeChange (start, end) {
+        this.getUsersData(this.page);
         console.log(start, end);
       },
   },
