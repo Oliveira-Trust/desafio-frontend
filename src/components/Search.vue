@@ -5,7 +5,7 @@
       <Input inputValue="" inputType="text" inputLabel="Sobrenome"/>
       <Input inputValue="" inputType="text" inputLabel="E-mail"/>
 
-      <Button label="Buscar" />
+      <Button label="Buscar" v-bind:hasIcon="true" buttonClass="btn-outline"/>
     </div>
   </div>
 </template>

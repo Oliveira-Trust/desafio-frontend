@@ -5,10 +5,10 @@ import '@/scss/main.scss';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 /* import specific icons */
-import { faArrowRightFromBracket, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faPen, faTrash, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faArrowRightFromBracket, faPen, faTrash);
+library.add(faArrowRightFromBracket, faPen, faTrash, faMagnifyingGlass);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 

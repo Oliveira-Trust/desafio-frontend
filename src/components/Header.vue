@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="header">
-        <div class="header-container mx-auto">
+        <div class="header-container">
             <div class="logo">
                 <img :src="logo" />
             </div>
@@ -30,7 +30,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .header {
+  header {
+    width: 100%;
+
+    .header {
+      display: flex;
+      justify-content: center;
       background: #fff;
       
       .header-container {
@@ -38,6 +43,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         max-width: 1200px;
+        width: 100%;
         box-sizing: border-box;
         padding: 20px 0;
         
@@ -67,5 +73,6 @@ export default {
         }
       }
     }
+  }
 
 </style>
