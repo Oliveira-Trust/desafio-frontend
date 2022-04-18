@@ -1,11 +1,25 @@
 <template>
   <div class="search-container">
     <div class="search shadow-lg">
-      <Input inputValue="" inputType="text" inputLabel="Nome"/>
-      <Input inputValue="" inputType="text" inputLabel="Sobrenome"/>
-      <Input inputValue="" inputType="text" inputLabel="E-mail"/>
+      <Input inputValue="" 
+             inputType="text" 
+             inputLabel="Nome"
+             @input="getName"/>
 
-      <Button label="Buscar" v-bind:hasIcon="true" buttonClass="btn-outline"/>
+      <Input inputValue="" 
+             inputType="text" 
+             inputLabel="Sobrenome"
+             @input="getLastName"/>
+
+      <Input inputValue="" 
+             inputType="text" 
+             inputLabel="E-mail"
+             @input="getEmail"/>
+
+      <Button v-on:click="sendValue" 
+              label="Buscar" 
+              v-bind:hasIcon="true" 
+              buttonClass="btn-outline"/>
     </div>
   </div>
 </template>
@@ -21,7 +35,32 @@ export default {
   components: {
     Input,
     Button
-  }
+  },
+  data() {
+    return {
+      name: '',
+      lastName: '',
+      email: ''
+    }
+  },
+  methods: {
+    sendValue () {
+      this.$emit('clicked', {
+        name:this.name,
+        lastName: this.lastName,
+        email: this.email
+      });
+    },
+    getName(value) {
+      this.name = value;
+    },
+    getLastName(value) {
+      this.lastName = value;
+    },
+    getEmail(value) {
+      this.email = value;
+    }
+  },
 }
 </script>
 

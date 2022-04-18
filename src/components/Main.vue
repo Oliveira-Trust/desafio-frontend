@@ -4,14 +4,18 @@
     <div class="add-user-container">
       <div class="add-user">
         <span>BTC Carteiras</span>
-        <Button label="Adicionar Carteira" v-bind:hasIcon="false" buttonClass="btn-color"/>
+        <Button label="Adicionar Carteira" 
+                v-bind:hasIcon="false" 
+                buttonClass="btn-color"/>
       </div>
     </div>
-    <Search />
+    <Search @clicked="filterUsersData"/>
     <div class="table-main-container shadow-lg">
       <div class="table-title">
         <span>Carteira</span>
-        <Button label="Exportar CSV" v-bind:hasIcon="false" buttonClass="btn-outline"/>
+        <Button label="Exportar CSV" 
+                v-bind:hasIcon="false" 
+                buttonClass="btn-outline"/>
       </div>
       <Table v-bind:users="users"></Table>
       <div class="divider"></div>
@@ -45,13 +49,13 @@
 </template>
 
 <script>
-import api from "../api";
 import Table from './Table.vue'
 import Search from './Search.vue'
 import Header from './Header.vue'
 import Footer from './Footer.vue'
 import Button from './Button.vue'
 
+import { getUsers, filterUsers } from '../services/users';
 import VueAdsPagination, { VueAdsPageButton } from 'vue-ads-pagination';
 
 export default {
@@ -77,24 +81,30 @@ export default {
   },
   methods: {
       getUsersData(page) {
-      api
-         .get(`/users?_page=${page + 1}&_limit=10`)
+        getUsers(page)
          .then((response) => {
-           console.log(response);
            this.users = response.data;
          })
          .catch((error) => {
            console.log(error);
          });
       },
+      filterUsersData ({name, lastName, email}) {
+        filterUsers(name, lastName, email)
+          .then((response) => {
+            this.users = response.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
       pageChange (page) {
         this.page = page;
       },
-        
       rangeChange (start, end) {
         this.getUsersData(this.page);
         console.log(start, end);
-      },
+      }
   },
 }
 </script>

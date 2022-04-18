@@ -3,6 +3,7 @@
         <input
             class="input"
             v-bind:v-model="inputValue"
+            v-on:input="$emit('input', $event.target.value)"
             :value="inputValue"
             :type="inputType"
             :placeholder="inputLabel"

@@ -1,7 +1,10 @@
 <template>
     <div class="button-container">
-        <button :class="buttonClass">
-            <font-awesome-icon v-if="hasIcon" icon="fa-solid fa-magnifying-glass" />
+        <button :class="buttonClass" 
+                @click="$emit('click')">
+            <div class="icon">
+                <font-awesome-icon v-if="hasIcon" icon="fa-solid fa-magnifying-glass" />
+            </div>
             {{ label }}
         </button>
         
@@ -30,6 +33,10 @@ export default {
             border-radius: 4px;
             padding: 15px 30px;
             font-weight: 600;
+
+            .icon {
+                margin-right: 10px;
+            }
         }
 
         .btn-outline {
