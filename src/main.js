@@ -19,6 +19,11 @@ Vue.config.productionTip = false;
 const store = new Vuex.Store({
   state: {
     users: [],
+    filter: {
+      nome: '',
+      sobrenome: '',
+      email: ''
+    }
   },
   actions: {
     async pullUsers ({ commit }) {
@@ -35,6 +40,9 @@ const store = new Vuex.Store({
   getters: {
     getUsers (state) {
       return state.users;
+    },
+    getFilter (state) {
+      return state.filter;
     },
   },
 });
