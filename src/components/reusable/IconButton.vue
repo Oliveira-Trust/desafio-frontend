@@ -7,6 +7,7 @@
 <script>
 import 'vue-awesome/icons/pencil-alt'
 import 'vue-awesome/icons/trash-alt'
+import 'vue-awesome/icons/search'
 import 'vue-awesome/icons/regular/user-circle'
 
 export default {
