@@ -6,7 +6,8 @@
         <span>BTC Carteiras</span>
         <Button label="Adicionar Carteira" 
                 v-bind:hasIcon="false" 
-                buttonClass="btn-color"/>
+                buttonClass="btn-color"
+                @click="showHandleUserModal"/>
       </div>
     </div>
     <Search @clicked="filterUsersData"/>
@@ -17,8 +18,11 @@
                 v-bind:hasIcon="false" 
                 buttonClass="btn-outline"/>
       </div>
-      <Table v-bind:users="users"></Table>
-      <div class="divider"></div>
+      <Table v-bind:users="users" 
+            @openEditUser="showHandleUserModal"
+            @openRemoveUser="showRemoveUserModal" />
+
+      <div class="divider" />
       <vue-ads-pagination
             :total-items="30"
             :max-visible-pages="10"
@@ -45,15 +49,26 @@
         </vue-ads-pagination>
     </div>
     <Footer />
+
+    <!-- Modal -->
+    <HandleUserModal 
+      v-show="isHandleUserModalVisible"
+      @closeModal="closeModal"/>
+
+    <RemoveUserModal 
+      v-show="isRemoveUserModalVisible"
+      @closeModal="closeModal"/>
   </div>
 </template>
 
 <script>
-import Table from './Table.vue'
-import Search from './Search.vue'
-import Header from './Header.vue'
-import Footer from './Footer.vue'
-import Button from './Button.vue'
+import Table from './Table.vue';
+import Search from './Search.vue';
+import Header from './Header.vue';
+import Footer from './Footer.vue';
+import Button from './Button.vue';
+import HandleUserModal from './HandleUserModal.vue';
+import RemoveUserModal from './RemoveUserModal.vue';
 
 import { getUsers, filterUsers } from '../services/users';
 import VueAdsPagination, { VueAdsPageButton } from 'vue-ads-pagination';
@@ -66,6 +81,8 @@ export default {
     Header,
     Footer,
     Button,
+    HandleUserModal,
+    RemoveUserModal,
     VueAdsPagination,
     VueAdsPageButton
   },
@@ -73,7 +90,9 @@ export default {
       return {
           users: [],
           loading: false,
-          page: 0
+          page: 0,
+          isHandleUserModalVisible: false,
+          isRemoveUserModalVisible: false,
       }
   },
   created() {
@@ -104,6 +123,16 @@ export default {
       rangeChange (start, end) {
         this.getUsersData(this.page);
         console.log(start, end);
+      },
+      showHandleUserModal() {
+        this.isHandleUserModalVisible = true;
+      },
+      showRemoveUserModal() {
+        this.isRemoveUserModalVisible = true;
+      },
+      closeModal() {
+        this.isHandleUserModalVisible = false;
+        this.isRemoveUserModalVisible = false;
       }
   },
 }

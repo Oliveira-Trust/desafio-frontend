@@ -14,16 +14,20 @@
       <tbody>
       <template v-if="users.length > 0">
         <tr :key="index"
-            v-for="(row, index) in users">
-          <td class="px-8 py-4">{{ row.nome}}</td>
-          <td class="px-8 py-4">{{ row.sobrenome}}</td>
-          <td class="px-8 py-4">{{ row.email}}</td>
-          <td class="px-8 py-4">{{ row.valor_carteira}}</td>
+            v-for="(user, index) in users">
+          <td class="px-8 py-4">{{ user.nome}}</td>
+          <td class="px-8 py-4">{{ user.sobrenome}}</td>
+          <td class="px-8 py-4">{{ user.email}}</td>
+          <td class="px-8 py-4">{{ user.valor_carteira}}</td>
           <td class="px-8 py-4">
-            <font-awesome-icon icon="fa-solid fa-pen" />
+            <div class="actions" @click="$emit('openEditUser', user)">
+              <font-awesome-icon icon="fa-solid fa-pen" />
+            </div>
           </td>
           <td class="px-8 py-4">
-            <font-awesome-icon icon="fa-solid fa-trash" />
+            <div class="actions" @click="$emit('openRemoveUser', user)">
+              <font-awesome-icon icon="fa-solid fa-trash" />
+            </div>
           </td>
         </tr>
       </template>
@@ -38,37 +42,10 @@ export default {
   name: 'Table',
   props: {
     users: Array
-  },
-  computed: {
-    columns() {
-      return [
-          {
-                value: 'nome',
-                label: 'Nome'
-            },
-            {
-                value: 'sobrenome',
-                label: 'Sobrenome'
-            },
-            {
-                value: 'email',
-                label: 'E-mail'
-            },
-            {
-                value: 'bitcoin',
-                label: 'Bitcoin'
-            },
-            {
-                value: 'actionBtn',
-                label: ''
-            }
-      ]
-    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   .table-container {
     display: flex;
@@ -78,13 +55,10 @@ export default {
     table {
       width: 100%;
       max-width: 1200px;
+      color: #3a3a3a;
 
       .table-header {
         border-bottom: 2px solid #d8d8d8;
-      }
-
-      .icon {
-        cursor: pointer;
       }
 
       tr:nth-child(even) {
@@ -102,6 +76,10 @@ export default {
       tr:hover {
           background: #fafdff;
           border-left: 3px solid #68c0f3;
+      }
+
+      .actions {
+        cursor: pointer;
       }
     }
   }

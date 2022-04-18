@@ -2,8 +2,8 @@
     <div class="button-container">
         <button :class="buttonClass" 
                 @click="$emit('click')">
-            <div class="icon">
-                <font-awesome-icon v-if="hasIcon" icon="fa-solid fa-magnifying-glass" />
+            <div v-if="hasIcon" class="icon">
+                <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
             </div>
             {{ label }}
         </button>
@@ -46,6 +46,11 @@ export default {
 
         .btn-color {
             background-color: #2d7bff;
+            color: #fff;
+        }
+
+        .btn-red {
+            background-color: #e32849;
             color: #fff;
         }
     }
