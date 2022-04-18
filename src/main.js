@@ -22,7 +22,7 @@ const store = new Vuex.Store({
   },
   actions: {
     async pullUsers ({ commit }) {
-      const response = await fetch('http://localhost:3004/users');
+      const response = await fetch(process.env.VUE_APP_USERS_API_ENDPOINT);
       const users = await response.json();
       commit('setUsers', users);
     },
