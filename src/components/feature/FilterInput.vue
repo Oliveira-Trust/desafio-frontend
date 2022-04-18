@@ -1,23 +1,60 @@
 <template>
   <div class="filter">
-    <input type="text"/>
-    <input type="text"/>
-    <input type="text"/>
+    <div class="filter-group">
+      <TextInput class="filter-input" name="nome" placeholder="Nome" v-model="filter.nome"/>
+      <TextInput class="filter-input" name="sobrenome" placeholder="Sobrenome" v-model="filter.sobrenome"/>
+      <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email"/>
+    </div>
+    <div class="filter-actions">
+      <Button @onClick="test" label="Buscar" outlined icon="search"/>
+    </div>
   </div>
 </template>
 
 <script>
+import TextInput from '../reusable/TextInput.vue'
+import Button from '../reusable/Button.vue'
+
 export default {
   name: 'FilterInput',
+  components: {
+    TextInput,
+    Button,
+  },
+  computed: {
+    filter () {
+      return this.$store.getters.getFilter;
+    }
+  },
+  methods: {
+    test () {
+      console.log(this.filter);
+    }
+  }
 }
 </script>
 
 <style scoped>
-.card {
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px 2px #DDDDDD;
-  padding: 20px;
-  min-width: 580px;
+.filter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filter-group {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+
+.filter-input {
+  margin-right: 20px;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
 }
 </style>
