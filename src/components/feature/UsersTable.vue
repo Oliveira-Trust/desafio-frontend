@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import IconButton from './IconButton.vue'
+import IconButton from '../reusable/IconButton.vue'
 
 export default {
   name: 'UsersTable',

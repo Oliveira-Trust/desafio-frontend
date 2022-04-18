@@ -2,7 +2,7 @@
   <div class="nav-bar">
     <div class="nav-bar__contents">
       <div class="nav-bar__content">
-        <img src="../assets/logo.png" alt="Oliveira Trust Logo" class="logo"/>
+        <img src="../../assets/logo.png" alt="Oliveira Trust Logo" class="logo"/>
         <h2>OLIVEIRA TRUST</h2>
       </div>
       <div class="nav-bar__content">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import IconButton from './IconButton'
+import IconButton from '../reusable/IconButton'
 import ProfileAvatar from './ProfileAvatar'
 
 export default {

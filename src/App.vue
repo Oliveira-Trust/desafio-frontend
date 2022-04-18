@@ -4,6 +4,9 @@
     <h1>BTC Carteiras</h1>
     <div class="users-table-card">
       <Card>
+        <FilterInput/>
+      </Card>
+      <Card>
         <UsersTable/>
       </Card>
     </div>
@@ -11,9 +14,10 @@
 </template>
 
 <script>
-import UsersTable from './components/UsersTable.vue'
-import Card from './components/Card.vue'
-import NavBar from './components/NavBar.vue'
+import UsersTable from './components/feature/UsersTable.vue'
+import Card from './components/reusable/Card.vue'
+import NavBar from './components/feature/NavBar.vue'
+import FilterInput from './components/feature/FilterInput.vue'
 
 export default {
   name: 'App',
@@ -21,6 +25,7 @@ export default {
     UsersTable,
     Card,
     NavBar,
+    FilterInput,
   },
   async created () {
     await this.$store.dispatch('pullUsers');
