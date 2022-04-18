@@ -2,11 +2,11 @@
   <div id="app">
     <NavBar />
     <h1>BTC Carteiras</h1>
-    <div class="users-table-card">
-      <Card>
+    <div class="app-container">
+      <Card class="app-container-filter">
         <FilterInput/>
       </Card>
-      <Card>
+      <Card class="app-container-table">
         <UsersTable/>
       </Card>
     </div>
@@ -38,9 +38,14 @@ h1 {
   padding: 30px 80px;
 }
 
-.users-table-card {
+.app-container {
   padding: 20px 80px;
 }
+
+.app-container-filter {
+  margin-bottom: 40px;
+}
+
 </style>
 
 <style>
