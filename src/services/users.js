@@ -1,4 +1,4 @@
-import api from "../api";
+import { api } from "../utils/api";
 
 export const getUsers = async (page) => {
     return await api.get(`/users?_page=${page + 1}&_limit=10&_order=desc`);

@@ -54,7 +54,8 @@
     <HandleUserModal 
       v-show="isHandleUserModalVisible"
       @closeModal="closeModal"
-      :user='user'/>
+      :user='user'
+      :title="user ? 'Editar' : 'Adicionar'"/>
 
     <RemoveUserModal 
       v-show="isRemoveUserModalVisible"

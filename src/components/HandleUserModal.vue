@@ -1,7 +1,7 @@
 <template>
   <Modal>
       <template v-slot:header>
-        <span>Adicionar Carteira</span>
+        <span>{{ title }} Carteira</span>
       </template>
 
       <template v-slot:body>
@@ -21,10 +21,16 @@
                 inputLabel="E-mail"
                 v-model="email"/>
 
-            <Input inputValue="" 
-                inputType="text" 
-                inputLabel="Valor de Compra"
-                v-model="value"/>
+            <div class="coins-info">
+                <Input inputValue="" 
+                    inputType="text" 
+                    inputLabel="Valor de Compra em R$"
+                    v-model="valueBrl"/>
+                <span>
+                    BTC {{ convertBrlToBtc(valueBrl, valueBtc).toFixed(8) }}
+                </span>
+            </div>
+
         </div>
       </template>
 
@@ -47,24 +53,32 @@ import Modal from './Modal.vue';
 import Input from './Input.vue';
 import Button from './Button.vue';
 import { addUser, editUser } from '../services/users';
+import { getCoinValue } from '../services/coins';
+import { convertBrlToBtc, convertToBrl } from '../utils/utils';
 
 export default {
   name: 'HandleUserModal',
   props: {
       user: {},
+      title: String
   },
   data() {
       return {
           name: '',
           lastName: '',
           email: '',
-          value: 0
+          valueBrl: 0,
+          valueBtc: 0
       }
   },
-  components:{
+  components: {
       Modal, 
       Input,
       Button
+  },
+  async created() {
+      const value = await getCoinValue();
+      this.valueBtc = value;
   },
   methods: {
       async addUser() {
@@ -73,7 +87,7 @@ export default {
                   nome: this.name,
                   sobrenome: this.lastName,
                   email: this.email,
-                  valor_carteira: this.value
+                  valor_carteira: this.valueBrl
               });
               this.$emit('closeModal');
           } catch (error) {
@@ -104,7 +118,9 @@ export default {
       closeModal() {
           this.$emit('closeModal');
           this.clearFields();
-      }
+      },
+      convertBrlToBtc,
+      convertToBrl
   }
 }
 </script>
@@ -116,6 +132,20 @@ export default {
         gap: 10px;
         width: 650px;
         margin-top: 30px;
+
+        .coins-info {
+            display: flex;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                font-size: 18px;
+                font-weight: 600;
+                color: #3a3a3a;
+            }
+        }
     }
 
     .actions {
