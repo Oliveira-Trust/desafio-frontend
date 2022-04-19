@@ -36,7 +36,7 @@
             <Button label="Adicionar" 
                     v-bind:hasIcon="false" 
                     buttonClass="btn-color"
-                    @click="addUser"/>
+                    @click="handleClick"/>
         </div>
       </template>
     </Modal>
@@ -46,7 +46,7 @@
 import Modal from './Modal.vue';
 import Input from './Input.vue';
 import Button from './Button.vue';
-import { addUser } from '../services/users';
+import { addUser, editUser } from '../services/users';
 
 export default {
   name: 'HandleUserModal',
@@ -79,7 +79,17 @@ export default {
           } catch (error) {
               console.log(error);
           }
-
+      },
+      async editUser() {
+          try {
+              await editUser({});
+              this.$emit('closeModal');
+          } catch (error) {
+              console.log(error);
+          }
+      },
+      handleClick() {
+          this.user ? this.editUser() : this.addUser();
       },
       setData() {
           this.name = this.user.nome;

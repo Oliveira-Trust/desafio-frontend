@@ -24,7 +24,7 @@
 
       <div class="divider" />
       <vue-ads-pagination
-            :total-items="30"
+            :total-items="40"
             :max-visible-pages="10"
             :page="page"
             :loading="loading"

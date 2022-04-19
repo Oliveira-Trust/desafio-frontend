@@ -1,7 +1,7 @@
 import api from "../api";
 
 export const getUsers = async (page) => {
-    return await api.get(`/users?_page=${page + 1}&_limit=10&_order=asc`);
+    return await api.get(`/users?_page=${page + 1}&_limit=10&_order=desc`);
 }
 
 export const filterUsers = async (name, lastNname, email) => {
@@ -16,6 +16,6 @@ export const removeUser = async (id) => {
     return await api.delete(`/users/${id}`);
 }
 
-export const editUser = async (id, user) => {
-    return await api.put(`/users/${id}`, user);
+export const editUser = async (user) => {
+    return await api.put(`/users/${user.id}`, user);
 }
