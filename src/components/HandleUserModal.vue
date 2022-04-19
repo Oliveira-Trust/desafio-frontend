@@ -6,26 +6,26 @@
 
       <template v-slot:body>
         <div class="form">
-            <Input inputValue="" 
-                inputType="text" 
-                inputLabel="Nome"
-                v-model="name"/>
+            <Input :inputValue="name" 
+                    inputType="text" 
+                    inputLabel="Nome"
+                    v-model="name"/>
 
-            <Input inputValue="" 
-                inputType="text" 
-                inputLabel="Sobrenome"
-                v-model="lastName"/>
+            <Input :inputValue="lastName" 
+                    inputType="text" 
+                    inputLabel="Sobrenome"
+                    v-model="lastName"/>
 
-            <Input inputValue="" 
-                inputType="text" 
-                inputLabel="E-mail"
-                v-model="email"/>
+            <Input :inputValue="email" 
+                    inputType="text" 
+                    inputLabel="E-mail"
+                    v-model="email"/>
 
             <div class="coins-info">
-                <Input inputValue="" 
-                    inputType="text" 
-                    inputLabel="Valor de Compra em R$"
-                    v-model="valueBrl"/>
+                <Input :inputValue="valueBrl" 
+                        inputType="tel" 
+                        inputLabel="Valor de Compra em R$"
+                        v-model="valueBrl"/>
                 <span>
                     BTC {{ convertBrlToBtc(valueBrl, valueBtc).toFixed(8) }}
                 </span>
@@ -109,18 +109,26 @@ export default {
           this.name = this.user.nome;
           this.lastName = this.user.sobrenome;
           this.email = this.user.email;
+          this.valueBrl = convertToBrl(this.user.valor_carteira, this.valueBtc);
       },
       clearFields() {
           this.name = '';
           this.lastName = '';
           this.email = '';
+          this.valueBrl = 0;
       },
       closeModal() {
-          this.$emit('closeModal');
           this.clearFields();
+          this.$emit('closeModal');
       },
       convertBrlToBtc,
       convertToBrl
+  },
+  watch: {
+      user() {
+          console.log('WORKS');
+          this.setData()
+      }
   }
 }
 </script>

@@ -4,17 +4,17 @@
       <Input inputValue="" 
              inputType="text" 
              inputLabel="Nome"
-             @input="getName"/>
+             v-model="name"/>
 
       <Input inputValue="" 
              inputType="text" 
              inputLabel="Sobrenome"
-             @input="getLastName"/>
+             v-model="lastName"/>
 
       <Input inputValue="" 
              inputType="text" 
              inputLabel="E-mail"
-             @input="getEmail"/>
+             v-model="email"/>
 
       <Button v-on:click="sendValue" 
               label="Buscar" 
@@ -51,15 +51,6 @@ export default {
         email: this.email
       });
     },
-    getName(value) {
-      this.name = value;
-    },
-    getLastName(value) {
-      this.lastName = value;
-    },
-    getEmail(value) {
-      this.email = value;
-    }
   },
 }
 </script>
