@@ -20,8 +20,9 @@
       <template v-slot:footer>
         <div class="actions">
             <Button label="Excluir" 
-                    v-bind:hasIcon="false" 
-                    buttonClass="btn-red"/>
+                    :hasIcon="false" 
+                    buttonClass="btn-red"
+                    @click='remove'/>
             <span class="close" @click="$emit('closeModal')">
                 Cancelar
             </span>
@@ -38,7 +39,7 @@ import { removeUser } from '../services/users';
 export default {
   name: 'RemoveUserModal',
   props: {
-      user: {}
+      userId: {}
   },
   components:{
       Modal,
@@ -46,7 +47,7 @@ export default {
   },
   methods: {
       async remove() {
-          await removeUser(this.user.id);
+          await removeUser(this.userId);
           this.$emit('closeModal');
       }
   },

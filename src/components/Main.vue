@@ -53,11 +53,13 @@
     <!-- Modal -->
     <HandleUserModal 
       v-show="isHandleUserModalVisible"
-      @closeModal="closeModal"/>
+      @closeModal="closeModal"
+      :user='user'/>
 
     <RemoveUserModal 
       v-show="isRemoveUserModalVisible"
-      @closeModal="closeModal"/>
+      @closeModal="closeModal"
+      :userId="userId"/>
   </div>
 </template>
 
@@ -93,6 +95,8 @@ export default {
           page: 0,
           isHandleUserModalVisible: false,
           isRemoveUserModalVisible: false,
+          userId: 0,
+          user: {}
       }
   },
   created() {
@@ -123,10 +127,12 @@ export default {
         this.getUsersData(this.page);
         console.log(start, end);
       },
-      showHandleUserModal() {
+      showHandleUserModal(value) {
+        this.user = value;
         this.isHandleUserModalVisible = true;
       },
-      showRemoveUserModal() {
+      showRemoveUserModal(value) {
+        this.userId = value.id;
         this.isRemoveUserModalVisible = true;
       },
       closeModal() {
