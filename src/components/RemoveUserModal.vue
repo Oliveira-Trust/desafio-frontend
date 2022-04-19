@@ -33,6 +33,7 @@
 <script>
 import Modal from './Modal.vue';
 import Button from './Button.vue';
+import { removeUser } from '../services/users';
 
 export default {
   name: 'RemoveUserModal',
@@ -42,7 +43,13 @@ export default {
   components:{
       Modal,
       Button
-  }
+  },
+  methods: {
+      async remove() {
+          await removeUser(this.user.id);
+          this.$emit('closeModal');
+      }
+  },
 }
 </script>
 

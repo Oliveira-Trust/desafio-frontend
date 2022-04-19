@@ -99,23 +99,22 @@ export default {
       this.getUsersData(this.page);
   },
   methods: {
-      getUsersData(page) {
-        getUsers(page)
-         .then((response) => {
-           this.users = response.data;
-         })
-         .catch((error) => {
-           console.log(error);
-         });
+      async getUsersData(page) {
+        try {
+          const response = await getUsers(page)
+          this.users = response.data;
+        } catch (error) {
+          console.log(error)
+        }
+        
       },
-      filterUsersData ({name, lastName, email}) {
-        filterUsers(name, lastName, email)
-          .then((response) => {
-            this.users = response.data;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+      async filterUsersData ({name, lastName, email}) {
+        try {
+          const response = await filterUsers(name, lastName, email)
+          this.users = response.data;
+        } catch (error) {
+          console.log(error)
+        }
       },
       pageChange (page) {
         this.page = page;

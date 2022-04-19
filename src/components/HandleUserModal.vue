@@ -44,6 +44,9 @@ import Button from './Button.vue';
 
 export default {
   name: 'HandleUserModal',
+  props: {
+      user: {}
+  },
   components:{
       Modal, 
       Input,
