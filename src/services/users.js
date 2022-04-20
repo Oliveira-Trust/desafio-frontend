@@ -1,7 +1,7 @@
 import { api } from "../utils/api";
 
 export const getUsers = async (page) => {
-    return await api.get(`/users?_page=${page + 1}&_limit=10&_order=desc`);
+    return await api.get(`/users?_page=${page + 1}&_limit=10&_sort=data_abertura&_order=desc`);
 }
 
 export const filterUsers = async (name, lastNname, email) => {

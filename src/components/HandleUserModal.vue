@@ -87,7 +87,8 @@ export default {
                   nome: this.name,
                   sobrenome: this.lastName,
                   email: this.email,
-                  valor_carteira: this.valueBrl
+                  valor_carteira: Number(convertBrlToBtc(this.valueBrl, this.valueBtc).toFixed(8)),
+                  data_abertura: new Date().toISOString()
               });
               this.$emit('closeModal');
           } catch (error) {

@@ -505,6 +505,14 @@
       "data_abertura": "2018-07-17T20:49:51Z",
       "valor_carteira": 0.2242509,
       "endereco_carteira": "1MqLZnNHywy2S21VNJyvAGJLC8TopdE9eS"
+    },
+    {
+      "id": 51,
+      "nome": "Thamara",
+      "sobrenome": "Guimarães Bello de Oliveira",
+      "email": "thagui.oliveira@gmail.com",
+      "data_abertura": "2022-04-20T02:58:00.744Z",
+      "valor_carteira": 0.04063617
     }
   ]
 }
