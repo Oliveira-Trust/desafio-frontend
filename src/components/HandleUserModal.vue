@@ -96,7 +96,17 @@ export default {
       },
       async editUser() {
           try {
-              await editUser({});
+              await editUser(this.user.id, {
+                  "id": 1,
+    "nome": this.name,
+    "sobrenome": this.lastName,
+    "email": this.email,
+    "endereco": this.user.endereco,
+    "data_nascimento": this.user.data_nascimento,
+    "data_abertura": this.user.data_abertura,
+    "valor_carteira": Number(convertBrlToBtc(this.valueBrl, this.valueBtc).toFixed(8)),
+    "endereco_carteira": this.user.endereco_carteira
+              });
               this.$emit('closeModal');
           } catch (error) {
               console.log(error);

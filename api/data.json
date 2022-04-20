@@ -2,13 +2,13 @@
   "users": [
     {
       "id": 1,
-      "nome": "Doroteya",
+      "nome": "Doroteyaa",
       "sobrenome": "Powder",
       "email": "dpowder0@wisc.edu",
       "endereco": "6906 Merchant Center",
       "data_nascimento": "1996-01-03T14:28:31Z",
       "data_abertura": "2018-05-16T15:50:23Z",
-      "valor_carteira": 3.83526236,
+      "valor_carteira": 3.83526315,
       "endereco_carteira": "1Q956unZUz1RHVtUrZbEZSXgu65RLMF5h3"
     },
     {
@@ -56,17 +56,6 @@
       "endereco_carteira": "1CHPiiAjWjS1wx2MBLSLCRA7jsdaoZUFPu"
     },
     {
-      "id": 6,
-      "nome": "Shoshanna",
-      "sobrenome": "Hennemann",
-      "email": "shennemann5@storify.com",
-      "endereco": "3 Talisman Point",
-      "data_nascimento": "2001-02-06T16:22:19Z",
-      "data_abertura": "2017-06-13T18:10:07Z",
-      "valor_carteira": 0.16271807,
-      "endereco_carteira": "1EZfdFNoFThrRQaPNZ63ckiMAAMGx23GEV"
-    },
-    {
       "id": 7,
       "nome": "Kris",
       "sobrenome": "Cresswell",
@@ -87,17 +76,6 @@
       "data_abertura": "2017-12-17T06:25:37Z",
       "valor_carteira": 2.95072841,
       "endereco_carteira": "1CnqC8KeWwTbNJy53HtsC2KBqBnwKMhRzp"
-    },
-    {
-      "id": 9,
-      "nome": "Hewie",
-      "sobrenome": "Dawson",
-      "email": "hdawson8@devhub.com",
-      "endereco": "4 Roth Place",
-      "data_nascimento": "1991-01-07T05:52:38Z",
-      "data_abertura": "2017-03-21T07:41:57Z",
-      "valor_carteira": 1.5586261,
-      "endereco_carteira": "1Bg1q55FFbY2HarR75VHFUH9cGomCopWaR"
     },
     {
       "id": 10,
@@ -331,17 +309,6 @@
       "endereco_carteira": "1Fw6QjCtShEPdGZF64uJyc2jXEeSvt44NH"
     },
     {
-      "id": 32,
-      "nome": "Ario",
-      "sobrenome": "Kremer",
-      "email": "akremerv@ebay.com",
-      "endereco": "75788 Granby Plaza",
-      "data_nascimento": "1993-08-23T17:16:51Z",
-      "data_abertura": "2021-07-04T23:55:19Z",
-      "valor_carteira": 4.24784132,
-      "endereco_carteira": "15Z6LdDwNLbvF1jwxmxfGQ2M7jjDSYhEAu"
-    },
-    {
       "id": 33,
       "nome": "Lenore",
       "sobrenome": "Goalby",
@@ -538,20 +505,6 @@
       "data_abertura": "2018-07-17T20:49:51Z",
       "valor_carteira": 0.2242509,
       "endereco_carteira": "1MqLZnNHywy2S21VNJyvAGJLC8TopdE9eS"
-    },
-    {
-      "nome": "Thamara",
-      "sobrenome": "Guimarães Bello de Oliveira",
-      "email": "thagui.oliveira@gmail.com",
-      "valor_carteira": "3.5454645",
-      "id": 51
-    },
-    {
-      "nome": "Thamara",
-      "sobrenome": "Guimarães Bello de Oliveira",
-      "email": "thagui.oliveira@gmail.com",
-      "valor_carteira": "4.89573",
-      "id": 52
     }
   ]
 }

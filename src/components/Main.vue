@@ -124,9 +124,8 @@ export default {
       pageChange (page) {
         this.page = page;
       },
-      rangeChange (start, end) {
+      rangeChange () {
         this.getUsersData(this.page);
-        console.log(start, end);
       },
       showHandleUserModal(value) {
         this.user = value;
@@ -137,6 +136,7 @@ export default {
         this.isRemoveUserModalVisible = true;
       },
       closeModal() {
+        this.getUsersData(this.page);
         this.isHandleUserModalVisible = false;
         this.isRemoveUserModalVisible = false;
       }

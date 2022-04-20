@@ -16,6 +16,6 @@ export const removeUser = async (id) => {
     return await api.delete(`/users/${id}`);
 }
 
-export const editUser = async (user) => {
-    return await api.put(`/users/${user.id}`, user);
+export const editUser = async (id, user) => {
+    return await api.put(`/users/${id}`, user);
 }
