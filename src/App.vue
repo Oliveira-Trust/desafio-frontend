@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <NavBar />
-    <h1>BTC Carteiras</h1>
+    <div class="app-title">
+      <h1>BTC Carteiras</h1>
+      <div class="app-title-add-button">
+        <Button label="Adicionar Carteira"/>
+      </div>
+    </div>
     <div class="app-container">
       <Card class="app-container-filter">
         <FilterInput/>
@@ -16,6 +21,7 @@
 <script>
 import UsersTable from './components/feature/UsersTable.vue'
 import Card from './components/reusable/Card.vue'
+import Button from './components/reusable/Button.vue'
 import NavBar from './components/feature/NavBar.vue'
 import FilterInput from './components/feature/FilterInput.vue'
 
@@ -24,6 +30,7 @@ export default {
   components: {
     UsersTable,
     Card,
+    Button,
     NavBar,
     FilterInput,
   },
@@ -35,6 +42,18 @@ export default {
 
 <style scoped>
 h1 {
+  padding: 30px 80px;
+}
+
+.app-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-title-add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 30px 80px;
 }
 
