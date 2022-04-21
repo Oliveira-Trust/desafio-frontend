@@ -35,7 +35,7 @@ export default {
     FilterInput,
   },
   async created () {
-    await this.$store.dispatch('pullUsers');
+    await this.$store.dispatch('pullUsers', { currentPage: 1 });
   },
 }
 </script>
