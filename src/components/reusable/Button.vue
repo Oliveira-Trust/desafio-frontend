@@ -4,6 +4,7 @@
     :class="{
       'outlined' : outlined,
       'filled' : !outlined,
+      'small' : small
     }"
     @click="onClick"
   >
@@ -26,9 +27,13 @@
 export default {
   name: 'Button',
   props: {
+    small: {
+      type: Boolean,
+      default: false,
+    },
     label: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     outlined: {
       type: Boolean,
@@ -36,7 +41,7 @@ export default {
     },
     icon: {
       type: String,
-      default: undefined
+      default: undefined,
     }
   },
   methods: {
@@ -55,9 +60,26 @@ export default {
   text-decoration: none;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 16px;
-  width: 100%;
+  height: 40px;
   cursor: pointer;
+}
+
+.small {
+  padding: 2px 4px;
+  margin: 2px;
+  height: 30px;
+  min-width: 28px;
+}
+
+.small.outlined {
+  border: 1px solid #b0b0b0;
+  color: #808080;
+}
+
+.small.outlined:hover {
+  border: 1px solid #6494e2;
 }
 
 .filled {
