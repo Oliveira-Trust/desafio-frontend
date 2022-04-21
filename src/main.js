@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import App from './App.vue'
 import Icon from 'vue-awesome/components/Icon'
+import { store } from './store'
 
 Icon.register({
   'arrow-right-from-bracket': {
@@ -11,41 +11,8 @@ Icon.register({
   }
 });
 
-Vue.use(Vuex);
 Vue.component('v-icon', Icon);
-
 Vue.config.productionTip = false;
-
-const store = new Vuex.Store({
-  state: {
-    users: [],
-    filter: {
-      nome: '',
-      sobrenome: '',
-      email: ''
-    }
-  },
-  actions: {
-    async pullUsers ({ commit }) {
-      const response = await fetch(process.env.VUE_APP_USERS_API_ENDPOINT);
-      const users = await response.json();
-      commit('setUsers', users);
-    },
-  },
-  mutations: {
-    setUsers (state, users) {
-      state.users = users;
-    },
-  },
-  getters: {
-    getUsers (state) {
-      return state.users;
-    },
-    getFilter (state) {
-      return state.filter;
-    },
-  },
-});
 
 new Vue({
   render: h => h(App),
