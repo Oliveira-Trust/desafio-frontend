@@ -38,6 +38,18 @@
       <p>{{ paginationData.totalItems }} registro(s)</p>
       <div class="users-table-footer-pagination">
         <IconButton name="chevron-left" @onClick="handlePreviousPageClick"/>
+        <div
+          class="users-table-footer-pagination-first-last-page"
+          v-if="paginationData.currentPage >= 4"
+        >
+          <Button
+            small
+            outlined
+            label="1"
+            @onClick="handleFirstPageClick"
+          />
+          ...
+        </div>
         <div v-for="i in [2, 1]" :key="'previous-' + i">
           <Button
             v-if="paginationData.currentPage > i"
@@ -59,6 +71,18 @@
             outlined
             :label="(paginationData.currentPage + i).toString()"
             @onClick="handlePageClick(paginationData.currentPage + i)"
+          />
+        </div>
+        <div
+          class="users-table-footer-pagination-first-last-page"
+          v-if="paginationData.currentPage <= paginationData.pages - 3"
+        >
+          ...
+          <Button
+            small
+            outlined
+            :label="paginationData.pages.toString()"
+            @onClick="handleLastPageClick"
           />
         </div>
         <IconButton name="chevron-right" @onClick="handleNextPageClick"/>
@@ -94,6 +118,12 @@ export default {
     },
     async handlePageClick (page) {
       await this.$store.dispatch('pullUsers', { currentPage: page });
+    },
+    async handleFirstPageClick () {
+      await this.$store.dispatch('pullUsers', { currentPage: 1 });
+    },
+    async handleLastPageClick () {
+      await this.$store.dispatch('pullUsers', { currentPage: this.paginationData.pages });
     },
     async handlePreviousPageClick () {
       if (this.paginationData.currentPage === 1) return;
