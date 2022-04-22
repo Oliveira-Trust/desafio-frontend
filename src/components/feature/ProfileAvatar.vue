@@ -1,6 +1,6 @@
 <template>
   <div class="profile-avatar">
-    <img :src="url" alt="User Profile Picture" class="profile-avatar__image">
+    <img :src="url" alt="User Profile Picture" class="profile-avatar-image">
   </div>
 </template>
 
@@ -19,10 +19,9 @@ export default {
 </script>
 
 <style scoped>
-.profile-avatar__image {
+.profile-avatar-image {
   border: 1px solid #DDDDDD;
+  width: 30px;
   border-radius: 50%;
-  width: 40px;
 }
-
 </style>

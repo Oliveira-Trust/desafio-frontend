@@ -13,9 +13,8 @@ export default {
 <style scoped>
 .card {
   background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px 2px #DDDDDD;
+  border-radius: 4px;
+  box-shadow: #0000003d 0px 3px 8px;
   padding: 20px;
-  min-width: 580px;
 }
 </style>

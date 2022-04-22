@@ -7,25 +7,25 @@
     <table>
       <tr>
         <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Email</th>
+        <th class="user-surname-column">Sobrenome</th>
+        <th class="user-email-column" >Email</th>
         <th>Bitcoin</th>
         <th></th>
       </tr>
       <tr class="user-row" v-for="user in users" :key="user.id">
         <td>{{ user.nome }}</td>
-        <td>{{ user.sobrenome }}</td>
-        <td>{{ user.email }}</td>
+        <td class="user-surname-column">{{ user.sobrenome }}</td>
+        <td class="user-email-column" >{{ user.email }}</td>
         <td>{{ user.valor_carteira }}</td>
-        <td class="users-table__actions__column">
-          <div class="users-table__actions">
+        <td class="users-table-actions-column">
+          <div class="users-table-actions">
             <IconButton
-              class="users-table__actions__action-button"
+              class="users-table-actions-action-button"
               name="pencil-alt"
               @onClick="handleEditClick(user)"
             />
             <IconButton
-              class="users-table__actions__action-button"
+              class="users-table-actions-action-button"
               name="trash-alt"
               @onClick="handleDeleteClick(user)"
             />
@@ -173,6 +173,7 @@ hr.solid {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  color: #C6C6C6;
 }
 
 .user-row > td:first-child {
@@ -187,20 +188,32 @@ hr.solid {
   background-color: #f5f9ff;
 }
 
-.users-table__actions {
+.users-table-actions {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.users-table__actions__column {
+.users-table-actions-column {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.users-table__actions__action-button {
+.users-table-actions-action-button {
   margin: 4px;
 }
 
+
+@media only screen and (max-width: 790px) {
+  .user-surname-column {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .user-email-column {
+    display: none;
+  }
+}
 </style>

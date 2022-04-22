@@ -1,13 +1,13 @@
 <template>
   <div class="nav-bar">
-    <div class="nav-bar__contents">
-      <div class="nav-bar__content">
+    <div class="nav-bar-contents">
+      <div class="nav-bar-content">
         <img src="../../assets/logo.png" alt="Oliveira Trust Logo" class="logo"/>
         <h2>OLIVEIRA TRUST</h2>
       </div>
-      <div class="nav-bar__content">
+      <div class="nav-bar-content">
         <ProfileAvatar/>
-        <b class="nav-bar__content__username">Otávio Oliveira</b>
+        <b class="nav-bar-content-username">Otávio Oliveira</b>
         <IconButton name="arrow-right-from-bracket"/>
       </div>
     </div>
@@ -35,28 +35,41 @@ h2 {
 .nav-bar {
   height: 80px;
   background-color: #FFFFFF;
-  box-shadow: 0 2px #DDDDDD;
-  padding: 0 80px;
+  box-shadow: #9999993d 0px 3px 8px;
+  display: flex;
+  justify-content: center;
 }
 
-.nav-bar__contents {
-  padding: 20px 0;
+.nav-bar-contents {
+  width: 80%;
+  height: 100%;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-bar__content{
+.nav-bar-content{
   display: flex;
   align-items: center;
 }
 
 .logo {
-  margin-right: 20px;
-  width: 40px;
+  margin-right: 10px;
+  width: 30px;
 }
 
-.nav-bar__content__username {
+.nav-bar-content-username {
   margin: 0 10px;
+}
+
+@media only screen and (max-width: 790px) {
+  .nav-bar-content > h2 {
+    display: none;
+  }
+
+  .nav-bar-contents {
+    width: 90%;
+  }
 }
 </style>

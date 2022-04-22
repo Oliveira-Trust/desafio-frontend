@@ -4,9 +4,9 @@
       <TextInput class="filter-input" name="nome" placeholder="Nome" v-model="filter.nome"/>
       <TextInput class="filter-input" name="sobrenome" placeholder="Sobrenome" v-model="filter.sobrenome"/>
       <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email"/>
-    </div>
-    <div class="filter-actions">
-      <Button @onClick="test" label="Buscar" outlined icon="search"/>
+      <div class="filter-group-actions">
+        <Button @onClick="test" label="Buscar" outlined icon="search"/>
+      </div>
     </div>
   </div>
 </template>
@@ -44,17 +44,16 @@ export default {
 .filter-group {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 100%;
 }
 
 .filter-input {
   margin-right: 20px;
 }
 
-.filter-actions {
+.filter-group-actions {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15%;
 }
 </style>

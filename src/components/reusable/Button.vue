@@ -55,13 +55,14 @@ export default {
 <style scoped>
 .button {
   border-radius: 4px;
-  padding: 10px 18px;
+  padding: 10px 24px;
   text-align: center;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
   height: 40px;
   cursor: pointer;
 }
@@ -74,34 +75,34 @@ export default {
 }
 
 .small.outlined {
-  border: 1px solid #b0b0b0;
+  border: 1px solid #D5D5D5;
   color: #808080;
 }
 
 .small.outlined:hover {
-  border: 1px solid #6494e2;
+  border: 1px solid #5393ff;
 }
 
 .filled {
-  background-color: #2570e8;
+  background-color: #2979ff;
   border: none;
   color: white;
 }
 
 .filled:hover {
-  background-color: #6494e2;
+  background-color: #5393ff;
 }
 
 .outlined {
   background-color: white;
-  border: 2px solid #2570e8;
-  color: #2570e8;
+  border: 1px solid #2979ff;
+  color: #2979ff;
 }
 
 .outlined:hover {
   background-color: white;
-  border: 2px solid #6494e2;
-  color: #6494e2;
+  border: 1px solid #5393ff;
+  color: #5393ff;
 }
 
 .icon-with-label {
@@ -109,11 +110,11 @@ export default {
 }
 
 .icon-outlined {
-  fill: #2570e8;
+  fill: #2979ff;
 }
 
 .outlined:hover > .icon-outlined {
-  fill: #6494e2;
+  fill: #5393ff;
 }
 
 .icon-filled {
