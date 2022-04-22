@@ -1,19 +1,23 @@
 <template>
   <div id="app">
     <NavBar />
-    <div class="app-title">
-      <h1>BTC Carteiras</h1>
-      <div class="app-title-add-button">
-        <Button label="Adicionar Carteira"/>
-      </div>
-    </div>
     <div class="app-container">
-      <Card class="app-container-filter">
-        <FilterInput/>
-      </Card>
-      <Card class="app-container-table">
-        <UsersTable/>
-      </Card>
+      <div class="app-container-body">
+        <div class="app-title">
+          <h1>BTC Carteiras</h1>
+          <div class="app-title-add-button">
+            <Button label="Adicionar Carteira"/>
+          </div>
+        </div>
+        <div class="app-body">
+          <Card class="app-body-filter">
+            <FilterInput/>
+          </Card>
+          <Card class="app-body-table">
+            <UsersTable/>
+          </Card>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +28,7 @@ import Card from './components/reusable/Card.vue'
 import Button from './components/reusable/Button.vue'
 import NavBar from './components/feature/NavBar.vue'
 import FilterInput from './components/feature/FilterInput.vue'
+import './style.css'
 
 export default {
   name: 'App',
@@ -42,10 +47,21 @@ export default {
 
 <style scoped>
 h1 {
-  padding: 30px 80px;
+  padding: 30px 0;
+  font-weight: 900;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+}
+
+.app-container-body {
+  width: 80vw;
 }
 
 .app-title {
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
 }
@@ -54,34 +70,20 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 80px;
+  padding: 30px 0;
 }
 
-.app-container {
-  padding: 20px 80px;
+.app-body {
+  padding: 20px 0;
 }
 
-.app-container-filter {
+.app-body-filter {
   margin-bottom: 40px;
 }
 
-</style>
-
-<style>
-* {
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  background-color: #F4F4F4;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  width: 100vw;
+@media only screen and (max-width: 790px) {
+  .app-container-body {
+    width: 90vw;
+  }
 }
 </style>
