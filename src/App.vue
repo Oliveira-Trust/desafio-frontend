@@ -17,6 +17,9 @@
             <UsersTable/>
           </Card>
         </div>
+        <div class="app-footer">
+          <b>Fintools | Desafio Front-End</b>
+        </div>
       </div>
     </div>
   </div>
@@ -79,6 +82,14 @@ h1 {
 
 .app-body-filter {
   margin-bottom: 40px;
+}
+
+.app-footer {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: #9F9F9F;
 }
 
 @media only screen and (max-width: 790px) {
