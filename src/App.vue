@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar/>
     <div class="app-container">
       <div class="app-container-body">
         <div class="app-title">
           <h1>BTC Carteiras</h1>
           <div class="app-title-add-button">
-            <Button label="Adicionar Carteira"/>
+            <Button label="Adicionar Carteira" @onClick="showUserModal"/>
           </div>
         </div>
         <div class="app-body">
@@ -14,7 +14,7 @@
             <FilterInput/>
           </Card>
           <Card class="app-body-table">
-            <UsersTable/>
+            <UsersTable @editUser="handleEditUser"/>
           </Card>
         </div>
         <div class="app-footer">
@@ -22,6 +22,11 @@
         </div>
       </div>
     </div>
+    <UserFormModal
+      :user="userToEdit"
+      :isOpen="isUserModalOpen"
+      @close="closeUserModal"
+    />
   </div>
 </template>
 
@@ -31,6 +36,7 @@ import Card from './components/reusable/Card.vue'
 import Button from './components/reusable/Button.vue'
 import NavBar from './components/feature/NavBar.vue'
 import FilterInput from './components/feature/FilterInput.vue'
+import UserFormModal from './components/feature/modals/UserFormModal.vue'
 import './style.css'
 
 export default {
@@ -41,10 +47,30 @@ export default {
     Button,
     NavBar,
     FilterInput,
+    UserFormModal,
+  },
+  data() {
+    return {
+      isUserModalOpen: false,
+      userToEdit: {},
+    }
   },
   async created () {
     await this.$store.dispatch('pullUsers', { currentPage: 1 });
   },
+  methods: {
+    showUserModal () {
+      this.isUserModalOpen = true;
+    },
+    closeUserModal () {
+      this.isUserModalOpen = false;
+      this.userToEdit = {};
+    },
+    handleEditUser (user) {
+      this.userToEdit = user;
+      this.showUserModal();
+    }
+  }
 }
 </script>
 
