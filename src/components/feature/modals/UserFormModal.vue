@@ -10,12 +10,12 @@
       <TextInput placeholder="Sobrenome" v-model="user.sobrenome"/>
       <TextInput placeholder="E-mail" v-model="user.email"/>
       <div class="wallet-value">
-        <TextInput class="wallet-value-input" placeholder="Valor de compra"/>
-        <h3 class="wallet-value-btc-value" >BTC {{ isEditing ? user.valor_carteira : '0.00000' }}</h3>
+        <TextInput isCurrency class="wallet-value-input" placeholder="Valor de compra"/>
+        <h3 class="wallet-value-btc-value" >BTC {{ userWalletCryptoValue }}</h3>
       </div>
       <div class="user-modal-actions">
         <TextButton class="user-modal-actions-close" @onClick="close" label="Cancelar"/>
-        <Button class="user-modal-actions-submit" label="Adicionar"/>
+        <Button class="user-modal-actions-submit" @onClick="save" label="Salvar"/>
       </div>
     </template>
     </Modal>
@@ -54,11 +54,22 @@ export default {
     close () {
       this.$emit('close');
     },
+    save () {
+      console.log(this.user);
+    }
+  },
+  data () {
+    return {
+      userWalletCurrencyValue: 0,
+    }
   },
   computed: {
     isEditing () {
       return !!this.user.id;
-    }
+    },
+    userWalletCryptoValue () {
+      return this.isEditing ? this.user.valor_carteira : '0.00000'
+    },
   }
 }
 </script>

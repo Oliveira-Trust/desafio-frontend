@@ -219,7 +219,7 @@ table tr:nth-child(odd):hover td {
 
 .users-table-actions-column {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 

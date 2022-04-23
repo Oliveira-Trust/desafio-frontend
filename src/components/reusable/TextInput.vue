@@ -1,10 +1,19 @@
 <template>
-    <input class="text-input" type="text" :name="name" :placeholder="placeholder" v-model="inputVal"/>
+    <input
+      class="text-input"
+      type="text"
+      :name="name"
+      :placeholder="placeholder"
+      v-model="inputVal"
+      v-money="isCurrency && money"
+    />
 </template>
 
 <script>
+import { VMoney } from 'v-money'
+
 export default {
-  name: 'TextInput',
+name: 'TextInput',
   props: {
     placeholder: {
       type: String,
@@ -17,8 +26,25 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    isCurrency: {
+      type: Boolean,
+      default: false,
     }
   },
+  data () {
+    return {
+      money: {
+        decimal: ',',
+        thousands: '.',
+        prefix: 'R$ ',
+        suffix: '',
+        precision: 2,
+        masked: false
+      }
+    }
+  },
+  directives: {money: VMoney},
   computed: {
     inputVal: {
       get() {
