@@ -69,4 +69,16 @@ export default {
 .modal-dialog-body {
   padding: 0 40px;
 }
+
+@media only screen and (max-width: 820px) {
+  .modal-dialog {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .modal-dialog {
+    width: 80%;
+  }
+}
 </style>

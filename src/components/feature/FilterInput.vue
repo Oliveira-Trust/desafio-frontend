@@ -5,7 +5,7 @@
       <TextInput class="filter-input" name="sobrenome" placeholder="Sobrenome" v-model="filter.sobrenome"/>
       <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email"/>
       <div class="filter-group-actions">
-        <Button @onClick="onSearchClick" label="Buscar" outlined icon="search"/>
+        <Button class="filter-group-actions-submit" @onClick="onSearchClick" label="Buscar" outlined icon="search"/>
       </div>
     </div>
   </div>
@@ -38,7 +38,6 @@ export default {
 .filter {
   display: flex;
   justify-content: space-between;
-  width: 100%;
 }
 
 .filter-group {
@@ -55,5 +54,27 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .filter-group {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-group-actions {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .filter-input {
+    width: 100%;
+    margin-right: 0;
+  }
+  .filter-group-actions-submit {
+    margin-top: 10px;
+    width: 100%;
+  }
 }
 </style>
