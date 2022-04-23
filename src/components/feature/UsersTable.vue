@@ -111,10 +111,10 @@ export default {
   },
   methods: {
     handleEditClick (user) {
-      console.log('edit', user);
+      this.$emit('editUser', user);
     },
     handleDeleteClick (user) {
-      console.log('delete', user);
+      this.$emit('deleteUser', user);
     },
     async handlePageClick (page) {
       await this.$store.dispatch('pullUsers', { currentPage: page });
@@ -176,13 +176,6 @@ table tr:nth-child(odd):hover td {
   margin-bottom: 20px;
 }
 
-hr.solid {
-  margin: 30px 0;
-  padding: 0;
-  width: 100%;
-  border-top: 1px solid #DDDDDD;
-}
-
 .users-table-footer {
   margin-top: 10px;
   display: flex;
@@ -211,11 +204,11 @@ hr.solid {
 }
 
 .user-row:hover > td:first-child {
-  border-left: 2px solid #2570e8;
+  border-left: 2px solid #2570E8;
 }
 
 .user-row:hover {
-  background-color: #f5f9ff;
+  background-color: #F5F9FF;
 }
 
 .users-table-actions {
