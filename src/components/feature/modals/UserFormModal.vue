@@ -78,23 +78,25 @@ export default {
 }
 
 .walled-modal-actions {
-  margin-top: 10px;
+  margin: 40px 0 30px 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .walled-modal-actions-close {
-  margin: 20px;
+  margin-top: 10px;
   cursor: pointer;
-  color: #2979FF
+  color: #2979FF;
 }
 
 .walled-modal-actions-submit {
-  margin: 20px;
+  margin-top: 10px;
+  margin-left: 30px;
 }
 
 .walled-modal-actions-close:hover {
-  color: #5393FF
+  color: #5393FF;
 }
 </style>
