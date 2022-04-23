@@ -5,7 +5,7 @@
       <TextInput class="filter-input" name="sobrenome" placeholder="Sobrenome" v-model="filter.sobrenome"/>
       <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email"/>
       <div class="filter-group-actions">
-        <Button @onClick="test" label="Buscar" outlined icon="search"/>
+        <Button @onClick="onSearchClick" label="Buscar" outlined icon="search"/>
       </div>
     </div>
   </div>
@@ -27,8 +27,8 @@ export default {
     }
   },
   methods: {
-    test () {
-      console.log(this.filter);
+    async onSearchClick () {
+      await this.$store.dispatch('pullUsers', { currentPage: 1 });
     }
   }
 }

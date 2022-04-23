@@ -18,12 +18,16 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    async pullUsers ({ commit }, { currentPage, pageLimit }) {
+    async pullUsers ({ state, commit }, { currentPage, pageLimit }) {
       if(!pageLimit) pageLimit = 10;
 
       let queryString = '';
-      queryString += '?_page=' + currentPage;
-      queryString += '&_limit=' + pageLimit;
+      queryString += ('?_page=' + currentPage);
+      queryString += ('&_limit=' + pageLimit);
+
+      queryString += `&${Object.keys(state.filter)[0]}_like=${state.filter.nome}`
+      queryString += `&${Object.keys(state.filter)[1]}_like=${state.filter.sobrenome}`
+      queryString += `&${Object.keys(state.filter)[2]}_like=${state.filter.email}`
 
       const response = await fetch(process.env.VUE_APP_USERS_API_ENDPOINT + queryString);
 
@@ -37,6 +41,9 @@ export const store = new Vuex.Store({
   mutations: {
     setUsers (state, users) {
       state.users = users;
+    },
+    setFilter (state, filter) {
+      state.filter = filter;
     },
     setPaginationData (state, paginationData) {
       state.paginationData = paginationData;
