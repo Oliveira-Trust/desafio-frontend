@@ -35,7 +35,7 @@ h2 {
 .nav-bar {
   height: 80px;
   background-color: #FFFFFF;
-  box-shadow: #9999993d 0px 3px 8px;
+  box-shadow: #9999993D 0px 3px 8px;
   display: flex;
   justify-content: center;
 }

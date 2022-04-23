@@ -80,29 +80,29 @@ export default {
 }
 
 .small.outlined:hover {
-  border: 1px solid #5393ff;
+  border: 1px solid #5393FF;
 }
 
 .filled {
-  background-color: #2979ff;
+  background-color: #2979FF;
   border: none;
   color: white;
 }
 
 .filled:hover {
-  background-color: #5393ff;
+  background-color: #5393FF;
 }
 
 .outlined {
   background-color: white;
-  border: 1px solid #2979ff;
-  color: #2979ff;
+  border: 1px solid #2979FF;
+  color: #2979FF;
 }
 
 .outlined:hover {
   background-color: white;
-  border: 1px solid #5393ff;
-  color: #5393ff;
+  border: 1px solid #5393FF;
+  color: #5393FF;
 }
 
 .icon-with-label {
@@ -110,11 +110,11 @@ export default {
 }
 
 .icon-outlined {
-  fill: #2979ff;
+  fill: #2979FF;
 }
 
 .outlined:hover > .icon-outlined {
-  fill: #5393ff;
+  fill: #5393FF;
 }
 
 .icon-filled {

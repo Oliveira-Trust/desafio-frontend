@@ -14,7 +14,7 @@ export default {
 .card {
   background-color: #FFFFFF;
   border-radius: 4px;
-  box-shadow: #0000003d 0px 3px 8px;
+  box-shadow: #0000003D 0px 3px 8px;
   padding: 20px;
 }
 </style>
