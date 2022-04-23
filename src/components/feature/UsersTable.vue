@@ -111,10 +111,10 @@ export default {
   },
   methods: {
     handleEditClick (user) {
-      this.$emit('editUser', user);
+      this.$emit('editUserClick', user);
     },
     handleDeleteClick (user) {
-      this.$emit('deleteUser', user);
+      this.$emit('deleteUserClick', user);
     },
     async handlePageClick (page) {
       await this.$store.dispatch('pullUsers', { currentPage: page });

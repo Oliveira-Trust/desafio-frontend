@@ -14,7 +14,7 @@
             <FilterInput/>
           </Card>
           <Card class="app-body-table">
-            <UsersTable @editUser="handleEditUser"/>
+            <UsersTable @editUserClick="handleEditUser" @deleteUserClick="handleDeleteUser"/>
           </Card>
         </div>
         <div class="app-footer">
@@ -27,6 +27,11 @@
       :isOpen="isUserModalOpen"
       @close="closeUserModal"
     />
+    <DeleteUserModal
+      :user="userToDelete"
+      :isOpen="isDeleteUserModalOpen"
+      @close="closeDeleteUserModal"
+    />
   </div>
 </template>
 
@@ -37,6 +42,7 @@ import Button from './components/reusable/Button.vue'
 import NavBar from './components/feature/NavBar.vue'
 import FilterInput from './components/feature/FilterInput.vue'
 import UserFormModal from './components/feature/modals/UserFormModal.vue'
+import DeleteUserModal from './components/feature/modals/DeleteUserModal.vue'
 import './style.css'
 
 export default {
@@ -48,11 +54,14 @@ export default {
     NavBar,
     FilterInput,
     UserFormModal,
+    DeleteUserModal,
   },
   data() {
     return {
       isUserModalOpen: false,
       userToEdit: {},
+      isDeleteUserModalOpen: false,
+      userToDelete: {},
     }
   },
   async created () {
@@ -69,7 +78,18 @@ export default {
     handleEditUser (user) {
       this.userToEdit = user;
       this.showUserModal();
-    }
+    },
+    showDeleteUserModal () {
+      this.isDeleteUserModalOpen = true;
+    },
+    closeDeleteUserModal () {
+      this.isDeleteUserModalOpen = false;
+      this.userToDelete = {};
+    },
+    handleDeleteUser (user) {
+      this.userToDelete = user;
+      this.showDeleteUserModal();
+    },
   }
 }
 </script>

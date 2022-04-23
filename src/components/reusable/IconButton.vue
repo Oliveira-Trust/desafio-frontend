@@ -7,6 +7,7 @@
 <script>
 import 'vue-awesome/icons/pencil-alt'
 import 'vue-awesome/icons/trash-alt'
+import 'vue-awesome/icons/trash'
 import 'vue-awesome/icons/search'
 import 'vue-awesome/icons/chevron-right'
 import 'vue-awesome/icons/chevron-left'

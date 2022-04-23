@@ -4,7 +4,8 @@
     :class="{
       'outlined' : outlined,
       'filled' : !outlined,
-      'small' : small
+      'small' : small,
+      'danger': danger,
     }"
     @click="onClick"
   >
@@ -42,6 +43,10 @@ export default {
     icon: {
       type: String,
       default: undefined,
+    },
+    danger: {
+      type: Boolean,
+      default: false,
     }
   },
   methods: {
@@ -121,4 +126,11 @@ export default {
   fill: white;
 }
 
+.danger {
+  background-color: #DC3545;
+}
+
+.danger:hover {
+  background-color: #B2102F;
+}
 </style>
