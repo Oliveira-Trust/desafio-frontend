@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import Icon from 'vue-awesome/components/Icon'
 import { store } from './store'
-import money from 'v-money'
 
 Icon.register({
   'arrow-right-from-bracket': {
@@ -12,7 +11,6 @@ Icon.register({
   }
 });
 
-Vue.use(money, {precision: 4})
 Vue.component('v-icon', Icon);
 Vue.config.productionTip = false;
 

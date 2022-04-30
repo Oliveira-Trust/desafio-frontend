@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "v-money": "^0.8.1",
     "vue": "^2.6.11",
     "vue-awesome": "^4.5.0",
     "vuex": "^3.6.2"

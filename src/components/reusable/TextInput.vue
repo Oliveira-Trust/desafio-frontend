@@ -5,13 +5,10 @@
       :name="name"
       :placeholder="placeholder"
       v-model="inputVal"
-      v-money="isCurrency && money"
     />
 </template>
 
 <script>
-import { VMoney } from 'v-money'
-
 export default {
 name: 'TextInput',
   props: {
@@ -32,22 +29,12 @@ name: 'TextInput',
       default: false,
     }
   },
-  data () {
-    return {
-      money: {
-        decimal: ',',
-        thousands: '.',
-        prefix: 'R$ ',
-        suffix: '',
-        precision: 2,
-        masked: false
-      }
-    }
-  },
-  directives: {money: VMoney},
   computed: {
     inputVal: {
       get() {
+        if (this.isCurrency) {
+          return `R$ ${this.value}`
+        }
         return this.value;
       },
       set(val) {
