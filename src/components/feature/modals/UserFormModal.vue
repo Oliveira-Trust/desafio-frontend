@@ -10,7 +10,12 @@
       <TextInput placeholder="Sobrenome" v-model="user.sobrenome"/>
       <TextInput placeholder="E-mail" v-model="user.email"/>
       <div class="wallet-value">
-        <TextInput isCurrency class="wallet-value-input" placeholder="Valor de compra"/>
+        <TextInput
+          isCurrency
+          class="wallet-value-input"
+          placeholder="Valor de compra"
+          v-model="userWalletPrice"
+        />
         <h3 class="wallet-value-btc-value" >BTC {{ userWalletCryptoValue }}</h3>
       </div>
       <div class="user-modal-actions">
@@ -50,6 +55,11 @@ export default {
       default: () => {},
     }
   },
+  data () {
+    return {
+      userWalletPrice: '0',
+    }
+  },
   methods: {
     close () {
       this.$emit('close');
@@ -58,12 +68,18 @@ export default {
       console.log(this.user);
     }
   },
-  data () {
-    return {
-      userWalletCurrencyValue: 0,
+  watch: {
+    async isOpen () {
+      await this.$store.dispatch('pullCryptoCurrencyPrice');
+      this.userWalletPrice = 
+        (this.user.valor_carteira * this.cryptoCurrencyValue).toFixed(5).toString().replace('.', '')
+        || '0';
     }
   },
   computed: {
+    cryptoCurrencyValue () {
+      return this.$store.getters.getCryptoCurrencyValue;
+    },
     isEditing () {
       return !!this.user.id;
     },
