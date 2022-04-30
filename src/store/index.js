@@ -15,7 +15,10 @@ export const store = new Vuex.Store({
       currentPage: 1,
       pages: 1,
       totalItems: 0
-    }
+    },
+    currency: 'BRL',
+    cryptoCurrency: 'BTC',
+    cryptoCurrencyValue: 0,
   },
   actions: {
     async pullUsers ({ state, commit }, { currentPage, pageLimit }) {
@@ -37,6 +40,11 @@ export const store = new Vuex.Store({
       commit('setUsers', users);
       commit('setPaginationData', { currentPage, totalItems, pages: Math.ceil(totalItems / pageLimit) });
     },
+    async pullCryptoCurrencyPrice ({ state, commit }) {
+      const response = await fetch(`${process.env.VUE_APP_CRYPTO_PRICE_ENDPOINT}${state.cryptoCurrency}-${state.currency}`);
+      const coin = await response.json();
+      commit('setCryptoCurrencyValue', coin[`${state.cryptoCurrency}${state.currency}`].bid);
+    },
   },
   mutations: {
     setUsers (state, users) {
@@ -48,6 +56,9 @@ export const store = new Vuex.Store({
     setPaginationData (state, paginationData) {
       state.paginationData = paginationData;
     },
+    setCryptoCurrencyValue (state, cryptoCurrencyValue) {
+      state.cryptoCurrencyValue = cryptoCurrencyValue;
+    },
   },
   getters: {
     getUsers (state) {
@@ -58,6 +69,9 @@ export const store = new Vuex.Store({
     },
     getPaginationData (state) {
       return state.paginationData;
+    },
+    getCryptoCurrencyValue (state) {
+      return state.cryptoCurrencyValue;
     },
   },
 });
