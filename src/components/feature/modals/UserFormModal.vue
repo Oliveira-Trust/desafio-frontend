@@ -57,7 +57,7 @@ export default {
   },
   data () {
     return {
-      userWalletPrice: '0',
+      userWalletPrice: 0,
     }
   },
   methods: {
@@ -71,9 +71,9 @@ export default {
   watch: {
     async isOpen () {
       await this.$store.dispatch('pullCryptoCurrencyPrice');
-      this.userWalletPrice = 
-        (this.user.valor_carteira * this.cryptoCurrencyValue).toFixed(5).toString().replace('.', '')
-        || '0';
+      this.userWalletPrice = this.user.valor_carteira
+        ? (parseFloat((this.user.valor_carteira * this.cryptoCurrencyValue).toFixed(5).toString().replace('.', '')) / 100).toFixed(2)
+        : 0;
     }
   },
   computed: {
