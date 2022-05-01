@@ -14,9 +14,9 @@
           isCurrency
           class="wallet-value-input"
           placeholder="Valor de compra"
-          v-model="userWalletPrice"
+          v-model="userCurrency"
         />
-        <h3 class="wallet-value-btc-value" >BTC {{ userWalletCryptoValue }}</h3>
+        <h3 class="wallet-value-btc-value" >BTC {{ userCryptoCurrency }}</h3>
       </div>
       <div class="user-modal-actions">
         <TextButton class="user-modal-actions-close" @onClick="close" label="Cancelar"/>
@@ -32,6 +32,10 @@ import Modal from '../../reusable/Modal.vue'
 import TextInput from '../../reusable/TextInput.vue'
 import Button from '../../reusable/Button.vue'
 import TextButton from '../../reusable/TextButton.vue'
+import {
+  getCurrencyValueByCryptoValue,
+  getCryptoValueByCurrencyValue
+} from '../../../helpers/currency.utils'
 
 export default {
   name: 'UserFormModal',
@@ -57,7 +61,7 @@ export default {
   },
   data () {
     return {
-      userWalletPrice: 0,
+      userCurrency: 0,
     }
   },
   methods: {
@@ -71,9 +75,13 @@ export default {
   watch: {
     async isOpen () {
       await this.$store.dispatch('pullCryptoCurrencyPrice');
-      this.userWalletPrice = this.user.valor_carteira
-        ? (parseFloat((this.user.valor_carteira * this.cryptoCurrencyValue).toFixed(5).toString().replace('.', '')) / 100).toFixed(2)
-        : 0;
+      const currencyValue = getCurrencyValueByCryptoValue(this.user.valor_carteira, this.cryptoCurrencyValue);
+      this.userCurrency = this.user.valor_carteira ? currencyValue : 0;
+    },
+    userCurrency (val) {
+      const cryptoValue = getCryptoValueByCurrencyValue(val, this.cryptoCurrencyValue);
+      // this.userCryptoCurrency = cryptoValue;
+      console.log(cryptoValue);
     }
   },
   computed: {
@@ -83,7 +91,7 @@ export default {
     isEditing () {
       return !!this.user.id;
     },
-    userWalletCryptoValue () {
+    userCryptoCurrency () {
       return this.isEditing ? this.user.valor_carteira : '0.00000'
     },
   }
