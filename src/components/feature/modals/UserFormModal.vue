@@ -62,6 +62,7 @@ export default {
   data () {
     return {
       userCurrency: 0,
+      userCryptoCurrency: ''
     }
   },
   methods: {
@@ -77,6 +78,7 @@ export default {
       await this.$store.dispatch('pullCryptoCurrencyPrice');
       const currencyValue = getCurrencyValueByCryptoValue(this.user.valor_carteira, this.cryptoCurrencyValue);
       this.userCurrency = this.user.valor_carteira ? currencyValue : 0;
+      this.userCryptoCurrency = this.isEditing ? this.user.valor_carteira : '0.00000000';
     },
     userCurrency (val) {
       const cryptoValue = getCryptoValueByCurrencyValue(val, this.cryptoCurrencyValue);
@@ -90,9 +92,6 @@ export default {
     },
     isEditing () {
       return !!this.user.id;
-    },
-    userCryptoCurrency () {
-      return this.isEditing ? this.user.valor_carteira : '0.00000'
     },
   }
 }
