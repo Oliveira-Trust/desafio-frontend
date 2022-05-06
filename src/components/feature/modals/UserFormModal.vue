@@ -15,12 +15,15 @@
           class="wallet-value-input"
           placeholder="Valor de compra"
           v-model="userCurrency"
+          :readOnly="isEditing"
+          :error="!isAmountValid"
         />
-        <h3 class="wallet-value-btc-value" >BTC {{ userCryptoCurrency }}</h3>
+        <h3 v-if="isAmountValid" class="wallet-value-btc-value" >BTC {{ userCryptoCurrency }}</h3>
+        <p v-else class="wallet-value-invalid">Valor inválido</p>
       </div>
       <div class="user-modal-actions">
         <TextButton class="user-modal-actions-close" @onClick="close" label="Cancelar"/>
-        <Button class="user-modal-actions-submit" @onClick="save" label="Salvar"/>
+        <Button class="user-modal-actions-submit" :disabled="!isEditing && !isFormValid" @onClick="save" label="Salvar"/>
       </div>
     </template>
     </Modal>
@@ -70,7 +73,8 @@ export default {
       this.$emit('close');
     },
     save () {
-      console.log(this.user);
+      // check validation before saving
+      console.log(this.user, this.userCryptoCurrency);
     }
   },
   watch: {
@@ -81,9 +85,9 @@ export default {
       this.userCryptoCurrency = this.isEditing ? this.user.valor_carteira : '0.00000000';
     },
     userCurrency (val) {
+      if (this.isEditing) return;
       const cryptoValue = getCryptoValueByCurrencyValue(val, this.cryptoCurrencyValue);
-      // this.userCryptoCurrency = cryptoValue;
-      console.log(cryptoValue);
+      this.userCryptoCurrency = cryptoValue;
     }
   },
   computed: {
@@ -93,6 +97,15 @@ export default {
     isEditing () {
       return !!this.user.id;
     },
+    isAmountValid () {
+      return this.userCryptoCurrency || this.userCryptoCurrency === 0;
+    },
+    isFormValid () {
+      return parseFloat(this.userCurrency)
+        && this.user.nome
+        && this.user.sobrenome
+        && this.user.email;
+    }
   }
 }
 </script>
@@ -109,6 +122,12 @@ export default {
 }
 
 .wallet-value-btc-value {
+  margin-left: 10px;
+  width: 50%;
+}
+
+.wallet-value-invalid {
+  color: #E53935;
   margin-left: 10px;
   width: 50%;
 }
