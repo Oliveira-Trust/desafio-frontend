@@ -1,5 +1,11 @@
 <template>
-  <div class="input-box">
+  <div
+    :class="{
+      'read-only': readOnly,
+      'error': error
+    }"
+    class="input-box"
+  >
     <span v-if="isCurrency" class="prefix">R$</span>
     <input
       class="text-input"
@@ -7,6 +13,7 @@
       :name="name"
       :placeholder="placeholder"
       v-model="inputVal"
+      :readonly="readOnly"
     />
   </div>
 </template>
@@ -30,7 +37,15 @@ name: 'TextInput',
     isCurrency: {
       type: Boolean,
       default: false,
-    }
+    },
+    readOnly: {
+      type: Boolean,
+      default: false,
+    },
+    error: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     inputVal: {
@@ -81,6 +96,16 @@ name: 'TextInput',
   border-color: #777;
 }
 
+.read-only {
+  background-color: #EEEEEE;
+  cursor: not-allowed;
+}
+
+input:read-only {
+  background-color: #EEEEEE;
+  cursor: not-allowed;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -89,5 +114,13 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance:textfield;
+}
+
+.error {
+  border: 1px solid #E53935;
+}
+
+.error:focus-within {
+  border: 1px solid #B71C1C;
 }
 </style>
