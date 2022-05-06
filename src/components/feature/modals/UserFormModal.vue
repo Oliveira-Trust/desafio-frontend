@@ -100,11 +100,17 @@ export default {
     isAmountValid () {
       return this.userCryptoCurrency || this.userCryptoCurrency === 0;
     },
+    isEmailValid () {
+      return this.user.email
+        && this.user.email.includes('@')
+        && this.user.email.includes('.')
+        && this.user.email.slice(-1) !== '.';
+    },
     isFormValid () {
       return parseFloat(this.userCurrency)
         && this.user.nome
         && this.user.sobrenome
-        && this.user.email;
+        && this.isEmailValid;
     }
   }
 }
