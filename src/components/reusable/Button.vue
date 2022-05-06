@@ -6,7 +6,9 @@
       'filled' : !outlined,
       'small' : small,
       'danger': danger,
+      'disabled': disabled,
     }"
+    :disabled="disabled"
     @click="onClick"
   >
     <v-icon
@@ -45,6 +47,10 @@ export default {
       default: undefined,
     },
     danger: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
       type: Boolean,
       default: false,
     }
@@ -132,5 +138,14 @@ export default {
 
 .danger:hover {
   background-color: #B2102F;
+}
+
+.disabled {
+  background-color: #cfd8dc;
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background-color: #b0bec5;
 }
 </style>
