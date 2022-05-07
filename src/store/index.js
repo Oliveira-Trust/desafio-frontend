@@ -21,6 +21,11 @@ export const store = new Vuex.Store({
     cryptoCurrencyValue: 0,
   },
   actions: {
+    async getAllUsers () {
+      const response = await fetch(process.env.VUE_APP_USERS_API_ENDPOINT);
+      const users = await response.json();
+      return users;
+    },
     async pullUsers ({ state, commit }, { currentPage, pageLimit }) {
       if(!pageLimit) pageLimit = 10;
 
@@ -56,7 +61,6 @@ export const store = new Vuex.Store({
       const createdUser = await response.json();
       state.paginationData.totalItems += 1;
       commit('addUser', createdUser);
-      // dispatch('pullUsers', { currentPage: 1 });
     },
     async deleteUser ({ commit, state }, userId) {
       await fetch(`${process.env.VUE_APP_USERS_API_ENDPOINT}/${userId}`, {
@@ -67,7 +71,6 @@ export const store = new Vuex.Store({
       });
       state.paginationData.totalItems -= 1;
       commit('removeUser', userId);
-      // dispatch('pullUsers', { currentPage: 1 });
     },
     async updateUser (_, user) {
       const { id, ...userPatch } = user;
