@@ -8,7 +8,7 @@
       <div class="nav-bar-content">
         <ProfileAvatar/>
         <b class="nav-bar-content-username">Otávio Oliveira</b>
-        <IconButton name="arrow-right-from-bracket"/>
+        <IconButton tooltipText="Sair" name="arrow-right-from-bracket"/>
       </div>
     </div>
   </div>

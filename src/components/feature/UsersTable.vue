@@ -22,11 +22,13 @@
             <IconButton
               class="users-table-actions-action-button"
               name="pencil-alt"
+              tooltipText="Editar"
               @onClick="handleEditClick(user)"
             />
             <IconButton
               class="users-table-actions-action-button"
               name="trash-alt"
+              tooltipText="Excluir"
               @onClick="handleDeleteClick(user)"
             />
           </div>
