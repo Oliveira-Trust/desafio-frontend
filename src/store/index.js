@@ -34,7 +34,7 @@ export const store = new Vuex.Store({
 
       const response = await fetch(process.env.VUE_APP_USERS_API_ENDPOINT + queryString);
 
-      const totalItems = response.headers.get('X-Total-Count');
+      const totalItems = parseInt(response.headers.get('X-Total-Count'));
       const users = await response.json();
 
       commit('setUsers', users);
