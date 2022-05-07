@@ -45,10 +45,51 @@ export const store = new Vuex.Store({
       const coin = await response.json();
       commit('setCryptoCurrencyValue', coin[`${state.cryptoCurrency}${state.currency}`].bid);
     },
+    async createUser ({ commit, state }, user) {
+      const response = await fetch(process.env.VUE_APP_USERS_API_ENDPOINT, {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
+      const createdUser = await response.json();
+      state.paginationData.totalItems += 1;
+      commit('addUser', createdUser);
+      // dispatch('pullUsers', { currentPage: 1 });
+    },
+    async deleteUser ({ commit, state }, userId) {
+      await fetch(`${process.env.VUE_APP_USERS_API_ENDPOINT}/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
+      state.paginationData.totalItems -= 1;
+      commit('removeUser', userId);
+      // dispatch('pullUsers', { currentPage: 1 });
+    },
+    async updateUser (_, user) {
+      const { id, ...userPatch } = user;
+
+      await fetch(`${process.env.VUE_APP_USERS_API_ENDPOINT}/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(userPatch),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
+    },
   },
   mutations: {
     setUsers (state, users) {
       state.users = users;
+    },
+    addUser (state, user) {
+      state.users = [...state.users, user];
+    },
+    removeUser (state, userId) {
+      state.users = state.users.filter(u => u.id !== userId);
     },
     setFilter (state, filter) {
       state.filter = filter;

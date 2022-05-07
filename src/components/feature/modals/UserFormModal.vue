@@ -21,6 +21,7 @@
         <h3 v-if="isAmountValid" class="wallet-value-btc-value" >BTC {{ userCryptoCurrency }}</h3>
         <p v-else class="wallet-value-invalid">Valor inválido</p>
       </div>
+      <!-- <IconButton name="plus"/> -->
       <div class="user-modal-actions">
         <TextButton class="user-modal-actions-close" @onClick="close" label="Cancelar"/>
         <Button class="user-modal-actions-submit" :disabled="!isEditing && !isFormValid" @onClick="save" label="Salvar"/>
@@ -72,9 +73,15 @@ export default {
     close () {
       this.$emit('close');
     },
-    save () {
-      // check validation before saving
-      console.log(this.user, this.userCryptoCurrency);
+    async save () {
+      if (this.isEditing) {
+        await this.$store.dispatch('updateUser', this.user);
+        this.close();
+        return;
+      }
+      this.user.valor_carteira = this.userCryptoCurrency;
+      await this.$store.dispatch('createUser', this.user);
+      this.close();
     }
   },
   watch: {

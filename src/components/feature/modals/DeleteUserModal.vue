@@ -13,7 +13,7 @@
         <p>Tem certeza que deseja excluir essa Carteira?</p>
         <p>Essa ação não poderá ser desfeita.</p>
         <div class="delete-user-modal-actions">
-          <Button class="delete-user-modal-actions-submit" :danger="true" label="Excluir"/>
+          <Button class="delete-user-modal-actions-submit" :danger="true" @onClick="deleteUser" label="Excluir"/>
           <TextButton class="delete-user-modal-actions-close" @onClick="close" label="Cancelar"/>
         </div>
       </div>
@@ -52,6 +52,10 @@ export default {
     close () {
       this.$emit('close');
     },
+    async deleteUser () {
+      await this.$store.dispatch('deleteUser', this.user.id);
+      this.close();
+    }
   }
 }
 </script>
@@ -95,4 +99,11 @@ export default {
   margin: 10px;
 }
 
+.delete-user-modal-body > h2 {
+  margin-bottom: 4px;
+}
+
+.delete-user-modal-body > p {
+  margin: 2px;
+}
 </style>
