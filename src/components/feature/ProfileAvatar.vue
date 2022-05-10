@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import defaultProfileAvatar from "../../assets/profile-avatar2.png"
+import defaultProfileAvatar from "../../assets/profile-avatar.png"
 
 export default {
   name: 'ProfileAvatar',
