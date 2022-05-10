@@ -1,8 +1,9 @@
 <template>
   <div class="user-modal">
     <Modal
+      with-expiration
       :title="isEditing ? 'Editar Carteira' : 'Adicionar Carteira'"
-      v-show="isOpen"
+      v-if="isOpen"
       @close="close"
     >
     <template v-slot:body>
