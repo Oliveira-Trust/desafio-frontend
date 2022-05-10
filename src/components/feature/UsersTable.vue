@@ -96,6 +96,7 @@
 <script>
 import IconButton from '../reusable/IconButton.vue'
 import Button from '../reusable/Button.vue'
+import { exportUsersToCSV } from '../../helpers/data-export.utils'
 
 export default {
   name: 'UsersTable',
@@ -141,41 +142,7 @@ export default {
     },
     async handleExportToCSV () {
       const users = await this.$store.dispatch('getAllUsers');
-      const csvString = [
-        [
-          "ID",
-          "Nome",
-          "Sobrenome",
-          "Email",
-          "Endereço",
-          "Data de Nascimento",
-          "Data de Abertura",
-          "Valor da Carteira",
-          "Endereço da Carteira",
-        ],
-        ...users.map(user => [
-          user.id,
-          user.nome,
-          user.sobrenome,
-          user.email,
-          user.endereco,
-          user.data_nascimento,
-          user.data_abertura,
-          user.valor_carteira,
-          user.endereco_carteira,
-        ])
-      ]
-      .map(e => e.join(",")) 
-      .join("\n");
-
-      console.log(csvString);
-      const encodedUri = encodeURI(csvString);
-      var link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      const today = new Date();
-      link.setAttribute("download", `users-export-${today.toISOString()}.csv`);
-      document.body.appendChild(link); 
-      link.click();
+      exportUsersToCSV(users);
     }
   }
 }
