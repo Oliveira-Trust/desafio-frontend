@@ -72,7 +72,7 @@ export const store = new Vuex.Store({
       state.paginationData.totalItems -= 1;
       commit('removeUser', userId);
     },
-    async updateUser (_, user) {
+    async updateUser ({ commit }, user) {
       const { id, ...userPatch } = user;
 
       await fetch(`${process.env.VUE_APP_USERS_API_ENDPOINT}/${id}`, {
@@ -82,6 +82,7 @@ export const store = new Vuex.Store({
           "Content-type": "application/json; charset=UTF-8"
         }
       });
+      commit('editUser', user);
     },
   },
   mutations: {
@@ -93,6 +94,9 @@ export const store = new Vuex.Store({
     },
     removeUser (state, userId) {
       state.users = state.users.filter(u => u.id !== userId);
+    },
+    editUser (state, user) {
+      state.users = state.users.map(u => u.id === user.id ? user : u);
     },
     setFilter (state, filter) {
       state.filter = filter;

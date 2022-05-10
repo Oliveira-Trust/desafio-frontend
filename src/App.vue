@@ -23,7 +23,7 @@
       </div>
     </div>
     <UserFormModal
-      :user="userToEdit"
+      :user="{ ...userToEdit }"
       :isOpen="isUserModalOpen"
       @close="closeUserModal"
     />

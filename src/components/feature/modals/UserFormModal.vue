@@ -29,7 +29,7 @@
         <TextButton class="user-modal-actions-close" @onClick="close" label="Cancelar"/>
         <Button
           class="user-modal-actions-submit"
-          :disabled="!isEditing && !isFormValid"
+          :disabled="!isFormValid"
           @onClick="save"
           label="Salvar"
         />
@@ -126,7 +126,7 @@ export default {
         && this.user.email.slice(-1) !== '.';
     },
     isFormValid () {
-      return parseFloat(this.userCurrencyToAsk)
+      return this.isAmountValid
         && this.user.nome
         && this.user.sobrenome
         && this.isEmailValid;
