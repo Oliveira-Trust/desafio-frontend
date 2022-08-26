@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "Header",
+  name: "CButton",
   props: {
     label: {
       default: "",
