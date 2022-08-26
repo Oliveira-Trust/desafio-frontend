@@ -1,6 +1,5 @@
 import api from "./../configs/api";
-export default {
-  getAllUsers: async () => {
-    return await api.get("users");
-  },
+const getAllUsers = async () => {
+  return await api.get("users");
 };
+export { getAllUsers };

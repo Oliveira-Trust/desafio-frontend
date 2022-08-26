@@ -7,20 +7,20 @@
         <div class="c-container direction-row justify-space-between">
           <CInput
             classes="margin-right"
-            :placeholder="'Teste'"
-            :value="model"
+            :placeholder="'Nome'"
+            :value="nome"
             @change-value="changeInputValue"
           />
           <CInput
             classes="margin-right"
-            :placeholder="'Teste'"
-            :value="model"
+            :placeholder="'Sobrenome'"
+            :value="sobrenome"
             @change-value="changeInputValue"
           />
           <CInput
             classes="margin-right"
-            :placeholder="'Teste'"
-            :value="model"
+            :placeholder="'Email'"
+            :value="email"
             @change-value="changeInputValue"
           />
           <CButton
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 import CHeader from "@/components/Header.vue";
 import CButton from "@/components/Button.vue";
 import CInput from "@/components/Input.vue";
@@ -55,7 +57,9 @@ export default {
   components: { CHeader, CButton, CInput, CCard, CModal, CTable },
   data() {
     return {
-      model: "",
+      nome: "",
+      sobrenome: "",
+      email: "",
       showModal: false,
       headers: [
         { value: "nome", label: "Nome" },
@@ -64,25 +68,36 @@ export default {
         { value: "bitcoin", label: "Bitcoin" },
         { value: "action", label: null },
       ],
-      body: [
-        {
-          nome: "Hallison",
-          sobrenome: "Melo",
-          email: "hallison.pm@gmail.com",
-          bitcoin: 0.08123,
+      body: [],
+    };
+  },
+
+  computed: {
+    ...mapGetters("users", ["users"]),
+  },
+
+  watch: {
+    users(val) {
+      val.map((item) => {
+        this.body.push({
+          ...item,
           action: {
             edit: true,
             delete: true,
           },
-        },
-      ],
-    };
+        });
+      });
+    },
   },
 
   methods: {
+    ...mapActions("users", ["listUsers"]),
     changeInputValue(value) {
       this.model = value;
     },
+  },
+  created() {
+    this.listUsers();
   },
 };
 </script>
