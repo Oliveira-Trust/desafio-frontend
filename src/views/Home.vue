@@ -23,10 +23,17 @@
             :value="model"
             @change-value="changeInputValue"
           />
-          <CButton :outline="true" label="Adicionar Carteira" />
+          <CButton
+            :outline="true"
+            label="Adicionar Carteira"
+            @click-button="showModal = true"
+          />
         </div>
       </CCard>
     </div>
+    <CModal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">custom header</h3>
+    </CModal>
   </div>
 </template>
 
@@ -35,13 +42,15 @@ import CHeader from "@/components/Header.vue";
 import CButton from "@/components/Button.vue";
 import CInput from "@/components/Input.vue";
 import CCard from "@/components/Card.vue";
+import CModal from "@/components/Modal.vue";
 
 export default {
   name: "Home",
-  components: { CHeader, CButton, CInput, CCard },
+  components: { CHeader, CButton, CInput, CCard, CModal },
   data() {
     return {
       model: "",
+      showModal: false,
     };
   },
 

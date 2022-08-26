@@ -1,5 +1,9 @@
 <template>
-  <button class="c-button" :class="{ outline: outline, primary: primary }">
+  <button
+    class="c-button"
+    :class="{ outline: outline, primary: primary }"
+    @click="$emit('click-button')"
+  >
     {{ label }}
   </button>
 </template>
