@@ -10,12 +10,13 @@
     "start": "npm-run-all --parallel serve api"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "json-server": "^0.17.0",
     "node-sass": "^4.0.0",
     "postcss-loader": "^7.0.1",
     "style-loader": "^3.3.1",
     "vue": "^2.6.11",
-    "vue-resource": "^1.5.3",
     "vue-router": "3.6.4",
     "vuex": "^4.0.2"
   },
