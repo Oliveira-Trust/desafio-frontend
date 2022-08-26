@@ -1,4 +1,15 @@
-.container {
+.c-container {
   max-width: 1000px;
   margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  &.direction-row {
+    flex-direction: row;
+  }
+
+  &.justify-space-between {
+    justify-content: space-between;
+  }
 }

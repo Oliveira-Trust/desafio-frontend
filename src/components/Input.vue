@@ -2,6 +2,7 @@
   <input
     type="text"
     :placeholder="placeholder"
+    :class="classes"
     class="c-input"
     v-model="model"
   />
@@ -18,6 +19,9 @@ export default {
     value: {
       default: "",
       required: true,
+    },
+    classes: {
+      default: () => [],
     },
   },
   computed: {

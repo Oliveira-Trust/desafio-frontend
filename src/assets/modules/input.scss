@@ -3,6 +3,11 @@
   padding: 15px 20px;
   border-radius: 4px;
   border: #ccc solid 0.5px;
+  flex: 1;
+
+  &.margin-right {
+    margin-right: 10px;
+  }
 
   &:focus-visible {
     outline: 1px;

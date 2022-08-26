@@ -1,13 +1,31 @@
 <template>
   <div>
     <CHeader />
-    <div>
+    <div class="c-container">
       <CButton :outline="true" label="Adicionar Carteira" />
-      <CInput
-        :placeholder="'Teste'"
-        :value="model"
-        @change-value="changeInputValue"
-      />
+      <CCard>
+        <div class="c-container direction-row justify-space-between">
+          <CInput
+            classes="margin-right"
+            :placeholder="'Teste'"
+            :value="model"
+            @change-value="changeInputValue"
+          />
+          <CInput
+            classes="margin-right"
+            :placeholder="'Teste'"
+            :value="model"
+            @change-value="changeInputValue"
+          />
+          <CInput
+            classes="margin-right"
+            :placeholder="'Teste'"
+            :value="model"
+            @change-value="changeInputValue"
+          />
+          <CButton :outline="true" label="Adicionar Carteira" />
+        </div>
+      </CCard>
     </div>
   </div>
 </template>
@@ -16,10 +34,11 @@
 import CHeader from "@/components/Header.vue";
 import CButton from "@/components/Button.vue";
 import CInput from "@/components/Input.vue";
+import CCard from "@/components/Card.vue";
 
 export default {
   name: "Home",
-  components: { CHeader, CButton, CInput },
+  components: { CHeader, CButton, CInput, CCard },
   data() {
     return {
       model: "",
