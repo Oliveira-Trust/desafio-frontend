@@ -1,24 +1,29 @@
 <template>
   <table class="c-table">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Points</th>
+    <tr class="c-table c-table__header">
+      <th v-for="(h, hIndex) in headers" :key="hIndex">{{ h.label }}</th>
     </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td>
-      <td>94</td>
-    </tr>
-    <tr>
-      <td>Adam</td>
-      <td>Johnson</td>
-      <td>67</td>
+    <tr v-for="(item, index) in body" :key="index">
+      <td>{{ item.nome }}</td>
+      <td>{{ item.sobrenome }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.bitcoin }}</td>
+      <td v-if="item.action">
+        <div>
+          <img
+            @click="$emit('edit', item)"
+            src="@/assets/imgs/pencil.png"
+            class="c-icon"
+            alt="Edit"
+          />
+          <img
+            @click="$emit('delete', item)"
+            src="@/assets/imgs/delete.png"
+            class="c-icon"
+            alt="Delete"
+          />
+        </div>
+      </td>
     </tr>
   </table>
 </template>
@@ -26,5 +31,13 @@
 <script>
 export default {
   name: "CTable",
+  props: {
+    headers: {
+      default: () => [],
+    },
+    body: {
+      default: () => [],
+    },
+  },
 };
 </script>

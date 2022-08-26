@@ -36,7 +36,7 @@
     </CModal>
     <div class="c-container">
       <CCard>
-        <CTable />
+        <CTable :headers="headers" :body="body" />
       </CCard>
     </div>
   </div>
@@ -57,6 +57,25 @@ export default {
     return {
       model: "",
       showModal: false,
+      headers: [
+        { value: "nome", label: "Nome" },
+        { value: "sobrenome", label: "Sobrenome" },
+        { value: "email", label: "Email" },
+        { value: "bitcoin", label: "Bitcoin" },
+        { value: "action", label: null },
+      ],
+      body: [
+        {
+          nome: "Hallison",
+          sobrenome: "Melo",
+          email: "hallison.pm@gmail.com",
+          bitcoin: 0.08123,
+          action: {
+            edit: true,
+            delete: true,
+          },
+        },
+      ],
     };
   },
 

@@ -5,13 +5,27 @@
   border: none;
   background-color: white;
 
+  .c-table__header {
+    background-color: white;
+    border-bottom: #d8d8d8 solid 1px;
+  }
+
   th,
   td {
     text-align: left;
     padding: 16px;
   }
 
-  tr:nth-child(even) {
+  tr {
+    border-left: transparent solid 2px;
     background-color: #f5f6f8;
+
+    &:nth-child(even) {
+      background-color: white;
+    }
+
+    &:hover:not(.c-table__header) {
+      border-left: #0c9bf2 solid 2px;
+    }
   }
 }
