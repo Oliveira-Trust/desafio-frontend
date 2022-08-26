@@ -1,0 +1,19 @@
+.c-button {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 20px;
+  font-weight: bold;
+  border-radius: 4px;
+
+  &.primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+
+  &.outline {
+    color: #007bff;
+    background-color: white;
+    border: #007bff solid 1px;
+  }
+}
