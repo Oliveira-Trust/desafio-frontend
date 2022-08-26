@@ -1,6 +1,7 @@
 .c-button {
   background-color: #007bff;
   color: white;
+  border: none;
   padding: 15px 20px;
   font-weight: bold;
   border-radius: 4px;
@@ -15,5 +16,19 @@
     color: #007bff;
     background-color: white;
     border: #007bff solid 2px;
+  }
+
+  &.clear {
+    color: #007bff;
+    background-color: transparent;
+    border: transparent solid 1px;
+
+    &:hover {
+      border: #007bff solid 1px;
+    }
+  }
+
+  &.margin-right {
+    margin-right: 10px;
   }
 }

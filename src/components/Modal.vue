@@ -4,7 +4,9 @@
       <div class="c-modal-wrapper">
         <div class="c-modal-container">
           <div class="c-modal-header">
-            <slot name="header"> default header </slot>
+            <div class="c-modal-header__title">
+              <slot name="header"> </slot>
+            </div>
           </div>
 
           <div class="c-modal-body">

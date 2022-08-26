@@ -1,9 +1,18 @@
 .c-container {
+  width: 100%;
   max-width: 1000px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+
+  &.no-margin {
+    margin: 0;
+  }
+
+  &.align-items {
+    align-items: center;
+  }
 
   &.direction-row {
     flex-direction: row;
@@ -12,4 +21,20 @@
   &.justify-space-between {
     justify-content: space-between;
   }
+
+  &.justify-flex-end {
+    justify-content: flex-end;
+  }
+
+  &__half {
+    width: 50%;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
 }

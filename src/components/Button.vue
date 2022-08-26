@@ -1,7 +1,7 @@
 <template>
   <button
     class="c-button"
-    :class="{ outline: outline, primary: primary }"
+    :class="{ outline: outline, primary: primary, clear: clear }"
     @click="$emit('click-button')"
   >
     {{ label }}
@@ -20,6 +20,9 @@ export default {
       default: false,
     },
     primary: {
+      default: false,
+    },
+    clear: {
       default: false,
     },
   },

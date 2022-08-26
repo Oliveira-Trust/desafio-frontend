@@ -2,37 +2,82 @@
   <div>
     <CHeader />
     <div class="c-container">
-      <CButton :outline="true" label="Adicionar Carteira" />
+      <div>
+        <div class="c-container direction-row justify-space-between">
+          <h4>BTC Carteiras</h4>
+          <CButton
+            label="Adicionar Carteira"
+            @click-button="showModal = true"
+          />
+        </div>
+      </div>
       <CCard>
         <div class="c-container direction-row justify-space-between">
           <CInput
             classes="margin-right"
             :placeholder="'Nome'"
             :value="nome"
-            @change-value="changeInputValue"
+            @change-value="(e) => (nome = e)"
           />
           <CInput
             classes="margin-right"
             :placeholder="'Sobrenome'"
             :value="sobrenome"
-            @change-value="changeInputValue"
+            @change-value="(e) => (sobrenome = e)"
           />
           <CInput
             classes="margin-right"
             :placeholder="'Email'"
             :value="email"
-            @change-value="changeInputValue"
+            @change-value="(e) => (email = e)"
           />
-          <CButton
-            :outline="true"
-            label="Adicionar Carteira"
-            @click-button="showModal = true"
-          />
+          <CButton :outline="true" label="Buscar" />
         </div>
       </CCard>
     </div>
     <CModal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">custom header</h3>
+      <h3 slot="header">Adicionar Carteira</h3>
+      <div slot="body">
+        <div class="c-container justify-space-between">
+          <CInput
+            classes="margin-bottom"
+            :placeholder="'Nome'"
+            :value="nome"
+            @change-value="(e) => (nome = e)"
+          />
+          <CInput
+            classes="margin-bottom"
+            :placeholder="'Sobrenome'"
+            :value="sobrenome"
+            @change-value="(e) => (sobrenome = e)"
+          />
+          <CInput
+            classes="margin-bottom"
+            :placeholder="'Email'"
+            :value="email"
+            @change-value="(e) => (email = e)"
+          />
+          <div class="c-container direction-row no-margin align-items">
+            <div class="c-container__half">
+              <CInput
+                classes="margin-bottom"
+                :placeholder="'Valor da compra'"
+                :value="bitcoin"
+                @change-value="(e) => (bitcoin = e)"
+              />
+            </div>
+            <div class="c-container__half">
+              <h5 class="c-text h5 flex-2">BTC 0.9898</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div slot="footer">
+        <div class="c-container direction-row justify-flex-end">
+          <CButton label="Cancelar" :clear="true" class="margin-right" />
+          <CButton label="Adicionar" />
+        </div>
+      </div>
     </CModal>
     <div class="c-container">
       <CCard>
@@ -60,6 +105,7 @@ export default {
       nome: "",
       sobrenome: "",
       email: "",
+      bitcoin: 0,
       showModal: false,
       headers: [
         { value: "nome", label: "Nome" },
