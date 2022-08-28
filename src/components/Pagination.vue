@@ -12,6 +12,7 @@
       :key="i"
       class="c-pagination__item"
       @click="$emit('changePage', i)"
+      :class="{ active: page === i }"
     >
       {{ i }}
     </div>
