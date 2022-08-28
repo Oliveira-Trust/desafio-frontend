@@ -7,7 +7,7 @@
           <h4>BTC Carteiras</h4>
           <CButton
             label="Adicionar Carteira"
-            @click-button="showModal = true"
+            @click-button="openModalAddorEdit"
           />
         </div>
       </div>
@@ -36,7 +36,7 @@
       </CCard>
     </div>
     <CModal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">Adicionar Carteira</h3>
+      <h3 slot="header">{{ id ? "Editar" : "Adicionar " }} Carteira</h3>
       <div slot="body">
         <div class="c-container justify-space-between">
           <CInput
@@ -99,13 +99,16 @@
             class="margin-right"
             @click-button="closeModalAdd()"
           />
-          <CButton label="Adicionar" @click-button="addUser()" />
+          <CButton
+            :label="id ? 'Editar' : 'Adicionar'"
+            @click-button="addUser()"
+          />
         </div>
       </div>
     </CModal>
     <div class="c-container">
       <CCard>
-        <CTable :headers="headers" :body="body" />
+        <CTable :headers="headers" :body="body" @edit="editUser" />
       </CCard>
     </div>
   </div>
@@ -136,6 +139,7 @@ export default {
   },
   data() {
     return {
+      id: 0,
       nome: "",
       sobrenome: "",
       email: "",
@@ -207,7 +211,33 @@ export default {
         email: this.email,
         bitcoin: this.bitcoin,
       });
+      this.clearForm();
       this.showModal = false;
+    },
+
+    clearForm() {
+      this.nome = "";
+      this.sobrenome = "";
+      this.email = "";
+      this.bitcoin = 0;
+      this.real = 0;
+      this.id = 0;
+    },
+
+    openModalAddorEdit() {
+      this.clearForm();
+      this.showModal = true;
+    },
+
+    editUser(user) {
+      this.id = user.id;
+      this.nome = user.nome;
+      this.sobrenome = user.sobrenome;
+      this.email = user.email;
+      this.bitcoin = user.bitcoin;
+      this.real =
+        Number(this.money.bid.replace(/\D/g, "")) * Number(user.bitcoin);
+      this.showModal = true;
     },
   },
   created() {
