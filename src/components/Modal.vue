@@ -10,12 +10,11 @@
           </div>
 
           <div class="c-modal-body">
-            <slot name="body"> default body </slot>
+            <slot name="body"> </slot>
           </div>
 
           <div class="c-modal-footer">
             <slot name="footer">
-              default footer
               <button class="c-modal-default-button" @click="$emit('close')">
                 OK
               </button>
