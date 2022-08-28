@@ -18,6 +18,7 @@
     "style-loader": "^3.3.1",
     "vue": "^2.6.11",
     "vue-router": "3.6.4",
+    "vuelidate": "^0.7.7",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

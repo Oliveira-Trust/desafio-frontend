@@ -45,37 +45,61 @@
             :value="nome"
             @change-value="(e) => (nome = e)"
           />
+          <div class="error" v-if="$v.$error && !$v.nome.required">
+            Nome é um campo obrigatório
+          </div>
+
           <CInput
             classes="margin-bottom"
             :placeholder="'Sobrenome'"
             :value="sobrenome"
             @change-value="(e) => (sobrenome = e)"
           />
+          <div class="error" v-if="$v.$error && !$v.sobrenome.required">
+            Sobrenome é um campo obrigatório
+          </div>
+
           <CInput
             classes="margin-bottom"
             :placeholder="'Email'"
             :value="email"
             @change-value="(e) => (email = e)"
           />
+          <div class="error" v-if="$v.$error && !$v.email.email">
+            Email inválido
+          </div>
+          <div class="error" v-if="$v.$error && !$v.email.required">
+            Email é um campo obrigatório
+          </div>
+
           <div class="c-container direction-row no-margin align-items">
             <div class="c-container__half">
               <CInput
                 classes="margin-bottom"
                 :placeholder="'Valor da compra'"
-                :value="bitcoin"
-                @change-value="(e) => (bitcoin = e)"
+                :value="real"
+                type="number"
+                @change-value="changeMoney"
               />
+              <div class="error" v-if="$v.$error && !$v.bitcoin.required">
+                Valor da compra é um campo obrigatório
+              </div>
             </div>
             <div class="c-container__half">
-              <h5 class="c-text h5 flex-2">BTC 0.9898</h5>
+              <h5 class="c-text h5 flex-2">BTC {{ bitcoin }}</h5>
             </div>
           </div>
         </div>
       </div>
       <div slot="footer">
         <div class="c-container direction-row justify-flex-end">
-          <CButton label="Cancelar" :clear="true" class="margin-right" />
-          <CButton label="Adicionar" />
+          <CButton
+            label="Cancelar"
+            :clear="true"
+            class="margin-right"
+            @click-button="closeModalAdd()"
+          />
+          <CButton label="Adicionar" @click-button="addUser()" />
         </div>
       </div>
     </CModal>
@@ -90,6 +114,8 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 
+import { email, required } from "vuelidate/lib/validators";
+
 import CHeader from "@/components/Header.vue";
 import CButton from "@/components/Button.vue";
 import CInput from "@/components/Input.vue";
@@ -100,12 +126,21 @@ import CTable from "@/components/Table.vue";
 export default {
   name: "Home",
   components: { CHeader, CButton, CInput, CCard, CModal, CTable },
+  validations() {
+    return {
+      nome: { required },
+      sobrenome: { required },
+      email: { required, email },
+      bitcoin: { required },
+    };
+  },
   data() {
     return {
       nome: "",
       sobrenome: "",
       email: "",
       bitcoin: 0,
+      real: 0,
       showModal: false,
       headers: [
         { value: "nome", label: "Nome" },
@@ -120,6 +155,7 @@ export default {
 
   computed: {
     ...mapGetters("users", ["users"]),
+    ...mapGetters("money", ["money"]),
   },
 
   watch: {
@@ -137,15 +173,54 @@ export default {
   },
 
   methods: {
-    ...mapActions("users", ["listUsers"]),
+    ...mapActions("users", ["listUsers", "createUser"]),
+    ...mapActions("money", ["convertMoney"]),
     changeInputValue(value) {
       this.model = value;
+    },
+
+    closeModalAdd() {
+      this.showModal = false;
+    },
+
+    changeBRLtoBTC(value) {
+      const bid = Number(this.money.bid.replace(/\D/g, "")) / 100;
+      const perc = Number(value) / bid;
+      const result = (1 / 100) * perc;
+
+      return result.toFixed(5);
+    },
+
+    changeMoney(value) {
+      this.bitcoin = this.changeBRLtoBTC(value);
+    },
+
+    addUser() {
+      console.log(this.$v);
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+      this.createUser({
+        nome: this.nome,
+        sobrenome: this.sobrenome,
+        email: this.email,
+        bitcoin: this.bitcoin,
+      });
+      this.showModal = false;
     },
   },
   created() {
     this.listUsers();
+    this.convertMoney();
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.error {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #e90404;
+}
+</style>
