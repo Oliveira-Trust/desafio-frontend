@@ -7,4 +7,8 @@ const createOneUser = async (user) => {
   return await api.post("users", user);
 };
 
-export { getAllUsers, createOneUser };
+const deleteOneUser = async (id) => {
+  return await api.delete(`users/${id}`);
+};
+
+export { getAllUsers, createOneUser, deleteOneUser };

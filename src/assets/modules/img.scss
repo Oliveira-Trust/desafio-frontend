@@ -2,4 +2,14 @@
   cursor: pointer;
   width: 20px;
   margin: auto 10px;
+
+  &.large {
+    width: 70px;
+  }
+
+  &.circle {
+    border: black solid 5px;
+    border-radius: 50%;
+    padding: 20px;
+  }
 }

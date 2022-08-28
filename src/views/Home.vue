@@ -106,9 +106,48 @@
         </div>
       </div>
     </CModal>
+    <CModal v-if="showModalDelete" @close="showModalDelete = false">
+      <div slot="header">
+        <div style="text-align: center">
+          <img
+            @click="$emit('delete', item)"
+            src="@/assets/imgs/trash-4-xxl.png"
+            class="c-icon large circle"
+            alt="Delete"
+          />
+        </div>
+      </div>
+      <div slot="body">
+        <div class="c-container justify-space-between">
+          <h3 class="title-delete">Excluir Carteira</h3>
+          <h6 class="subtitle-delete">
+            Tem certeza que deseja excluir essa Carteira?
+          </h6>
+          <h6 class="subtitle-delete">Essa ação não poderá ser desfeita</h6>
+        </div>
+        <div class="c-container justify-space-between">
+          <CButton
+            label="Excluir"
+            class="danger margin-top"
+            @click-button="$deleteUser()"
+          />
+          <CButton
+            label="Cancelar"
+            :clear="true"
+            class="margin-right margin-top"
+            @click-button="closeModalDelete()"
+          />
+        </div>
+      </div>
+    </CModal>
     <div class="c-container">
       <CCard>
-        <CTable :headers="headers" :body="body" @edit="editUser" />
+        <CTable
+          :headers="headers"
+          :body="body"
+          @edit="editUser"
+          @delete="openModalDelete"
+        />
       </CCard>
     </div>
   </div>
@@ -139,6 +178,7 @@ export default {
   },
   data() {
     return {
+      showModalDelete: false,
       id: 0,
       nome: "",
       sobrenome: "",
@@ -163,21 +203,26 @@ export default {
   },
 
   watch: {
-    users(val) {
-      val.map((item) => {
-        this.body.push({
-          ...item,
-          action: {
-            edit: true,
-            delete: true,
-          },
+    users: {
+      immediate: true,
+      deep: true,
+      handler(val) {
+        this.body = [];
+        val.map((item) => {
+          this.body.push({
+            ...item,
+            action: {
+              edit: true,
+              delete: true,
+            },
+          });
         });
-      });
+      },
     },
   },
 
   methods: {
-    ...mapActions("users", ["listUsers", "createUser"]),
+    ...mapActions("users", ["listUsers", "createUser", "deleteUser"]),
     ...mapActions("money", ["convertMoney"]),
     changeInputValue(value) {
       this.model = value;
@@ -185,6 +230,10 @@ export default {
 
     closeModalAdd() {
       this.showModal = false;
+    },
+
+    closeModalDelete() {
+      this.showModalDelete = false;
     },
 
     changeBRLtoBTC(value) {
@@ -239,6 +288,16 @@ export default {
         Number(this.money.bid.replace(/\D/g, "")) * Number(user.bitcoin);
       this.showModal = true;
     },
+
+    $deleteUser() {
+      this.deleteUser(this.id);
+      this.closeModalDelete();
+    },
+
+    openModalDelete(user) {
+      this.id = user.id;
+      this.showModalDelete = true;
+    },
   },
   created() {
     this.listUsers();
@@ -252,5 +311,21 @@ export default {
   font-size: 12px;
   margin-bottom: 10px;
   color: #e90404;
+}
+
+.title-delete {
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.subtitle-delete {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 200;
+  text-align: center;
 }
 </style>

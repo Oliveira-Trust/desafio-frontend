@@ -13,6 +13,12 @@
     border: none;
   }
 
+  &.danger {
+    background-color: #e90404;
+    color: white;
+    border: none;
+  }
+
   &.outline {
     color: #007bff;
     background-color: white;
@@ -31,5 +37,9 @@
 
   &.margin-right {
     margin-right: 10px;
+  }
+
+  &.margin-top {
+    margin-top: 10px;
   }
 }
