@@ -255,7 +255,12 @@ export default {
   },
 
   methods: {
-    ...mapActions("users", ["listUsers", "createUser", "deleteUser"]),
+    ...mapActions("users", [
+      "listUsers",
+      "createUser",
+      "deleteUser",
+      "updateUser",
+    ]),
     ...mapActions("money", ["convertMoney"]),
     changeInputValue(value) {
       this.model = value;
@@ -287,12 +292,25 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-      this.createUser({
-        nome: this.nome,
-        sobrenome: this.sobrenome,
-        email: this.email,
-        bitcoin: this.bitcoin,
-      });
+
+      if (this.id) {
+        this.updateUser({
+          id: this.id,
+          user: {
+            nome: this.nome,
+            sobrenome: this.sobrenome,
+            email: this.email,
+            bitcoin: this.bitcoin,
+          },
+        });
+      } else {
+        this.createUser({
+          nome: this.nome,
+          sobrenome: this.sobrenome,
+          email: this.email,
+          bitcoin: this.bitcoin,
+        });
+      }
       this.clearForm();
       this.showModal = false;
     },

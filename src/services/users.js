@@ -16,8 +16,12 @@ const createOneUser = async (user) => {
   return await api.post("users", user);
 };
 
+const updateOneUser = async ({ id, user }) => {
+  return await api.put(`users/${id}`, user);
+};
+
 const deleteOneUser = async (id) => {
   return await api.delete(`users/${id}`);
 };
 
-export { getAllUsers, createOneUser, deleteOneUser };
+export { getAllUsers, createOneUser, deleteOneUser, updateOneUser };
