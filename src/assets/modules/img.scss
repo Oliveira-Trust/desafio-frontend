@@ -3,6 +3,10 @@
   width: 20px;
   margin: auto 10px;
 
+  &.small {
+    width: 10px;
+  }
+
   &.large {
     width: 70px;
   }
@@ -11,5 +15,13 @@
     border: black solid 5px;
     border-radius: 50%;
     padding: 20px;
+  }
+
+  &.no-margin {
+    margin: 0;
+  }
+
+  &.rotate {
+    transform: rotate(180deg);
   }
 }

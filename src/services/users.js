@@ -1,6 +1,6 @@
 import api from "./../configs/api";
-const getAllUsers = async () => {
-  return await api.get("users");
+const getAllUsers = async ({ page, limit }) => {
+  return await api.get(`users?_page=${page}&_limit=${limit}`);
 };
 
 const createOneUser = async (user) => {

@@ -4,7 +4,7 @@
     <div class="c-container">
       <div>
         <div class="c-container direction-row justify-space-between">
-          <h4>BTC Carteiras</h4>
+          <h1 class="c-text font-weight">BTC Carteiras</h1>
           <CButton
             label="Adicionar Carteira"
             @click-button="openModalAddorEdit"
@@ -142,12 +142,35 @@
     </CModal>
     <div class="c-container">
       <CCard>
+        <div>
+          <div class="c-container direction-row justify-space-between">
+            <h4>BTC Carteiras</h4>
+            <CButton
+              label="Exportar CSV"
+              :outline="true"
+              @click-button="exportCSV(users)"
+            />
+          </div>
+        </div>
         <CTable
           :headers="headers"
           :body="body"
           @edit="editUser"
           @delete="openModalDelete"
         />
+
+        <div style="margin-top: 40px">
+          <div class="c-container direction-row justify-space-between">
+            <h6 class="c-text small">{{ total }} registro(s)</h6>
+            <CPagination
+              :pages="total / size"
+              :page="page"
+              @changePage="(p) => (page = p)"
+              @pageDown="page--"
+              @pageUp="page++"
+            />
+          </div>
+        </div>
       </CCard>
     </div>
   </div>
@@ -164,10 +187,11 @@ import CInput from "@/components/Input.vue";
 import CCard from "@/components/Card.vue";
 import CModal from "@/components/Modal.vue";
 import CTable from "@/components/Table.vue";
+import CPagination from "@/components/Pagination.vue";
 
 export default {
   name: "Home",
-  components: { CHeader, CButton, CInput, CCard, CModal, CTable },
+  components: { CHeader, CButton, CInput, CCard, CModal, CTable, CPagination },
   validations() {
     return {
       nome: { required },
@@ -178,6 +202,8 @@ export default {
   },
   data() {
     return {
+      page: 1,
+      size: 10,
       showModalDelete: false,
       id: 0,
       nome: "",
@@ -198,7 +224,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters("users", ["users"]),
+    ...mapGetters("users", ["users", "total"]),
     ...mapGetters("money", ["money"]),
   },
 
@@ -218,6 +244,9 @@ export default {
           });
         });
       },
+    },
+    page() {
+      this.listUsers({ page: this.page, limit: this.size });
     },
   },
 
@@ -298,9 +327,25 @@ export default {
       this.id = user.id;
       this.showModalDelete = true;
     },
+
+    exportCSV(arrData) {
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += [
+        Object.keys(arrData[0]).join(";"),
+        ...arrData.map((item) => Object.values(item).join(";")),
+      ]
+        .join("\n")
+        .replace(/(^\[)|(\]$)/gm, "");
+
+      const data = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", data);
+      link.setAttribute("download", "export.csv");
+      link.click();
+    },
   },
   created() {
-    this.listUsers();
+    this.listUsers({ page: this.page, limit: this.size });
     this.convertMoney();
   },
 };

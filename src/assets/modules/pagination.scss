@@ -1,0 +1,22 @@
+.c-pagination {
+  display: flex;
+
+  &__item {
+    width: 20px;
+    border: 1px solid #ccc;
+    padding: 3px;
+    text-align: center;
+    margin: auto 2px;
+    cursor: pointer;
+
+    &.active {
+      border: 1px solid #007bff;
+      background-color: #007bff;
+      color: white;
+    }
+
+    &.no-border {
+      border: none;
+    }
+  }
+}

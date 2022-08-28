@@ -1,7 +1,8 @@
 import { getAllUsers, createOneUser, deleteOneUser } from "@/services/users";
-const listUsers = async ({ commit }) => {
-  const { data } = await getAllUsers();
+const listUsers = async ({ commit }, { page, limit }) => {
+  const { data, headers } = await getAllUsers({ page, limit });
   commit("SET_USERS", data);
+  commit("SET_COUNT", headers["x-total-count"]);
 };
 
 const createUser = async ({ dispatch }, user) => {

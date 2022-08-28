@@ -4,4 +4,15 @@
     font-weight: bold;
     margin: 0px;
   }
+
+  &.font-weight {
+    margin: 0px;
+    font-weight: bold;
+  }
+
+  &.small {
+    margin: 0px;
+    font-weight: 200;
+    font-size: 14px;
+  }
 }
