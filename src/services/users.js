@@ -1,6 +1,15 @@
 import api from "./../configs/api";
-const getAllUsers = async ({ page, limit }) => {
-  return await api.get(`users?_page=${page}&_limit=${limit}`);
+import params from "./params";
+const getAllUsers = async ({ page, limit, nome, sobrenome, email }) => {
+  return await api.get(
+    `users?${params.toParamns({
+      _page: page,
+      _limit: limit,
+      nome_like: nome,
+      sobrenome_like: sobrenome,
+      email_like: email,
+    })}`
+  );
 };
 
 const createOneUser = async (user) => {

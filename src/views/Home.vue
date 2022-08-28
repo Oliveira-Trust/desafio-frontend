@@ -16,22 +16,22 @@
           <CInput
             classes="margin-right"
             :placeholder="'Nome'"
-            :value="nome"
-            @change-value="(e) => (nome = e)"
+            :value="query_nome"
+            @change-value="(e) => (query_nome = e)"
           />
           <CInput
             classes="margin-right"
             :placeholder="'Sobrenome'"
-            :value="sobrenome"
-            @change-value="(e) => (sobrenome = e)"
+            :value="query_sobrenome"
+            @change-value="(e) => (query_sobrenome = e)"
           />
           <CInput
             classes="margin-right"
             :placeholder="'Email'"
-            :value="email"
-            @change-value="(e) => (email = e)"
+            :value="query_email"
+            @change-value="(e) => (query_email = e)"
           />
-          <CButton :outline="true" label="Buscar" />
+          <CButton :outline="true" label="Buscar" @click-button="search()" />
         </div>
       </CCard>
     </div>
@@ -202,6 +202,10 @@ export default {
   },
   data() {
     return {
+      query_nome: "",
+      query_sobrenome: "",
+      query_email: "",
+      query: "",
       page: 1,
       size: 10,
       showModalDelete: false,
@@ -246,7 +250,7 @@ export default {
       },
     },
     page() {
-      this.listUsers({ page: this.page, limit: this.size });
+      this.listUsers({ page: this.page, limit: this.size, query: this.query });
     },
   },
 
@@ -343,9 +347,19 @@ export default {
       link.setAttribute("download", "export.csv");
       link.click();
     },
+
+    search() {
+      this.listUsers({
+        page: this.page,
+        limit: this.size,
+        nome: this.query_nome,
+        sobrenome: this.query_sobrenome,
+        email: this.query_email,
+      });
+    },
   },
   created() {
-    this.listUsers({ page: this.page, limit: this.size });
+    this.listUsers({ page: this.page, limit: this.size, query: this.query });
     this.convertMoney();
   },
 };
