@@ -1,6 +1,6 @@
 <template>
   <input
-    type="text"
+    :type="type"
     :placeholder="placeholder"
     :class="classes"
     class="c-input"
@@ -15,6 +15,9 @@ export default {
     placeholder: {
       default: "",
       required: true,
+    },
+    type: {
+      default: "text",
     },
     value: {
       default: "",
