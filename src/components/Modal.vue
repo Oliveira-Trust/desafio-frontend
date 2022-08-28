@@ -14,11 +14,7 @@
           </div>
 
           <div class="c-modal-footer">
-            <slot name="footer">
-              <button class="c-modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
+            <slot name="footer"> </slot>
           </div>
         </div>
       </div>
