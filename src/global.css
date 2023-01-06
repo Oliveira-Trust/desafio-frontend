@@ -1,0 +1,30 @@
+
+html, body {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: #f8f8f8;
+}
+
+a, b, button, label {
+  color: #505050;
+  font-family: 'Roboto', Arial, sans-serif, sans-serif;
+}
+
+@media (max-width: 1080px ) {
+  html {
+    font-size: 95.75%;
+  }
+}
+
+@media ( max-width: 720px ) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media ( max-width: 490px ) {
+  html {
+    font-size: 80.5%;
+  }
+}
