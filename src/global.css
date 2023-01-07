@@ -6,7 +6,7 @@ html, body {
   background: #f8f8f8;
 }
 
-a, b, button, label {
+a, b, button, label, strong {
   color: #505050;
   font-family: 'Roboto', Arial, sans-serif, sans-serif;
 }

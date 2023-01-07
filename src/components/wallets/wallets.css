@@ -96,7 +96,7 @@ section .wallets button:hover {
 
 section .wallets .infos {
   justify-content: flex-start;
-  border-bottom: 2px solid #cbcbcb;
+  border-bottom: 1px solid #ededed;
 }
 
 section .wallets .users {
@@ -128,7 +128,7 @@ section .wallets .users div {
   width: 100%;
 }
 
-section .wallets .users button {
+section .wallets .users a {
   border: 0;
   width: 32px;
   height: 30px;
