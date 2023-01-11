@@ -1,28 +1,28 @@
 import { useState } from 'react';
 
 export const useModal = ( ) => {
-  const [ openCreateWalletModal, setCreateWalletModal ] = useState < boolean > ( false );
+  const [ openCreateModal, setCreateModal ] = useState < boolean > ( false );
   const [ openUpdateModal, setUpdateModal ] = useState < boolean > ( false );
   const [ openDeleteModal, setDeleteModal ] = useState < boolean > ( false );
 
-  const createWallet = ( ) => {
-    setCreateWalletModal( prevState => !prevState );
+  const showCreateModal = ( ) => {
+    setCreateModal( prevState => !prevState );
   }
 
-  const updateWallet = ( ) => {
+  const showUpdateModal = ( ) => {
     setUpdateModal( prevState => !prevState );
   }
 
-  const deleteWallet = ( ) => {
+  const showDeleteModal = ( ) => {
     setDeleteModal( prevState => !prevState );
   }
 
   return {
-    createWallet,
-      updateWallet,
-        deleteWallet,
-          openUpdateModal,
-            openDeleteModal,
-              openCreateWalletModal,
+    showCreateModal,
+      showUpdateModal,
+        showDeleteModal,
+          openCreateModal,
+            openUpdateModal,
+              openDeleteModal
   }
 }

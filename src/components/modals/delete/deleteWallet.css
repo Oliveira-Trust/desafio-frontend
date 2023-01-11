@@ -1,0 +1,76 @@
+
+.container {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 9999;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba( 0, 0, 0, 0.9 );
+}
+
+.container svg {
+  width: 70px;
+  height: 70px;
+  color: #d02844;
+  padding: 5px;
+  border-radius: 50px;
+  border: 2px solid;
+}
+  
+.container .delete {
+  width: calc( 100% - 100px );
+  height: 380px;
+  display: flex;
+  padding: 12px;
+  max-width: 530px;
+  background: #fff;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container .delete strong {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container .delete b {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.container .delete div {
+  margin: 10px auto 0;
+  padding-bottom: 0;
+  height: auto;
+  gap: 12px;
+}
+
+.container .delete div button {
+  width: 100%;
+  max-width: 400px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #d02844;
+}
+
+.container .delete div button:nth-child( 2 ) {
+  color: #1073b6;
+  background: transparent;
+}

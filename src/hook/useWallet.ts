@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import api from '../connect/axios';
-import { useLocation } from 'react-router-dom';
 
 type props = {
   map: ( ) => void
@@ -13,17 +12,17 @@ type props = {
   endereço: string
   data_nascimento: string
   data_abertura: string
-  valor_carteira: number
+  valor_carteira: number | any
   endereco_carteira: string
 }
 
 export const useWallet = ( ) => {
+  const [ data, setData ] = useState < props[ ] > ( [ ] );
+  const [ dataById, setDataById ] = useState < props > (  );
+
   useEffect( ( ) => {
     getData( );
   }, [ ] );
-
-  const [ data, setData ] = useState < props[ ] > ( [ ] );
-  const [ dataById, setDataById ] = useState < props > (  );
 
   const getData = async ( ) => {
     try {
@@ -35,7 +34,7 @@ export const useWallet = ( ) => {
       const typedError = e as Error;
       return typedError;
     }
-  }
+  };
 
   const getDataByUserId = async ( id: string ) => {
     try {
@@ -45,12 +44,12 @@ export const useWallet = ( ) => {
         const typedError = e as Error;
         return typedError;
     }
-  }
+  };
 
   return {
-    data, 
+    data,
       getData,
         dataById,
-            getDataByUserId
+          getDataByUserId
   }
 }

@@ -1,0 +1,60 @@
+
+
+body #root .Toastify {
+    all: unset!important;
+}
+
+body #root .Toastify__toast-container {
+width: 300px!important;
+margin-bottom: 0;
+width: 300px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+height: auto!important;
+background: transparent;
+font-weight: 900;
+text-align: center;
+}
+
+body #root .Toastify__toast {
+width: 300px!important;
+margin: 5px 0!important;
+height: auto;
+}
+
+body #root .Toastify__toast svg {
+width: 0;
+height: 0;
+}
+
+body #root .Toastify__toast-body {
+width: auto!important;
+height: 50px!important;
+display: block!important;
+margin: 0!important;
+padding: 0!important;
+}
+
+body #root .Toastify__toast-body > div:last-child {
+width: auto!important;
+height: 50px!important;
+margin: 0!important;
+padding: 0!important;
+display: flex;
+justify-content: center;
+}
+
+body #root .Toastify__toast-icon {
+display: none!important;
+}
+
+body #root .Toastify__progress-bar {
+margin: 0px!important;
+padding: 0px!important;
+}
+
+body #root .Toastify__close-button {
+display: none!important;
+}
