@@ -1,13 +1,13 @@
 import Vue from 'vue'
-//import VueRouter from 'vue-router';
 import App from './App.vue'
-// import store from './store'
+import router from "./router/index.js"
 
-//Vue.use(VueRouter);
+// import store from './store'
+Vue.config.productionTip = false
 
 export function bootstrapVue(elementId) {
   new Vue({
-    //VueRouter,
+    router,
     // store,
     render: h => h(App)
   }).$mount(elementId)
