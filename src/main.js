@@ -1,8 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
+/*  Renderização desacoplada de framework
+*   Importe o arquivo bootstrap vue, react ou angular.
+*   Isso permite mudar de framework sem alterar codigo no resto do projeto  
+*/
+import { bootstrapVue } from './presentation/bootstrap'
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+bootstrapVue('#app')
