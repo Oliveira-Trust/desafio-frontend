@@ -4,12 +4,12 @@ import home from "../views/home.vue"
 
 Vue.use(VueRouter)
 
+const mode = 'history'
 const routes = [
     {path:'/', name:'Home', component: home},
 ]
-const mode = 'history'
 
 export default new VueRouter({
-    mode,
-    routes
+    mode: mode,
+    routes: routes
 })

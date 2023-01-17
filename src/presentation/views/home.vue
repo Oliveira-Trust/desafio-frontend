@@ -1,8 +1,10 @@
 <template>
-  <h1>Users</h1>
+  <h1>Users {{count}} - {{teste}}!</h1>
 </template>
 
 <script>
+// import { mapState } from 'vuex'
+
 export default {
     name:'home',
     props: {
@@ -11,9 +13,19 @@ export default {
     data: () => {
     return {
       teste: 0
+    }},
+    computed:{
+      count () {
+        return this.$store.state.count
+      }    
+    }, 
+    created(){
+      console.log('entrou')
+      // eslint-disable-next-line no-debugger
+      debugger
+      console.log(this.$store.state)
     }
-  },
-
+      
 }
 </script>
 
