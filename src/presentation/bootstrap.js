@@ -5,7 +5,6 @@ import store from './store/index.js'
 
 Vue.config.productionTip = false
 
-
 export function bootstrapVue(elementId) {
   new Vue({
     router,
