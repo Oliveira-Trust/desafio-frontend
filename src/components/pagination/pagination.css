@@ -1,0 +1,29 @@
+
+ul {
+  width: calc( 100% - 20px );
+  gap: 4px;
+  display: inline-flex;
+  margin-right: 40px;
+  justify-content: flex-end;
+  text-decoration: none;
+  list-style: none;
+}
+  
+ul a {
+  width: 5px;
+  height: 8px;
+  color: #252525;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 14px;
+  border: 1px solid #5b5b5b;
+}
+
+ul a:focus {
+  border: 1px solid #008df9;
+  color: #008df9;
+}

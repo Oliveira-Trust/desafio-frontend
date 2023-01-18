@@ -1,16 +1,17 @@
 
-import api from '../../../connect/axios';
+import axios from 'axios';
 
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent, useRef, useCallback } from 'react';
 
 import { useWallet } from '../../../hook/useWallet';
 
 import { useLocation } from 'react-router-dom';
 
-import '../create/addWallet.css';
 import { errorToast, successToast, warningToast } from '../../../helpers/toasts';
-import axios from 'axios';
 import { ToastBox } from '../../../helpers/toastContainer';
+
+import '../create/createWallet.css';
+
 
 type props = {
   show: () => void
@@ -21,38 +22,44 @@ const UpdateModal = ( { show, hide }: props ) => {
   let userId = useLocation( ).pathname;
   let id = userId;
   id = id.substring( 1 );
-
-  const { getDataByUserId, dataById, data } = useWallet( );
-
-  const [ nome, setNome ] = useState <string> ( '' );
-  const [ sobrenome, setSobreNome ] = useState <string> ( '' );
-  const [ email, setEmail ] = useState <string> ( '' );
-  const [ valor_carteira, setValorCarteira ] = useState <any> ( );
+  
+  const { data, dataById, getDataByUserId, currency, exchange } = useWallet( );
+  
+  const nome = useRef<HTMLInputElement> ( null );
+  const sobrenome = useRef<HTMLInputElement> ( null );
+  const email = useRef<HTMLInputElement> ( null );
+  const [ valorCarteira, setValorCarteira ] = useState< any > ( null );
 
   useEffect( ( ) => {
     getDataByUserId( id );
   }, [ ] );
 
+  currency( );
+
   const updateWallet = async ( e: FormEvent ) => {
     e.preventDefault( );
-
-    const object: any = { nome, sobrenome, email, valor_carteira };
+    
+    const obj: any = { 
+      nome: nome.current?.value, 
+      sobrenome : sobrenome.current?.value, 
+      email: email.current?.value, 
+      valor_carteira: valorCarteira
+    };
 
     let objectCount = 0;
-    for ( let props in object ) { if ( object[ props ] ) { objectCount++ } };
+    for ( let props in obj ) { if ( obj[ props ] ) { objectCount++ } };
     if( objectCount <= 3 ) { return warningToast( ) };
 
     if( id ) {
       try {
-        const find_email_in_db = data.find( ( data ) => data.email === object.email );
+        const find_email_in_db = data.find( ( data ) => data.email === obj.email );
         if( find_email_in_db ) { return errorToast( ' Esse é seu E-mail atual. ' ) };
   
-        const res = await axios.put( `http://localhost:3004/users/${ id }`, object );
+        const res = await axios.put( `http://localhost:3004/users/${ id }`, obj );
         console.log( res.status );
 
         if( res.status === 200 ) {
           successToast( ' Carteira atualizada com sucesso ' );
-          setNome( '' ); setSobreNome( '' ); setEmail( '' ); setValorCarteira( '' );
           setTimeout( ( ) => hide( ), 3000 );
         } else {
           errorToast( ' Error... ' );
@@ -64,18 +71,18 @@ const UpdateModal = ( { show, hide }: props ) => {
     }
   }
 
-  const handleNumber = ( e: FormEvent ) => {
-    let input = (e.target as HTMLInputElement).value;
-      if( input.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/) ) {
+  const handleNumber = async ( e: FormEvent ) => {
+    let input: any = (e.target as HTMLInputElement).value;
+      if( input.match( /^([0-9]{1,})?(\.)?([0-9]{1,})?$/ ) ) {
         setValorCarteira( input );
+        return input;
       }
   }
 
   const handleFloat = ( ) => {
-    setValorCarteira( parseFloat( valor_carteira ) || '' );
+    setValorCarteira( parseFloat( valorCarteira ) || '' );
+    return;
   }
-
- 
 
   return (
   <>
@@ -84,17 +91,17 @@ const UpdateModal = ( { show, hide }: props ) => {
       <div>
         <b> Editar Carteira </b>
         <form onSubmit={ updateWallet } >
-          <input type='text' placeholder={ dataById?.nome } onChange= { ( e ) => setNome( e.target.value ) } />
-          <input type='text' placeholder={ dataById?.sobrenome } onChange={ ( e ) => setSobreNome( e.target.value ) } />
-          <input type='email' placeholder={ dataById?.email } onChange={ ( e ) => setEmail( e.target.value ) } />
+          <input ref={ nome } type='text'  placeholder={ dataById?.nome } />
+          <input ref={ sobrenome } type='text' placeholder={ dataById?.sobrenome } />
+          <input ref={email} type='email' placeholder={ dataById?.email }  />
           <input 
             type='number' 
-            placeholder={ `R$: ${ dataById?.valor_carteira }` } 
-            value={ valor_carteira }
+            placeholder={ `R$: ${ exchange } ` }  
+            value={ valorCarteira || '' }
             onChange={ handleNumber }
             onBlur={ handleFloat } 
           />
-          <strong> BTC { dataById?.valor_carteira } </strong>
+          <strong> BTC { valorCarteira } </strong>
           <div>
             <button onClick={ hide } > Cancelar </button>
             <button> Adicionar </button>
