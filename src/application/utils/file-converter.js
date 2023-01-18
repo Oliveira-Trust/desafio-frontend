@@ -9,4 +9,8 @@ const jsonToCSV = function(dataSource){
     const data = encodeURI(csvContent);
     return data
 }
-export default jsonToCSV
+
+const fileConverter = {
+    jsonToCSV
+}
+export default fileConverter
