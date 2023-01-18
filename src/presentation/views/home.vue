@@ -1,31 +1,31 @@
 <template>
-  <h1>Users {{count}} - {{teste}}!</h1>
+  <div>
+    <h1>Users</h1>
+    <user-grid />
+  </div>
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+
+import { mapActions } from 'vuex'
+import userGrid from '../components/user-grid.vue'
 
 export default {
-    name:'home',
-    props: {
-        prop: String
-    },
-    data: () => {
-    return {
-      teste: 0
-    }},
-    computed:{
-      count () {
-        return this.$store.state.count
-      }    
-    }, 
-    created(){
-      console.log('entrou')
-      // eslint-disable-next-line no-debugger
-      debugger
-      console.log(this.$store.state)
-    }
-      
+  name:'home',
+  components:{
+    userGrid
+  },
+  data: () => {
+  return {
+    // var: 0
+  }},
+  methods:{
+    ...mapActions(['requestUsers']),	
+  },
+ 
+  async mounted(){	
+    this.requestUsers()
+  },
 }
 </script>
 

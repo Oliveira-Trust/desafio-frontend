@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import api from '../../infrastructure/http/axios';
+import api from '../../infrastructure/http/api';
+
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({ 
   namespaced : true,
   state : {      
-      users: ""
+      users: []
   },
   mutations: {
     setUsers (state, userList) {
