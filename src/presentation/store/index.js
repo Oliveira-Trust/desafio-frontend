@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../../infrastructure/http/api';
 
-
 Vue.use(Vuex)
 
 const store = new Vuex.Store({ 
