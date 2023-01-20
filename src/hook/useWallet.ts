@@ -10,8 +10,8 @@ export const useWallet = ( ) => {
   const [ data, setData ] = useState < users[ ] > ( [ ] );
   const [ dataById, setDataById ] = useState < users > (  );
 
-  const [ exchange, setExchange ] = useState < number | string > ( );
-  const [ quotation, setQuotation ] = useState < number > ( );
+  const [ exchange, setExchange ] = useState < any > ( );
+  const [ quotation, setQuotation ] = useState < number | any > ( );
 
   const [ loading, setLoading ] = useState( false );
 
@@ -69,31 +69,33 @@ export const useWallet = ( ) => {
     }
   }
 
-  const btcToReal = ( quotation: number, valor_carteira: number ) => {
-    let calc = ( quotation * valor_carteira ) * 1000;
-    let str = calc.toLocaleString( 'pt-BR', { minimumFractionDigits: 2 } ).toString( );
+  const btcToReal = ( quotation: number, wallet_value: number ) => {
+    let calc = ( quotation * wallet_value ) * 1000;
+    let str: any = calc.toLocaleString( 'pt-BR', { minimumFractionDigits: 2 } ).toString( );
     setExchange( str );
   }
   
-  const realToBtc = ( quotation: number, valor_compra: number ) => {
-    let calc = ( parseFloat( ` ${ quotation } ` ) * parseFloat( ` ${ valor_compra } ` ) );
+  const realToBtc = ( quotation: number, buy_price: number ) => {
+    let calc = ( parseFloat( ` ${ quotation } ` ) * parseFloat( ` ${ buy_price } ` ) );
     let str = calc.toLocaleString( 'pt-BR', { minimumFractionDigits: 7 } );
     return str;
   }
 
   return {
     data,
-      getData,
-        dataById,
-          currency,
-            exchange,
-              quotation,
-                getDataByUserId,
-                        realToBtc,
-                          currentPage,
-                            walletsPerPage,
-                              currentWallets,
-                                      paginate,
+      setData,
+        getData,
+          dataById,
+            currency,
+              exchange,
+                quotation,
+                  getDataByUserId,
+                        btcToReal,
+                          realToBtc,
+                            currentPage,
+                              walletsPerPage,
+                                currentWallets,
+                                        paginate,
                     
   }
 }

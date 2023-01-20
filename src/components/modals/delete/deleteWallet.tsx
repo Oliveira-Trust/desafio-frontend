@@ -4,11 +4,13 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 import { MdOutlineDeleteOutline } from 'react-icons/md';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import { deleteToast } from '../../../helpers/toasts';
 import { ToastBox } from '../../../helpers/toastContainer';
 
 import '../delete/deleteWallet.css';
+import '../delete/medias.css';
 
 type props = {
   show: ( ) => void
@@ -36,7 +38,7 @@ const DeleteModal = ( { hide } : props ) => {
   return (
     <>
       <div className='container'>
-        <button onClick={ hide } > x </button>
+        <button onClick={ hide } > <AiOutlineClose /> </button>
         <div className='delete'>
           <MdOutlineDeleteOutline />
           <strong> Excluir Carteira </strong>

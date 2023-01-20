@@ -1,0 +1,19 @@
+
+@media screen and ( max-width: 500px ) {
+  .container div b {
+    font-size: 18px;
+  }
+
+  .container div form input:nth-child( 4 ) {
+    width: 100%;
+  }
+
+  .container div form strong {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .container div form div button {
+    height: 35px;
+  }
+}

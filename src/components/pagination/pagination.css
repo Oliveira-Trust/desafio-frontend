@@ -7,6 +7,11 @@ ul {
   justify-content: flex-end;
   text-decoration: none;
   list-style: none;
+  align-items: center
+}
+
+ul strong {
+  margin-right: 8px;
 }
   
 ul a {

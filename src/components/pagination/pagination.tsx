@@ -1,5 +1,6 @@
 
 import '../pagination/pagination.css';
+import '../pagination/medias.css';
 
 type pagination = {
   walletsPerPage: number,
@@ -15,15 +16,19 @@ const Pagination = ( { walletsPerPage, totalWallets , paginate } : pagination ) 
   }
 
 return (
+  <>
     <ul className='pagination'>
-      {pageNumbers.map( ( page: number ) => (
-        <li key={ page }>
+      <strong> { totalWallets } Registro(s) </strong>
+      { pageNumbers.map( ( page: number ) => (
+        <li key={ page } >
           <a onClick={ ( ) => paginate( page ) } href='!#' className='page-link'>
             { page }
           </a>
         </li>
       ))}
     </ul>
+  </>
+   
   );
 };
 

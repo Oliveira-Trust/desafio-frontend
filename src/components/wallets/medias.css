@@ -1,0 +1,40 @@
+
+
+@media screen and ( max-width: 500px ) {
+  section div b {
+    font-size: 20px;
+  }
+
+  section div button {
+    width: 140px;
+  }
+
+  section .wallets button {
+    width: 110px;
+  }
+
+  section .wallets .infos {
+    flex-direction: row;
+    display: flex;
+  }
+
+  section .wallets div label {
+    width: 25%;
+  }
+
+  section .wallets div label:nth-child( 1 ) {
+    margin-left: 0;
+  }
+
+  section .wallets div label:nth-child( 2 ) {
+    display: none;
+  }
+
+  section .wallets div label:nth-child( 3 ) {
+    display: none;
+  }
+
+  section .wallets .users label {
+    width: 50%;
+  }
+}

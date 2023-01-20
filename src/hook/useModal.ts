@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import { useWallet } from './useWallet';
 
 export const useModal = ( ) => {
   const [ openCreateModal, setCreateModal ] = useState < boolean > ( false );
@@ -25,6 +24,6 @@ export const useModal = ( ) => {
         deleteModal,
           openCreateModal,
             openUpdateModal,
-              openDeleteModal
+              openDeleteModal,
   }
 }

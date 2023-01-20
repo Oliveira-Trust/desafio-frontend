@@ -1,0 +1,10 @@
+
+@media screen and ( max-width: 450px ) {
+  .searchModalContainer div {
+    flex-direction: column;
+  }
+  
+  .searchModalContainer > button {
+    max-width: auto;
+  }
+}

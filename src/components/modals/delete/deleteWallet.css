@@ -7,7 +7,7 @@
   height: 100%;
   display: flex;
   z-index: 9999;
-  position: absolute;
+  position: fixed;
   align-items: center;
   flex-direction: column;
   justify-content: center;

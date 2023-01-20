@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 
+import Search from '../search/search';
 import Pagination from '../pagination/pagination';
 
 import { useModal } from '../../hook/useModal';
@@ -16,9 +17,10 @@ import DeleteModal from '../modals/delete/deleteWallet';
 import { users } from '../../model/users';
 
 import '../wallets/wallets.css';
+import '../wallets/medias.css';
 
 const Wallets = ( ) => {
-  const { data, currentWallets, walletsPerPage, paginate } = useWallet( );
+  const { data, currentWallets, walletsPerPage, paginate, realToBtc } = useWallet( );
   const { openUpdateModal, openDeleteModal, openCreateModal,
           createModal, updateModal, deleteModal } = useModal( );
 
@@ -33,6 +35,8 @@ return (
       <button onClick={ createModal } > Adicionar Carteira </button>
     </div>
 
+    <Search />
+
     <div className='wallets'>
       <b> Carteiras </b>
       <button> Exportar CSV </button>
@@ -44,22 +48,21 @@ return (
         <label> Bitcoin </label>
       </div>
 
-      { currentWallets.map( ( user: users ) => {
+      { currentWallets.reverse( ).map( ( user: users ) => {
         return (
           <div className='users' key={ user.id } >
             <label> { user.nome } </label>
             <label> { user.sobrenome } </label>
             <label> { user.email } </label>
-            <label> { parseFloat( `${ user.valor_carteira }` ) } </label>
+            <label> { user.valor_carteira } </label>
             <div>
               <Link to={ `${ user.id }` } onClick={ deleteModal } > <MdDeleteOutline /> </Link>
               <Link to={ `${ user.id }` } onClick={ updateModal } > <BiPencil /> </Link>
             </div>
           </div>
-        );
+        )
       })}
     </div>
-    
     <Pagination walletsPerPage={ walletsPerPage } totalWallets={ data.length } paginate={ paginate } />
   </section>
   );

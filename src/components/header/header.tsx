@@ -5,6 +5,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
 
 import '../header/header.css';
+import '../header/medias.css';
 
 const Header = ( ) => { 
 return (

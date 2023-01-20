@@ -7,25 +7,24 @@ import { useWallet } from '../../../hook/useWallet';
 
 import MaskedInput from '../../masks/maskedInput';
 
+import { AiOutlineClose } from "react-icons/ai";
+
 import { successToast, warningToast, errorToast } from '../../../helpers/toasts';
 import { ToastBox } from '../../../helpers/toastContainer';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../create/createWallet.css';
-import '../../../../src/toasts.css';
+import '../create/medias.css';
+import '../../../toasts.css';
 
 type props = {
   show: ( ) => void
   hide: ( ) => void
 }
 
-interface currencys {
-  price: any ;
-}
-
 const CreateModal = ( { hide } : props ) => {
-  const { data, realToBtc, quotation } = useWallet( );
+  const { data, realToBtc } = useWallet( );
 
   const nome = useRef<HTMLInputElement> ( null );
   const sobrenome = useRef<HTMLInputElement> ( null );
@@ -64,33 +63,22 @@ const CreateModal = ( { hide } : props ) => {
     }
   }
 
-  const handleChange = useCallback(
+  const handleNumber = useCallback(
     ( e: any ) => {
-      setValorCarteira( e.target.value );
+      let calc = realToBtc( 0.0000095, e.target.value )
+      setValorCarteira( calc )
     },
     
     [ valorCarteira ]
   );
 
-
   useEffect(( ) => {
-  }, [ handleChange ]);
-
-  // setValorCarteira({
-  //   ...valorCarteira,
-  //   [e.target.name]: e.target.value,
-  // });
-
-  // const handleFloat = ( ) => {
-  // realToBtc( 0.000011, valorCarteira?.price )
-  //   setValorCarteira( valorCarteira.price );
-  //   return;
-  // }
+  }, [ handleNumber ]);
 
 return (
   <>
     <div className='container'>
-    <button onClick={ hide } > x </button>
+    <button onClick={ hide } > <AiOutlineClose /> </button>
       <div>
         <b> Adicionar Carteira </b>
         <form onSubmit={ createWalletsSubmit } >
@@ -101,10 +89,10 @@ return (
            name="price"
            mask="currency"
            placeholder="0,01"
-           onChange={ handleChange }
+           onChange={ handleNumber }
           />
 
-          <strong> BTC { realToBtc( 0.0000095, ( valorCarteira || 0 ) ) } </strong>
+          <strong> BTC { ( valorCarteira || 0 ) } </strong>
 
           <div>
             <button onClick={ hide } > Cancelar </button>

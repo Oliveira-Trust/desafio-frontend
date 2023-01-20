@@ -58,3 +58,9 @@ padding: 0px!important;
 body #root .Toastify__close-button {
 display: none!important;
 }
+
+@media screen and ( max-width: 500px ) {
+  body #root .Toastify__toast-container {
+    width: auto!important;
+  }
+}

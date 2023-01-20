@@ -43,7 +43,7 @@ section div button:hover {
 
 section .wallets {
   width: calc( 100% - 40px );
-  height: 670px;
+  height: 650px;
   display: flex;
   padding: 20px 20px 0 20px;
   margin-bottom: 0;
@@ -98,6 +98,7 @@ section .wallets button:hover {
 }
 
 section .wallets .infos {
+  margin-top: 0;
   justify-content: flex-start;
   border-bottom: 1px solid #ededed;
 }

@@ -1,0 +1,12 @@
+
+@media screen and ( max-width: 500px ) {
+  ul strong {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  ul a {
+    width: 2px;
+    padding: 8px;
+  }
+}

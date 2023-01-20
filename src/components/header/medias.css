@@ -1,0 +1,18 @@
+
+@media screen and ( max-width: 500px ) {
+  header nav .logo img {
+    width: 140px;
+  }
+
+  header nav .user svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  header nav b {
+    color: #343434;
+    font-family: 'Roboto', Arial, sans-serif, sans-serif;
+    text-align: center;
+    font-size: 14px;
+  }
+}
