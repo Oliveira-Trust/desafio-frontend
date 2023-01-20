@@ -1,0 +1,46 @@
+/*  
+  Modificações no estilo padrão do vuetify
+  Objetivo: Reproduzir o protótipo do figma
+  Obs: Adicionei uma classe "custom-style" nos elementos 
+*/
+
+
+$primary-color: #007BFF;
+$secondary-color: #424242;
+$accent-color: #82B1FF;
+$error-color: #E22849;
+$info-color: #2196F3;
+$success-color: #4CAF50;
+$warning-color: #FFC107;
+$neutral-color: #FFFFFF;
+$bg-color: #F5F6F8;
+$txt-color: #3A3A3A;
+
+.theme--light .v-application--wrap{
+  background-color: $bg-color;
+}
+
+.theme--light.v-data-table.custom-style {
+  .v-data-table__wrapper {    
+    table {
+      tbody {
+        tr{
+          &:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {
+            background: $neutral-color;
+            td:first-child {
+              border-left: 3px solid $primary-color
+            }
+          }
+          &:nth-child(even) {background-color: $bg-color;}
+          &:nth-child(odd) {background-color: $neutral-color;}
+          td:not(.v-data-table__mobile-row) {
+            border: none;
+          }
+          td:first-child {
+            border-left: 3px solid $neutral-color;
+          }
+        }
+      }
+    }
+  }
+}
