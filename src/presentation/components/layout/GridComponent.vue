@@ -65,21 +65,25 @@ export default {
       pageCount: 1
     }
   },
-  mounted(){
-    if (this.icons) {
-      this.headers.push({ text: '', align:"end", value: 'actions', sortable: false })
+  methods:{
+    addActions(){
+      if (this.icons) {
+        this.headers.push({ text: '', align:"end", value: 'actions', sortable: false })
+      }
+    },
+    updatePageCount(length){
+      this.pageCount = Math.ceil(length / this.itemsPage)
     }
-    this.pageCount = Math.ceil(this.dataSource.length / this.itemsPage)
+  },
+  mounted(){
+    this.addActions()
+    this.updatePageCount(this.dataSource.length)
   },
   watch: {
     dataSource(val) {
-      this.pageCount = Math.ceil(val.length / this.itemsPage)
+      this.updatePageCount(val.length)
     }
   },
   
 }
 </script>
-
-<style lang="scss">
-
-</style>

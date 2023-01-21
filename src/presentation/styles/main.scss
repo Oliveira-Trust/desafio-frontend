@@ -16,8 +16,16 @@
   @extend .body-font
 }
 
+h1 {
+  color: $txt-color;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 .clickable:hover {
   cursor: pointer
+}
+.no-uppercase {
+  text-transform: none;
 }
 .theme--light .v-application--wrap{
   background-color: $bg-color;

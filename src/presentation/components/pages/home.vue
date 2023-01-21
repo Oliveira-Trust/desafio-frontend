@@ -1,11 +1,30 @@
 <template>
-  <div>    
-    <grid-user v-if="hasData"
-      :headers="headers" 
-      :dataSource ="filteredUsers()" 
-      :icons="icons"
-      :itemsPage="itemsPage"
-      /> 
+  <div>
+    <v-container>
+      <v-row class="mt-5 mb-5">
+        <v-col cols="2">     
+          <h1>BTC Carteiras</h1>            
+        </v-col>
+        <v-col align="end" cols="10" >
+          <v-btn
+            class="no-uppercase"
+            depressed
+            color="primary">
+            Adicionar Carteira
+          </v-btn>
+          <!-- btn-add-carteira -->
+        </v-col>
+      </v-row>  
+      <v-row>
+        <!-- filter -->
+      </v-row>
+      <grid-user v-if="hasData"
+        :headers="headers" 
+        :dataSource ="filteredUsers()" 
+        :icons="icons"
+        :itemsPage="itemsPage"
+        />    
+    </v-container>  
       <!-- <template>
       <v-data-table
         :headers="headers"
@@ -83,10 +102,3 @@ export default {
   },
 }
 </script>
-
-<style>
-  
-  h1{
-      color:red
-  }
-</style>
