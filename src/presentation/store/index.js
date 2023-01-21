@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import User from '../../domain/models/user';
 import api from '../../infrastructure/http/api';
 
 Vue.use(Vuex)
@@ -15,15 +16,17 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    getUsersGridView(state){
-      return state.users.map(u=> { return {
-          id: u.id,
-          nome: u.nome,
-          sobrenome: u.sobrenome,
-          email: u.email, 
-          bitcoin: u.bitcoin
+    filteredUsers: (state) => (filterObj)=> {
+      const userList = state.users.map(u=> { return new User(u)})
+      const filteredList = userList.filter((u) => {
+        for (const key in filterObj) {
+          if (u[key] !== filterObj[key]) {
+            return false;
+          }
         }
-      })
+        return true;
+      });      
+      return filteredList
     }
   },  
   actions:{
