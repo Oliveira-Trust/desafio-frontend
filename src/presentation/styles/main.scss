@@ -1,0 +1,77 @@
+/*  
+  Modificações no estilo padrão do vuetify
+  Objetivo: Reproduzir o protótipo do figma
+  Obs: Adicionei uma classe "custom-style" nos elementos 
+*/
+
+@import './variables.scss';
+
+.base-font {  
+  font-size: 0.875rem;  
+}
+.body-font {  
+  font-size: 0.800rem;  
+}
+* {
+  @extend .body-font
+}
+
+.clickable:hover {
+  cursor: pointer
+}
+.theme--light .v-application--wrap{
+  background-color: $bg-color;
+}
+.custom-style .theme--light.v-pagination {
+  .v-pagination__item {
+    @extend .base-font;
+    min-width: 25px;
+    height: 30px
+  }
+  .v-pagination__navigation {
+    @extend .base-font;
+    background: transparent;
+    box-shadow: none;
+    margin: 0px;
+  }
+
+}
+
+.theme--light.v-data-table.custom-style {
+  .v-data-table__wrapper {    
+    table {    
+      thead {  
+        tr {
+          th {            
+            @extend .base-font;
+            font-weight: bold;
+            border-bottom: 2px solid $border-color;            
+            color: $txt-color;
+          }
+        }
+      }  
+      tbody {
+        tr {          
+          &:nth-child(even) {background-color: $bg-color;}
+          &:nth-child(odd) {background-color: $neutral-color;}
+          td:not(.v-data-table__mobile-row) {
+            border: none;
+          }
+          td:first-child {
+            border-left: 3px solid $neutral-color;
+          }
+          &:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {
+            background: $neutral-color;
+            td:first-child {
+              border-left: 3px solid $primary-color;
+              border-top-left-radius: 0px;
+            }
+          }  
+          td {
+            @extend .body-font;
+          }        
+        }
+      }
+    }
+  }
+}
