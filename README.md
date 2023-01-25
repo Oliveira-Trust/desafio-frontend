@@ -1,112 +1,108 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
+# O que será avaliado
+---
 
-## Desafio para candidatos à vaga de Desenvolvedor Front End (Jr/Pleno/Sênior).
-Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente
-da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua
-capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código
-legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar
-o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀
+Baseado no que foi proposto para avaliação, segue abaixo as minhas considerações sobre o desafio
+ 
 
-Não deixe de enviar o seu teste mesmo que incompleto!
+## Legibilidade do código
+---
 
-## Tecnologias a serem utilizadas:
-* Vuejs (Fornecemos uma estrutura básica do aplicativo) 
-* CSS
-* HTML
+Eu tentei manter o mesmo padrão de nomenclatura para variaveis, arquivos e funções. Usei o idioma ingles no código, exceto pelas classes de dominio por não saber qual a melhor tradução dos termos. Também tentei respeitar os principios do solid na arquitetura conforme será explicado adiante.
 
-## Entrega:
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo
-e depois envie-nos o pull request. 
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado
-fazer o pull request.
+## Percepção da identidade do produto
+---
 
-Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
+Utilizei o framewokr de UI vuetify para produzir a interface mais fiel ao protótipo proposto no figma, embora não tenha tido acesso a fontes, metricas de espaçamento e  codigos de cores, fiz o máximo que pude para manter o resultado final fiel ao que foi prototipado.
 
-## O que vamos avaliar:
-- Legibilidade do código
-- Percepção da identidade do produto
-- Modularização
-- Lógica para aplicar a regra de negócio
-- Implementação das APIs
+## Modularização
+---
 
-## Instruções para o desafio:
-Você deve implementar um aplicativo feito com Vuejs utilizando uma API de usuários fornecida no próprio projeto e uma API externa de conversão de moedas.
+Usei os conceitos da arquitetura limpa (clean archtecture) para tentar separar as responsabilidades e organizar o código, porém sem uma linguagem tipada algumas estrategias envolvendo segregação de interfaces, inversão de controle e injeção de dependencia ficam um pouco comprometidos.
 
-## Obrigatórios:
-- Acompanhar identidade visual do [protótipo fornecido](https://www.figma.com/proto/AO265OINopUSibxX8Dd4A6/Desafio-Front-End?page-id=0%3A1&node-id=2%3A362&viewport=314%2C48%2C0.15&scaling=contain&starting-point-node-id=2%3A362)
-- Listar os dados da API de usuários em uma tabela
-    - Deve conter todos os dados que achar relevante pela API (http://localhost:3004/users)
-    - Botões funcionais de editar(modal) e deletar registro p/ cada elemento
-- Possibilidade de adicionar novas carteiras através de um modal
-- Paginação da listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#paginate) do json-server)
-- Adicionar um filtro para listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#full-text-search) do json-server)
-- Conversão do saldo Bitcoin (BTC) de cada carteira para moeda escolhida. Ex.: BTC para BRL, USD, etc
+## Lógica para aplicar a regra de negócio
+---
 
-Pode utilizar qualquer API para conversão de moedas, mas recomendamos essa aqui: [https://docs.awesomeapi.com.br/api-de-moedas](https://docs.awesomeapi.com.br/api-de-moedas) pela facilidade e boa documentação.
+Tentei usar recursos mais comuns do javascript e manter uma complexidade ciclomática baixa nas funções, pensando em facilitar um eventual esforço de testes unitários e integrados.
 
-#### Exemplo de conversão da moeda:
-- **Parâmetros de entrada**:
-    - Moeda de origem: Bitcoin (BTC)
-    - Moeda de destino: Real (BRL)
-    - Valor para conversão ex.: BTC 0.2242509
-- **Parâmetros de saída**:
-    - Moeda de origem: Bitcoin (BTC)
-    - Moeda de destino: Real (BRL)
-    - Valor para conversão ex.: BTC 0.2242509
-    - Valor comprado em "Moeda de destino" ex.: R$ 53.054,00
-- **Critérios de aceitação**:
-    - Ao criar ou editar uma carteira, deve ser possível inserir um valor de compra tendo como resultado o valor que será adquirido na criptomoeda de destino.
-    
-#### Informações úteis da API de conversão de moedas:
-- Conversão BTC para BRL
-    - https://economia.awesomeapi.com.br/json/last/BTC-BRL
-- Moedas para conversão
-    - https://docs.awesomeapi.com.br/api-de-moedas#moedas-com-conversao-para
-- Tradução das moedas
-    - https://economia.awesomeapi.com.br/json/available/uniq
-- Combinações possíveis
-    - https://economia.awesomeapi.com.br/json/available
-- Legendas
-    - https://docs.awesomeapi.com.br/api-de-moedas#legendas
-    
-## Bônus
-- Validação dos inputs para funcionalidade de criar e editar carteira
-- Gerenciamento de estado (vuex)
-- Exportar dados da lista em CSV (Você pode utlizar alguma biblioteca npm para esta funcionalidade)
+## Implementação das APIs
+---
 
-## Configurações do projeto
+Centralizei a logica de acesso a API de usuário e conversão de moeda em 2 arquivos distintos reaproveitáveis para facilitar a manutenção e evitar repetição de codigo.
 
-É necessário possuir a biblioteca json-server instalada em sua máquina:
+# Bônus
+---
+
+No desafio foram propostos 3 requisitos não obrigatórios que seriam considerados como diferencial.
+
+## Validação
+---
+
+As regras de validação foram separadas em um arquivo desacoplado do front-end para reaproveitamento e evitar acúmulo de responsabilidade no vue. Com o framewokr de UI vuetify pude validar os inputs em tempo real (onChange) e também no envio dos formulários (onSubmit), além de sinalizar ao usuário os erros.
+
+## Gerenciamento de estado
+---
+
+Seguindo o proposto no desafio utilizei o Vuex para centralizar as requisições REST e o controle de estado. Porém eu perefiro usar o Pinia, que é na verdade o novo gerenciador de estado oficial do vue, uma vez que o vuex será descontinuado. Não utilizei modulos na store por achar o desafio pequeno para isso.
+
+## Exportação de CSV
+---
+
+Eu não usei nenhuma biblioteca, mas criei um arquivo utilitário para manipulação de arquivos onde coloquei a lógica de conversão de Json para CSV e para download. Como adicional, fiz a exportação respeitar o filtro aplicado na grid, sendo assim possível ter várias visualizações distintas.
+
+# Decisões técnicas
+---
+
+Segue abaixo algumas explicações técnicas sobre as decisões que tomei no desafio sobre assuntos que podem causar alguma reflexão ou mal entendio.
+
+## UI independente de framework
+---
+
+O arquivo "main.js" na camada de apresentação contem apenas uma chamada para uma função boostrap responsavel por levantar o front.
+
+Essa estratégia permite a troca de vue por react, bastando criar uma função de boostrapReact por exemplo. Essa estrategia depende de um trabalho de separação de responsabilidades entre as camadas do projeto, o que é uma boa pratica.
+
+  
 
 ```
-npm install -g json-server
-```
-Acesse a [documentação](https://github.com/typicode/json-server#getting-started) do json-server para entender melhor como manipular a API.
 
-Também será necessário instalar as dependências do projeto executando:
+import { bootstrapVue } from './presentation/bootstrap'  
 
-```
-npm install
-```
+  
 
-Finalmente podemos rodar o projeto e a API utilizando apenas um comando:
+bootstrapVue('#app')
 
 ```
-npm start
-```
 
-A api a ser consumida está rodando no endereço:
+## Arquitetura clean
+---
 
-```
-http://localhost:3004/users
-```
+O projeto foi orgaizado baseado na proposta de Robert C. Martin (Uncle BOB) em Clean Archtecture. Respeitando as limitações do Javascript, tentei manter o código menos acoplado tornando viável a mudança de bibliotecas (ex:axios pra fetch) ou frameworks (ex: vue pra react) e o reaproveitamento de codigos em futuros projetos e outras camadas de apresentação (ex: mobile, dashboards etc).
 
-e a aplicação em Vue.Js no endereço:
+- ### Assets
+	Contém recursos estáticos, como imagens, videos e fontes.
 
-```
-http://localhost:8080/
-```
+- ### Domain
+	Contém a lógica de negócios dos casos de uso e modelos das classes de negócio.
 
-## Boa sorte! 🚀
+- ### Infrastructure
+	Contém a lógica de acesso a dados, adaptadores de serviços externos e implementação de protocolos (http, smtp etc).
+
+- ### Presentation
+	Contém os componentes da camada de apresentação, como componentes Vue, rotas e a interface de usuário.
+
+- ### Services
+	Contém os serviços utilitários para a camada de negócios, como validação, exportação de relatorios, e outros recursos.
+
+  
+
+## Conversão de moedas
+---
+
+Para facilitar a conferência desse requisito eu coloquei uma coluna adicional na tabela, exibindo o valor da carteira em BTC e na outra moeda selecionada. Uma lista de 4 moedas foi adicionada arbitrariamente e você pode escolher BTC nas duas colunas para fins de comparação. Em um projeto de produção real eu deixaria apenas a coluna com o valor convertido.
+
+  
+
+## Estilos CSS
+---
+
+Como utilizei o vuetify precisei sobrescrever o css dele para respeitar o prototipo do desafio. Separei as variaveis do SCSS em um arquivo e criei outro para sobrescrever o tema padrão do vuetify.
