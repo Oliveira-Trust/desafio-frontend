@@ -13,12 +13,21 @@
   font-size: 0.800rem;  
 }
 * {
-  @extend .body-font
+  @extend .body-font;
+  font-family: 'Roboto', sans-serif;
 }
 
-h1 {
+h1, 
+.h1,
+.h1 .v-select__slot {
   color: $txt-color;
   font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2, .h2 {
+  color: $txt-color;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .clickable:hover {
@@ -26,6 +35,25 @@ h1 {
 }
 .no-uppercase {
   text-transform: none;
+}
+
+#modal {
+  border-radius: 12px;
+  & .border {
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.circle-alert-border{
+  border: 2px solid $error-color;
+  border-radius: 40px;
+  padding: 8px;
+}
+
+
+.rounded-shadow {
+  box-shadow: 1px 3px 11px $shadow;
+  border-radius: 5px;
 }
 .theme--light .v-application--wrap{
   background-color: $bg-color;
@@ -82,4 +110,18 @@ h1 {
       }
     }
   }
+}
+
+.form-modal {
+  & .v-input {  margin-bottom: -15px;  } 
+  & .row .col .v-input{ margin-top: -12px;  }  
+  & .v-input .v-input__control .v-input__slot .v-text-field__slot .v-label {
+    font-style: italic;
+    font-size: 13px;
+  }
+}
+
+.v-messages__message{
+  margin-bottom: 15px;
+  text-align: end;
 }
