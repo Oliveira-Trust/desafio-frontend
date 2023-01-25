@@ -1,13 +1,13 @@
 <template>
   <v-system-bar
   id="header"
-  height="70"
+  height="80"
   class="pa-5"
   >
     <v-container>
       <v-row>
         <v-col id="logo" cols="2">      
-          <img width="205px" src="../../../assets/logotipo_padrao_grey.svg" alt="logotipo Oliveira Trust" class="logo-grey ">      
+          <img width="215px" src="../../../assets/logotipo_padrao_grey.svg" alt="logotipo Oliveira Trust" class="logo-grey ">      
         </v-col >
         <v-col id="profile" cols="10" align="end">
           <v-avatar size="35" title="John" class="clickable">
