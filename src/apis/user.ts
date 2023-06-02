@@ -27,7 +27,6 @@ export const remove = async (id: number) => {
 }
 
 const buildSearchQuery = (searchParams: SearchParams = {}) => {
-
     return Object.keys(searchParams)
         .reduce((searchBuilder, currentKey) => searchBuilder + `&${currentKey}_like=${searchParams[currentKey]}`, "")
 }
