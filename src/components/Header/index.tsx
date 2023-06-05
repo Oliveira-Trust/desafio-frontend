@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
     return (
-        <div className="flex justify-center">
+        <div className="flex self-stretch justify-center bg-white">
             <div className="flex flex-row container justify-between">
                 <div className="w-52">
                     <a href="#"><img src={logo} alt="Logo" /></a>
