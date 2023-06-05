@@ -1,15 +1,19 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { list } from '../apis/user'
+import { WalletContext } from '../context/WalletProvider';
+import useApi from '../hooks/useApi'
 import Header from "../components/Header";
 import SearchBar from '../components/SearchBar.tsx';
+import { list } from '../apis/user';
+import { IUser } from '../types/user';
 
-export default function App() {
-    const [teste, setTeste] = useState()
+
+export default function Main() {
+
+    const {load, newUser, updateUser, deleteUser} = useApi({})
+    const context = useContext(WalletContext)
 
     useEffect(() => {
-        ; (async () => {
-            await list({ page: 1, limit: 12, search: { nome: "dor", sobrenome: 'po', email: 'adsasda' } })
-        })()
+        load({ page: 1, limit: 10})        
     }, [])
 
     return (
@@ -24,6 +28,7 @@ export default function App() {
                     >Adicionar Carteira</button>
                 </div>
                 <SearchBar />
+                <p>{JSON.stringify(context.users)}</p>
             </div>
         </div>
     )

@@ -1,9 +1,9 @@
-export interface UrlParams {
+export interface IUrlParams {
     page: number,
     limit?: number,
     search?: SearchParams
 }
 
-export interface SearchParams {
+export interface ISearchParams {
     [key : string]: string,
 }

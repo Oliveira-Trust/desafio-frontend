@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import InnerLabelInput from '../forms/InnerLabelInput'
-import { SearchParams } from '../../types/api'
+import { ISearchParams } from '../../types/api'
 
 interface Props {
-    searchParams?: SearchParams
+    searchParams?: ISearchParams
 }
 
 const SearchBar = (props: Props) => {

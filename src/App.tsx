@@ -7,17 +7,14 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 
 import Main from './views/Main'
-import { WalletContext } from './types/walletContext';
-
+import { WalletProvider } from './context/WalletProvider';
 
 export default function App() {
-  const Context = createContext<WalletContext>({})
 
   return (
-    <Context.Provider value={{}}>
+    <WalletProvider>
       <Main />
-    </Context.Provider>
-
+    </WalletProvider>
   )
 }
 library.add(fas, far)
