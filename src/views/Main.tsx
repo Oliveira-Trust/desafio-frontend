@@ -7,6 +7,7 @@ import Table from "../components/Table";
 import { columns } from "../utils/utils";
 import { list } from '../apis/user';
 import { IUser } from '../types/user';
+import Paginator from '../components/Paginator';
 
 
 export default function Main() {
@@ -19,9 +20,9 @@ export default function Main() {
     }, [])
 
     return (
-        <div className='bg-zinc-100 h-screen flex justify-start items-stretch  flex-col gap-10'>
+        <div className='bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
             <Header />
-            <div className='container self-center flex justify-start gap-9 flex-col'>
+            <div className='container self-center flex justify-start gap-4  flex-col'>
                 <div className='flex justify-between'>
                     <h1 className='text-3xl font-bold'>BTC Carteiras </h1>
                     <button
@@ -38,7 +39,8 @@ export default function Main() {
                             className='btn btn-outline'
                         >Exportar CSV</button>
                     </div>
-                    <Table columns={ columns } data={context.users} />
+                    <Table columns={columns} data={context.users} />
+                    <Paginator />
                 </div>
             </div>
         </div>

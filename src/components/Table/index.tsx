@@ -1,19 +1,18 @@
 import React, { memo, useState, useEffect } from 'react'
 import { ITableColumn } from '../../types/utils'
-import { IUser } from '../../types/user'
 import { addColumnsSize } from '../../utils/utils'
 import Row from '../Row'
 
-interface IProps {
+interface IProps{
   columns: ITableColumn[]
   data?: Record<string, string>[]
 }
 
-const Table = ({ columns, data }: IProps) => {
+const Table =({ columns, data }: IProps) => {
 
   return (
-    <div className=''>
-      <div className={`grid grid-cols-${addColumnsSize(columns.length)}`} >
+    <div className='border-b-2'>
+      <div className={`grid ${addColumnsSize(columns.length)} border-b-2 p-4`} >
         {columns.map(({ column }, idx) => {
           return (
             <p key={idx} className='text-lg font-medium'>{column}</p>

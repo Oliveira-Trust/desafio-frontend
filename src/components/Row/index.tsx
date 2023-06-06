@@ -10,11 +10,11 @@ interface IProps {
 const Row = ({ data, columns }: IProps) => {
 
     return (
-        <div className={`grid grid-cols-${addColumnsSize(columns.length)}`} >
+        <div className={`grid ${addColumnsSize(columns.length)} p-4 odd:bg-zinc-100 hover:bg-zinc-50 hover:border-l-2 hover:border-blue-400`} >
             {columns.map(({ key }, idx) => {
                 return(
-                    <div key={idx}>
-                        <p className='text-lg font-medium'>
+                    <div key={idx} className=''>
+                        <p className='text-base font-normal'>
                             {data[key]}
                         </p>
                     </div>
