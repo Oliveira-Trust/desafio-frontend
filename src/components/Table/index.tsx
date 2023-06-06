@@ -3,12 +3,12 @@ import { ITableColumn } from '../../types/utils'
 import { addColumnsSize } from '../../utils/utils'
 import Row from '../Row'
 
-interface IProps{
+interface IProps {
   columns: ITableColumn[]
-  data?: Record<string, string>[]
+  data?: Record<string, number | string>[]
 }
 
-const Table =({ columns, data }: IProps) => {
+const Table = ({ columns, data }: IProps) => {
 
   return (
     <div className='border-b-2'>
@@ -19,7 +19,7 @@ const Table =({ columns, data }: IProps) => {
           )
         })}
       </div>
-      {data?.map(row => <Row data={row} columns={columns} />)}
+      {data?.map((row, idx) => <Row key={idx} data={row} columns={columns} />)}
     </div>
   )
 }

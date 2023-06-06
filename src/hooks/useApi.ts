@@ -13,12 +13,17 @@ interface UserApiConfig {
 
 
 export default function useUserApi({ onComplete }: UserApiConfig) {
-
     const context = useContext(WalletContext)
 
     const load = async (urlParams: IUrlParams) => {
         const response = await list(urlParams)
-        context.setState({...context,users:response.data})
+        context.setState(
+            {
+                ...context,
+                users: response.data,
+                totalUsers: response.headers['x-total-count'],
+                currentPage: urlParams.page
+            })
     }
     const newUser = async (user: IUser) => {
         const response = await create(user)

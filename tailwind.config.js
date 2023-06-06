@@ -7,5 +7,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist:[
+    {
+      pattern:/grid-cols-([1-9](|[0-2]))/
+    }
+  ]
 }
 
