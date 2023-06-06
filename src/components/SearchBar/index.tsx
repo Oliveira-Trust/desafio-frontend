@@ -16,7 +16,7 @@ const SearchBar = (props: Props) => {
     } 
 
     return (
-        <div className='bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4'>
+        <div className='bg-white shadow-md rounded px-8 pt-6 pb-6'>
             <form className='flex justify-between gap-2' onSubmit={handle} >
                 <InnerLabelInput label='Nome' placeholder='Nome' value={value} onChange={() => { }} />
                 <InnerLabelInput label='Sobrenome' placeholder='Sobrenome' />
