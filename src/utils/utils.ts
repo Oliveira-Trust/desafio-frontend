@@ -17,7 +17,6 @@ export const columns = [
     },
 ]
 
-
 export const addColumnsSize = (size: number) => {
     return size > 12 ? `grid-cols-${12}` : `grid-cols-${size}`
   }

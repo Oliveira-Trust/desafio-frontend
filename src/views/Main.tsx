@@ -5,10 +5,10 @@ import Header from "../components/Header";
 import SearchBar from '../components/SearchBar';
 import Table from "../components/Table";
 import { columns } from "../utils/utils";
-import { list } from '../apis/user';
-import { IUser } from '../types/user';
-import Paginator from '../components/Paginator';
 import { IUrlParams } from '../types/api';
+import Pagination from '../components/Pagination';
+import Footer from '../components/Footer';
+import Modal from '../components/Modal';
 
 const initialState = {
     page: 1,
@@ -29,11 +29,12 @@ export default function Main() {
         (pageNumber: number) => {
             setUrlParams({ ...urlParams, page: pageNumber })
         },
-        [context.currentPage],
+        [context.currentPage, context.totalUsers],
     )
 
     return (
-        <div className='bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
+        <div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
+            <Modal show={true} title='Adcionar Carteira' />
             <Header />
             <div className='container self-center flex justify-start gap-4  flex-col'>
                 <div className='flex justify-between'>
@@ -53,12 +54,17 @@ export default function Main() {
                         >Exportar CSV</button>
                     </div>
                     <Table columns={columns} data={context.users} />
-                    <div className='flex justify-between'>
-                        <p>{context.totalUsers} registro(s)</p>
-                        <Paginator currentPage={context.currentPage} limit={10} total={context?.totalUsers} callback={changePage} />
+                    <div className='flex justify-between mt-10'>
+                        <p className='text-sm text-gray-500'>
+                            {context.totalUsers || 0} registro(s)
+                        </p>
+                        {context.totalUsers &&
+                            <Pagination currentPage={context.currentPage} limit={10} total={context?.totalUsers} callback={changePage} />
+                        }
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

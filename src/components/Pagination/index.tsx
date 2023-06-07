@@ -8,7 +8,7 @@ interface IProps {
     callback: (pageNumber: number) => void
 }
 
-const Paginator = ({ currentPage = 1, total = 0, limit, callback }: IProps) => {
+const Pagination = ({ currentPage = 0, total = 0, limit, callback }: IProps) => {
     const [pages, setPages] = useState<JSX.Element[]>([])
 
     const maxPages = 5
@@ -76,4 +76,4 @@ const Paginator = ({ currentPage = 1, total = 0, limit, callback }: IProps) => {
     )
 }
 
-export default memo(Paginator)
+export default memo(Pagination)
