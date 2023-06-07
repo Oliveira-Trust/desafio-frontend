@@ -41,7 +41,7 @@ const Pagination = ({ currentPage = 0, total = 0, limit, callback }: IProps) => 
         for (let i = pagesCut.firstIdx; i <= pagesCut.lastIdx; i++) {
             let isSelected = i === currentPage ? 'btn-blue hover:bg-blue-500' : 'hover:bg-zinc-100'
             aux.push(
-                <li>
+                <li key={i}>
                     <button onClick={(e) => handleClick(i)} type='button' className={`border rounded-md w-7 h-7 ${isSelected}`}>
                         {i}
                     </button>

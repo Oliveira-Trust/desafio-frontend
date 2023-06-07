@@ -9,6 +9,8 @@ import { IUrlParams } from '../types/api';
 import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
 import Modal from '../components/Modal';
+import WalletForm from '../components/forms/WalletForm';
+import DeleteForm from '../components/forms/DeleteForm';
 
 const initialState = {
     page: 1,
@@ -17,6 +19,7 @@ const initialState = {
 export default function Main() {
 
     const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
+    const [isOpenModal, setIsOpenModal] = useState(false)
 
     const { load, newUser, updateUser, deleteUser } = useApi({})
     const context = useContext(WalletContext)
@@ -34,7 +37,6 @@ export default function Main() {
 
     return (
         <div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
-            <Modal show={true} title='Adcionar Carteira' />
             <Header />
             <div className='container self-center flex justify-start gap-4  flex-col'>
                 <div className='flex justify-between'>
@@ -42,6 +44,7 @@ export default function Main() {
                     <button
                         type='button'
                         className='btn btn-blue'
+                        onClick={() => setIsOpenModal(true)}
                     >Adicionar Carteira</button>
                 </div>
                 <SearchBar />
@@ -65,6 +68,10 @@ export default function Main() {
                 </div>
             </div>
             <Footer />
+            <Modal show={isOpenModal} title='' onHide={() => setIsOpenModal(false)} >
+                {/* <WalletForm /> */}
+                <DeleteForm />
+            </Modal>
         </div>
     )
 }
