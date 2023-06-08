@@ -1,25 +1,47 @@
 import React, { memo, useState, useEffect } from 'react'
-import { ITableColumn } from '../../types/utils'
+import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
 import { addColumnsSize } from '../../utils/utils'
 import Row from '../Row'
+import Action from '../Action'
 
 interface IProps {
   columns: ITableColumn[]
-  data?: Record<string, number | string>[]
+  data?: GenericObject[]
+  actions?: ITableAction<GenericObject>[]
 }
 
-const Table = ({ columns, data }: IProps) => {
+const Table = ({ columns, data, actions }: IProps) => {
+
+  const [Rows, setRows] = useState<JSX.Element[]>()
+
+  useEffect(() => {
+    buildRows()
+  }, [data])
+
+  const buildRows = () => {
+    const newRows = data?.map((row, idx) => {
+      let tableActions = actions?.map(({ callback, icon, tooltip }, idx) => {
+        return (
+          <Action icon={icon} tooltip={tooltip} callback={callback} data={row} />
+        )
+      })
+      return (
+        <Row key={idx} data={row} columns={columns} actions={tableActions} />
+      )
+    })
+    setRows(newRows)
+  }
 
   return (
     <div className='border-b-2'>
-      <div className={`grid ${addColumnsSize(columns.length)} border-b-2 p-4`} >
+      <div style={addColumnsSize(columns.length)} className={`grid border-b-2 p-4`} >
         {columns.map(({ column }, idx) => {
           return (
             <p key={idx} className='text-lg font-medium'>{column}</p>
           )
         })}
       </div>
-      {data?.map((row, idx) => <Row key={idx} data={row} columns={columns} />)}
+      {Rows}
     </div>
   )
 }

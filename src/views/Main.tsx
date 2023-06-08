@@ -4,13 +4,16 @@ import useApi from '../hooks/useApi'
 import Header from "../components/Header";
 import SearchBar from '../components/SearchBar';
 import Table from "../components/Table";
-import { columns } from "../utils/utils";
+import { columns, actions } from "../utils/utils";
 import { IUrlParams } from '../types/api';
 import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 import WalletForm from '../components/forms/WalletForm';
 import DeleteForm from '../components/forms/DeleteForm';
+import { IUser } from '../types/user';
+import { ITableAction } from '../types/utils';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const initialState = {
     page: 1,
@@ -35,6 +38,28 @@ export default function Main() {
         [context.currentPage, context.totalUsers],
     )
 
+    const editWallet = useCallback((data: IUser): void => {
+        console.log('editWallet')
+    }, [context.users])
+
+
+    const removeWallet = useCallback((data: IUser): void => {
+        console.log('removeWallet')
+    }, [context.users])
+
+    const tableActions = [
+        {
+            icon: ['fas', 'pencil'] as IconProp,
+            tooltip: 'Editar',
+            callback: editWallet
+        },
+        {
+            icon: ['fas', 'trash'] as IconProp,
+            tooltip: 'Remover',
+            callback: removeWallet
+        }
+    ]
+
     return (
         <div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
             <Header />
@@ -56,7 +81,7 @@ export default function Main() {
                             className='btn btn-outline'
                         >Exportar CSV</button>
                     </div>
-                    <Table columns={columns} data={context.users} />
+                    <Table columns={columns} data={context.users} actions={tableActions} />
                     <div className='flex justify-between mt-10'>
                         <p className='text-sm text-gray-500'>
                             {context.totalUsers || 0} registro(s)

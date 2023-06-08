@@ -17,6 +17,21 @@ export const columns = [
     },
 ]
 
+
+
 export const addColumnsSize = (size: number) => {
-    return size > 12 ? `grid-cols-${12}` : `grid-cols-${size}`
-  }
+    return {
+        gridTemplateColumns: `repeat(${size}, minmax(0, 1fr)) 50px`
+    }
+}
+
+export const actions = [
+    {
+        icon: ['fas', 'pencil'],
+        tooltip: 'Editar'
+    },
+    {
+        icon: ['fas', 'trash'],
+        tooltip: 'Remover'
+    }
+]
