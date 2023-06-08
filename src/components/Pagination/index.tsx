@@ -17,7 +17,7 @@ const Pagination = ({ currentPage = 0, total = 0, limit, callback }: IProps) => 
 
     useEffect(() => {
         insertPages()
-    }, [currentPage])
+    }, [currentPage,total])
 
     const getPagesCut = () => {
         const ceiling = Math.ceil(maxPages / 2)

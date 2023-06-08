@@ -6,7 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 
-import Main from './views/Main'
+import Main from './pages/Main'
 import { WalletProvider } from './context/WalletProvider';
 
 export default function App() {

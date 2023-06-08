@@ -22,7 +22,7 @@ const Table = ({ columns, data, actions }: IProps) => {
     const newRows = data?.map((row, idx) => {
       let tableActions = actions?.map(({ callback, icon, tooltip }, idx) => {
         return (
-          <Action icon={icon} tooltip={tooltip} callback={callback} data={row} />
+          <Action key={idx} icon={icon} tooltip={tooltip} callback={callback} data={row} />
         )
       })
       return (

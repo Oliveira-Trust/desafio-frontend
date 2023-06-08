@@ -12,7 +12,7 @@ import Modal from '../components/Modal';
 import WalletForm from '../components/forms/WalletForm';
 import DeleteForm from '../components/forms/DeleteForm';
 import { IUser } from '../types/user';
-import { IModalState, ITableAction } from '../types/utils';
+import { GenericObject, IModalState, ITableAction } from '../types/utils';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const initialState = {
@@ -39,34 +39,38 @@ export default function Main() {
         [context.currentPage, context.totalUsers],
     )
 
-    const editWallet = useCallback((data: IUser): void => {
+    const editWallet = useCallback((data: IUser) => {
 
-        console.log('editWallet',data)
+        console.log('editWallet', data)
     }, [context.users])
 
-    const removeWallet = useCallback((data: IUser): void => {
+    const removeWallet = useCallback((data: IUser) => {
 
-        console.log('removeWallet',data)
+        console.log('removeWallet', data)
     }, [context.users])
 
-    const openWalletModal = useCallback((data: IUser): void => {
+    const onSearchSubimt = useCallback((search: GenericObject) => {
+        setUrlParams({ ...urlParams, page: 1, search })
+    }, [])
+
+    const openWalletModal = useCallback((data: IUser) => {
         setModalState({
             title: 'Adcionar Carteira',
             isOpen: true,
-            content: <WalletForm data={data} onSubmit={editWallet}/>
+            content: <WalletForm data={data} onSubmit={editWallet} />
         })
 
-        console.log('openWalletModal',data)
+        console.log('openWalletModal', data)
     }, [context.users])
 
 
-    const openRemoveModal = useCallback((data: IUser): void => {
+    const openRemoveModal = useCallback((data: IUser) => {
         setModalState({
             isOpen: true,
-            content: <DeleteForm data={data} onSubmit={removeWallet}  />
+            content: <DeleteForm data={data} onSubmit={removeWallet} />
         })
 
-        console.log('openRemoveModal',data)
+        console.log('openRemoveModal', data)
     }, [context.users])
 
     const tableActions = [
@@ -94,7 +98,7 @@ export default function Main() {
                         onClick={() => setIsOpenModal(true)}
                     >Adicionar Carteira</button>
                 </div>
-                <SearchBar />
+                <SearchBar onSubmit={onSearchSubimt} />
                 <div className='bg-white shadow-md rounded px-8 pt-6 pb-6 flex flex-col gap-2'>
                     <div className='flex justify-between'>
                         <h1 className='text-2xl font-bold'>Carteiras </h1>
