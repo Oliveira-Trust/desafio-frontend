@@ -3,10 +3,11 @@ import { IUser } from '../../../types/user'
 import InnerLabelInput from '../InnerLabelInput'
 
 interface IProps {
-    data?: IUser,
+    data: IUser,
+    onSubmit?: (data: IUser) => void
 }
 
-const WalletForm = ({ data }: IProps) => {
+const WalletForm = (props: IProps) => {
     return (
         <form className='flex flex-col gap-5'>
             <div className='grid grid-cols-4 grid-rows-4 gap-3'>
@@ -22,7 +23,7 @@ const WalletForm = ({ data }: IProps) => {
             </div>
             <div className='flex justify-end items-center gap-3'>
                 <a>Cancelar</a>
-                <button type='submit' className='btn btn-blue'>
+                <button onClick={() => props.onSubmit?.(props.data)} type='submit' className='btn btn-blue'>
                     Adcionar
                 </button>
             </div>

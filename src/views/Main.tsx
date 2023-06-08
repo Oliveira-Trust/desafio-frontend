@@ -12,7 +12,7 @@ import Modal from '../components/Modal';
 import WalletForm from '../components/forms/WalletForm';
 import DeleteForm from '../components/forms/DeleteForm';
 import { IUser } from '../types/user';
-import { ITableAction } from '../types/utils';
+import { IModalState, ITableAction } from '../types/utils';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const initialState = {
@@ -23,6 +23,7 @@ export default function Main() {
 
     const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
     const [isOpenModal, setIsOpenModal] = useState(false)
+    const [modalState, setModalState] = useState<IModalState>()
 
     const { load, newUser, updateUser, deleteUser } = useApi({})
     const context = useContext(WalletContext)
@@ -39,24 +40,45 @@ export default function Main() {
     )
 
     const editWallet = useCallback((data: IUser): void => {
-        console.log('editWallet')
+
+        console.log('editWallet',data)
+    }, [context.users])
+
+    const removeWallet = useCallback((data: IUser): void => {
+
+        console.log('removeWallet',data)
+    }, [context.users])
+
+    const openWalletModal = useCallback((data: IUser): void => {
+        setModalState({
+            title: 'Adcionar Carteira',
+            isOpen: true,
+            content: <WalletForm data={data} onSubmit={editWallet}/>
+        })
+
+        console.log('openWalletModal',data)
     }, [context.users])
 
 
-    const removeWallet = useCallback((data: IUser): void => {
-        console.log('removeWallet')
+    const openRemoveModal = useCallback((data: IUser): void => {
+        setModalState({
+            isOpen: true,
+            content: <DeleteForm data={data} onSubmit={removeWallet}  />
+        })
+
+        console.log('openRemoveModal',data)
     }, [context.users])
 
     const tableActions = [
         {
             icon: ['fas', 'pencil'] as IconProp,
             tooltip: 'Editar',
-            callback: editWallet
+            callback: openWalletModal
         },
         {
             icon: ['fas', 'trash'] as IconProp,
             tooltip: 'Remover',
-            callback: removeWallet
+            callback: openRemoveModal
         }
     ]
 
@@ -93,9 +115,8 @@ export default function Main() {
                 </div>
             </div>
             <Footer />
-            <Modal show={isOpenModal} title='' onHide={() => setIsOpenModal(false)} >
-                {/* <WalletForm /> */}
-                <DeleteForm />
+            <Modal show={modalState?.isOpen} title='' onHide={() => setModalState({ ...modalState, isOpen: false })} >
+                {modalState?.content}
             </Modal>
         </div>
     )

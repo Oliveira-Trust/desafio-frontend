@@ -15,3 +15,10 @@ export interface ITableAction<T> {
 export type GenericObject = {
     [key: string]: string | number
 }
+
+export interface IModalState {
+    isOpen: boolean
+    title?: string,
+    content?: JSX.Element
+    callback?: (data: T) => void
+}

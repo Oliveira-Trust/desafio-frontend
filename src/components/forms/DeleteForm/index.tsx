@@ -1,11 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IUser } from '../../../types/user'
 
 interface IProps {
-
+  data: IUser,
+  onSubmit?: (data: IUser) => void
 }
 
-const DeleteForm = ({ }: IProps) => {
+const DeleteForm = (props: IProps) => {
   return (
     <div className='flex flex-col gap-4 justify-center items-center p-10'>
       <div className='border-4 rounded-full flex justify-center items-center border-red-500 w-24 h-24'>
@@ -19,8 +21,8 @@ const DeleteForm = ({ }: IProps) => {
         <small>Esta ação não poderá ser desfeita.</small>
       </div>
       <div className='flex flex-col gap-2 w-full '>
-        <button type='button' className='btn bg-red-500 hover:bg-red-700 text-white'>
-            Excluir
+        <button onClick={() => props.onSubmit?.(props.data)} type='button' className='btn bg-red-500 hover:bg-red-700 text-white'>
+          Excluir
         </button>
         <a className='self-center' href="#">Cancelar</a>
 
