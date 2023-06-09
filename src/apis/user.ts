@@ -14,6 +14,11 @@ export const list = async (urlParams: IUrlParams) => {
     return await api.get(url + searchQuery)
 }
 
+export const listAll = async () => {
+    const url = `?_sort=data_abertura&_order=desc`
+    return await api.get(url)
+}
+
 export const create = async (user: IUser) => {
     return await api.post('', user)
 }

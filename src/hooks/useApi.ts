@@ -1,8 +1,9 @@
+
 import { useContext } from 'react'
 import moment from 'moment-timezone';
 
 import { WalletContext } from '../context/WalletProvider';
-import { create, list, remove, update } from "../apis/user";
+import { create, list, remove, update, listAll } from "../apis/user";
 import { list as listCurrency } from "../apis/currency"
 
 import { IUrlParams } from '../types/api';
@@ -79,12 +80,22 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
         }
 
     }
+    const getAll = async () => {
+        try {
+            const response = await listAll()
+            return response.data
+
+        } catch (e) {
+
+        }
+    }
     return {
         load,
         newUser,
         updateUser,
         deleteUser,
-        getCurrency
+        getCurrency,
+        getAll
     }
 
 

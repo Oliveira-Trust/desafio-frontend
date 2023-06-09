@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react';
+import React, { useEffect, useState, useContext, useCallback, useRef } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 import { WalletContext } from '../context/WalletProvider';
@@ -16,8 +16,8 @@ import DeleteForm from '../components/forms/DeleteForm';
 import { columns, currencies, renameProperty } from "../utils/utils";
 import { IUser } from '../types/user';
 import { IUrlParams } from '../types/api';
-import { GenericObject, IModalState, ITableAction } from '../types/utils';
-import moment from 'moment-timezone';
+import { GenericObject, IModalState } from '../types/utils';
+import useCsvApi from '../hooks/useCsvApi';
 
 
 const initialState = {
@@ -28,6 +28,7 @@ export default function Main() {
 
     const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
     const [modalState, setModalState] = useState<IModalState>()
+    const exportBtn = useRef<HTMLButtonElement>(null)
 
     const onComplete = (status: number) => {
         if (status === 200 || status === 201) {
@@ -36,7 +37,8 @@ export default function Main() {
         }
     }
 
-    const { load, newUser, updateUser, deleteUser, getCurrency } = useApi({ onComplete })
+    const { load, newUser, updateUser, deleteUser, getCurrency, getAll } = useApi({ onComplete })
+    const { csvParse } = useCsvApi()
 
     const context = useContext(WalletContext)
 
@@ -62,6 +64,7 @@ export default function Main() {
         },
         [context.currentPage, context.totalUsers],
     )
+
 
     const openWalletModal = useCallback((data: IUser, callback: (data: IUser) => void, title?: string) => {
         setModalState({
@@ -92,6 +95,16 @@ export default function Main() {
         }
     ]
 
+    const exportCsv = async () => {
+        const data = await getAll()
+        const csv = csvParse(data)
+        const aTag = document.createElement("a")
+        aTag.setAttribute("href", `data:txt/csv;charset=utf-8,${csv}`)
+        aTag.setAttribute("download", "users.csv")
+        document.body.appendChild(aTag)
+        aTag.click()
+        aTag.remove()
+    }
     return (
         <div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
             <Header />
@@ -99,6 +112,7 @@ export default function Main() {
                 <div className='flex justify-between'>
                     <h1 className='text-3xl font-bold'>BTC Carteiras </h1>
                     <button
+                        ref={exportBtn}
                         type='button'
                         className='btn btn-blue'
                         onClick={() => openWalletModal({}, newUser, "Adcionar Carteira")}
@@ -109,8 +123,10 @@ export default function Main() {
                     <div className='flex justify-between'>
                         <h1 className='text-2xl font-bold'>Carteiras </h1>
                         <button
+                            id='btnExport'
                             type='button'
                             className='btn btn-outline'
+                            onClick={(e) => exportCsv()}
                         >Exportar CSV</button>
                     </div>
                     <Table columns={columns} data={context.users} actions={tableActions} />
