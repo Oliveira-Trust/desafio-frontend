@@ -1,3 +1,4 @@
+import { IUrlParams } from './api.d';
 export interface IUrlParams {
     page: number,
     limit?: number,
@@ -6,4 +7,8 @@ export interface IUrlParams {
 
 export interface ISearchParams {
     [key : string]: string,
+}
+
+export interface IUrlParamsCurrency {
+    currencies: string[]
 }

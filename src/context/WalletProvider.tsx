@@ -1,13 +1,14 @@
-import React, { createContext,useState } from 'react'
-import { IWalletContext, IWalletProvider } from '../types/context'
+import React, { createContext, useState } from 'react'
+import { ICurrencies, IWalletContext, IWalletProvider } from '../types/context'
 
-export const WalletContext = createContext<IWalletContext>({} as IWalletContext)
+export const WalletContext = createContext({} as IWalletContext)
 
 export const WalletProvider = ({ children }: IWalletProvider) => {
-    const [state,setState] = useState({})
+    const [state, setState] = useState({})
+    const [currency, setCurrency] = useState<ICurrencies>({ base: "", to: "", value: 0 })
 
     return (
-        <WalletContext.Provider value={{...state,setState}}>
+        <WalletContext.Provider value={{ ...state, setState, currency, setCurrency }}>
             {children}
         </WalletContext.Provider>
     )

@@ -1,9 +1,12 @@
+import { currencies } from './../utils/utils';
+import { GenericObject } from './../types/utils.d';
 import { useContext, useState } from 'react'
 import { create, list, remove, update } from "../apis/user";
+import { list as listCurrency } from "../apis/currency"
 
-import { IUrlParams } from '../types/api';
+import { IUrlParams, IUrlParamsCurrency } from '../types/api';
 import { IUser } from './../types/user.d';
-import { IState } from '../types/context';
+import { ICurrencies, IState } from '../types/context';
 import { WalletContext } from '../context/WalletProvider';
 
 interface UserApiConfig {
@@ -37,11 +40,20 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
         const response = await remove(id)
 
     }
+    const getCurrency = async (currency: string, key: string) => {
+        const response = await listCurrency(currency)
+        context.setCurrency({
+            base: response.data[key].code,
+            to: response.data[key].codein,
+            value: response.data[key].bid
+        })
+    }
     return {
         load,
         newUser,
         updateUser,
-        deleteUser
+        deleteUser,
+        getCurrency
     }
 
 

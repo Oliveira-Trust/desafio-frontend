@@ -17,6 +17,8 @@ export const columns = [
     },
 ]
 
+export const currencies = ['BTC-BRL']
+
 
 
 export const addColumnsSize = (size: number) => {

@@ -13,7 +13,7 @@ export interface ITableAction<T> {
 }
 
 export type GenericObject = {
-    [key: string]: string | number
+    [key: string]: any
 }
 
 export interface IModalState {
@@ -25,5 +25,5 @@ export interface IModalState {
 
 export interface IOptionInput {
     label: string,
-    value: string
+    value: string | number
 }

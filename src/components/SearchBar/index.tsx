@@ -11,13 +11,7 @@ interface Props {
 
 const SearchBar = ({ onSubmit }: Props) => {
     const { register, handleSubmit } = useForm()
-    const [value, setValue] = useState<string>("")
-
-    const handle = (evnet: any) => {
-        evnet.preventDefault()
-        console.log(evnet)
-    }
-
+    
     return (
         <div className='bg-white shadow-md rounded px-8 pt-6 pb-6'>
             <form className='flex justify-between gap-2' onSubmit={handleSubmit(onSubmit)} >

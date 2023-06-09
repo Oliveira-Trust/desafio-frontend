@@ -1,19 +1,22 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
 import { WalletContext } from '../context/WalletProvider';
+
 import useApi from '../hooks/useApi'
 import Header from "../components/Header";
 import SearchBar from '../components/SearchBar';
 import Table from "../components/Table";
-import { columns, actions } from "../utils/utils";
-import { IUrlParams } from '../types/api';
 import Pagination from '../components/Pagination';
 import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 import WalletForm from '../components/forms/WalletForm';
 import DeleteForm from '../components/forms/DeleteForm';
+
+import { columns, currencies } from "../utils/utils";
 import { IUser } from '../types/user';
+import { IUrlParams } from '../types/api';
 import { GenericObject, IModalState, ITableAction } from '../types/utils';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const initialState = {
     page: 1,
@@ -25,12 +28,17 @@ export default function Main() {
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [modalState, setModalState] = useState<IModalState>()
 
-    const { load, newUser, updateUser, deleteUser } = useApi({})
+    const { load, newUser, updateUser, deleteUser, getCurrency } = useApi({})
     const context = useContext(WalletContext)
+
+    useEffect(() => {
+        getCurrency('BTC-BRL', 'BTCBRL')
+    }, [])
 
     useEffect(() => {
         load(urlParams)
     }, [urlParams])
+
 
     const changePage = useCallback(
         (pageNumber: number) => {
@@ -53,24 +61,20 @@ export default function Main() {
         setUrlParams({ ...urlParams, page: 1, search })
     }, [])
 
-    const openWalletModal = useCallback((data: IUser) => {
+    const openWalletModal = useCallback((data: IUser, title?: string) => {
         setModalState({
-            title: 'Adcionar Carteira',
+            title: title || 'Editar Carteira',
             isOpen: true,
-            content: <WalletForm data={data} onSubmit={editWallet} />
+            content: <WalletForm data={data} onSubmit={editWallet} closeModal={() => setModalState({ isOpen: false })} />
         })
-
-        console.log('openWalletModal', data)
     }, [context.users])
 
 
     const openRemoveModal = useCallback((data: IUser) => {
         setModalState({
             isOpen: true,
-            content: <DeleteForm data={data} onSubmit={removeWallet} />
+            content: <DeleteForm data={data} onSubmit={removeWallet} closeModal={() => setModalState({ isOpen: false })} />
         })
-
-        console.log('openRemoveModal', data)
     }, [context.users])
 
     const tableActions = [
@@ -95,7 +99,7 @@ export default function Main() {
                     <button
                         type='button'
                         className='btn btn-blue'
-                        onClick={() => setIsOpenModal(true)}
+                        onClick={() => openWalletModal({},"Adcionar Carteira")}
                     >Adicionar Carteira</button>
                 </div>
                 <SearchBar onSubmit={onSearchSubimt} />

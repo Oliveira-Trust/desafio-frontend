@@ -1,62 +1,60 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
+import { FieldValues, useForm } from "react-hook-form";
+
+import { WalletContext } from "../../../context/WalletProvider"
 import { IUser } from '../../../types/user'
+import { GenericObject, IOptionInput } from '../../../types/utils';
+import CustomSelect from '../Select';
 import InnerLabelInput from '../InnerLabelInput'
-import { useForm } from "react-hook-form";
-import { GenericObject } from '../../../types/utils';
-import CustomSelect from '../CustomSelect';
+import { ICurrencies } from '../../../types/context';
+
 
 interface IProps {
     data: IUser,
     onSubmit: (data: IUser) => void
+    closeModal: () => void
 }
 
-const WalletForm = ({ data, onSubmit }: IProps) => {
+interface IWalletForm extends IUser, FieldValues {
+    value?: number
+}
 
-    const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm()
+const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
+
+    const context = useContext(WalletContext)
+    const [btcValue, setBtcValue] = useState(0)
+    const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<IWalletForm>(
+        {
+            defaultValues:
+            {
+                ...data,
+                value: data.valor_carteira ? data.valor_carteira * context.currency.value : undefined
+            }
+        })
+
     const currencyValue = watch("value")
 
     useEffect(() => {
-        console.log(currencyValue)
-        setValue('value',currencyMask(currencyValue))
+        if (currencyValue && context.currency.value) {
+            setBtcValue(currencyValue / context.currency.value)
+        }
     }, [currencyValue])
 
     const OnValid = (formData: GenericObject) => {
+        console.log(formData)
+        delete formData.value
         onSubmit(formData)
     }
 
-    const onInvalid = () => {
-        console.log(errors)
-    }
-
-    const options = [
-        {
-            label: 'BRL',
-            value: 'BRL'
-        },
-        {
-            label: 'USD',
-            value: 'USD'
-        }
-    ]
-
-    const currencyMask = (value: string) => {
-        if (!value) return ''
-        return "R$" + value.replace(/[R$]/g, '')
-        // const aux = value.replace(/[R$€£]/g,"")
-        // const f = new Intl.NumberFormat('en-us',{
-        //     currency:'BRL',
-        //     style:"currency"
-        // })
-        // console.log(value,aux, f.format(Number(aux)), typeof(aux),typeof(f.format(Number(aux))))
-        // return(f.format(Number(aux)))
-    }
-
     return (
-        <form className='flex flex-col gap-5' onSubmit={handleSubmit(OnValid, onInvalid)}>
-            <div className='grid grid-cols-12 grid-rows-4 gap-3'>
+        <form className='flex flex-col gap-5 p-5' onSubmit={handleSubmit(OnValid)}>
+            <div className='flex flex-col gap-3 items-stretch'>
                 <InnerLabelInput register={register}
                     options={{
-                        required: true,
+                        required: {
+                            value: true,
+                            message: 'Este campo precisa ser preenchido.'
+                        },
                         pattern: {
                             value: /^[A-Za-z]+$/i,
                             message: 'Insira um nome valido.'
@@ -65,10 +63,15 @@ const WalletForm = ({ data, onSubmit }: IProps) => {
                     id='nome'
                     className='col-span-full'
                     label='Nome'
-                    placeholder='Nome' />
+                    props={{ placeholder: 'Nome' }}
+                    error={errors?.nome?.message?.toString()}
+                />
                 <InnerLabelInput register={register}
                     options={{
-                        required: true,
+                        required: {
+                            value: true,
+                            message: 'Este campo precisa ser preenchido.'
+                        },
                         pattern: {
                             value: /^[A-Za-z][A-Za-z.\s]+$/i,
                             message: 'Insira um sobrenome valido'
@@ -77,39 +80,53 @@ const WalletForm = ({ data, onSubmit }: IProps) => {
                     id='sobrenome'
                     className='col-span-full'
                     label='Sobrenome'
-                    placeholder='Sobrenome' />
+                    props={{ placeholder: 'Sobrenome' }}
+                    error={errors?.sobrenome?.message?.toString()}
+                />
                 <InnerLabelInput register={register}
                     options={{
-                        required: true,
+                        required: {
+                            value: true,
+                            message: 'Este campo precisa ser preenchido.'
+                        },
                         pattern: {
-                            value: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i,
+                            value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
                             message: 'Insira um e-mail valido'
                         }
                     }}
                     id='email'
                     className='col-span-full'
                     label='E-mail'
-                    placeholder='E-mail' />
-                <CustomSelect register={register}
-                    id='moeda'
-                    options={options}
-                    className='col-span-2' />
-                <InnerLabelInput register={register}
-                    options={{ required: true, min: 0 }}
-                    id='value'
-                    className='col-span-5'
-                    label='Valor de compra'
-                    placeholder='Valor de compra'
-                    // prefix='R$'
-                    type='number' />
-                <div className='col-span-5 place-self-center justify-self-start'>
-                    <p className='text-xl font-bold font-sans'>
-                        {`BTC ${data.valor_carteira}`}
-                    </p>
+                    props={{ placeholder: 'E-mail' }}
+                    error={errors?.email?.message?.toString()}
+                />
+                <div className='flex justify-stretch gap-2'>
+                    <InnerLabelInput register={register}
+                        options={{
+                            required: {
+                                value: true,
+                                message: 'Este campo precisa ser preenchido.'
+                            },
+                            min: 0,
+                        }}
+                        id='value'
+                        className='col-span-2'
+                        label='Valor de compra'
+                        prefix='R$'
+                        props={{ type: 'number', placeholder: 'Valor de compra' }}
+                    />
+                    <div className='w-5/12 place-self-center justify-self-start'>
+                        <p className='text-xl font-bold font-sans'>
+                            {`BTC ${(btcValue).toFixed(8)}`}
+                        </p>
+                    </div>
+
                 </div>
             </div>
             <div className='flex justify-end items-center gap-3'>
-                <a>Cancelar</a>
+                <a className='text-blue-500 hover:text-blue-500' onClick={() => closeModal()}>
+                    Cancelar
+                </a>
                 <button type='submit' className='btn btn-blue'>
                     Adcionar
                 </button>
