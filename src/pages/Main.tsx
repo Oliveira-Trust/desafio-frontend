@@ -119,7 +119,7 @@ export default function Main() {
                 </div>
             </div>
             <Footer />
-            <Modal show={modalState?.isOpen} title='' onHide={() => setModalState({ ...modalState, isOpen: false })} >
+            <Modal show={modalState?.isOpen} title={modalState?.title} onHide={() => setModalState({ ...modalState, isOpen: false })} >
                 {modalState?.content}
             </Modal>
         </div>

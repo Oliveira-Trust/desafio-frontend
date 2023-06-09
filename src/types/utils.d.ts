@@ -22,3 +22,8 @@ export interface IModalState {
     content?: JSX.Element
     callback?: (data: T) => void
 }
+
+export interface IOptionInput {
+    label: string,
+    value: string
+}
