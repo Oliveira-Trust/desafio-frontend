@@ -1,16 +1,16 @@
-import { currencies } from './../utils/utils';
-import { GenericObject } from './../types/utils.d';
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
+import moment from 'moment-timezone';
+
+import { WalletContext } from '../context/WalletProvider';
 import { create, list, remove, update } from "../apis/user";
 import { list as listCurrency } from "../apis/currency"
 
-import { IUrlParams, IUrlParamsCurrency } from '../types/api';
+import { IUrlParams } from '../types/api';
 import { IUser } from './../types/user.d';
-import { ICurrencies, IState } from '../types/context';
-import { WalletContext } from '../context/WalletProvider';
+import { IState } from '../types/context';
 
 interface UserApiConfig {
-    onComplete?: (callback: (state: IState) => {}) => {}
+    onComplete: (status: number) => void
 }
 
 
@@ -19,34 +19,65 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
     const context = useContext(WalletContext)
 
     const load = async (urlParams: IUrlParams) => {
-        const response = await list(urlParams)
-        context.setState(
-            {
-                ...context,
-                users: response.data,
-                totalUsers: response.headers['x-total-count'],
-                currentPage: urlParams.page
-            })
+        try {
+            const response = await list(urlParams)
+            context.setState(
+                {
+                    ...context,
+                    users: response.data,
+                    totalUsers: response.headers['x-total-count'],
+                    currentPage: urlParams.page
+                })
+
+        } catch (e) {
+
+        }
     }
     const newUser = async (user: IUser) => {
-        const response = await create(user)
+        try {
+
+            const data_abertura = moment.tz().format()
+            const response = await create({ ...user, data_abertura })
+            onComplete(response.status)
+
+        } catch (e) {
+
+        }
 
     }
     const updateUser = async (user: IUser) => {
-        const response = await update(user)
+        try {
+            const response = await update(user)
+            onComplete(response.status)
+
+        } catch (e) {
+
+        }
 
     }
-    const deleteUser = async (id: number) => {
-        const response = await remove(id)
+    const deleteUser = async (id?: number) => {
+        try {
+            if (id) {
+                const response = await remove(id)
+                onComplete(response.status)
 
+            }
+        } catch (e) {
+
+        }
     }
     const getCurrency = async (currency: string, key: string) => {
-        const response = await listCurrency(currency)
-        context.setCurrency({
-            base: response.data[key].code,
-            to: response.data[key].codein,
-            value: response.data[key].bid
-        })
+        try {
+            const response = await listCurrency(currency)
+            context.setCurrency({
+                base: response.data[key].code,
+                to: response.data[key].codein,
+                value: response.data[key].bid
+            })
+        } catch (e) {
+
+        }
+
     }
     return {
         load,

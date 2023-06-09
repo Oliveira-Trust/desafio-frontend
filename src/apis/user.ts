@@ -8,7 +8,7 @@ const api = axios.create({ baseURL })
 
 export const list = async (urlParams: IUrlParams) => {
     const { page, limit = 10, search } = urlParams
-    const url = `?_page=${page}&_limit=${limit}`
+    const url = `?_page=${page}&_limit=${limit}&_sort=data_abertura&_order=desc`
     const searchQuery = buildSearchQuery(search)
 
     return await api.get(url + searchQuery)

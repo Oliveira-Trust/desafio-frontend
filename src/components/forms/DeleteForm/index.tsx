@@ -4,11 +4,11 @@ import { IUser } from '../../../types/user'
 
 interface IProps {
   data: IUser,
-  onSubmit: (data: IUser) => void
+  onSubmit: (id?: number) => void
   closeModal: () => void
 }
 
-const DeleteForm = ({data,onSubmit,closeModal}: IProps) => {
+const DeleteForm = ({ data, onSubmit, closeModal }: IProps) => {
   return (
     <div className='flex flex-col gap-4
      justify-center items-center p-10'>
@@ -23,10 +23,10 @@ const DeleteForm = ({data,onSubmit,closeModal}: IProps) => {
         <small>Esta ação não poderá ser desfeita.</small>
       </div>
       <div className='flex flex-col gap-2 w-full '>
-        <button onClick={() => onSubmit(data)} type='button' className='btn bg-red-500 hover:bg-red-700 text-white'>
+        <button onClick={() => onSubmit(data.id)} type='button' className='btn bg-red-500 hover:bg-red-700 text-white'>
           Excluir
         </button>
-        <a className='self-center text-blue-500 hover:text-blue-500' onClick={()=>closeModal()} >
+        <a className='self-center text-blue-500 hover:text-blue-500' onClick={() => closeModal()} >
           Cancelar
         </a>
 

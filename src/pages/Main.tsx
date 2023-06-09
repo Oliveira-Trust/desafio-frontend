@@ -13,10 +13,12 @@ import Modal from '../components/Modal';
 import WalletForm from '../components/forms/WalletForm';
 import DeleteForm from '../components/forms/DeleteForm';
 
-import { columns, currencies } from "../utils/utils";
+import { columns, currencies, renameProperty } from "../utils/utils";
 import { IUser } from '../types/user';
 import { IUrlParams } from '../types/api';
 import { GenericObject, IModalState, ITableAction } from '../types/utils';
+import moment from 'moment-timezone';
+
 
 const initialState = {
     page: 1,
@@ -25,10 +27,17 @@ const initialState = {
 export default function Main() {
 
     const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
-    const [isOpenModal, setIsOpenModal] = useState(false)
     const [modalState, setModalState] = useState<IModalState>()
 
-    const { load, newUser, updateUser, deleteUser, getCurrency } = useApi({})
+    const onComplete = (status: number) => {
+        if (status === 200 || status === 201) {
+            setModalState({ isOpen: false })
+            load(urlParams)
+        }
+    }
+
+    const { load, newUser, updateUser, deleteUser, getCurrency } = useApi({ onComplete })
+
     const context = useContext(WalletContext)
 
     useEffect(() => {
@@ -39,6 +48,13 @@ export default function Main() {
         load(urlParams)
     }, [urlParams])
 
+    const onSearchSubimt = useCallback((search: GenericObject) => {
+        Object.keys(search).map(key => {
+            renameProperty(key, key.replace('_search', ""), search)
+        })
+
+        setUrlParams({ ...urlParams, page: 1, search })
+    }, [])
 
     const changePage = useCallback(
         (pageNumber: number) => {
@@ -47,33 +63,19 @@ export default function Main() {
         [context.currentPage, context.totalUsers],
     )
 
-    const editWallet = useCallback((data: IUser) => {
-
-        console.log('editWallet', data)
-    }, [context.users])
-
-    const removeWallet = useCallback((data: IUser) => {
-
-        console.log('removeWallet', data)
-    }, [context.users])
-
-    const onSearchSubimt = useCallback((search: GenericObject) => {
-        setUrlParams({ ...urlParams, page: 1, search })
-    }, [])
-
-    const openWalletModal = useCallback((data: IUser, title?: string) => {
+    const openWalletModal = useCallback((data: IUser, callback: (data: IUser) => void, title?: string) => {
         setModalState({
             title: title || 'Editar Carteira',
             isOpen: true,
-            content: <WalletForm data={data} onSubmit={editWallet} closeModal={() => setModalState({ isOpen: false })} />
+            content: <WalletForm data={data} onSubmit={callback} closeModal={() => setModalState({ isOpen: false })} />
         })
     }, [context.users])
 
 
-    const openRemoveModal = useCallback((data: IUser) => {
+    const openRemoveModal = useCallback((data: IUser, callback: (id?: number) => void) => {
         setModalState({
             isOpen: true,
-            content: <DeleteForm data={data} onSubmit={removeWallet} closeModal={() => setModalState({ isOpen: false })} />
+            content: <DeleteForm data={data} onSubmit={callback} closeModal={() => setModalState({ isOpen: false })} />
         })
     }, [context.users])
 
@@ -81,12 +83,12 @@ export default function Main() {
         {
             icon: ['fas', 'pencil'] as IconProp,
             tooltip: 'Editar',
-            callback: openWalletModal
+            callback: (data: IUser) => openWalletModal(data, updateUser)
         },
         {
             icon: ['fas', 'trash'] as IconProp,
             tooltip: 'Remover',
-            callback: openRemoveModal
+            callback: (data: IUser) => openRemoveModal(data, deleteUser)
         }
     ]
 
@@ -99,7 +101,7 @@ export default function Main() {
                     <button
                         type='button'
                         className='btn btn-blue'
-                        onClick={() => openWalletModal({},"Adcionar Carteira")}
+                        onClick={() => openWalletModal({}, newUser, "Adcionar Carteira")}
                     >Adicionar Carteira</button>
                 </div>
                 <SearchBar onSubmit={onSearchSubimt} />

@@ -1,3 +1,5 @@
+import { GenericObject } from "../types/utils";
+
 export const columns = [
     {
         column: 'Nome',
@@ -37,3 +39,19 @@ export const actions = [
         tooltip: 'Remover'
     }
 ]
+
+export const fixedNumber = (num: number, step: number) => {
+    return Number(num.toFixed(step))
+}
+
+export const renameProperty = function (oldName: string, newName: string, obj: GenericObject) {
+
+    if (oldName === newName) {
+        return obj;
+    }
+    if (obj.hasOwnProperty(oldName)) {
+        obj[newName] = obj[oldName];
+        delete obj[oldName];
+    }
+    return obj;
+};

@@ -2,11 +2,10 @@ import React, { useEffect, useContext, useState } from 'react'
 import { FieldValues, useForm } from "react-hook-form";
 
 import { WalletContext } from "../../../context/WalletProvider"
-import { IUser } from '../../../types/user'
-import { GenericObject, IOptionInput } from '../../../types/utils';
-import CustomSelect from '../Select';
 import InnerLabelInput from '../InnerLabelInput'
-import { ICurrencies } from '../../../types/context';
+import { IUser } from '../../../types/user'
+import { fixedNumber } from '../../../utils/utils';
+
 
 
 interface IProps {
@@ -28,7 +27,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
             defaultValues:
             {
                 ...data,
-                value: data.valor_carteira ? data.valor_carteira * context.currency.value : undefined
+                value: data.valor_carteira ? fixedNumber(data.valor_carteira * context.currency.value, 2) : undefined
             }
         })
 
@@ -40,10 +39,9 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
         }
     }, [currencyValue])
 
-    const OnValid = (formData: GenericObject) => {
-        console.log(formData)
+    const OnValid = (formData: IWalletForm) => {
         delete formData.value
-        onSubmit(formData)
+        onSubmit({ ...formData, valor_carteira: fixedNumber(btcValue,8) })
     }
 
     return (
@@ -113,7 +111,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
                         className='col-span-2'
                         label='Valor de compra'
                         prefix='R$'
-                        props={{ type: 'number', placeholder: 'Valor de compra' }}
+                        props={{ type: 'number', placeholder: 'Valor de compra', step: '0.01' }}
                     />
                     <div className='w-5/12 place-self-center justify-self-start'>
                         <p className='text-xl font-bold font-sans'>
