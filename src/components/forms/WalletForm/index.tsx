@@ -105,7 +105,10 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
                                 value: true,
                                 message: 'Este campo precisa ser preenchido.'
                             },
-                            min: 0,
+                            min: {
+                                value:0,
+                                message:'Insira uma valor valido.'
+                            },
                         }}
                         id='value'
                         className='col-span-2'

@@ -8,15 +8,16 @@ import { list as listCurrency } from "../apis/currency"
 
 import { IUrlParams } from '../types/api';
 import { IUser } from './../types/user.d';
-import { IState } from '../types/context';
+import { AxiosError } from 'axios';
 
 interface UserApiConfig {
     onComplete: (status: number) => void
+    onFailed: (exception: AxiosError) => void
 }
 
 
 
-export default function useUserApi({ onComplete }: UserApiConfig) {
+export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
     const context = useContext(WalletContext)
 
     const load = async (urlParams: IUrlParams) => {
@@ -31,7 +32,8 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
                 })
 
         } catch (e) {
-
+            const error = e as AxiosError;
+            onFailed(error)
         }
     }
     const newUser = async (user: IUser) => {
@@ -42,7 +44,8 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
             onComplete(response.status)
 
         } catch (e) {
-
+            const error = e as AxiosError;
+            onFailed(error)
         }
 
     }
@@ -52,7 +55,8 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
             onComplete(response.status)
 
         } catch (e) {
-
+            const error = e as AxiosError;
+            onFailed(error)
         }
 
     }
@@ -64,7 +68,8 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
 
             }
         } catch (e) {
-
+            const error = e as AxiosError;
+            onFailed(error)
         }
     }
     const getCurrency = async (currency: string, key: string) => {
@@ -76,7 +81,8 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
                 value: response.data[key].bid
             })
         } catch (e) {
-
+            const error = e as AxiosError;
+            onFailed(error)
         }
 
     }
@@ -86,7 +92,8 @@ export default function useUserApi({ onComplete }: UserApiConfig) {
             return response.data
 
         } catch (e) {
-
+            const error = e as AxiosError;
+            onFailed(error)
         }
     }
     return {

@@ -224,11 +224,11 @@
       "id": 23,
       "nome": "Marthena",
       "sobrenome": "McKinnon",
-      "email": "mmckinnonm@bloomberg.com",
+      "email": "mmckinnonm@bloomberg.com32",
       "endereco": "60556 Columbus Terrace",
       "data_nascimento": "1984-07-17T10:27:01Z",
       "data_abertura": "2021-03-14T16:59:11Z",
-      "valor_carteira": 3.30436486,
+      "valor_carteira": 3.30436483,
       "endereco_carteira": "1FW5iP1Fdmx3HPtmcJZxpNZZGwFEQuFTRN"
     },
     {
@@ -318,17 +318,6 @@
       "data_abertura": "2021-01-17T22:54:07Z",
       "valor_carteira": 0.9303423,
       "endereco_carteira": "1Fw6QjCtShEPdGZF64uJyc2jXEeSvt44NH"
-    },
-    {
-      "id": 32,
-      "nome": "Ario",
-      "sobrenome": "Kremer",
-      "email": "akremerv@ebay.com",
-      "endereco": "75788 Granby Plaza",
-      "data_nascimento": "1993-08-23T17:16:51Z",
-      "data_abertura": "2021-07-04T23:55:19Z",
-      "valor_carteira": 4.24784132,
-      "endereco_carteira": "15Z6LdDwNLbvF1jwxmxfGQ2M7jjDSYhEAu"
     },
     {
       "id": 33,
@@ -560,6 +549,14 @@
       "valor_carteira": 3.83526236,
       "endereco_carteira": "1Q956unZUz1RHVtUrZbEZSXgu65RLMF5h3",
       "id": 53
+    },
+    {
+      "nome": "Teste",
+      "sobrenome": "Gui",
+      "email": "teste@teste.com",
+      "valor_carteira": 0.00176816,
+      "data_abertura": "2023-06-09T14:15:42Z",
+      "id": 54
     }
   ]
 }

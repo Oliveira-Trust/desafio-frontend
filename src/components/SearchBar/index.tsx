@@ -1,7 +1,6 @@
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
 import InnerLabelInput from '../forms/InnerLabelInput'
-import { ISearchParams } from '../../types/api'
 import { useForm } from 'react-hook-form'
 import { GenericObject } from '../../types/utils'
 

@@ -4,6 +4,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { WalletContext } from '../context/WalletProvider';
 
 import useApi from '../hooks/useApi'
+import useCsvApi from '../hooks/useCsvApi';
 import Header from "../components/Header";
 import SearchBar from '../components/SearchBar';
 import Table from "../components/Table";
@@ -17,7 +18,7 @@ import { columns, currencies, renameProperty } from "../utils/utils";
 import { IUser } from '../types/user';
 import { IUrlParams } from '../types/api';
 import { GenericObject, IModalState } from '../types/utils';
-import useCsvApi from '../hooks/useCsvApi';
+import { AxiosError } from 'axios';
 
 
 const initialState = {
@@ -37,7 +38,11 @@ export default function Main() {
         }
     }
 
-    const { load, newUser, updateUser, deleteUser, getCurrency, getAll } = useApi({ onComplete })
+    const onFailed = (ex: AxiosError) =>{
+        alert(ex.message)
+    }
+
+    const { load, newUser, updateUser, deleteUser, getCurrency, getAll } = useApi({ onComplete,onFailed })
     const { csvParse } = useCsvApi()
 
     const context = useContext(WalletContext)
