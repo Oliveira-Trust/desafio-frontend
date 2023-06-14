@@ -30,6 +30,7 @@ export default function Main() {
     const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
     const [modalState, setModalState] = useState<IModalState>()
     const exportBtn = useRef<HTMLButtonElement>(null)
+    const emptyMessage = "Nenhum registro encontrado."
 
     const onComplete = (status: number) => {
         if (status === 200 || status === 201) {
@@ -38,11 +39,11 @@ export default function Main() {
         }
     }
 
-    const onFailed = (ex: AxiosError) =>{
+    const onFailed = (ex: AxiosError) => {
         alert(ex.message)
     }
 
-    const { load, newUser, updateUser, deleteUser, getCurrency, getAll } = useApi({ onComplete,onFailed })
+    const { load, newUser, updateUser, deleteUser, getCurrency, getAll } = useApi({ onComplete, onFailed })
     const { csvParse } = useCsvApi()
 
     const context = useContext(WalletContext)
@@ -134,7 +135,7 @@ export default function Main() {
                             onClick={(e) => exportCsv()}
                         >Exportar CSV</button>
                     </div>
-                    <Table columns={columns} data={context.users} actions={tableActions} />
+                    <Table columns={columns} data={context.users} actions={tableActions} emptyMessage={emptyMessage} />
                     <div className='flex justify-between mt-10'>
                         <p className='text-sm text-gray-500'>
                             {context.totalUsers || 0} registro(s)

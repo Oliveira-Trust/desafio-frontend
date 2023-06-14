@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from 'react'
 import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
-import { addColumnsSize } from '../../utils/utils'
+import { addColumnsSize, isEmpty } from '../../utils/utils'
 import Row from '../Row'
 import Action from '../Action'
 
@@ -8,15 +8,26 @@ interface IProps {
   columns: ITableColumn[]
   data?: GenericObject[]
   actions?: ITableAction<GenericObject>[]
+  emptyMessage: string
 }
 
-const Table = ({ columns, data, actions }: IProps) => {
+const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 
   const [Rows, setRows] = useState<JSX.Element[]>()
 
   useEffect(() => {
     buildRows()
   }, [data])
+
+  const buildMessage = () => {
+    return (
+      <div className='flex justify-center p-5'>
+        <p className='text-lg text-gray-500'>
+          {emptyMessage}
+        </p>
+      </div>
+    )
+  }
 
   const buildRows = () => {
     const newRows = data?.map((row, idx) => {
@@ -41,7 +52,7 @@ const Table = ({ columns, data, actions }: IProps) => {
           )
         })}
       </div>
-      {Rows}
+      {isEmpty(data) ? buildMessage() : Rows}
     </div>
   )
 }

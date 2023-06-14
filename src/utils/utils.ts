@@ -49,9 +49,16 @@ export const renameProperty = function (oldName: string, newName: string, obj: G
     if (oldName === newName) {
         return obj;
     }
+
     if (obj.hasOwnProperty(oldName)) {
         obj[newName] = obj[oldName];
         delete obj[oldName];
     }
     return obj;
 };
+
+export const isEmpty = <T>(array?: T[]) => {
+    if (array?.length === 0 || array === undefined)
+        return true
+    return false
+}

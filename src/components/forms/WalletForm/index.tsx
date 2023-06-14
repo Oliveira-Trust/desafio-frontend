@@ -129,7 +129,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
                     Cancelar
                 </a>
                 <button type='submit' className='btn btn-blue'>
-                    Adcionar
+                    Adicionar
                 </button>
             </div>
         </form>
