@@ -47,7 +47,10 @@
             pagination () {
                 return this.$store.state.pagination
             }
-       }
+       },
+       mounted() {
+            this.$store.dispatch("fetchWallets", {page: 1});
+        }
     }
 </script>
 
