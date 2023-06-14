@@ -6,9 +6,11 @@ const actions = {
         const total = response.headers.get('X-Total-Count');
         const totalPages = total / limit;
         const nextPage = page + 1;
+        const previousPage = page - 1;
         const pagination = {
             count: parseInt(total),
             first: 1,
+            previous: previousPage > 1 ? previousPage : undefined,
             actual: page,
             next: nextPage > totalPages ? undefined : nextPage,
             last: totalPages
