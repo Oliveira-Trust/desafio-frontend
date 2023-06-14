@@ -5,7 +5,7 @@
     <Container>
       <FilterForm />
       <span class="divider"></span>
-      <Content></Content>
+      <Content />
     </Container>
   </div>
 </template>

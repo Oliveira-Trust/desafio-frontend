@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <h1>{{ text }}</h1>
-        <Button>{{ link }}</Button>
+        <slot></slot>
+        <Button v-if="link">{{ link }}</Button>
     </div>
 </template>
 
@@ -24,5 +24,6 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: end;
 }
 </style>
