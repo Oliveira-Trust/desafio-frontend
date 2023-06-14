@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header></Header>
+    <span class="divider"></span>
+    <Container>
+      <FilterForm />
+      <span class="divider"></span>
+      <Content></Content>
+    </Container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header/Header.vue';
+import Container from './components/shared/Container/Container.vue';
+import FilterForm from './components/FilterForm/FilterForm.vue';
+import Content from './components/ResultsContent/ResultsContent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Container,
+    FilterForm,
+    Content
   }
 }
 </script>
 
 <style>
+
+@import './assets/styles/variables.css';
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #f5f6f8;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.divider{
+  margin: 30px 0;
+  display: block;
 }
 </style>
