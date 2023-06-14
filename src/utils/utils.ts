@@ -1,64 +1,64 @@
-import { GenericObject } from "../types/utils";
+import { GenericObject } from '../types/utils'
 
 export const columns = [
-    {
-        column: 'Nome',
-        key: 'nome'
-    },
-    {
-        column: 'Sobrenome',
-        key: 'sobrenome'
-    },
-    {
-        column: 'Email',
-        key: 'email'
-    },
-    {
-        column: 'Bitcoin',
-        key: 'valor_carteira'
-    },
+	{
+		column: 'Nome',
+		key: 'nome',
+	},
+	{
+		column: 'Sobrenome',
+		key: 'sobrenome',
+	},
+	{
+		column: 'Email',
+		key: 'email',
+	},
+	{
+		column: 'Bitcoin',
+		key: 'valor_carteira',
+	},
 ]
 
 export const currencies = ['BTC-BRL']
 
-
-
 export const addColumnsSize = (size: number) => {
-    return {
-        gridTemplateColumns: `repeat(${size}, minmax(0, 1fr)) 50px`
-    }
+	return {
+		gridTemplateColumns: `repeat(${size}, minmax(0, 1fr)) 50px`,
+	}
 }
 
 export const actions = [
-    {
-        icon: ['fas', 'pencil'],
-        tooltip: 'Editar'
-    },
-    {
-        icon: ['fas', 'trash'],
-        tooltip: 'Remover'
-    }
+	{
+		icon: ['fas', 'pencil'],
+		tooltip: 'Editar',
+	},
+	{
+		icon: ['fas', 'trash'],
+		tooltip: 'Remover',
+	},
 ]
 
 export const fixedNumber = (num: number, step: number) => {
-    return Number(num.toFixed(step))
+	return Number(num.toFixed(step))
 }
 
-export const renameProperty = function (oldName: string, newName: string, obj: GenericObject) {
+export const renameProperty = function (
+	oldName: string,
+	newName: string,
+	obj: GenericObject
+) {
+	if (oldName === newName) {
+		return obj
+	}
 
-    if (oldName === newName) {
-        return obj;
-    }
-
-    if (obj.hasOwnProperty(oldName)) {
-        obj[newName] = obj[oldName];
-        delete obj[oldName];
-    }
-    return obj;
-};
+	if (obj.hasOwnProperty(oldName)) {
+		obj[newName] = obj[oldName]
+		delete obj[oldName]
+	}
+	return obj
+}
 
 export const isEmpty = <T>(array?: T[]) => {
-    if (array?.length === 0 || array === undefined)
-        return true
-    return false
+	if (array?.length === 0 || array === undefined) return true
+	return false
 }

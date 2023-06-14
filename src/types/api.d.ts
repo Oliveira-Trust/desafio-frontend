@@ -1,14 +1,14 @@
-import { IUrlParams } from './api.d';
+import { IUrlParams } from './api.d'
 export interface IUrlParams {
-    page: number,
-    limit?: number,
-    search?: SearchParams
+	page: number
+	limit?: number
+	search?: SearchParams
 }
 
 export interface ISearchParams {
-    [key : string]: string,
+	[key: string]: string
 }
 
 export interface IUrlParamsCurrency {
-    currencies: string[]
+	currencies: string[]
 }
