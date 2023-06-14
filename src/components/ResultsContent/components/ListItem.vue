@@ -26,7 +26,11 @@
     justify-content: space-between;
     padding: 20px 10px;
 }
-.listItem+.listItem{
+.listItem span{
+    flex: 1;
+    text-align: left;
+}
+.listItem:nth-child(odd){
     background-color: #f5f6f8;
 }
 </style>
