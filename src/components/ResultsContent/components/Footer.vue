@@ -1,20 +1,19 @@
 <template>
     <div class="footer">
         <span>{{ count }} registro(s)</span>
-        <button @click="onClickButton">Next Page</button>
+        <Pagination></Pagination>
     </div>
 </template>
 
 <script>
+    import Pagination from '../../shared/Pagination/Pagination.vue';
     export default {
         name: "Footer",
-        props: {
-            count: Number
+        components: {
+            Pagination
         },
-        methods: {
-            onClickButton(){
-                this.$emit('onClick', 2)
-            }
+        props: {
+            count: [Number, undefined],
         }
     }
 </script>

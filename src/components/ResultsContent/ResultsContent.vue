@@ -14,7 +14,6 @@
         </List>
         <Footer
             :count="pagination.count"
-            @onClick="updatePage"
         ></Footer>
     </Paper>
 </template>
@@ -36,7 +35,6 @@
         },
         methods: {
             updatePage(page){
-                console.log(page);
                 this.$store.dispatch("fetchWallets", {page});
             }
         },
@@ -45,13 +43,9 @@
                 return this.$store.state.wallets
             },
             pagination () {
-                console.log(this.$store.state.pagination)
                 return this.$store.state.pagination
             }
-       },
-       mounted() {
-            this.$store.dispatch("fetchWallets", {page: 1});
-        }
+       }
     }
 </script>
 
