@@ -3,7 +3,7 @@
     <Header></Header>
     <Divider />
     <Container>
-      <Heading link="Adicionar Carteira" @onClick="openModal">
+      <Heading inverse actionLabel="Adicionar Carteira" @onClick="openModal">
         <h2>BTC Carteira</h2>
       </Heading>
       <Divider />

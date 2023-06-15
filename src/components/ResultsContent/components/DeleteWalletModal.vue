@@ -7,20 +7,20 @@
            <p>Esta ação não poderá ser desfeita</p> 
         </div>
         <div class="footer">
-            <Button @click="onDelete">Excluir</Button>
-            <Button @click="onClose">Cancelar</Button>
+            <BaseButton alert @click="onDelete">Excluir</BaseButton>
+            <BaseButton outline @click="onClose">Cancelar</BaseButton>
         </div>
     </BaseModal>
 </template>
 
 <script>
     import BaseModal from '../../shared/Modal/Modal.vue';
-    import Button from '../../shared/Button/Button.vue';
+    import BaseButton from '../../shared/Button/Button.vue';
     export default {
         name: "DeleteWalletModal",
         components: {
             BaseModal,
-            Button
+            BaseButton
         },
         props:{
             id: Number

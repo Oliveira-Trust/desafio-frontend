@@ -1,25 +1,27 @@
 <template>
     <div class="headingWrapper">
         <slot></slot>
-        <Button
-            v-if="link"
+        <BaseButton
+            v-if="actionLabel"
             @click="onClickButton"
+            :inverse="inverse"
         >
-            {{ link }}
-        </Button>
+            {{ actionLabel }}
+        </BaseButton>
     </div>
 </template>
 
 <script>
-    import Button from '../Button/Button.vue';
+    import BaseButton from '../Button/Button.vue';
     export default {
         name: "Heading",
         components: {
-            Button
+            BaseButton
         },
         props: {
             text: String,
-            link: String
+            actionLabel: String,
+            inverse: Boolean
         },
         methods: {
             onClickButton(){

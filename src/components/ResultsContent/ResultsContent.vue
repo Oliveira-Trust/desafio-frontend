@@ -1,6 +1,6 @@
 <template>
     <Paper>
-        <Heading link="Exportar CSV">
+        <Heading actionLabel="Exportar CSV">
             <h4>Carteiras</h4>
         </Heading>
         <span class="divider"></span>

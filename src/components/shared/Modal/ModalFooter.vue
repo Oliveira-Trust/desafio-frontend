@@ -1,16 +1,16 @@
 <template>
     <div class="modalFooter">
-        <Button @click="onClose">Cancelar</Button>
-        <Button @click="onClick">Criar</Button>
+        <BaseButton outline @click="onClose">Cancelar</BaseButton>
+        <BaseButton inverse @click="onClick">Adicionar</BaseButton>
     </div>
 </template>
 
 <script>
-    import Button from '../Button/Button.vue';
+    import BaseButton from '../Button/Button.vue';
     export default {
         name: "ModalFooter",
         components:{
-            Button
+            BaseButton
         },
         methods: {
             onClick(){
