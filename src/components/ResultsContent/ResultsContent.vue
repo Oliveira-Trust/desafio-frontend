@@ -4,6 +4,7 @@
             <h4>Carteiras</h4>
         </Heading>
         <span class="divider"></span>
+        <ListHeader />
         <List>
             <ListItem
             v-for="wallet in wallets"
@@ -37,6 +38,7 @@
     import Heading from '../shared/Heading/Heading.vue';
     import Paper from '../shared/Paper/Paper.vue';
     import List from './components/List.vue';
+    import ListHeader from './components/ListHeader.vue';
     import ListItem from './components/ListItem.vue';
     import Footer from './components/Footer.vue';
     import EditWalletModal from './components/EditWalletModa.vue';
@@ -47,6 +49,7 @@
             Heading,
             Paper,
             List,
+            ListHeader,
             ListItem,
             Footer,
             EditWalletModal,

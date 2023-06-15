@@ -35,13 +35,17 @@
 <style scoped>
 .listItem{
     list-style: none;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns:  repeat(5, 1fr); 
     padding: 20px 10px;
 }
 .listItem span{
-    flex: 1;
     text-align: left;
+}
+.listItem div{
+    justify-content: end;
+    align-items: center;
+    display: flex; 
 }
 .listItem:nth-child(odd){
     background-color: #f5f6f8;
