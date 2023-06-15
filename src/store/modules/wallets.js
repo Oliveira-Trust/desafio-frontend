@@ -1,5 +1,15 @@
 const URL = "http://localhost:3004/users";
-const currencyURL = "https://economia.awesomeapi.com.br/json/last/";
+
+const state = {
+    wallets: [],
+    pagination: {
+      count: 0,
+      first: 1,
+      actual: 1,
+      next: undefined,
+      last: undefined
+    }
+  }
 
 const actions = {
     async fetchWallets({commit}, context){
@@ -31,14 +41,37 @@ const actions = {
           });
           const wallet = await response.json();
           commit("createWallet", wallet)
-    },
-    async convertCoin({commit, state}, currency){
-        const {origin} = state;
-        const response = await fetch(`${currencyURL}BTC-${origin}`);
-        const amount = await response.json();
-        const value = parseInt(currency)/parseInt(amount.BTCBRL.bid)
-        commit("updateAmount", value)
     }
 }
 
-export default actions
+const mutations = {
+    updateWallets (state, wallets) {
+        state.wallets = wallets.map(wallet => {
+          return {
+              id: wallet.id,
+              nome: wallet.nome,
+              sobrenome: wallet.sobrenome,
+              email: wallet.email,
+              bitcoin: wallet.valor_carteira
+          }
+        })
+      },
+      createWallet(state, wallet){
+        const newWallets = state.wallets;
+        newWallets.push(wallet);
+        state.wallets = newWallets.map(wallet => {
+            return {
+                id: wallet.id,
+                nome: wallet.nome,
+                sobrenome: wallet.sobrenome,
+                email: wallet.email,
+                bitcoin: wallet.valor_carteira
+            }
+          })
+      },
+      updatePagination(state, pagination){
+        state.pagination = pagination;
+      },
+}
+
+export default {state, actions, mutations}
