@@ -6,13 +6,16 @@ const state = {
 }
 
 const actions = {
-     async convertCoin({commit, state}, currency){
-        const {origin} = state;
-        const response = await fetch(`${currencyURL}BTC-${origin}`);
-        const amount = await response.json();
-        const value = parseInt(currency)/parseInt(amount.BTCBRL.bid)
-        commit("updateAmount", value)
-    }
+  async convertCoin ({commit, state}, value){
+    const origin = state.origin
+    const to = "BTC"
+    const URL = `${currencyURL}${to}-${origin}`
+    const key = `${to}${origin}`;
+    const response = await fetch(URL);
+    const data = await response.json();
+    const amount = parseInt(value)/parseInt(data[key].bid);
+    commit("updateAmount", amount)
+  }
 }
 
 const mutations = {
