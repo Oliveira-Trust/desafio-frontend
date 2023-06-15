@@ -13,6 +13,6 @@
         display: block;
         width: 100%;
         height: 2px;
-        background-color: #d8d8d8;
+        background-color: var(--gray-light);
     }
 </style>
