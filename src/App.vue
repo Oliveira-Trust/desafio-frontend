@@ -1,20 +1,31 @@
 <template>
   <div id="app">
     <Header></Header>
-    <span class="divider"></span>
+    <Divider />
     <Container>
+      <Heading link="Adicionar Carteira" @onClick="openModal">
+        <h2>BTC Carteira</h2>
+      </Heading>
+      <Divider />
       <FilterForm />
-      <span class="divider"></span>
+      <Divider />
       <Content />
     </Container>
+    <AddWalletModal
+      v-if="isOpenModal"
+      @onClose="closeModal"
+    />
   </div>
 </template>
 
 <script>
 import Header from './components/Header/Header.vue';
 import Container from './components/shared/Container/Container.vue';
+import Heading from './components/shared/Heading/Heading.vue';
 import FilterForm from './components/FilterForm/FilterForm.vue';
 import Content from './components/ResultsContent/ResultsContent.vue';
+import AddWalletModal from './components/AddWalletModal/AddWalletModal.vue';
+import Divider from './components/shared/Divider/Divider.vue'
 
 export default {
   name: 'App',
@@ -22,7 +33,23 @@ export default {
     Header,
     Container,
     FilterForm,
-    Content
+    Heading,
+    Content,
+    AddWalletModal,
+    Divider
+  },
+  data(){
+    return {
+        isOpenModal: false
+    }
+  },
+  methods: {
+    openModal(){
+      this.isOpenModal = true
+    },
+    closeModal(){
+      this.isOpenModal = false
+    }
   }
 }
 </script>
@@ -42,9 +69,5 @@ body{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-.divider{
-  margin: 30px 0;
-  display: block;
 }
 </style>
