@@ -1,5 +1,15 @@
 const URL = "http://localhost:3004/users";
 
+function removeEmptyValues(obj) {
+  const newObject = obj;
+  Object.keys(newObject).forEach(key => {
+    if (newObject[key] === null) {
+      delete newObject[key];
+    }
+  });
+  return newObject;
+}
+
 const state = {
     wallets: [],
     pagination: {
@@ -41,6 +51,14 @@ const actions = {
           });
           const wallet = await response.json();
           commit("createWallet", wallet)
+    },
+    async searchWallet({commit}, body){
+      const newBody = removeEmptyValues(body)
+      const query = new URLSearchParams(newBody);
+      const queryString = query.toString();
+      const response = await fetch(`${URL}?${queryString}`);
+      const wallet = await response.json(); 
+      commit("updateWallets", wallet)
     }
 }
 

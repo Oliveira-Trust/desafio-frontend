@@ -1,13 +1,25 @@
 <template>
     <Paper>
         <div class="inputsWrapper">
-            <BaseInput v-model="name" placeholder="Nome" />
+            <BaseInput
+                @update:modelValue="newValue => name = newValue"
+                v-model="name"
+                placeholder="Nome"
+            />
             <Divider small />
-            <BaseInput v-model="surname" placeholder="Sobrenome" />
+            <BaseInput
+                @update:modelValue="newValue => surname = newValue"
+                v-model="surname"
+                placeholder="Sobrenome"
+            />
             <Divider small />
-            <BaseInput v-model="email" placeholder="E-mail" />
+            <BaseInput
+                @update:modelValue="newValue => email = newValue"
+                v-model="email"
+                placeholder="E-mail"
+            />
             <Divider small />
-            <Button>Buscar</Button>
+            <Button @click="onClick">Buscar</Button>
         </div>
     </Paper>
 </template>
@@ -26,11 +38,21 @@
         },
         data(){
             return {
-                name: '',
-                surname: '',
-                email: ''
+                name: null,
+                surname: null,
+                email: null
             }
-        }       
+        },
+        methods: {
+            onClick(){
+                const body = {
+                    nome: this.name,
+                    sobrenome: this.surname,
+                    email: this.email
+                }
+                this.$store.dispatch("searchWallet", body);
+            }
+        },       
     }
 </script>
 
