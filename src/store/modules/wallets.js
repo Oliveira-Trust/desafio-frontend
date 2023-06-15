@@ -22,6 +22,7 @@ const state = {
   }
 
 const actions = {
+    // fetch all wallets
     async fetchWallets({commit}, context){
         const {page = 1, limit = 10} = context;
         const response = await fetch(`${URL}?_page=${page}&_limit=${limit}`);
@@ -41,6 +42,8 @@ const actions = {
         commit("updateWallets", wallets);
         commit("updatePagination", pagination);
     },
+
+    // create wallet
     async createWallet({commit}, body){
         const response = await fetch(URL, {
             method: "POST",
@@ -52,6 +55,8 @@ const actions = {
           const wallet = await response.json();
           commit("createWallet", wallet)
     },
+
+    // search wallet
     async searchWallet({commit}, body){
       const newBody = removeEmptyValues(body)
       const query = new URLSearchParams(newBody);
@@ -60,6 +65,8 @@ const actions = {
       const wallet = await response.json(); 
       commit("updateWallets", wallet)
     },
+
+    // edit wallet
     async editWallet({commit}, body){
       const response = await fetch(`${URL}/${body.id}`, {
         method: "PUT",
@@ -71,29 +78,25 @@ const actions = {
       const wallet = await response.json();
       commit("updateWallet", wallet)
     },
+    
+    // delete wallet
     async deleteWallet({commit}, body){
       await fetch(`${URL}/${body.id}`, {
         method: "DELETE"
       });
-      commit("updateWallet", body.id)
+      commit("deleteWallet", body.id)
     }
 }
 
 const mutations = {
     updateWallets (state, wallets) {
-        state.wallets = wallets.map(wallet => {
-          return {
-              id: wallet.id,
-              nome: wallet.nome,
-              sobrenome: wallet.sobrenome,
-              email: wallet.email,
-              valor_carteira: wallet.valor_carteira
-          }
-        })
+        state.wallets = wallets;
       },
+
       updateWallet(state, newWallet){
         state.wallets = state.wallets.map(wallet => wallet.id === newWallet.id ? newWallet : wallet)
       },
+
       createWallet(state, wallet){
         const newWallets = state.wallets;
         newWallets.push(wallet);
@@ -107,6 +110,11 @@ const mutations = {
             }
           })
       },
+
+      deleteWallet(state, id){
+        state.wallets = state.wallets.filter(wallet => wallet.id !== id);
+      },
+
       updatePagination(state, pagination){
         state.pagination = pagination;
       },
