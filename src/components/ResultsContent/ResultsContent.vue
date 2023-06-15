@@ -42,10 +42,10 @@
         },
         computed: {
             wallets () {
-                return this.$store.state.wallets
+                return this.$store.state.wallets.wallets
             },
             pagination () {
-                return this.$store.state.pagination
+                return this.$store.state.wallets.pagination
             }
        },
        mounted() {
@@ -55,7 +55,5 @@
 </script>
 
 <style>
-    .divider{
-        margin: 30px 0;
-    }
+    
 </style>

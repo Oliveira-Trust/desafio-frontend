@@ -44,12 +44,12 @@
         },
         computed: {
             pagination () {
-                return this.$store.state.pagination
+                return this.$store.state.wallets.pagination
             }
        },
        data(){
         return {
-            actualPage: this.$store.state.pagination.actual
+            actualPage: this.$store.state.wallets.pagination.actual
         }
        },
        methods: {
