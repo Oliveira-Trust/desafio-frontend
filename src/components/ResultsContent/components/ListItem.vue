@@ -3,7 +3,11 @@
         <span>{{ name }}</span>
         <span>{{ surname }}</span>
         <span>{{ email }}</span>
-        <span>{{ bitcoin }}</span>
+        <span>{{ currency }}</span>
+        <div class="icons">
+            <v-icon @click="onEdit" name="pencil-alt"></v-icon>
+            <v-icon @click="onDelete" name="trash"></v-icon>
+        </div>
     </li>
 </template>
 
@@ -14,7 +18,16 @@
             name: String,
             surname: String,
             email: String,
-            bitcoin: Number
+            currency: Number,
+            id: Number
+        },
+        methods: {
+            onEdit(){
+                this.$emit('onEdit', this.$props)
+            },
+            onDelete(){
+                this.$emit('onDelete', this.id)
+            }
         }
     }
 </script>
@@ -32,5 +45,11 @@
 }
 .listItem:nth-child(odd){
     background-color: #f5f6f8;
+}
+.icons svg{
+    cursor: pointer;
+}
+.icons svg+svg{
+    margin-left: 30px;
 }
 </style>

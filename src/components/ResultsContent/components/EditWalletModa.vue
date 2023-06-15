@@ -37,11 +37,11 @@
 </template>
 
 <script>
-    import BaseInput from '../shared/Input/Input.vue';
-    import BaseModal from '../shared/Modal/Modal.vue';
-    import Divider from '../shared/Divider/Divider.vue'
+    import BaseInput from '../../shared/Input/Input.vue';
+    import BaseModal from '../../shared/Modal/Modal.vue';
+    import Divider from '../../shared/Divider/Divider.vue';
     export default {
-        name: "AddWalletModal",
+        name: "EditWalletModal",
         components: {
             BaseInput,
             BaseModal,
@@ -58,9 +58,10 @@
                     nome: this.name,
                     sobrenome: this.surname,
                     email: this.email,
-                    valor_carteira: this.currency
+                    valor_carteira: this.currency,
+                    id: this.id
                 }
-                this.$store.dispatch("createWallet", body);
+                this.$store.dispatch("editWallet", body)
                 this.onClose()
             },
             onClose(){
@@ -73,12 +74,16 @@
         },
         data() {
             return {
-                name: '',
-                surname: '',
-                email: '',
-                currency: ''
+                name: this.$props.initialParams.name || '',
+                surname: this.$props.initialParams.surname || '',
+                email: this.$props.initialParams.email || '',
+                currency: this.$props.initialParams.currency || '',
+                id: this.$props.initialParams.id
             }
-        } 
+        },
+        props: {
+            initialParams: Object
+        }
     }
 </script>
 

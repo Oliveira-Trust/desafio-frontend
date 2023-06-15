@@ -59,6 +59,17 @@ const actions = {
       const response = await fetch(`${URL}?${queryString}`);
       const wallet = await response.json(); 
       commit("updateWallets", wallet)
+    },
+    async editWallet({commit}, body){
+      const response = await fetch(`${URL}/${body.id}`, {
+        method: "PUT",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
+      const wallet = await response.json();
+      commit("updateWallet", wallet)
     }
 }
 
@@ -70,9 +81,12 @@ const mutations = {
               nome: wallet.nome,
               sobrenome: wallet.sobrenome,
               email: wallet.email,
-              bitcoin: wallet.valor_carteira
+              valor_carteira: wallet.valor_carteira
           }
         })
+      },
+      updateWallet(state, newWallet){
+        state.wallets = state.wallets.map(wallet => wallet.id === newWallet.id ? newWallet : wallet)
       },
       createWallet(state, wallet){
         const newWallets = state.wallets;
@@ -83,7 +97,7 @@ const mutations = {
                 nome: wallet.nome,
                 sobrenome: wallet.sobrenome,
                 email: wallet.email,
-                bitcoin: wallet.valor_carteira
+                valor_carteira: wallet.valor_carteira
             }
           })
       },

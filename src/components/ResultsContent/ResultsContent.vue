@@ -8,15 +8,23 @@
             <ListItem
             v-for="wallet in wallets"
             :key="wallet.id"
+            :id="wallet.id"
             :name="wallet.nome"
             :surname="wallet.sobrenome"
             :email="wallet.email"
-            :bitcoin="wallet.bitcoin"
+            :currency="wallet.valor_carteira"
+            @onEdit="onEdit"
+            @onDelete="onDelete"
         />
         </List>
         <Footer
             :count="pagination.count"
         ></Footer>
+        <EditWalletModal
+            v-if="isOpenModal"
+            @onClose="closeModal"
+            :initialParams="initialParams"
+        />
     </Paper>
 </template>
 
@@ -26,6 +34,7 @@
     import List from './components/List.vue';
     import ListItem from './components/ListItem.vue';
     import Footer from './components/Footer.vue';
+    import EditWalletModal from './components/EditWalletModa.vue';
     export default {
         name: 'Content',
         components: {
@@ -33,12 +42,32 @@
             Paper,
             List,
             ListItem,
-            Footer
+            Footer,
+            EditWalletModal
+        },
+        data(){
+            return {
+                isOpenModal: false,
+                initialParams: {}
+            }
         },
         methods: {
+            openModal(){
+                this.isOpenModal = true
+            },
+            closeModal(){
+                this.isOpenModal = false
+            },
             updatePage(page){
                 this.$store.dispatch("fetchWallets", {page});
-            }
+            },
+            onEdit(wallet){
+                this.initialParams = wallet
+                this.isOpenModal = true
+            },
+            onDelete(id){
+                console.log(id)
+            }            
         },
         computed: {
             wallets () {
