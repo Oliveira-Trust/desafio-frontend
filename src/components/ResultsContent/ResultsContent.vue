@@ -21,9 +21,14 @@
             :count="pagination.count"
         ></Footer>
         <EditWalletModal
-            v-if="isOpenModal"
-            @onClose="closeModal"
+            v-if="isOpenEditModal"
+            @onClose="closeEditModal"
             :initialParams="initialParams"
+        />
+        <DeleteWalletModal
+            v-if="isOpenDeleteModal"
+            :id="idToDelete"
+            @onClose="closeDeleteModal"
         />
     </Paper>
 </template>
@@ -35,6 +40,7 @@
     import ListItem from './components/ListItem.vue';
     import Footer from './components/Footer.vue';
     import EditWalletModal from './components/EditWalletModa.vue';
+    import DeleteWalletModal from './components/DeleteWalletModal.vue';
     export default {
         name: 'Content',
         components: {
@@ -43,30 +49,40 @@
             List,
             ListItem,
             Footer,
-            EditWalletModal
+            EditWalletModal,
+            DeleteWalletModal
         },
         data(){
             return {
-                isOpenModal: false,
+                isOpenEditModal: false,
+                isOpenDeleteModal: false,
+                idToDelete: undefined,
                 initialParams: {}
             }
         },
         methods: {
-            openModal(){
-                this.isOpenModal = true
+            openEditModal(){
+                this.isOpenEditModal = true
             },
-            closeModal(){
-                this.isOpenModal = false
+            closeEditModal(){
+                this.isOpenEditModal = false
+            },
+            openDeleteModal(){
+                this.isOpenDeleteModal = true
+            },
+            closeDeleteModal(){
+                this.isOpenDeleteModal = false
             },
             updatePage(page){
                 this.$store.dispatch("fetchWallets", {page});
             },
             onEdit(wallet){
                 this.initialParams = wallet
-                this.isOpenModal = true
+                this.isOpenEditModal = true
             },
             onDelete(id){
-                console.log(id)
+                this.idToDelete = id;
+                this.isOpenDeleteModal = true
             }            
         },
         computed: {

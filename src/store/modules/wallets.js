@@ -70,6 +70,12 @@ const actions = {
       });
       const wallet = await response.json();
       commit("updateWallet", wallet)
+    },
+    async deleteWallet({commit}, body){
+      await fetch(`${URL}/${body.id}`, {
+        method: "DELETE"
+      });
+      commit("updateWallet", body.id)
     }
 }
 
