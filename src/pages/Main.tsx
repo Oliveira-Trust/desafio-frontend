@@ -10,7 +10,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { WalletContext } from '../context/WalletProvider'
 
 import useApi from '../hooks/useApi'
-import useCsvApi from '../hooks/useCsvApi'
+import useCsv from '../hooks/useCsv'
 import Header from '../components/Header'
 import SearchBar from '../components/SearchBar'
 import Table from '../components/Table'
@@ -33,8 +33,12 @@ const initialState = {
 export default function Main() {
 	const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
 	const [modalState, setModalState] = useState<IModalState>()
+	const [CSVdata, setCSVdata] = useState([])
 	const exportBtn = useRef<HTMLButtonElement>(null)
 	const emptyMessage = 'Nenhum registro encontrado.'
+	const context = useContext(WalletContext)
+
+	const getFileName = () => new Date().toISOString() + '.csv'
 
 	const onComplete = (status: number) => {
 		if (status === 200 || status === 201) {
@@ -46,12 +50,12 @@ export default function Main() {
 	const onFailed = (ex: AxiosError) => {
 		alert(ex.message)
 	}
+	const onError = () => {}
 
 	const { load, newUser, updateUser, deleteUser, getCurrency, getAll } =
 		useApi({ onComplete, onFailed })
-	const { csvParse } = useCsvApi()
 
-	const context = useContext(WalletContext)
+	const { csvDownload, ref: csvRef } = useCsv({ onError, getFileName })
 
 	useEffect(() => {
 		getCurrency('BTC-BRL', 'BTCBRL')
@@ -60,6 +64,12 @@ export default function Main() {
 	useEffect(() => {
 		load(urlParams)
 	}, [urlParams])
+
+	const exportCsv = async () => {
+		console.log(urlParams.search)
+		const data = await getAll(urlParams.search)
+		csvDownload(data)
+	}
 
 	const onSearchSubimt = useCallback((search: GenericObject) => {
 		Object.keys(search).map((key) => {
@@ -122,16 +132,6 @@ export default function Main() {
 		},
 	]
 
-	const exportCsv = async () => {
-		const data = await getAll()
-		const csv = csvParse(data)
-		const aTag = document.createElement('a')
-		aTag.setAttribute('href', `data:txt/csv;charset=utf-8,${csv}`)
-		aTag.setAttribute('download', 'users.csv')
-		document.body.appendChild(aTag)
-		aTag.click()
-		aTag.remove()
-	}
 	return (
 		<div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
 			<Header />
@@ -152,6 +152,7 @@ export default function Main() {
 				<div className='bg-white shadow-md rounded px-8 pt-6 pb-6 flex flex-col gap-2'>
 					<div className='flex justify-between'>
 						<h1 className='text-2xl font-bold'>Carteiras </h1>
+						<a ref={csvRef}></a>
 						<button
 							id='btnExport'
 							type='button'

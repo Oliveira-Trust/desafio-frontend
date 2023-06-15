@@ -32,7 +32,7 @@ const DeleteForm = ({ data, onSubmit, closeModal }: IProps) => {
 					Excluir
 				</button>
 				<a
-					className='self-center text-blue-500 hover:text-blue-500'
+					className='self-center text-blue-500 hover:text-blue-500 cursor-pointer'
 					onClick={() => closeModal()}>
 					Cancelar
 				</a>

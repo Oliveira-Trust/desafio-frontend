@@ -14,9 +14,10 @@ export const list = async (urlParams: IUrlParams) => {
 	return await api.get(url + searchQuery)
 }
 
-export const listAll = async () => {
+export const listAll = async (search?: ISearchParams) => {
 	const url = `?_sort=data_abertura&_order=desc`
-	return await api.get(url)
+	const searchQuery = buildSearchQuery(search)
+	return await api.get(url + searchQuery)
 }
 
 export const create = async (user: IUser) => {

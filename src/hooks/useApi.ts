@@ -5,7 +5,7 @@ import { WalletContext } from '../context/WalletProvider'
 import { create, list, remove, update, listAll } from '../apis/user'
 import { list as listCurrency } from '../apis/currency'
 
-import { IUrlParams } from '../types/api'
+import { ISearchParams, IUrlParams } from '../types/api'
 import { IUser } from './../types/user.d'
 import { AxiosError } from 'axios'
 
@@ -74,9 +74,10 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 			onFailed(error)
 		}
 	}
-	const getAll = async () => {
+	const getAll = async (search?: ISearchParams) => {
 		try {
-			const response = await listAll()
+			const response = await listAll(search)
+			console.log(response)
 			return response.data
 		} catch (e) {
 			const error = e as AxiosError

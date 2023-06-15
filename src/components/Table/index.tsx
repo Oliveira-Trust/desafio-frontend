@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from 'react'
 import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
-import { addColumnsSize, isEmpty } from '../../utils/utils'
+import { addColumnsSize, isArrayEmpty } from '../../utils/utils'
 import Row from '../Row'
 import Action from '../Action'
 
@@ -68,7 +68,7 @@ const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 					)
 				})}
 			</div>
-			{isEmpty(data) ? buildMessage() : Rows}
+			{isArrayEmpty(data) ? buildMessage() : Rows}
 		</div>
 	)
 }

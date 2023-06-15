@@ -58,7 +58,12 @@ export const renameProperty = function (
 	return obj
 }
 
-export const isEmpty = <T>(array?: T[]) => {
+export const isArrayEmpty = <T>(array?: T[]) => {
 	if (array?.length === 0 || array === undefined) return true
+	return false
+}
+
+export const isObjectEmpty = (obj?: GenericObject) => {
+	if (obj === undefined || Object.keys(obj).length === 0) return true
 	return false
 }

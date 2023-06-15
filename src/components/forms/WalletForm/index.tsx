@@ -4,7 +4,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import { WalletContext } from '../../../context/WalletProvider'
 import InnerLabelInput from '../InnerLabelInput'
 import { IUser } from '../../../types/user'
-import { fixedNumber } from '../../../utils/utils'
+import { fixedNumber, isObjectEmpty } from '../../../utils/utils'
 
 interface IProps {
 	data: IUser
@@ -139,14 +139,14 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 			</div>
 			<div className='flex justify-end items-center gap-3'>
 				<a
-					className='text-blue-500 hover:text-blue-500'
+					className='text-blue-500 hover:text-blue-500 cursor-pointer'
 					onClick={() => closeModal()}>
 					Cancelar
 				</a>
 				<button
 					type='submit'
 					className='btn btn-blue'>
-					Adicionar
+					{isObjectEmpty(data) ? 'Adicionar' : 'Editar'}
 				</button>
 			</div>
 		</form>
