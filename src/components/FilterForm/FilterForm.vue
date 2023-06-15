@@ -2,9 +2,11 @@
     <Paper>
         <div class="inputsWrapper">
             <BaseInput v-model="name" placeholder="Nome" />
+            <Divider small />
             <BaseInput v-model="surname" placeholder="Sobrenome" />
+            <Divider small />
             <BaseInput v-model="email" placeholder="E-mail" />
-            <span class="divider"></span>
+            <Divider small />
             <Button>Buscar</Button>
         </div>
     </Paper>
@@ -14,11 +16,13 @@
     import Paper from '../shared/Paper/Paper.vue';
     import BaseInput from '../shared/Input/Input.vue';
     import Button from '../shared/Button/Button.vue';
+    import Divider from '../shared/Divider/Divider.vue'
     export default {
         components: {
             BaseInput,
             Paper,
-            Button
+            Button,
+            Divider
         },
         data(){
             return {
@@ -31,10 +35,6 @@
 </script>
 
 <style scoped>
-.divider{
-    display: block;
-    margin: 0px 5px;
-}
 .inputsWrapper{
     display: flex;
     align-items: center;

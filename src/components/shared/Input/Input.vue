@@ -2,8 +2,8 @@
     <input
         class="input"
         :placeholder="placeholder"
-        :value="modelvalue"
-        @input="$emit('update:modelvalue', $event.target.value)"
+        :value="modelValue"
+        @input="$event=>$emit('update:modelValue', $event.target.value)"
     />
 </template>
 
@@ -12,9 +12,9 @@
         name: "BaseInput",
         props:{
             placeholder: String,
-            modelvalue: String
+            modelValue: String
         },
-        emits: ['update:modelvalue']
+        emits: ['update:modelValue']
     }
 </script>
 
@@ -24,12 +24,10 @@
         border: 1px solid #e9e9e9;
         padding: 10px;
         width: 100%;
+        box-sizing: border-box;
     }
     .input:focus{
         outline: none;
         border-color: var(--primary-color);
-    }
-    .input+.input{
-        margin-left: 10px;
     }
 </style>

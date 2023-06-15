@@ -1,7 +1,12 @@
 <template>
-    <div class="container">
+    <div class="headingWrapper">
         <slot></slot>
-        <Button v-if="link">{{ link }}</Button>
+        <Button
+            v-if="link"
+            @click="onClickButton"
+        >
+            {{ link }}
+        </Button>
     </div>
 </template>
 
@@ -15,12 +20,17 @@
         props: {
             text: String,
             link: String
+        },
+        methods: {
+            onClickButton(){
+                this.$emit('onClick')
+            }
         }
     }
 </script>
 
 <style scoped>
-.container{
+.headingWrapper{
     display: flex;
     width: 100%;
     justify-content: space-between;

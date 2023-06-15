@@ -1,8 +1,19 @@
 <template>
-    <button class="button">
+    <button @click="click" class="button">
         <slot></slot>
     </button>
 </template>
+
+<script>
+    export default {
+        name: "Button",
+        methods: {
+            click(){
+                this.$emit('click')
+            }
+        }
+    }
+</script>
 
 <style>
 .button{
@@ -12,5 +23,6 @@
     background-color: #fff;
     border-radius: 3px;
     padding: 10px 20px;
+    cursor: pointer;
 }
 </style>
