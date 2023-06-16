@@ -8,12 +8,15 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 
 import Main from './pages/Main'
 import { WalletProvider } from './context/WalletProvider'
+import { ToastProvider } from './context/ToastProvider'
 
 export default function App() {
 	return (
-		<WalletProvider>
-			<Main />
-		</WalletProvider>
+		<ToastProvider>
+			<WalletProvider>
+				<Main />
+			</WalletProvider>
+		</ToastProvider>
 	)
 }
 library.add(fas, far)

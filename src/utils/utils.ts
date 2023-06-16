@@ -67,3 +67,23 @@ export const isObjectEmpty = (obj?: GenericObject) => {
 	if (obj === undefined || Object.keys(obj).length === 0) return true
 	return false
 }
+
+export const ensureError = (value: unknown): Error => {
+	if (value instanceof Error) return value
+	let stringified = JSON.stringify(value)
+	return new Error(stringified)
+}
+
+export enum UserApiErrors {
+	LIST_EXCEPTION = 'Não foi possível carregar a lista.',
+	NEW_USER_EXCEPTION = 'Não foi possível criar uma nova carteira.',
+	UPDATE_USER_EXCEPTION = 'Não foi possível atualizar a carteira.',
+	REMOVE_EXCEPTION = 'Não foi possível remover a carteira.',
+}
+
+export enum CurrencyApiErrors {
+	LOAD_CURRENCY_EXCEPTION = 'Não foi possível carregar a cotação atualizada.',
+}
+export enum CsvErrors {
+	EXPORT_CSV_EXCEPTION = 'Não foi possível exportar a tabela.',
+}

@@ -8,6 +8,7 @@ import React, {
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { WalletContext } from '../context/WalletProvider'
+import { ToastContext } from '../context/ToastProvider'
 
 import useApi from '../hooks/useApi'
 import useCsv from '../hooks/useCsv'
@@ -25,6 +26,7 @@ import { IUser } from '../types/user'
 import { IUrlParams } from '../types/api'
 import { GenericObject, IModalState } from '../types/utils'
 import { AxiosError } from 'axios'
+import Toast from '../components/Toast'
 
 const initialState = {
 	page: 1,
@@ -33,29 +35,37 @@ const initialState = {
 export default function Main() {
 	const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
 	const [modalState, setModalState] = useState<IModalState>()
-	const [CSVdata, setCSVdata] = useState([])
 	const exportBtn = useRef<HTMLButtonElement>(null)
 	const emptyMessage = 'Nenhum registro encontrado.'
 	const context = useContext(WalletContext)
+	const toastContext = useContext(ToastContext)
+	const successStatus = [200, 201]
 
 	const getFileName = () => new Date().toISOString() + '.csv'
 
-	const onComplete = (status: number) => {
-		if (status === 200 || status === 201) {
+	const onComplete = (status: number, message: string) => {
+		if (successStatus.includes(status)) {
 			setModalState({ isOpen: false })
 			load(urlParams)
+			toastContext.fail(message)
 		}
 	}
 
-	const onFailed = (ex: AxiosError) => {
-		alert(ex.message)
+	const onFailed = (message: string) => {
+		toastContext.fail(message)
 	}
-	const onError = () => {}
+
+	const onCsvFail = (message: string) => {
+		toastContext.fail(message)
+	}
 
 	const { load, newUser, updateUser, deleteUser, getCurrency, getAll } =
 		useApi({ onComplete, onFailed })
 
-	const { csvDownload, ref: csvRef } = useCsv({ onError, getFileName })
+	const { csvDownload, ref: csvRef } = useCsv({
+		onError: onCsvFail,
+		getFileName,
+	})
 
 	useEffect(() => {
 		getCurrency('BTC-BRL', 'BTCBRL')
@@ -66,7 +76,6 @@ export default function Main() {
 	}, [urlParams])
 
 	const exportCsv = async () => {
-		console.log(urlParams.search)
 		const data = await getAll(urlParams.search)
 		csvDownload(data)
 	}

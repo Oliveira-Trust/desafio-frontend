@@ -1,11 +1,13 @@
 import { useRef, useState } from 'react'
 import { Parser } from '@json2csv/plainjs'
+
+import User from '../classes/user'
+import { CsvErrors } from '../utils/utils'
 import { IUser } from '../types/user'
-import User from '../models/user'
 
 interface UseCsvConfig {
 	getFileName: () => string
-	onError: () => void
+	onError: (message: string) => void
 }
 
 export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
@@ -33,7 +35,7 @@ export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
 			ref.current?.click()
 			URL.revokeObjectURL(url)
 		} catch (error) {
-			onError()
+			onError(CsvErrors.EXPORT_CSV_EXCEPTION)
 		}
 	}
 

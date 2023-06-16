@@ -7,11 +7,11 @@ import { list as listCurrency } from '../apis/currency'
 
 import { ISearchParams, IUrlParams } from '../types/api'
 import { IUser } from './../types/user.d'
-import { AxiosError } from 'axios'
+import { ensureError, UserApiErrors, CurrencyApiErrors } from '../utils/utils'
 
 interface UserApiConfig {
-	onComplete: (status: number) => void
-	onFailed: (exception: AxiosError) => void
+	onComplete: (status: number, message: string) => void
+	onFailed: (message: string) => void
 }
 
 export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
@@ -26,39 +26,54 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 				totalUsers: response.headers['x-total-count'],
 				currentPage: urlParams.page,
 			})
-		} catch (e) {
-			const error = e as AxiosError
-			onFailed(error)
+		} catch (err) {
+			const error = ensureError(err)
+			console.error(error)
+			onFailed(UserApiErrors.LIST_EXCEPTION)
+		}
+	}
+	const getAll = async (search?: ISearchParams) => {
+		try {
+			const response = await listAll(search)
+			console.log(response)
+			return response.data
+		} catch (err) {
+			const error = ensureError(err)
+			console.error(error)
+			onFailed(UserApiErrors.LIST_EXCEPTION)
 		}
 	}
 	const newUser = async (user: IUser) => {
 		try {
 			const data_abertura = moment.tz().format()
 			const response = await create({ ...user, data_abertura })
-			onComplete(response.status)
-		} catch (e) {
-			const error = e as AxiosError
-			onFailed(error)
+			onComplete(response.status, 'Carteira criada com sucesso.')
+		} catch (err) {
+			const error = ensureError(err)
+			console.error(error)
+			onFailed(UserApiErrors.NEW_USER_EXCEPTION)
 		}
 	}
 	const updateUser = async (user: IUser) => {
 		try {
 			const response = await update(user)
-			onComplete(response.status)
-		} catch (e) {
-			const error = e as AxiosError
-			onFailed(error)
+			onComplete(response.status, 'Carteira atualizada com sucesso')
+		} catch (err) {
+			const error = ensureError(err)
+			console.error(error)
+			onFailed(UserApiErrors.UPDATE_USER_EXCEPTION)
 		}
 	}
 	const deleteUser = async (id?: number) => {
 		try {
 			if (id) {
 				const response = await remove(id)
-				onComplete(response.status)
+				onComplete(response.status, 'Carteira removida com sucesso.')
 			}
-		} catch (e) {
-			const error = e as AxiosError
-			onFailed(error)
+		} catch (err) {
+			const error = ensureError(err)
+			console.error(error)
+			onFailed(UserApiErrors.REMOVE_EXCEPTION)
 		}
 	}
 	const getCurrency = async (currency: string, key: string) => {
@@ -69,21 +84,13 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 				to: response.data[key].codein,
 				value: response.data[key].bid,
 			})
-		} catch (e) {
-			const error = e as AxiosError
-			onFailed(error)
+		} catch (err) {
+			const error = ensureError(err)
+			console.error(error)
+			onFailed(CurrencyApiErrors.LOAD_CURRENCY_EXCEPTION)
 		}
 	}
-	const getAll = async (search?: ISearchParams) => {
-		try {
-			const response = await listAll(search)
-			console.log(response)
-			return response.data
-		} catch (e) {
-			const error = e as AxiosError
-			onFailed(error)
-		}
-	}
+
 	return {
 		load,
 		newUser,

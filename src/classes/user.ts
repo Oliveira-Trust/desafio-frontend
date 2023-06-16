@@ -1,4 +1,4 @@
-import { IUser } from './../types/user.d'
+import { IUser } from '../types/user'
 export default class User implements IUser {
 	readonly id?: number
 	readonly nome?: string

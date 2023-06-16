@@ -78,17 +78,6 @@
       "endereco_carteira": "1Bg1q55FFbY2HarR75VHFUH9cGomCopWaR"
     },
     {
-      "id": 10,
-      "nome": "Lothario",
-      "sobrenome": "Calliss",
-      "email": "lcalliss9@vimeo.com",
-      "endereco": "29 Daystar Road",
-      "data_nascimento": "1981-01-01T01:18:19Z",
-      "data_abertura": "2021-07-02T14:17:22Z",
-      "valor_carteira": 0.1812073,
-      "endereco_carteira": "1AyxhRSMsA4bQ6Uh5AWZwupgpn3GbrXVJH"
-    },
-    {
       "id": 11,
       "nome": "Kristin",
       "sobrenome": "Ferrarello",
@@ -98,17 +87,6 @@
       "data_abertura": "2017-11-26T19:00:34Z",
       "valor_carteira": 3.51945587,
       "endereco_carteira": "1DYp6uTvgGhswNHaPctqCzXBaXzQUiiDMJ"
-    },
-    {
-      "id": 12,
-      "nome": "Micky",
-      "sobrenome": "Weightman",
-      "email": "mweightmanb@merriam-webster.com",
-      "endereco": "60 Grasskamp Crossing",
-      "data_nascimento": "1999-12-11T07:34:12Z",
-      "data_abertura": "2021-03-08T03:59:02Z",
-      "valor_carteira": 4.27586708,
-      "endereco_carteira": "1MTCUxBMesUEy6wUeughHceDZwEw5cEEPZ"
     },
     {
       "id": 13,
@@ -217,19 +195,8 @@
       "endereco": "6 Monica Park",
       "data_nascimento": "1998-07-06T19:55:36Z",
       "data_abertura": "2021-02-16T01:21:51Z",
-      "valor_carteira": 0.64663974,
+      "valor_carteira": 0.64663975,
       "endereco_carteira": "12Z8LT9RNxXB1rRVsG6ooNKrQQcrr3WKAi"
-    },
-    {
-      "id": 23,
-      "nome": "Marthena",
-      "sobrenome": "McKinnon",
-      "email": "mmckinnonm@bloomberg.com32",
-      "endereco": "60556 Columbus Terrace",
-      "data_nascimento": "1984-07-17T10:27:01Z",
-      "data_abertura": "2021-03-14T16:59:11Z",
-      "valor_carteira": 3.30436483,
-      "endereco_carteira": "1FW5iP1Fdmx3HPtmcJZxpNZZGwFEQuFTRN"
     },
     {
       "id": 24,
@@ -474,17 +441,6 @@
       "endereco_carteira": "1EAZ1tdVhX4gppfaqJtC8pAo1WFhV7jXhA"
     },
     {
-      "id": 47,
-      "nome": "Artemas",
-      "sobrenome": "Minchindsadas",
-      "email": "aminchin1a@blog.com",
-      "endereco": "7357 Claremont Park",
-      "data_nascimento": "1992-09-11T19:59:55Z",
-      "data_abertura": "2020-11-13T16:18:16Z",
-      "valor_carteira": 0.11000045,
-      "endereco_carteira": "1H9HjzoMCWMdz1LWmBMtBnC4yFEzJta3Wq"
-    },
-    {
       "id": 48,
       "nome": "Zabrina",
       "sobrenome": "Gilkes",
@@ -551,12 +507,28 @@
       "id": 53
     },
     {
-      "nome": "Teste",
-      "sobrenome": "Gui",
-      "email": "teste@teste.com",
-      "valor_carteira": 0.00176816,
-      "data_abertura": "2023-06-09T14:15:42Z",
+      "nome": "gui",
+      "sobrenome": "anasda",
+      "email": "gmsaiod@das.com",
+      "valor_carteira": 0.01821075,
+      "data_abertura": "2023-06-16T18:04:50Z",
       "id": 54
+    },
+    {
+      "nome": "guisdada",
+      "sobrenome": "guil",
+      "email": "fdsaa@dasd.com.br",
+      "valor_carteira": 1.82204732,
+      "data_abertura": "2023-06-16T18:06:23Z",
+      "id": 55
+    },
+    {
+      "nome": "fffff",
+      "sobrenome": "fffff",
+      "email": "dasd@tte.co.uk",
+      "valor_carteira": 0.96753735,
+      "data_abertura": "2023-06-16T18:06:45Z",
+      "id": 56
     }
   ]
 }

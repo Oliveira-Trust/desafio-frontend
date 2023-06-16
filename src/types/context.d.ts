@@ -10,6 +10,11 @@ export interface IWalletContext extends IState {
 	currency: ICurrencies
 }
 
+export interface IToastContext {
+	success: (message: string) => void
+	fail: (message: string) => void
+}
+
 export interface ICurrencies {
 	base: string
 	to: string
@@ -17,5 +22,9 @@ export interface ICurrencies {
 }
 
 export interface IWalletProvider {
+	children: JSX.Element
+}
+
+export interface IToastProvider {
 	children: JSX.Element
 }
