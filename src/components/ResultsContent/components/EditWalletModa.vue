@@ -25,13 +25,13 @@
             <div class="currencyConvertWrapper">
                 <div>
                     <BaseInput
-                        v-model="currency"
-                        @update:modelValue="newValue => convertCoin(newValue)"
+                        v-model="amount"
+                        @update:modelValue="newValue => convertCoinToBTC(newValue)"
                         placeholder="Valor de Compra"
                     />
                 </div>
                 <span>
-                    BTC {{ amount }}
+                    BTC {{ bitcoin || currency }}
                 </span>
             </div>
             <ModalFooter
@@ -60,6 +60,9 @@
             amount () {
                 return this.$store.state.currency.amount
             },
+            bitcoin(){
+                return this.$store.state.currency.bitcoin
+            }
        },
         methods: {
             onClick(){
@@ -75,10 +78,10 @@
             },
             onClose(){
                 this.$emit('onClose')
+                this.$store.dispatch("clearAmountAndBitcoinState");
             },
-            convertCoin(value){
-                this.currency = this.amount || value;
-                this.$store.dispatch("convertCoin", value);
+            convertCoinToBTC(value){
+                this.$store.dispatch("convertCoinToBTC", value);
             }
         },
         data() {
@@ -86,12 +89,15 @@
                 name: this.$props.initialParams.name || '',
                 surname: this.$props.initialParams.surname || '',
                 email: this.$props.initialParams.email || '',
-                currency: this.$props.initialParams.currency || '',
+                currency: this.$props.initialParams.currency || 0,
                 id: this.$props.initialParams.id
             }
         },
         props: {
             initialParams: Object
+        },
+        mounted() {
+            this.$store.dispatch("convertBTCtoCoin", this.$props.initialParams.currency);
         }
     }
 </script>

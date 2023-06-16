@@ -26,12 +26,12 @@
                 <div>
                     <BaseInput
                         v-model="currency"
-                        @update:modelValue="newValue => convertCoin(newValue)"
+                        @update:modelValue="newValue => convertCoinToBTC(newValue)"
                         placeholder="Valor de Compra"
                     />
                 </div>
                 <span>
-                    BTC {{ amount }}
+                    BTC {{ bitcoin }}
                 </span>
             </div>
             <ModalFooter
@@ -57,8 +57,8 @@
             Divider
         },
         computed: {
-            amount () {
-                return this.$store.state.currency.amount
+            bitcoin () {
+                return this.$store.state.currency.bitcoin
             },
        },
         methods: {
@@ -74,10 +74,11 @@
             },
             onClose(){
                 this.$emit('onClose')
+                this.$store.dispatch("clearAmountAndBitcoinState");
             },
-            convertCoin(value){
+            convertCoinToBTC(value){
                 this.currency = this.amount || value;
-                this.$store.dispatch("convertCoin", value);
+                this.$store.dispatch("convertCoinToBTC", value);
             }
         },
         data() {
