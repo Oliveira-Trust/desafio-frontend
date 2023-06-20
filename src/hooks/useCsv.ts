@@ -6,10 +6,10 @@ import { IUser } from '../types/user'
 
 interface UseCsvConfig {
 	getFileName: () => string
-	onError: (message: string) => void
+	onFailed: (message: string) => void
 }
 
-export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
+export default function useCsvApi({ onFailed, getFileName }: UseCsvConfig) {
 	const csvParse = (data: IUser[]) => {
 		try {
 			const parser = new Parser()
@@ -33,7 +33,7 @@ export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
 			anchor.click()
 			URL.revokeObjectURL(url)
 		} catch (error) {
-			onError(CsvErrors.EXPORT_CSV_EXCEPTION)
+			onFailed(CsvErrors.EXPORT_CSV_EXCEPTION)
 		}
 	}
 

@@ -20,19 +20,19 @@ const SearchBar = ({ onSubmit }: Props) => {
 					register={register}
 					id='nome_search'
 					label='Nome'
-					placeholder='Nome'
+					props={{ placeholder: 'Nome' }}
 				/>
 				<InnerLabelInput
 					register={register}
 					id='sobrenome_search'
 					label='Sobrenome'
-					placeholder='Sobrenome'
+					props={{ placeholder: 'Sobrenome' }}
 				/>
 				<InnerLabelInput
 					register={register}
 					id='email_search'
 					label='E-mail'
-					placeholder='E-mail'
+					props={{ type: 'email', placeholder: 'E-mail' }}
 				/>
 				<button
 					type='submit'

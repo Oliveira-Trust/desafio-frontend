@@ -5,6 +5,7 @@ import { WalletContext } from '../../../context/WalletProvider'
 import InnerLabelInput from '../InnerLabelInput'
 import { IUser } from '../../../types/user'
 import { fixedNumber, isObjectEmpty } from '../../../utils/utils'
+import { max } from 'moment-timezone'
 
 interface IProps {
 	data: IUser
@@ -45,6 +46,13 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 	const OnValid = (formData: IWalletForm) => {
 		delete formData.value
 		onSubmit({ ...formData, valor_carteira: fixedNumber(btcValue, 8) })
+	}
+
+	const limitValue = (value: string, maxSize: number) => {
+		const aux = value.toString()
+		return aux.length > maxSize
+			? aux.substring(0, maxSize).concat('...')
+			: aux
 	}
 
 	return (
@@ -103,7 +111,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 					id='email'
 					className='col-span-full'
 					label='E-mail'
-					props={{ placeholder: 'E-mail' }}
+					props={{ type: 'email', placeholder: 'E-mail' }}
 					error={errors?.email?.message?.toString()}
 				/>
 				<div className='flex justify-stretch gap-2'>
@@ -116,7 +124,12 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 							},
 							min: {
 								value: 0,
-								message: 'Insira uma valor valido.',
+								message: 'Insira uma valor maior que 0.',
+							},
+							max: {
+								value: 9000000000,
+								message:
+									'Insira uma valor menor que 9.000.000.000.',
 							},
 						}}
 						id='value'
@@ -128,10 +141,11 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 							placeholder: 'Valor de compra',
 							step: '0.01',
 						}}
+						error={errors?.value?.message?.toString()}
 					/>
 					<div className='w-5/12 place-self-center justify-self-start'>
 						<p className='text-xl font-bold font-sans'>
-							{`BTC ${btcValue.toFixed(8)}`}
+							{`BTC ${limitValue(btcValue.toFixed(8), 12)}`}
 						</p>
 					</div>
 				</div>

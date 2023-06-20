@@ -1,28 +1,25 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import moment from 'moment-timezone'
 
 import { WalletContext } from '../context/WalletProvider'
 import { create, list, remove, update, listAll } from '../apis/user'
-import { list as listCurrency } from '../apis/currency'
 
 import { ISearchParams, IUrlParams } from '../types/api'
 import { IUser } from './../types/user.d'
-import { ensureError, UserApiErrors, CurrencyApiErrors } from '../utils/utils'
+import { ensureError, UserApiErrors } from '../utils/utils'
 
 interface UserApiConfig {
 	onComplete: (status: number, message: string) => void
 	onFailed: (message: string) => void
-	onLoad: () => void
 }
 
-export default function useUserApi({
-	onComplete,
-	onFailed,
-	onLoad,
-}: UserApiConfig) {
+export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
+	const [isLoading, setIsLoading] = useState(false)
+
 	const context = useContext(WalletContext)
 
 	const load = async (urlParams: IUrlParams) => {
+		setIsLoading(true)
 		try {
 			const response = await list(urlParams)
 			context.setState({
@@ -31,11 +28,12 @@ export default function useUserApi({
 				totalUsers: response.headers['x-total-count'],
 				currentPage: urlParams.page,
 			})
-			onLoad()
 		} catch (err) {
 			const error = ensureError(err)
 			console.error(error)
 			onFailed(UserApiErrors.LIST_EXCEPTION)
+		} finally {
+			setIsLoading(false)
 		}
 	}
 	const getAll = async (search?: ISearchParams) => {
@@ -81,27 +79,13 @@ export default function useUserApi({
 			onFailed(UserApiErrors.REMOVE_EXCEPTION)
 		}
 	}
-	const getCurrency = async (currency: string, key: string) => {
-		try {
-			const response = await listCurrency(currency)
-			context.setExchangeRate({
-				base: response.data[key].code,
-				to: response.data[key].codein,
-				value: response.data[key].bid,
-			})
-		} catch (err) {
-			const error = ensureError(err)
-			console.error(error)
-			onFailed(CurrencyApiErrors.LOAD_CURRENCY_EXCEPTION)
-		}
-	}
 
 	return {
 		load,
 		newUser,
 		updateUser,
 		deleteUser,
-		getCurrency,
 		getAll,
+		isLoading,
 	}
 }

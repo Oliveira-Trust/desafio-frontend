@@ -35,7 +35,6 @@ const initialState = {
 export default function Main() {
 	const [urlParams, setUrlParams] = useState<IUrlParams>(initialState)
 	const [modalState, setModalState] = useState<IModalState>()
-	const [isLoading, setIsLoading] = useState(true)
 	const exportBtn = useRef<HTMLButtonElement>(null)
 	const emptyMessage = 'Nenhum registro encontrado.'
 	const successStatus = [200, 201]
@@ -44,10 +43,6 @@ export default function Main() {
 	const context = useContext(WalletContext)
 
 	const getFileName = () => new Date().toISOString() + '.csv'
-
-	const onLoad = () => {
-		setTimeout(() => setIsLoading(false), 200) // Trazer uma melhor experiencia do usuario, evitando elementos piscando
-	}
 
 	const onComplete = (status: number, message: string) => {
 		if (successStatus.includes(status)) {
@@ -61,25 +56,17 @@ export default function Main() {
 		toastContext.fail(message)
 	}
 
-	const onCsvFail = (message: string) => {
-		toastContext.fail(message)
-	}
-
-	const { load, newUser, updateUser, deleteUser, getCurrency, getAll } =
-		useApi({ onComplete, onFailed, onLoad })
+	const { load, newUser, updateUser, deleteUser, getAll, isLoading } = useApi(
+		{
+			onComplete,
+			onFailed,
+		}
+	)
 
 	const { csvDownload } = useCsv({
-		onError: onCsvFail,
 		getFileName,
+		onFailed,
 	})
-
-	useEffect(() => {
-		getCurrency('BTC-BRL', 'BTCBRL')
-	}, [])
-
-	useEffect(() => {
-		load(urlParams)
-	}, [urlParams])
 
 	const exportCsv = async () => {
 		const data = await getAll(urlParams.search)
@@ -135,6 +122,11 @@ export default function Main() {
 		})
 	}
 
+	useEffect(() => {
+		load(urlParams)
+		// eslint-disable-next-line
+	}, [urlParams])
+
 	const tableActions = [
 		{
 			icon: ['fas', 'pencil'] as IconProp,
@@ -180,11 +172,6 @@ export default function Main() {
 								<h1 className='text-2xl font-bold'>
 									Carteiras{' '}
 								</h1>
-								{/* <a
-									ref={csvRef}
-									href='#'>
-									&nbsp
-								</a> */}
 								<button
 									id='btnExport'
 									type='button'

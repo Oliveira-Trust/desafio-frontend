@@ -6,7 +6,7 @@ export interface IState {
 
 export interface IWalletContext extends IState {
 	setState: (state: IState) => void
-	setExchangeRate: (currency: IExchangeRate) => void
+	// setExchangeRate: (currency: IExchangeRate) => void
 	exchangeRate: IExchangeRate
 }
 
