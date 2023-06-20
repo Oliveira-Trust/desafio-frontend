@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext, useState, memo } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { WalletContext } from '../../../context/WalletProvider'
@@ -25,7 +25,6 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 		handleSubmit,
 		formState: { errors },
 		watch,
-		setValue,
 	} = useForm<IWalletForm>({
 		defaultValues: {
 			...data,
@@ -41,7 +40,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 		if (currencyValue && context.currency.value) {
 			setBtcValue(currencyValue / context.currency.value)
 		}
-	}, [currencyValue])
+	}, [currencyValue, context])
 
 	const OnValid = (formData: IWalletForm) => {
 		delete formData.value
@@ -97,7 +96,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 							message: 'Este campo precisa ser preenchido.',
 						},
 						pattern: {
-							value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+							value: /^[[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
 							message: 'Insira um e-mail valido',
 						},
 					}}
@@ -138,11 +137,12 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 				</div>
 			</div>
 			<div className='flex justify-end items-center gap-3'>
-				<a
+				<button
+					type='button'
 					className='text-blue-500 hover:text-blue-500 cursor-pointer'
 					onClick={() => closeModal()}>
 					Cancelar
-				</a>
+				</button>
 				<button
 					type='submit'
 					className='btn btn-blue'>
@@ -153,4 +153,4 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 	)
 }
 
-export default WalletForm
+export default memo(WalletForm)

@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState, useEffect, useCallback } from 'react'
 import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
 import { addColumnsSize, isArrayEmpty } from '../../utils/utils'
 import Row from '../Row'
@@ -14,10 +14,6 @@ interface IProps {
 const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 	const [Rows, setRows] = useState<JSX.Element[]>()
 
-	useEffect(() => {
-		buildRows()
-	}, [data])
-
 	const buildMessage = () => {
 		return (
 			<div className='flex justify-center p-5'>
@@ -26,7 +22,7 @@ const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 		)
 	}
 
-	const buildRows = () => {
+	const buildRows = useCallback(() => {
 		const newRows = data?.map((row, idx) => {
 			let tableActions = actions?.map(
 				({ callback, icon, tooltip }, idx) => {
@@ -51,7 +47,11 @@ const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 			)
 		})
 		setRows(newRows)
-	}
+	}, [actions, columns, data])
+
+	useEffect(() => {
+		buildRows()
+	}, [buildRows])
 
 	return (
 		<div className='border-b-2'>

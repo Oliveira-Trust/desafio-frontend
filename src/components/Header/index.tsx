@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import logo from '../../assets/imgs/logo.png'
 import avatarImg from '../../assets/imgs/avatar.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,12 +8,12 @@ const Header = () => {
 		<div className='flex self-stretch justify-center bg-white'>
 			<div className='flex flex-row container justify-between'>
 				<div className='w-52'>
-					<a href='#'>
+					<button type='button'>
 						<img
 							src={logo}
 							alt='Logo'
 						/>
-					</a>
+					</button>
 				</div>
 				<div className='flex items-center'>
 					<div className='flex items-center p-1'>
@@ -41,4 +41,4 @@ const Header = () => {
 	)
 }
 
-export default Header
+export default memo(Header)

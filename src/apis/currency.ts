@@ -1,8 +1,5 @@
 import axios from 'axios'
 
-import { IUrlParams, ISearchParams, IUrlParamsCurrency } from './../types/api.d'
-import { IUser } from '../types/user'
-
 const baseURL = 'https://economia.awesomeapi.com.br'
 const api = axios.create({ baseURL })
 

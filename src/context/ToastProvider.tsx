@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useId, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { IToastContext, IToastProvider } from '../types/context'
 import Toast from '../components/Toast'
 
@@ -14,7 +14,6 @@ export const ToastProvider = ({ children }: IToastProvider) => {
 	}
 
 	const success = (message: string) => {
-		console.log('hit 1')
 		const component = (
 			<Toast
 				key={Date.now()}
@@ -28,7 +27,6 @@ export const ToastProvider = ({ children }: IToastProvider) => {
 	}
 
 	const fail = (message: string) => {
-		console.log('hit 2')
 		const component = (
 			<Toast
 				key={Date.now()}

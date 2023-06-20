@@ -1,6 +1,4 @@
-import React, { createContext } from 'react'
-import { list } from './apis/user'
-import Header from './components/Header'
+import React from 'react'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'

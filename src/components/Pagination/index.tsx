@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface IProps {
@@ -19,11 +19,7 @@ const Pagination = ({
 	const maxPages = 5
 	const totalPages = Math.ceil(total / limit)
 
-	useEffect(() => {
-		insertPages()
-	}, [currentPage, total])
-
-	const getPagesCut = () => {
+	const getPagesCut = useCallback(() => {
 		const ceiling = Math.ceil(maxPages / 2)
 		const floor = Math.floor(maxPages / 2)
 
@@ -39,10 +35,17 @@ const Pagination = ({
 				lastIdx: currentPage + floor,
 			}
 		}
-	}
+	}, [currentPage, totalPages])
 
-	const insertPages = () => {
-		console.log(currentPage, total, limit, totalPages)
+	const handleClick = useCallback(
+		(pageNumber: number) => {
+			if (pageNumber > totalPages || pageNumber < 1) return
+			callback(pageNumber)
+		},
+		[callback, totalPages]
+	)
+
+	const insertPages = useCallback(() => {
 		const aux = []
 		const pagesCut = getPagesCut()
 
@@ -75,12 +78,11 @@ const Pagination = ({
 			)
 		}
 		setPages(aux)
-	}
+	}, [currentPage, getPagesCut, handleClick])
 
-	const handleClick = (pageNumber: number) => {
-		if (pageNumber > totalPages || pageNumber < 1) return
-		callback(pageNumber)
-	}
+	useEffect(() => {
+		insertPages()
+	}, [insertPages])
 
 	return (
 		<div className='flex '>

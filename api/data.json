@@ -145,13 +145,13 @@
     },
     {
       "id": 18,
-      "nome": "Anne",
+      "nome": "Annesda",
       "sobrenome": "Conningham",
       "email": "aconninghamh@state.gov",
       "endereco": "87 Ohio Hill",
       "data_nascimento": "1997-09-26T07:31:33Z",
       "data_abertura": "2018-01-24T06:13:53Z",
-      "valor_carteira": 0.29990054,
+      "valor_carteira": 0.29990057,
       "endereco_carteira": "1LXVNZafbPgJecXeEL7r1yyRCkvWHdjJys"
     },
     {
@@ -195,7 +195,7 @@
       "endereco": "6 Monica Park",
       "data_nascimento": "1998-07-06T19:55:36Z",
       "data_abertura": "2021-02-16T01:21:51Z",
-      "valor_carteira": 0.64663975,
+      "valor_carteira": 0.64663976,
       "endereco_carteira": "12Z8LT9RNxXB1rRVsG6ooNKrQQcrr3WKAi"
     },
     {
@@ -279,11 +279,11 @@
       "id": 31,
       "nome": "Curtis",
       "sobrenome": "Gwin",
-      "email": "cgwinu@ca.gov",
+      "email": "cgwinu@ca.ukkk",
       "endereco": "53264 Gerald Lane",
       "data_nascimento": "2000-04-16T07:14:33Z",
       "data_abertura": "2021-01-17T22:54:07Z",
-      "valor_carteira": 0.9303423,
+      "valor_carteira": 0.93034233,
       "endereco_carteira": "1Fw6QjCtShEPdGZF64uJyc2jXEeSvt44NH"
     },
     {
@@ -515,20 +515,20 @@
       "id": 54
     },
     {
-      "nome": "guisdada",
-      "sobrenome": "guil",
-      "email": "fdsaa@dasd.com.br",
-      "valor_carteira": 1.82204732,
-      "data_abertura": "2023-06-16T18:06:23Z",
-      "id": 55
+      "nome": "xcxf",
+      "sobrenome": "xxxx",
+      "email": "shbdhbdh@gmail.com.uk",
+      "valor_carteira": 0.04311891,
+      "data_abertura": "2023-06-19T23:38:40Z",
+      "id": 57
     },
     {
-      "nome": "fffff",
-      "sobrenome": "fffff",
-      "email": "dasd@tte.co.uk",
-      "valor_carteira": 0.96753735,
-      "data_abertura": "2023-06-16T18:06:45Z",
-      "id": 56
+      "nome": "a",
+      "sobrenome": "as",
+      "email": "a@yahoo.com.br",
+      "valor_carteira": 0.00003885,
+      "data_abertura": "2023-06-19T23:40:23Z",
+      "id": 58
     }
   ]
 }

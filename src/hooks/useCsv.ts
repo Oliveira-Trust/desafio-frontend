@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react'
 import { Parser } from '@json2csv/plainjs'
 
 import User from '../classes/user'
@@ -11,8 +10,6 @@ interface UseCsvConfig {
 }
 
 export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
-	const ref = useRef<HTMLAnchorElement | null>(null)
-
 	const csvParse = (data: IUser[]) => {
 		try {
 			const parser = new Parser()
@@ -30,9 +27,10 @@ export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
 			const url = URL.createObjectURL(
 				new Blob([csv], { type: 'txt/csv' })
 			)
-			ref.current?.setAttribute('href', url)
-			ref.current?.setAttribute('download', getFileName())
-			ref.current?.click()
+			const anchor = document.createElement('a')
+			anchor.href = url
+			anchor.download = getFileName()
+			anchor.click()
 			URL.revokeObjectURL(url)
 		} catch (error) {
 			onError(CsvErrors.EXPORT_CSV_EXCEPTION)
@@ -41,6 +39,5 @@ export default function useCsvApi({ onError, getFileName }: UseCsvConfig) {
 
 	return {
 		csvDownload,
-		ref,
 	}
 }

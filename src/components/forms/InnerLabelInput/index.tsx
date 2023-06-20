@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes, memo } from 'react'
 import { FieldValues, UseFormRegister, RegisterOptions } from 'react-hook-form'
-import { GenericObject } from '../../../types/utils'
+
 interface Props {
 	label?: string
 	prefix?: string

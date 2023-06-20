@@ -12,9 +12,14 @@ import { ensureError, UserApiErrors, CurrencyApiErrors } from '../utils/utils'
 interface UserApiConfig {
 	onComplete: (status: number, message: string) => void
 	onFailed: (message: string) => void
+	onLoad: () => void
 }
 
-export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
+export default function useUserApi({
+	onComplete,
+	onFailed,
+	onLoad,
+}: UserApiConfig) {
 	const context = useContext(WalletContext)
 
 	const load = async (urlParams: IUrlParams) => {
@@ -26,6 +31,7 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 				totalUsers: response.headers['x-total-count'],
 				currentPage: urlParams.page,
 			})
+			onLoad()
 		} catch (err) {
 			const error = ensureError(err)
 			console.error(error)
@@ -35,7 +41,6 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 	const getAll = async (search?: ISearchParams) => {
 		try {
 			const response = await listAll(search)
-			console.log(response)
 			return response.data
 		} catch (err) {
 			const error = ensureError(err)
