@@ -1,6 +1,6 @@
 import { Parser } from '@json2csv/plainjs'
 
-import User from '../classes/user'
+import User from '../classes/User'
 import { CsvErrors } from '../utils/utils'
 import { IUser } from '../types/user'
 

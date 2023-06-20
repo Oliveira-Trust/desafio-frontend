@@ -6,8 +6,8 @@ export interface IState {
 
 export interface IWalletContext extends IState {
 	setState: (state: IState) => void
-	setCurrency: (currency: ICurrencies) => void
-	currency: ICurrencies
+	setExchangeRate: (currency: IExchangeRate) => void
+	exchangeRate: IExchangeRate
 }
 
 export interface IToastContext {
@@ -15,7 +15,7 @@ export interface IToastContext {
 	fail: (message: string) => void
 }
 
-export interface ICurrencies {
+export interface IExchangeRate {
 	base: string
 	to: string
 	value: number

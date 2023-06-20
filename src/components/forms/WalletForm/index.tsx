@@ -17,7 +17,7 @@ interface IWalletForm extends IUser, FieldValues {
 }
 
 const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
-	const context = useContext(WalletContext)
+	const { exchangeRate } = useContext(WalletContext)
 	const [btcValue, setBtcValue] = useState(0)
 
 	const {
@@ -29,7 +29,7 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 		defaultValues: {
 			...data,
 			value: data.valor_carteira
-				? fixedNumber(data.valor_carteira * context.currency.value, 2)
+				? fixedNumber(data.valor_carteira * exchangeRate.value, 2)
 				: undefined,
 		},
 	})
@@ -37,10 +37,10 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 	const currencyValue = watch('value')
 
 	useEffect(() => {
-		if (currencyValue && context.currency.value) {
-			setBtcValue(currencyValue / context.currency.value)
+		if (currencyValue && exchangeRate.value) {
+			setBtcValue(currencyValue / exchangeRate.value)
 		}
-	}, [currencyValue, context])
+	}, [currencyValue, exchangeRate])
 
 	const OnValid = (formData: IWalletForm) => {
 		delete formData.value

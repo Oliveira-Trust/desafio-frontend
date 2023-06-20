@@ -84,7 +84,7 @@ export default function useUserApi({
 	const getCurrency = async (currency: string, key: string) => {
 		try {
 			const response = await listCurrency(currency)
-			context.setCurrency({
+			context.setExchangeRate({
 				base: response.data[key].code,
 				to: response.data[key].codein,
 				value: response.data[key].bid,

@@ -151,7 +151,7 @@ export default function Main() {
 	return (
 		<div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
 			<Header />
-			<div className='container min-h-[200px] relative self-center'>
+			<div className='container flex-1 relative self-center'>
 				{isLoading ? (
 					<Loading />
 				) : (

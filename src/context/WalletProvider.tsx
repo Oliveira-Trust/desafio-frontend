@@ -1,11 +1,15 @@
 import React, { createContext, useState } from 'react'
-import { ICurrencies, IWalletContext, IWalletProvider } from '../types/context'
+import {
+	IExchangeRate,
+	IWalletContext,
+	IWalletProvider,
+} from '../types/context'
 
 export const WalletContext = createContext({} as IWalletContext)
 
 export const WalletProvider = ({ children }: IWalletProvider) => {
 	const [state, setState] = useState({})
-	const [currency, setCurrency] = useState<ICurrencies>({
+	const [exchangeRate, setExchangeRate] = useState<IExchangeRate>({
 		base: '',
 		to: '',
 		value: 0,
@@ -13,7 +17,7 @@ export const WalletProvider = ({ children }: IWalletProvider) => {
 
 	return (
 		<WalletContext.Provider
-			value={{ ...state, setState, currency, setCurrency }}>
+			value={{ ...state, setState, exchangeRate, setExchangeRate }}>
 			{children}
 		</WalletContext.Provider>
 	)

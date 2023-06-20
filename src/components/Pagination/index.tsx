@@ -14,12 +14,10 @@ const Pagination = ({
 	limit,
 	callback,
 }: IProps) => {
-	const [pages, setPages] = useState<JSX.Element[]>([])
-
 	const maxPages = 5
 	const totalPages = Math.ceil(total / limit)
 
-	const getPagesCut = useCallback(() => {
+	const getPagesCut = () => {
 		const ceiling = Math.ceil(maxPages / 2)
 		const floor = Math.floor(maxPages / 2)
 
@@ -35,26 +33,22 @@ const Pagination = ({
 				lastIdx: currentPage + floor,
 			}
 		}
-	}, [currentPage, totalPages])
+	}
 
-	const handleClick = useCallback(
-		(pageNumber: number) => {
-			if (pageNumber > totalPages || pageNumber < 1) return
-			callback(pageNumber)
-		},
-		[callback, totalPages]
-	)
+	const handleClick = (pageNumber: number) => {
+		if (pageNumber > totalPages || pageNumber < 1) return
+		callback(pageNumber)
+	}
 
-	const insertPages = useCallback(() => {
-		const aux = []
+	const insertPages = () => {
+		const pages = []
 		const pagesCut = getPagesCut()
-
 		for (let i = pagesCut.firstIdx; i <= pagesCut.lastIdx; i++) {
 			let isSelected =
 				i === currentPage
 					? 'btn-blue hover:bg-blue-700'
 					: 'hover:bg-zinc-100'
-			aux.push(
+			pages.push(
 				<li key={i}>
 					<button
 						onClick={(e) => handleClick(i)}
@@ -67,7 +61,7 @@ const Pagination = ({
 		}
 
 		if (pagesCut.lastIdx === 0) {
-			aux.push(
+			pages.push(
 				<li>
 					<button
 						type='button'
@@ -77,12 +71,8 @@ const Pagination = ({
 				</li>
 			)
 		}
-		setPages(aux)
-	}, [currentPage, getPagesCut, handleClick])
-
-	useEffect(() => {
-		insertPages()
-	}, [insertPages])
+		return pages
+	}
 
 	return (
 		<div className='flex '>
@@ -99,7 +89,7 @@ const Pagination = ({
 						/>
 					</button>
 				</li>
-				{pages}
+				{insertPages()}
 				<li>
 					<button
 						onClick={(e) => handleClick(currentPage + 1)}
