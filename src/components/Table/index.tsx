@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
 import { addColumnsSize, isArrayEmpty } from '../../utils/utils'
+import Loading from '../Loading'
 import Row from '../Row'
 import Action from '../Action'
 
@@ -9,9 +10,16 @@ interface IProps {
 	data?: GenericObject[]
 	actions?: ITableAction<GenericObject>[]
 	emptyMessage: string
+	IsLoadingData: boolean
 }
 
-const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
+const Table = ({
+	columns,
+	data,
+	actions,
+	emptyMessage,
+	IsLoadingData,
+}: IProps) => {
 	const buildMessage = () => {
 		return (
 			<div className='flex justify-center p-5'>
@@ -21,6 +29,9 @@ const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 	}
 
 	const buildRows = () => {
+		if (isArrayEmpty(data)) {
+			return buildMessage()
+		}
 		const newRows = data?.map((row, idx) => {
 			let tableActions = actions?.map(
 				({ callback, icon, tooltip }, idx) => {
@@ -62,7 +73,13 @@ const Table = ({ columns, data, actions, emptyMessage }: IProps) => {
 					)
 				})}
 			</div>
-			{isArrayEmpty(data) ? buildMessage() : buildRows()}
+			{IsLoadingData ? (
+				<div className='relative grid-cols-12 h-40 my-3'>
+					<Loading />
+				</div>
+			) : (
+				buildRows()
+			)}
 		</div>
 	)
 }

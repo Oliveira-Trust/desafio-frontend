@@ -17,7 +17,7 @@ export const ToastProvider = ({ children }: IToastProvider) => {
 		const component = (
 			<Toast
 				key={Date.now()}
-				className='animate-toastIn px-3 pt-3 pb-2 rounded-md border bg-opacity-70 text-gray-700 bg-green-300 border-opacity-50 border-green-300'
+				className='animate-toastIn px-3 pt-3 pb-2 rounded-md border bg-opacity-90 text-gray-700 bg-green-300 border-opacity-50 border-green-300'
 				message={message}
 			/>
 		)
@@ -30,7 +30,7 @@ export const ToastProvider = ({ children }: IToastProvider) => {
 		const component = (
 			<Toast
 				key={Date.now()}
-				className='animate-toastIn px-3 pt-3 pb-2 rounded-md border bg-opacity-50 text-gray-700 bg-red-300 border-opacity-50 border-red-300'
+				className='animate-toastIn px-3 pt-3 pb-2 rounded-md border bg-opacity-90 text-gray-700 bg-red-300 border-opacity-50 border-red-300'
 				message={message}
 			/>
 		)

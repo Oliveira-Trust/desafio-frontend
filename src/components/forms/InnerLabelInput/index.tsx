@@ -6,7 +6,7 @@ interface Props {
 	prefix?: string
 	placeholder?: string
 	className?: string
-	register: UseFormRegister<FieldValues>
+	register: UseFormRegister<any>
 	options?: RegisterOptions<FieldValues>
 	type?: string
 	id: string
@@ -17,7 +17,6 @@ interface Props {
 const InnerLabelInput = ({
 	label,
 	prefix,
-	placeholder,
 	className,
 	register,
 	options,
@@ -30,9 +29,7 @@ const InnerLabelInput = ({
 		<div className={`relative flex-grow ${className}`}>
 			<input
 				type={type || 'text'}
-				className={`block ${
-					prefix ? 'px-7' : 'px-2.5'
-				} pb-1 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border  border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:text-transparent focus:placeholder:text-gray-500`}
+				className={`block px-2.5 pb-1 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border  border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:text-transparent focus:placeholder:text-gray-500`}
 				{...register(id, options)}
 				id={id}
 				{...props}
@@ -46,10 +43,6 @@ const InnerLabelInput = ({
 			<div className=''>
 				<p className='text-red-500 text-xs'>{error}</p>
 			</div>
-
-			<p className='peer-placeholder-shown:invisible peer-focus:visible visible absolute leading-normal top-4 left-2 text-sm'>
-				{prefix}
-			</p>
 		</div>
 	)
 }

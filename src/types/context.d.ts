@@ -4,10 +4,10 @@ export interface IState {
 	currentPage?: number
 }
 
-export interface IWalletContext extends IState {
-	setState: (state: IState) => void
-	// setExchangeRate: (currency: IExchangeRate) => void
+export interface IWalletContext {
+	state: IState
 	exchangeRate: IExchangeRate
+	setState: (state: IState) => void
 }
 
 export interface IToastContext {

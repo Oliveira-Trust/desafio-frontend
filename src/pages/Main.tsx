@@ -21,7 +21,6 @@ import Footer from '../components/Footer'
 import Modal from '../components/Modal'
 import WalletForm from '../components/forms/WalletForm'
 import DeleteForm from '../components/forms/DeleteForm'
-import Loading from '../components/Loading'
 
 import { columns, renameProperty } from '../utils/utils'
 import { IUser } from '../types/user'
@@ -43,7 +42,6 @@ export default function Main() {
 	const context = useContext(WalletContext)
 
 	const getFileName = () => new Date().toISOString() + '.csv'
-
 	const onComplete = (status: number, message: string) => {
 		if (successStatus.includes(status)) {
 			setModalState({ isOpen: false })
@@ -51,7 +49,6 @@ export default function Main() {
 			toastContext.success(message)
 		}
 	}
-
 	const onFailed = (message: string) => {
 		toastContext.fail(message)
 	}
@@ -62,7 +59,6 @@ export default function Main() {
 			onFailed,
 		}
 	)
-
 	const { csvDownload } = useCsv({
 		getFileName,
 		onFailed,
@@ -70,9 +66,10 @@ export default function Main() {
 
 	const exportCsv = async () => {
 		const data = await getAll(urlParams.search)
-		csvDownload(data)
+		if (data) {
+			csvDownload(data)
+		}
 	}
-
 	const onSearchSubimt = useCallback(
 		(search: GenericObject) => {
 			Object.keys(search).forEach((key) => {
@@ -83,14 +80,12 @@ export default function Main() {
 		},
 		[urlParams]
 	)
-
 	const changePage = useCallback(
 		(pageNumber: number) => {
 			setUrlParams({ ...urlParams, page: pageNumber })
 		},
 		[urlParams]
 	)
-
 	const openWalletModal = (
 		data: IUser,
 		callback: (data: IUser) => void,
@@ -108,7 +103,6 @@ export default function Main() {
 			),
 		})
 	}
-
 	const openRemoveModal = (data: IUser, callback: (id?: number) => void) => {
 		setModalState({
 			isOpen: true,
@@ -121,12 +115,6 @@ export default function Main() {
 			),
 		})
 	}
-
-	useEffect(() => {
-		load(urlParams)
-		// eslint-disable-next-line
-	}, [urlParams])
-
 	const tableActions = [
 		{
 			icon: ['fas', 'pencil'] as IconProp,
@@ -140,68 +128,64 @@ export default function Main() {
 		},
 	]
 
+	useEffect(() => {
+		load(urlParams)
+		// eslint-disable-next-line
+	}, [urlParams])
+
 	return (
 		<div className='min-h-screen bg-zinc-100  flex justify-start items-stretch gap-4 flex-col'>
 			<Header />
 			<div className='container flex-1 relative self-center'>
-				{isLoading ? (
-					<Loading />
-				) : (
-					<div className='animate-showIn flex justify-start gap-4  flex-col'>
+				<div className='animate-showIn flex justify-start gap-4  flex-col'>
+					<div className='flex justify-between'>
+						<h1 className='text-3xl font-bold'>BTC Carteiras </h1>
+						<button
+							ref={exportBtn}
+							type='button'
+							className='btn btn-blue'
+							onClick={() =>
+								openWalletModal(
+									{},
+									newUser,
+									'Adcionar Carteira'
+								)
+							}>
+							Adicionar Carteira
+						</button>
+					</div>
+					<SearchBar onSubmit={onSearchSubimt} />
+					<div className='bg-white shadow-md rounded px-8 pt-6 pb-6 flex flex-col gap-2'>
 						<div className='flex justify-between'>
-							<h1 className='text-3xl font-bold'>
-								BTC Carteiras{' '}
-							</h1>
+							<h1 className='text-2xl font-bold'>Carteiras </h1>
 							<button
-								ref={exportBtn}
+								id='btnExport'
 								type='button'
-								className='btn btn-blue'
-								onClick={() =>
-									openWalletModal(
-										{},
-										newUser,
-										'Adcionar Carteira'
-									)
-								}>
-								Adicionar Carteira
+								className='btn btn-outline'
+								onClick={(e) => exportCsv()}>
+								Exportar CSV
 							</button>
 						</div>
-						<SearchBar onSubmit={onSearchSubimt} />
-						<div className='bg-white shadow-md rounded px-8 pt-6 pb-6 flex flex-col gap-2'>
-							<div className='flex justify-between'>
-								<h1 className='text-2xl font-bold'>
-									Carteiras{' '}
-								</h1>
-								<button
-									id='btnExport'
-									type='button'
-									className='btn btn-outline'
-									onClick={(e) => exportCsv()}>
-									Exportar CSV
-								</button>
-							</div>
-							<Table
-								columns={columns}
-								data={context.users}
-								actions={tableActions}
-								emptyMessage={emptyMessage}
+						<Table
+							columns={columns}
+							data={context.state.users}
+							actions={tableActions}
+							emptyMessage={emptyMessage}
+							IsLoadingData={isLoading}
+						/>
+						<div className='flex justify-between mt-10'>
+							<p className='text-sm text-gray-500'>
+								{context.state.totalUsers || 0} registro(s)
+							</p>
+							<Pagination
+								currentPage={context.state.currentPage}
+								limit={10}
+								total={context.state?.totalUsers}
+								callback={changePage}
 							/>
-							<div className='flex justify-between mt-10'>
-								<p className='text-sm text-gray-500'>
-									{context.totalUsers || 0} registro(s)
-								</p>
-								{context.totalUsers && (
-									<Pagination
-										currentPage={context.currentPage}
-										limit={10}
-										total={context?.totalUsers}
-										callback={changePage}
-									/>
-								)}
-							</div>
 						</div>
 					</div>
-				)}
+				</div>
 			</div>
 			<Footer />
 			<Modal

@@ -23,7 +23,6 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 		try {
 			const response = await list(urlParams)
 			context.setState({
-				...context,
 				users: response.data,
 				totalUsers: response.headers['x-total-count'],
 				currentPage: urlParams.page,
@@ -31,6 +30,7 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 		} catch (err) {
 			const error = ensureError(err)
 			console.error(error)
+			context.setState({})
 			onFailed(UserApiErrors.LIST_EXCEPTION)
 		} finally {
 			setIsLoading(false)

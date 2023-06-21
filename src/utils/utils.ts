@@ -1,5 +1,7 @@
 import { GenericObject } from '../types/utils'
+import currency from 'currency.js'
 
+// Constants
 export const columns = [
 	{
 		column: 'Nome',
@@ -19,14 +21,6 @@ export const columns = [
 	},
 ]
 
-export const currencies = ['BTC-BRL']
-
-export const addColumnsSize = (size: number) => {
-	return {
-		gridTemplateColumns: `repeat(${size}, minmax(0, 1fr)) 50px`,
-	}
-}
-
 export const actions = [
 	{
 		icon: ['fas', 'pencil'],
@@ -38,8 +32,27 @@ export const actions = [
 	},
 ]
 
+// UTILS FUNCTIONS
+export const addColumnsSize = (size: number) => {
+	return {
+		gridTemplateColumns: `repeat(${size}, minmax(0, 1fr)) 50px`,
+	}
+}
+
 export const fixedNumber = (num: number, step: number) => {
 	return Number(num.toFixed(step))
+}
+
+export const parseCurrencyToNumber = (val: string) => {
+	return currency(val, { symbol: 'R$', decimal: ',', separator: '.' }).value
+}
+
+export const parseNumberToCurrency = (val: number) => {
+	return currency(val, {
+		symbol: 'R$',
+		decimal: ',',
+		separator: '.',
+	}).format()
 }
 
 export const renameProperty = function (
@@ -74,6 +87,7 @@ export const ensureError = (value: unknown): Error => {
 	return new Error(stringified)
 }
 
+// EXCEPTIONS MESSAGES
 export enum UserApiErrors {
 	LIST_EXCEPTION = 'Não foi possível carregar a lista.',
 	NEW_USER_EXCEPTION = 'Não foi possível criar uma nova carteira.',

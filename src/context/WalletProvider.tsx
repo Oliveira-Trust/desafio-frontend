@@ -19,7 +19,7 @@ export const WalletProvider = ({ children }: IWalletProvider) => {
 	})
 
 	return (
-		<WalletContext.Provider value={{ ...state, setState, exchangeRate }}>
+		<WalletContext.Provider value={{ state, setState, exchangeRate }}>
 			{children}
 		</WalletContext.Provider>
 	)

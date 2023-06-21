@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface IProps {
@@ -44,28 +44,31 @@ const Pagination = ({
 		const pages = []
 		const pagesCut = getPagesCut()
 		for (let i = pagesCut.firstIdx; i <= pagesCut.lastIdx; i++) {
-			let isSelected =
-				i === currentPage
-					? 'btn-blue hover:bg-blue-700'
-					: 'hover:bg-zinc-100'
+			let isSelected = i === currentPage
 			pages.push(
 				<li key={i}>
 					<button
 						onClick={(e) => handleClick(i)}
+						disabled={isSelected}
 						type='button'
-						className={`border rounded-md w-7 h-7 ${isSelected}`}>
+						className={`border rounded-md w-7 h-7 ${
+							isSelected
+								? 'btn-blue hover:bg-blue-700'
+								: 'hover:bg-zinc-100'
+						}`}>
 						{i}
 					</button>
 				</li>
 			)
 		}
 
-		if (pagesCut.lastIdx === 0) {
+		if (pagesCut.lastIdx === 0 || !pagesCut.lastIdx) {
 			pages.push(
-				<li>
+				<li key={1}>
 					<button
 						type='button'
-						className={`border rounded-md w-7 h-7 btn-blue hover:bg-blue-700`}>
+						className={`border rounded-md w-7 h-7 btn-blue hover:bg-blue-700`}
+						disabled={true}>
 						1
 					</button>
 				</li>
@@ -80,7 +83,7 @@ const Pagination = ({
 				<li>
 					<button
 						onClick={(e) => handleClick(currentPage - 1)}
-						disabled={currentPage - 1 === 0}
+						disabled={currentPage - 1 <= 0}
 						type='button'
 						className={` disabled:cursor-auto disabled:text-gray-300`}>
 						<FontAwesomeIcon
