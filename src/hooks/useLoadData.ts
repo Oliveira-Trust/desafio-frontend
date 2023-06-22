@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { ISearchParams, IUrlParams } from '../types/api'
 import { useWalletContext } from '../context/WalletProvider'
 import { list, listAll } from '../apis/user'

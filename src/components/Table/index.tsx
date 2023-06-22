@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import React from 'react'
 import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
 import { addColumnsSize, isArrayEmpty } from '../../utils/utils'
 import Loading from '../Loading'
