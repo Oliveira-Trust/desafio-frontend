@@ -1,51 +1,16 @@
-import { useContext, useState } from 'react'
 import moment from 'moment-timezone'
 
-import { WalletContext } from '../context/WalletProvider'
-import { create, list, remove, update, listAll } from '../apis/user'
+import { create, remove, update } from '../apis/user'
 
-import { ISearchParams, IUrlParams } from '../types/api'
 import { IUser } from './../types/user.d'
 import { ensureError, UserApiErrors } from '../utils/utils'
 
-interface UserApiConfig {
+interface IUserApi {
 	onComplete: (status: number, message: string) => void
 	onFailed: (message: string) => void
 }
 
-export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
-	const [isLoading, setIsLoading] = useState(false)
-
-	const context = useContext(WalletContext)
-
-	const load = async (urlParams: IUrlParams) => {
-		setIsLoading(true)
-		try {
-			const response = await list(urlParams)
-			context.setState({
-				users: response.data,
-				totalUsers: response.headers['x-total-count'],
-				currentPage: urlParams.page,
-			})
-		} catch (err) {
-			const error = ensureError(err)
-			console.error(error)
-			context.setState({})
-			onFailed(UserApiErrors.LIST_EXCEPTION)
-		} finally {
-			setIsLoading(false)
-		}
-	}
-	const getAll = async (search?: ISearchParams) => {
-		try {
-			const response = await listAll(search)
-			return response.data
-		} catch (err) {
-			const error = ensureError(err)
-			console.error(error)
-			onFailed(UserApiErrors.LIST_EXCEPTION)
-		}
-	}
+export default function useUserApi({ onComplete, onFailed }: IUserApi) {
 	const newUser = async (user: IUser) => {
 		try {
 			const data_abertura = moment.tz().format()
@@ -81,11 +46,8 @@ export default function useUserApi({ onComplete, onFailed }: UserApiConfig) {
 	}
 
 	return {
-		load,
 		newUser,
 		updateUser,
 		deleteUser,
-		getAll,
-		isLoading,
 	}
 }

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { GenericObject, ITableAction, ITableColumn } from '../../types/utils'
 import { addColumnsSize, isArrayEmpty } from '../../utils/utils'
 import Loading from '../Loading'
@@ -9,7 +9,7 @@ interface IProps {
 	columns: ITableColumn[]
 	data?: GenericObject[]
 	actions?: ITableAction<GenericObject>[]
-	emptyMessage: string
+	emptyMessage?: string
 	IsLoadingData: boolean
 }
 
@@ -17,7 +17,7 @@ const Table = ({
 	columns,
 	data,
 	actions,
-	emptyMessage,
+	emptyMessage = 'Nenhum registro encontrado.',
 	IsLoadingData,
 }: IProps) => {
 	const buildMessage = () => {
@@ -74,7 +74,7 @@ const Table = ({
 				})}
 			</div>
 			{IsLoadingData ? (
-				<div className='relative grid-cols-12 h-40 my-3'>
+				<div className='relative my-3 h-40 grid-cols-12'>
 					<Loading />
 				</div>
 			) : (
@@ -84,4 +84,4 @@ const Table = ({
 	)
 }
 
-export default memo(Table)
+export default Table

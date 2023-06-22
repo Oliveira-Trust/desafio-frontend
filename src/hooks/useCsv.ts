@@ -4,12 +4,12 @@ import User from '../classes/User'
 import { CsvErrors } from '../utils/utils'
 import { IUser } from '../types/user'
 
-interface UseCsvConfig {
+interface IUseCsv {
 	getFileName: () => string
 	onFailed: (message: string) => void
 }
 
-export default function useCsvApi({ onFailed, getFileName }: UseCsvConfig) {
+export default function useCsvApi({ onFailed, getFileName }: IUseCsv) {
 	const csvParse = (data: IUser[]) => {
 		try {
 			const parser = new Parser()

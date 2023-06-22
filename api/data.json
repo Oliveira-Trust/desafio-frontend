@@ -107,7 +107,7 @@
       "endereco": "35555 Hollow Ridge Lane",
       "data_nascimento": "1986-10-16T02:23:22Z",
       "data_abertura": "2019-08-17T23:54:12Z",
-      "valor_carteira": 4.7801465,
+      "valor_carteira": 4.78014652,
       "endereco_carteira": "13RZ7SiLWmhzGt9W35Vc7WGDDcZCYiVKbr"
     },
     {
@@ -287,17 +287,6 @@
       "endereco_carteira": "1Fw6QjCtShEPdGZF64uJyc2jXEeSvt44NH"
     },
     {
-      "id": 33,
-      "nome": "Lenore",
-      "sobrenome": "Goalby",
-      "email": "lgoalbyw@wix.com",
-      "endereco": "893 Kropf Terrace",
-      "data_nascimento": "2002-07-23T08:35:25Z",
-      "data_abertura": "2018-10-15T14:23:00Z",
-      "valor_carteira": 1.5957909,
-      "endereco_carteira": "13qEgf4sqgwpbwbjs8kKgTMU3kPHWSXMGG"
-    },
-    {
       "id": 34,
       "nome": "Holmes",
       "sobrenome": "Stanwix",
@@ -395,17 +384,6 @@
       "data_abertura": "2020-07-10T05:23:31Z",
       "valor_carteira": 4.03827898,
       "endereco_carteira": "1ATP4QrocaPEQgt3eXNA4ULe4RFotuQ4mn"
-    },
-    {
-      "id": 43,
-      "nome": "Constance",
-      "sobrenome": "Folds",
-      "email": "cfolds16@cloudflare.com",
-      "endereco": "77104 Florence Avenue",
-      "data_nascimento": "1984-08-25T11:09:14Z",
-      "data_abertura": "2020-04-22T04:40:55Z",
-      "valor_carteira": 1.51093766,
-      "endereco_carteira": "15uQzTZjiptFUBYrUZEKRM5jSzCp75Gvm9"
     },
     {
       "id": 44,
@@ -507,22 +485,6 @@
       "id": 53
     },
     {
-      "nome": "xcxf",
-      "sobrenome": "xxxx",
-      "email": "shbdhbdh@gmail.com.uk",
-      "valor_carteira": 0.04311893,
-      "data_abertura": "2023-06-19T23:38:40Z",
-      "id": 57
-    },
-    {
-      "nome": "a",
-      "sobrenome": "asdasfas",
-      "email": "a@yahoo.uk",
-      "valor_carteira": 0.00003886,
-      "data_abertura": "2023-06-19T23:40:23Z",
-      "id": 58
-    },
-    {
       "nome": "Guilherme",
       "sobrenome": "Teste",
       "email": "gui@teste.com",
@@ -547,14 +509,6 @@
       "id": 61
     },
     {
-      "nome": "guilherme",
-      "sobrenome": "teste",
-      "email": "t@t.com",
-      "valor_carteira": null,
-      "data_abertura": "2023-06-21T16:46:16Z",
-      "id": 62
-    },
-    {
       "nome": "Teste",
       "sobrenome": "Teste",
       "email": "Teste@tes.com",
@@ -571,28 +525,20 @@
       "id": 64
     },
     {
-      "nome": "adasdas",
-      "sobrenome": "ewqewqewq",
-      "email": "r@r.com",
-      "valor_carteira": 0.00022503,
-      "data_abertura": "2023-06-21T19:57:07Z",
+      "nome": "German",
+      "email": "fazoL@gmail.com",
+      "sobrenome": "Cano",
+      "valor_carteira": 0.00009743,
+      "data_abertura": "2023-06-22T07:16:54Z",
       "id": 65
     },
     {
       "nome": "Teste",
-      "email": "testeFinal@dasda.com.br",
-      "sobrenome": "Final",
-      "valor_carteira": 0.24473813,
-      "data_abertura": "2023-06-21T21:07:42Z",
+      "email": "teste@teste.uk",
+      "sobrenome": "Teste ",
+      "valor_carteira": 0.00162321,
+      "data_abertura": "2023-06-22T07:17:59Z",
       "id": 66
-    },
-    {
-      "nome": "Teste",
-      "email": "testefinal2@gmail.com",
-      "sobrenome": "Final II",
-      "valor_carteira": 310778.57803259,
-      "data_abertura": "2023-06-21T21:08:43Z",
-      "id": 67
     }
   ]
 }

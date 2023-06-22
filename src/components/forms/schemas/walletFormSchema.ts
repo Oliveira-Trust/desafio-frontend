@@ -5,11 +5,14 @@ export const walletFormSchema = z.object({
 		.string()
 		.nonempty('Este campo precisa ser preenchido.')
 		.trim()
-		.regex(/^[A-Za-z]+$/i, 'Insira um nome valido.'),
+		.regex(/^[a-záàâãéèêíïóôõöúçñ ]+$/i, 'Insira um nome valido.'),
 	sobrenome: z
 		.string()
 		.nonempty('Este campo precisa ser preenchido.')
-		.regex(/^[A-Za-z][A-Za-z.\s]+$/i, 'Insira um sobrenome valido.'),
+		.regex(
+			/^[a-záàâãéèêíïóôõöúçñ][a-záàâãéèêíïóôõöúçñ.\s]+$/i,
+			'Insira um sobrenome valido.'
+		),
 	email: z
 		.string()
 		.nonempty('Este campo precisa ser preenchido.')

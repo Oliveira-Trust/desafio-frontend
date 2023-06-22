@@ -1,13 +1,18 @@
+import { IUrlParams } from './api'
+
 export interface IState {
 	users?: IUser[]
 	totalUsers?: number
 	currentPage?: number
+	urlParams: IUrlParams
 }
 
 export interface IWalletContext {
 	state: IState
 	exchangeRate: IExchangeRate
+	isLoading: boolean
 	setState: (state: IState) => void
+	setIsLoading: (isLoading: boolean) => void
 }
 
 export interface IToastContext {
@@ -21,10 +26,17 @@ export interface IExchangeRate {
 	value: number
 }
 
-export interface IWalletProvider {
+export interface IBaseProvider {
 	children: JSX.Element
 }
 
-export interface IToastProvider {
-	children: JSX.Element
+export interface IModalContext {
+	setContent: (content: IModalContent) => void
+	openModal: () => void
+	closeModal: () => void
+}
+
+export interface IModalContent {
+	content?: React.ReactNode
+	title?: string
 }

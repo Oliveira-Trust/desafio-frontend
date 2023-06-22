@@ -42,19 +42,12 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 				? parseNumberToCurrency(
 						fixedNumber(valor_carteira * exchangeRate.value, 2)
 				  ).toString()
-				: '',
+				: 'R$ 0,00',
 		},
 	})
 
 	const currencyValue = watch('value')
-
-	useEffect(() => {
-		if (currencyValue && exchangeRate.value) {
-			setBtcValue(
-				parseCurrencyToNumber(currencyValue) / exchangeRate.value
-			)
-		}
-	}, [currencyValue, exchangeRate])
+	console.log(currencyValue)
 
 	const OnValid = (formData: WalletFormData) => {
 		const { nome, email, sobrenome } = formData
@@ -67,11 +60,19 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 		})
 	}
 
+	useEffect(() => {
+		if (currencyValue && exchangeRate.value) {
+			setBtcValue(
+				parseCurrencyToNumber(currencyValue) / exchangeRate.value
+			)
+		}
+	}, [currencyValue, exchangeRate])
+
 	return (
 		<form
 			className='flex flex-col gap-5 p-5'
 			onSubmit={handleSubmit(OnValid)}>
-			<div className='flex flex-col gap-3 items-stretch'>
+			<div className='flex flex-col items-stretch gap-3'>
 				<InnerLabelInput
 					register={register}
 					id='nome'
@@ -113,16 +114,16 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 						)}
 					/>
 					<div className='w-5/12 place-self-center justify-self-start'>
-						<p className='text-xl font-bold font-sans truncate'>
+						<p className='truncate font-sans text-xl font-bold'>
 							{`BTC ${btcValue.toFixed(8)}`}
 						</p>
 					</div>
 				</div>
 			</div>
-			<div className='flex justify-end items-center gap-3'>
+			<div className='flex items-center justify-end gap-3'>
 				<button
 					type='button'
-					className='text-blue-500 hover:text-blue-500 cursor-pointer'
+					className='cursor-pointer text-blue-500 hover:text-blue-500'
 					onClick={() => closeModal()}>
 					Cancelar
 				</button>

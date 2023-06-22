@@ -1,21 +1,36 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import InnerLabelInput from '../forms/InnerLabelInput'
 import { useForm } from 'react-hook-form'
 import { GenericObject } from '../../types/utils'
+import { useWalletContext } from '../../context/WalletProvider'
+import { renameProperty } from '../../utils/utils'
+import useLoadData from '../../hooks/useLoadData'
+import { useToastContext } from '../../context/ToastProvider'
 
-interface Props {
-	onSubmit: (search: GenericObject) => void
-}
+const SearchBar = () => {
+	const { state } = useWalletContext()
+	const { fail } = useToastContext()
+	const { load } = useLoadData({ onFailed: fail })
 
-const SearchBar = ({ onSubmit }: Props) => {
+	const SearchData = useCallback(
+		(search: GenericObject) => {
+			Object.keys(search).forEach((key) => {
+				renameProperty(key, key.replace('_search', ''), search)
+			})
+
+			load({ ...state.urlParams, page: 1, search })
+		},
+		[load, state.urlParams]
+	)
+
 	const { register, handleSubmit } = useForm()
 
 	return (
-		<div className='bg-white shadow-md rounded px-8 pt-6 pb-6'>
+		<div className='rounded bg-white px-8 pb-6 pt-6 shadow-md'>
 			<form
 				className='flex justify-between gap-2'
-				onSubmit={handleSubmit(onSubmit)}>
+				onSubmit={handleSubmit(SearchData)}>
 				<InnerLabelInput
 					register={register}
 					id='nome_search'
@@ -32,7 +47,7 @@ const SearchBar = ({ onSubmit }: Props) => {
 					register={register}
 					id='email_search'
 					label='E-mail'
-					props={{ type: 'email', placeholder: 'E-mail' }}
+					props={{ placeholder: 'E-mail' }}
 				/>
 				<button
 					type='submit'

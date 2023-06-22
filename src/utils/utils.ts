@@ -2,6 +2,7 @@ import { GenericObject } from '../types/utils'
 import currency from 'currency.js'
 
 // Constants
+export const successStatus = [200, 201]
 export const columns = [
 	{
 		column: 'Nome',

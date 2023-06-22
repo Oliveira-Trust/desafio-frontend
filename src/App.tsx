@@ -7,12 +7,15 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import Main from './pages/Main'
 import { WalletProvider } from './context/WalletProvider'
 import { ToastProvider } from './context/ToastProvider'
+import { ModalProvider } from './context/ModalProvider'
 
 export default function App() {
 	return (
 		<ToastProvider>
 			<WalletProvider>
-				<Main />
+				<ModalProvider>
+					<Main />
+				</ModalProvider>
 			</WalletProvider>
 		</ToastProvider>
 	)

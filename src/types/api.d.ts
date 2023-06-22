@@ -1,7 +1,7 @@
 import { IUrlParams } from './api.d'
 export interface IUrlParams {
 	page: number
-	limit?: number
+	limit: number
 	search?: ISearchParams
 }
 
