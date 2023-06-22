@@ -1,7 +1,7 @@
 import { Parser } from '@json2csv/plainjs'
 
 import User from '../classes/User'
-import { CsvErrors } from '../utils/utils'
+import { CsvErrors,isArrayEmpty } from '../utils/utils'
 import { IUser } from '../types/user'
 
 interface IUseCsv {
@@ -11,6 +11,7 @@ interface IUseCsv {
 
 export default function useCsvApi({ onFailed, getFileName }: IUseCsv) {
 	const csvParse = (data: IUser[]) => {
+		if(isArrayEmpty(data)) return ''
 		try {
 			const parser = new Parser()
 			const dto = data.map((obj) => new User(obj).csvView())
@@ -23,7 +24,7 @@ export default function useCsvApi({ onFailed, getFileName }: IUseCsv) {
 
 	const csvDownload = (data: IUser[]) => {
 		try {
-			const csv = csvParse(data) || ''
+			const csv = csvParse(data)||''
 			const url = URL.createObjectURL(
 				new Blob([csv], { type: 'txt/csv' })
 			)

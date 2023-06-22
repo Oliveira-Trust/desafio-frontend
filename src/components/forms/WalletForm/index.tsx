@@ -47,7 +47,6 @@ const WalletForm = ({ data, onSubmit, closeModal }: IProps) => {
 	})
 
 	const currencyValue = watch('value')
-	console.log(currencyValue)
 
 	const OnValid = (formData: WalletFormData) => {
 		const { nome, email, sobrenome } = formData
