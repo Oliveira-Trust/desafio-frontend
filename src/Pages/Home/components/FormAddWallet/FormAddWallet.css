@@ -1,0 +1,60 @@
+.formValidation {
+  display: flex;
+  flex-direction: column;
+}
+
+.bodyModal input {
+  margin-bottom: 10px;
+  height: 42px;
+  border-radius: 4px;
+  border: 1px solid #ebebeb;
+  padding: 5px;
+}
+
+.bodyModal input:hover {
+  border: 1px solid #007bff;
+}
+
+.bodyModal input:focus {
+  border: 1px solid #007bff;
+}
+
+.bodyModal input:focus-visible {
+  outline: 1px solid #007bff;
+}
+
+.bodyModal input::placeholder {
+  font-style: italic;
+}
+
+.valuePurchase {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}
+
+.textBTC {
+  font-weight: 700;
+  align-self: center;
+}
+
+.errorMessage {
+  font-style: italic;
+  font-size: 13px;
+  color: red;
+  margin: 0 0 10px 0;
+  text-align: start;
+}
+
+@media screen and (max-width: 400px) {
+  .valuePurchase {
+    flex-direction: column;
+  }
+
+  .textBTC {
+    display: flex;
+    align-items: normal;
+    width: 100%;
+  }
+}

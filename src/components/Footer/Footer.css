@@ -1,0 +1,10 @@
+.footerContainer {
+  background: #f5f6f8;
+  padding: 60px 0;
+  margin-top: 100px;
+}
+
+.footerText {
+  font-weight: bold;
+  color: #bdbebf;
+}
