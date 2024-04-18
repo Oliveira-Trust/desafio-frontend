@@ -1,9 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header';
+import Wallet from './components/Wallet';
+import Filter from './components/Filter';
+import Result from './components/Result';
 
 function App() {
   return (
     <>
-      <h1>Base react</h1>
+      <Header />
+      <Wallet />
+      <Filter />
+      <Result />
+
+      <div>
+        Fintools | Desafio Front-end
+      </div>
     </>
   );
 }
