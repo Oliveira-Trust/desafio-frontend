@@ -3,3 +3,9 @@ export const fetchUserData = async (nome, sobrenome, email) => {
   const data = await response.json();
   return data;
 };
+
+export const fetchBTCToBRL = async () => {
+  const response = await fetch('https://economia.awesomeapi.com.br/json/last/BTC-BRL');
+  const data = await response.json();
+  return data;
+}
