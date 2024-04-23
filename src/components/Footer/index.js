@@ -1,8 +1,8 @@
 const Footer = () => {
   return(
-    <div className='d-flex justify-content-center my-5'>
+    <small className='d-flex justify-content-center my-5 text-secondary'>
       Fintools | Desafio Front-end
-    </div>
+    </small>
   );
 }
 
