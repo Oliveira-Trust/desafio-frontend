@@ -7,7 +7,7 @@ import { setModalWallet } from "../../redux/modalSlice";
 
 const Wallet = () => {
   const dispatch = useDispatch();
-  const handleShow = () => dispatch(setModalWallet(true));
+  const handleShow = () => dispatch(setModalWallet({ opened: true, id: '' }));
 
   return (
     <Container>

@@ -1,22 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Col, Row, Pagination } from 'react-bootstrap';
 import { useSelector } from "react-redux";
 
 //TODO: Mudar o nome para ResultFooter
-const ResultPagination = () => {
+const ResultPagination = ({ totalItems, itemsPerPage, onPageChange }) => {
 
   const total = useSelector((state) => Array.isArray(state.wallet.wallets) ? state.wallet.wallets.length : 0);
-  const active = 1;
-  const items = [];
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>,
-    );
-  }
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    onPageChange(page);
+  };
   
   return (
     <>
@@ -27,9 +24,15 @@ const ResultPagination = () => {
         </Col>
         <Col className="d-flex justify-content-end">
           <Pagination>
-            <Pagination.Prev />
-            { items }
-            <Pagination.Next />
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+              <Pagination.Item 
+                key={page} 
+                active={page === currentPage} 
+                onClick={() => handlePageChange(page)}
+              >
+                {page}
+              </Pagination.Item>
+            ))}
           </Pagination>
         </Col>
       </Row>

@@ -5,30 +5,43 @@ import { setModalDelete } from "../../redux/modalSlice";
 
 import { Button, Modal } from 'react-bootstrap';
 
+import { fetchDeleteWallet } from '../../services/api';
+
 const ModalDelete = () => {
   const dispatch = useDispatch();
 
-  const show = useSelector(state => state.modal.modalDelete);
+  const show = useSelector(state => state.modal.modalDelete.opened);
+  const idWallet = useSelector(state => state.modal.modalDelete.id);
   
+  const handleDelete = () => {
+    fetchDeleteWallet(idWallet);
+    handleClose();
+
+  }
   const handleClose = () => dispatch(setModalDelete(false));
   
     return (
       <>
         <Modal centered show={show} onHide={handleClose}>
-          <Modal.Header>
-            <Modal.Title>Excluir Carteira</Modal.Title>
-          </Modal.Header>
           <Modal.Body>
-            
-          </Modal.Body>
-          <Modal.Footer>
+
+            <h3>
+              Excluir Carteira
+            </h3>
+            <p>
+              Tem certeza que deseja excluir essa Carteira?
+              Esta ação não poderá ser desfeita.
+            </p>
+
+            <Button onClick={handleDelete} variant="danger">
+              Excluir
+            </Button>
+
             <Button variant="light bg-white" onClick={handleClose}>
-              Cancelar
+              cancelar
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Adicionar
-            </Button>
-          </Modal.Footer>
+
+          </Modal.Body>
         </Modal>
       </>
     );

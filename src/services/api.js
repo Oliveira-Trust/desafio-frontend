@@ -9,3 +9,39 @@ export const fetchBTCToBRL = async () => {
   const data = await response.json();
   return data;
 }
+
+export const fetchNewWallet = async (wallet) => {
+  const response = await fetch('http://localhost:3004/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(wallet)
+  });
+  const data = await response.json();
+  return data;
+}
+
+export const fetchEditWallet = async (id, wallet) => {
+  const response = await fetch(`http://localhost:3004/users/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(wallet)
+  });
+  const data = await response.json();
+  return data;
+}
+
+export const fetchDeleteWallet = async (id) => {
+  const response = await fetch(`http://localhost:3004/users/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const data = await response.json();
+  return data;
+}

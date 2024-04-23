@@ -3,15 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const modalSlice = createSlice({
   name: 'modal',
   initialState: {
-    modalWallet: false,
-    modalDelete: false
+    modalWallet: {
+      opened: false, id: ''
+    },
+    modalDelete: {
+      opened: false, id: ''
+    }
   },
   reducers: {
     setModalWallet: (state, action) => {
-      state.modalWallet = action.payload;
+      state.modalWallet.opened = action.payload.opened;
+      state.modalWallet.id = action.payload.id;
     },
     setModalDelete: (state, action) => {
-      state.modalDelete = action.payload
+      state.modalDelete.opened = action.payload.opened;
+      state.modalDelete.id = action.payload.id;
     }
   },
 });
