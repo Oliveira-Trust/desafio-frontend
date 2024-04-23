@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-bootstrap-icons": "^1.11.4",
+    "react-currency-input-field": "^3.8.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-redux": "^9.1.1",
