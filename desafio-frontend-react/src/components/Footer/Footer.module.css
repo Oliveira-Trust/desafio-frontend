@@ -1,0 +1,11 @@
+.footerContainer {
+  background: var(--gray-100);
+  padding: 60px 0;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.footerText {
+  font-weight: bold;
+  color: var(--gray-200);
+}
