@@ -1,0 +1,32 @@
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(0, 0, 0, 0.7);
+  z-index: 99;
+  color: var(--black-500);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  background: var(--white);
+  border-radius: 8px;
+  max-width: 650px;
+  min-height: 480px;
+  padding: 25px 45px;
+  align-content: center;
+}
+
+.closeModal {
+  float: inline-end;
+  background: transparent;
+  border: 0;
+  padding: 1rem;
+  cursor: pointer;
+}
