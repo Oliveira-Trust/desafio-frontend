@@ -1,0 +1,33 @@
+:root {
+  --white: #fff;
+
+  --gray-50: #ebebeb;
+  --gray-100: #f5f6f8;
+  --gray-200: #bdbebf;
+  --gray-300: #858282;
+
+  --blue-500: #007bff;
+
+  --black-100: #2c3e50;
+  --black-500: #000;
+
+  --red-500: #e22849;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  color: var(--black-100);
+}
