@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 
-import logo from "./assets/img/logo-ot.png";
-import userIcon from "./assets/svg/user-icon.svg";
+import logo from "../../assets/img/logo-ot.png";
+import userIcon from "../../assets/svg/user-icon.svg";
 
 import "primeicons/primeicons.css";
 
