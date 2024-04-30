@@ -1,0 +1,111 @@
+.containerWallet {
+  padding: 15px;
+  background: var(--white);
+  overflow-x: scroll;
+}
+
+.walletHeader {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.walletTextHeader {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.tableButton {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+
+.buttonPencil {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.buttonTrash {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.pencil {
+  font-size: 1rem;
+}
+
+.trash {
+  font-size: 1rem;
+}
+
+table.tableWallet {
+  background-color: #d5d5d5;
+  width: 100%;
+  height: 50px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table.tableWallet td,
+table.tableWallet th {
+  padding: 30px 2px;
+}
+
+table.tableWallet tbody td {
+  font-size: 13px;
+}
+
+table.tableWallet tr:nth-child(odd) {
+  background: var(--white);
+}
+
+table.tableWallet tr {
+  border-left: 3px solid var(--white);
+}
+
+table.tableWallet tr:hover {
+  background: #fafdff;
+  border-left: 3px solid #43b2f5;
+}
+
+table.tableWallet thead {
+  background: var(--white);
+  border-bottom: 2px solid #444444;
+}
+
+table.tableWallet thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--gray-50);
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.pagination button {
+  cursor: pointer;
+  color: var(--gray-300);
+  background: transparent;
+  border: 0;
+  padding: 0 20px;
+}
+
+.register {
+  color: var(--gray-300);
+}
+
+@media screen and (max-width: 1025px) {
+  .pagination {
+    border: 0;
+  }
+}
