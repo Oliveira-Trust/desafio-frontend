@@ -1,0 +1,26 @@
+.homeContainer {
+  background: var(--gray-100);
+}
+
+.home {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.home h1 {
+  margin: 0;
+}
+
+.buttonModal {
+  width: 100%;
+  max-width: 150px;
+  height: 30px;
+  border-radius: 4px;
+  border: 0;
+  background: var(--blue-500);
+  color: var(--white);
+  cursor: pointer;
+}
