@@ -1,0 +1,82 @@
+.formValidation {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  height: 42px;
+  border-radius: 4px;
+  border: 1px solid var(--gray-50);
+  padding: 5px;
+}
+
+input:hover {
+  border: 1px solid var(--blue-500);
+}
+
+input:focus {
+  border: 1px solid var(--blue-500);
+}
+
+input:focus-visible {
+  outline: 1px solid var(--blue-500);
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+.valorDeCompra {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}
+
+.textValidation {
+  margin: 50px 0;
+  width: 100%;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--gray-50);
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.textBTC {
+  font-weight: 700;
+  align-self: center;
+}
+
+.errorMessage {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--red-500);
+  margin: 0 0 10px 0;
+  text-align: start;
+}
+
+.buttonFinish {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.buttonCancel {
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--blue-500);
+  background: transparent;
+  border: 0;
+  padding: 0 20px;
+}
+
+.buttonToAdd {
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--blue-500);
+  border-radius: 4px;
+  border: 0;
+  padding: 10px 30px;
+}
