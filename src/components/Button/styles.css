@@ -1,5 +1,5 @@
 button {
-  padding: 0.6rem 2rem;
+  padding: 0.8rem 2rem;
   border: none;
   border-radius: 0.3rem;
   font-weight: bold;
@@ -7,12 +7,18 @@ button {
 }
 
 .primary {
-  background: #007BFF;
+  background: #007bff;
+  color: #fff;
+}
+
+.primary:hover {
+  filter: brightness(120%);
+  box-shadow: 0 8px 10px #007bff1c;
   color: #fff;
 }
 
 .outlined {
   background: transparent;
-  color: #007BFF;
-  border: 1px solid #007BFF;
+  color: #007bff;
+  border: 1px solid #007bff;
 }
