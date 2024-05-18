@@ -7,10 +7,15 @@
 
 body {
   background-color: #F5F6F8;
+  color: #333;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #333;
+}
+
+.container {
+  width: 70%;
+  margin: 2.5rem auto;
 }
