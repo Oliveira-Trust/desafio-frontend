@@ -1,0 +1,51 @@
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 10% 1.5rem 10%;
+  background-color: #fff;
+}
+
+.logo {
+  width: 12rem;
+}
+
+.user {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-svg {
+  font-size: 1rem;
+  color: #fff;
+  background-color: #333;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.user-name {
+  margin-right: 1.5rem;
+}
+
+.exit-svg {
+  font-size: 0.9rem;
+  font-weight: bolder;
+  color: #a1a1a1;
+}
+
+/* Visualização para mobile */
+@media (max-width: 40rem) {
+    .user-name {
+      display: none;
+    }
+
+    .user {
+      gap: 1rem;
+    }
+
+    .logo {
+      width: 9rem;
+    }
+  }
