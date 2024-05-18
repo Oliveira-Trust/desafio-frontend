@@ -18,4 +18,7 @@ body {
 .container {
   width: 70%;
   margin: 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
