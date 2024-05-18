@@ -1,0 +1,18 @@
+button {
+  padding: 0.6rem 2rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary {
+  background: #007BFF;
+  color: #fff;
+}
+
+.outlined {
+  background: transparent;
+  color: #007BFF;
+  border: 1px solid #007BFF;
+}
