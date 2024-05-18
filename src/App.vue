@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <!-- Header da página -->
+    <!-- Cabecalho da página -->
     <Header />
 
+    <!-- Cabeçalho da tabela, formulário de busca e tabela com paginação -->
     <div class="container">
-      <!-- Título e botão de adicionar -->
       <CabecalhoTabela />
     </div>
   </div>
