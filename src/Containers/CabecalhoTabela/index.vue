@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <Titulo :titulo="'BTC Carteiras'" />
-    <Button :text="Botão" />
+  <div class="cabecalho">
+    <Titulo :text="'BTC Carteiras'" :level="'h1'"/>
+    <Button :text="'Adicionar carteira'" :type="'primary'" />
   </div>
 </template>
 
@@ -18,4 +18,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+@import './styles.css';
+</style>
