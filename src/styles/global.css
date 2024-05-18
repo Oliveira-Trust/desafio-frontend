@@ -8,3 +8,9 @@
 body {
   background-color: #F5F6F8;
 }
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+}
