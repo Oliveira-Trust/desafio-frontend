@@ -7,6 +7,7 @@
     <div class="container">
       <CabecalhoTabela />
       <FormularioFiltro />
+      <Tabela />
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@
 <script>
 import 'primeicons/primeicons.css'
 import Header from './components/Header/index.vue'
+import Tabela from './containers/Tabela/index.vue'
 import CabecalhoTabela from './containers/CabecalhoTabela/index.vue'
 import FormularioFiltro from './containers/FormularioFiltro/index.vue'
 
@@ -23,6 +25,7 @@ export default {
     Header,
     CabecalhoTabela,
     FormularioFiltro,
+    Tabela,
   },
 }
 </script>
