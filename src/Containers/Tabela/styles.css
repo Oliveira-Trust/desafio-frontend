@@ -29,7 +29,7 @@ tbody td {
 }
 
 tbody tr:nth-child(2n) {
-  background: #eee;
+  background: #F5F6F8;
 }
 
 .pagination-box {
