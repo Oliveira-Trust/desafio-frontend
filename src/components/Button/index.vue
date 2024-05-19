@@ -1,5 +1,5 @@
 <template>
-  <button :class="type">{{ text }}</button>
+  <button :class="color">{{ text }}</button>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
       type: String,
       required: true,
     },
-    type: {
+    color: {
       type: String,
       default: 'primary',
       validator: (value) => ['primary', 'outlined'].includes(value),
