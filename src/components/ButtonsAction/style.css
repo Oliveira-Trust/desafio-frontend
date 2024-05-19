@@ -1,0 +1,15 @@
+.buttons-action {
+  display: flex;
+  justify-content: end;
+}
+
+.buttons-action button {
+  padding: 0.5rem 0.5rem;
+  background-color: transparent;
+  color: #444;
+}
+
+.buttons-action button:hover {
+  border-radius: 50%;
+  background-color: #eee;
+}
