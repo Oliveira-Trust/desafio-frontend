@@ -4,6 +4,9 @@ button {
   border-radius: 0.3rem;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .primary {
