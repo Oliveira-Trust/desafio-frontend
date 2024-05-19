@@ -1,15 +1,13 @@
 <template>
-  <button :class="color">{{ text }}</button>
+  <button :class="color">
+  <slot></slot>
+  </button>
 </template>
 
 <script>
 export default {
   name: 'Button',
   props: {
-    text: {
-      type: String,
-      required: true,
-    },
     color: {
       type: String,
       default: 'primary',
