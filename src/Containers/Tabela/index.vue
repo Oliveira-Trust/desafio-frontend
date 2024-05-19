@@ -21,12 +21,18 @@
           <td>a</td>
           <td>a</td>
           <td>a</td>
+          <td style="text-align: right;">
+            <ButtonsAction />
+          </td>
         </tr>
         <tr>
           <td>a</td>
           <td>a</td>
           <td>a</td>
           <td>a</td>
+          <td style="text-align: right;">
+            <ButtonsAction />
+          </td>
         </tr>
       </tbody>
     </table>
@@ -42,6 +48,7 @@ import BoxContent from '../../components/BoxContent/index.vue'
 import Title from '../../components/Title/index.vue'
 import Button from '../../components/Button/index.vue'
 import Pagination from '../../components/Pagination/index.vue'
+import ButtonsAction from '../../components/ButtonsAction/index.vue'
 
 export default {
   name: 'Tabela',
@@ -50,6 +57,7 @@ export default {
     Title,
     Button,
     Pagination,
+    ButtonsAction,
   },
 }
 </script>
