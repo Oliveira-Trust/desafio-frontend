@@ -29,11 +29,11 @@
           <td>a</td>
         </tr>
       </tbody>
-      <tfoot>
-        <span class="registros">30 registros</span>
-        <Pagination />
-      </tfoot>
     </table>
+    <div class="pagination-box">
+      <span class="registros">30 registros</span>
+      <Pagination />
+    </div>
   </BoxContent>
 </template>
 
