@@ -25,3 +25,7 @@ button {
   color: #007bff;
   border: 1px solid #007bff;
 }
+
+.outlined:hover {
+  filter: brightness(130%);
+}
