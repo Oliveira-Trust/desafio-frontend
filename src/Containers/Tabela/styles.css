@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+table {
+  display: table;
+  border-collapse: collapse;
+  border-color: gray;
+  width: 100%;
+}
+
+tbody tr,
+thead th,
+tfoot {
+  line-height: 3rem;
+}
+
+thead th {
+  border-bottom: 2px solid rgb(204, 201, 201);
+  text-align: left;
+}
+
+tbody td {
+  padding-left: 0.5rem;
+}
+
+tbody tr:nth-child(2n) {
+  background: #eee;
+}
+
+tfoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
