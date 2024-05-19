@@ -1,7 +1,7 @@
 <template>
   <div class="cabecalho">
     <Titulo :text="'BTC Carteiras'" :level="'h1'"/>
-    <Button :text="'Adicionar carteira'" :color="'primary'" />
+    <Button :color="'primary'">Adicionar carteira</Button>
   </div>
 </template>
 
