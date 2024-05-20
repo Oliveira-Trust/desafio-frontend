@@ -7,10 +7,11 @@
 
 table {
   display: table;
-  table-layout: fixed;
+  table-layout: auto;
   border-collapse: collapse;
   border-color: gray;
   width: 100%;
+  font-size: 0.7rem;
 }
 
 tbody tr,
@@ -43,4 +44,20 @@ tbody tr:nth-child(2n) {
 .pagination-box .registros {
   font-size: 0.8rem;
   color: #aaa;
+}
+
+.buttons-action {
+  display: flex;
+  justify-content: end;
+}
+
+.buttons-action button {
+  padding: 0.5rem 0.5rem;
+  background-color: transparent;
+  color: #444;
+}
+
+.buttons-action button:hover {
+  border-radius: 50%;
+  background-color: #eee;
 }
