@@ -14,7 +14,7 @@
     "core-js": "^3.6.5",
     "primeicons": "^7.0.0",
     "vue": "^2.6.11",
-    "vuex": "^0.8.2"
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",
