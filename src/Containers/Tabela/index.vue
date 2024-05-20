@@ -16,39 +16,33 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>a</td>
-          <td>a</td>
-          <td>a</td>
-          <td>a</td>
+        <tr v-for="user in allUsers" :key="user.id">
+          <td>{{ user.nome }}</td>
+          <td>{{ user.sobrenome }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.valor_carteira }}</td>
           <td style="text-align: right;">
-            <ButtonsAction />
-          </td>
-        </tr>
-        <tr>
-          <td>a</td>
-          <td>a</td>
-          <td>a</td>
-          <td>a</td>
-          <td style="text-align: right;">
-            <ButtonsAction />
+            <div class="buttons-action">
+              <button type="button" @click="editUser(user)"><i class="pi pi-pencil"></i></button>
+              <button type="button" @click="deleteUser(user.id)"><i class="pi pi-trash"></i></button>
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
     <div class="pagination-box">
-      <span class="registros">30 registros</span>
+      <span class="registros">{{ allUsers.length }} registros</span>
       <Pagination />
     </div>
   </BoxContent>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import BoxContent from '../../components/BoxContent/index.vue'
 import Title from '../../components/Title/index.vue'
 import Button from '../../components/Button/index.vue'
 import Pagination from '../../components/Pagination/index.vue'
-import ButtonsAction from '../../components/ButtonsAction/index.vue'
 
 export default {
   name: 'Tabela',
@@ -57,8 +51,19 @@ export default {
     Title,
     Button,
     Pagination,
-    ButtonsAction,
   },
+  computed: {
+    ...mapGetters('users', ['allUsers'])
+  },
+  methods: {
+    ...mapActions('users', ['fetchUsers', 'deleteUser', 'updateUser']),
+    editUser(user) {
+      this.updateUser(user)
+    }
+  },
+  created() {
+    this.fetchUsers()
+  }
 }
 </script>
 
