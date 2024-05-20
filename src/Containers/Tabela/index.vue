@@ -23,7 +23,7 @@
           <td>{{ user.valor_carteira }}</td>
           <td style="text-align: right;">
             <div class="buttons-action">
-              <button type="button" @click="editUser(user)"><i class="pi pi-pencil"></i></button>
+              <button type="button" @click="openEditModal(user)"><i class="pi pi-pencil"></i></button>
               <button type="button" @click="deleteUser(user.id)"><i class="pi pi-trash"></i></button>
             </div>
           </td>
@@ -34,6 +34,8 @@
       <span class="registros">{{ allUsers.length }} registros</span>
       <Pagination />
     </div>
+
+    <EditModal :visible="isEditModalVisible"/>
   </BoxContent>
 </template>
 
@@ -43,6 +45,7 @@ import BoxContent from '../../components/BoxContent/index.vue'
 import Title from '../../components/Title/index.vue'
 import Button from '../../components/Button/index.vue'
 import Pagination from '../../components/Pagination/index.vue'
+import EditModal from '../EditModal/index.vue'
 
 export default {
   name: 'Tabela',
@@ -51,18 +54,25 @@ export default {
     Title,
     Button,
     Pagination,
+    EditModal
   },
   computed: {
     ...mapGetters('users', ['allUsers'])
   },
   methods: {
     ...mapActions('users', ['fetchUsers', 'deleteUser', 'updateUser']),
-    editUser(user) {
-      this.updateUser(user)
+    openEditModal(user) {
+      this.selectedUser = {...user}
+      this.isEditModalVisible = true
     }
   },
   created() {
     this.fetchUsers()
+  },
+  data() {
+    return {
+      isEditModalVisible: false,
+    }
   }
 }
 </script>
