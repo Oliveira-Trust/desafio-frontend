@@ -1,5 +1,5 @@
-import axios from 'axios'
 import Vue from 'vue'
+import axios from 'axios'
 
 const state = {
   users: [],
@@ -40,6 +40,7 @@ const mutations = {
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,
