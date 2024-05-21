@@ -14,6 +14,14 @@ const actions = {
     const response = await axios.get('http://localhost:3004/users')
     commit('setUsers', response.data)
   },
+  async createUser({ commit }, newUser) {
+    try {
+      const response = await axios.post('http://localhost:3004/users', newUser)
+      commit('addUser', response.data)
+    } catch (error) {
+      console.error('Erro ao criar usuário:', error)
+    }
+  },
   async deleteUser({ commit }, id) {
     await axios.delete(`http://localhost:3004/users/${id}`)
     commit('removeUser', id)
@@ -29,6 +37,9 @@ const actions = {
 
 const mutations = {
   setUsers: (state, users) => (state.users = users),
+  addUser: (state, newUser) => {
+    state.users.push(newUser)
+  },
   removeUser: (state, id) =>
     (state.users = state.users.filter((user) => user.id !== id)),
   editUser: (state, updatedUser) => {
