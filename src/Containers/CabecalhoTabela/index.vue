@@ -2,7 +2,7 @@
   <div class="cabecalho">
     <Title :text="'BTC Carteiras'" :level="'h1'" />
     <Button :color="'primary'" type="button" @click="openAddCarteiraModal">Adicionar carteira</Button>
-    <AddCarteiraModal :visible="isAddCarteiraModalVisible" @close="isAddCarteiraModalVisible = false" @add="addCarteira" />
+    <AddCarteiraModal :visible="isAddCarteiraModalVisible" @close="isAddCarteiraModalVisible = false" />
   </div>
 </template>
 
@@ -21,10 +21,6 @@ export default {
   methods: {
     openAddCarteiraModal() {
       this.isAddCarteiraModalVisible = true
-    },
-    addCarteira(newCarteira) {
-      console.log('Nova carteira:', newCarteira)
-      this.isAddCarteiraModalVisible = false
     },
   },
   data() {
