@@ -9,7 +9,7 @@ export default {
     type: {
       type: String,
       default: 'text',
-      validate: (value) => ['text', 'email'].includes(value),
+      validate: (value) => ['text', 'email', 'number'].includes(value),
       required: true,
     },
     placeholder: {
@@ -17,8 +17,6 @@ export default {
       default: '',
     },
     value: {
-      type: String,
-      default: '',
       required: true
     },
   },
