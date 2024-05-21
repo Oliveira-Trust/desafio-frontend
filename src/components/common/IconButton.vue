@@ -20,33 +20,16 @@ const onClick = () => {
 </script>
 
 <template>
-  <div class="icon-button" @click="onClick">
+  <div
+    class="icon-button relative h-6 w-6 flex justify-center items-center py-1 px-0.5 rounded-full cursor-pointer hover:bg-gray-200"
+    @click="onClick"
+  >
     <font-awesome-icon :icon="['fas', name]" />
     <span v-if="tooltipText" class="tooltip-text">{{ tooltipText }}</span>
   </div>
 </template>
 
 <style scoped>
-.icon-button {
-  position: relative;
-  height: 24px;
-  width: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3px 2px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.icon-button:hover {
-  background-color: #dfdfdf;
-}
-
-.icon {
-  fill: #656565;
-}
-
 .icon-button .tooltip-text {
   font-size: 14px;
   visibility: hidden;
