@@ -30,7 +30,7 @@ tbody td {
 }
 
 tbody tr:nth-child(2n) {
-  background: #F5F6F8;
+  background: #f5f6f8;
 }
 
 .pagination-box {
@@ -48,7 +48,7 @@ tbody tr:nth-child(2n) {
 
 .buttons-action {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .buttons-action button {
