@@ -35,7 +35,7 @@
       <Pagination />
     </div>
 
-    <EditModal :visible="isEditModalVisible"/>
+    <EditModal :user="selectedUser" :visible="isEditModalVisible" @close="isEditModalVisible = false" @save="editUser" />
   </BoxContent>
 </template>
 
@@ -62,8 +62,12 @@ export default {
   methods: {
     ...mapActions('users', ['fetchUsers', 'deleteUser', 'updateUser']),
     openEditModal(user) {
-      this.selectedUser = {...user}
+      this.selectedUser = { ...user }
       this.isEditModalVisible = true
+    },
+    editUser(updatedUser) {
+      this.updateUser(updatedUser)
+      this.isEditModalVisible = false
     }
   },
   created() {
@@ -72,6 +76,7 @@ export default {
   data() {
     return {
       isEditModalVisible: false,
+      selectedUser: {}
     }
   }
 }
