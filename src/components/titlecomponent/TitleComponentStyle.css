@@ -1,0 +1,22 @@
+.title__container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 50px 10vw;
+  
+}
+
+.botao-simples {
+  width: 250px;
+  color: azure;
+  background-color: #007bff;
+  height: calc(2.25rem + 2px);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  opacity: 0.8;
+}
