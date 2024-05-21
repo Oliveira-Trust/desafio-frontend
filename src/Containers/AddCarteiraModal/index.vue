@@ -31,6 +31,7 @@
 
 <script>
 import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex'
 import Title from '../../components/Title/index.vue'
 import Input from '../../components/Input/index.vue'
 import Button from '../../components/Button/index.vue'
@@ -63,20 +64,29 @@ export default {
       btcValue: 0
     }
   },
+  computed: {
+    ...mapGetters('users', ['allUsers'])
+  },
   methods: {
+    ...mapActions('users', ['fetchUsers', 'createUser']),
     closeModal() {
       this.$emit('close')
     },
     async submitAdd() {
-      await this.convertToBTC()
-      this.$emit('add', { ...this.newUser })
-      this.newUser = {
-        nome: '',
-        sobrenome: '',
-        email: '',
-        valor_carteira: 0
+      try {
+        await this.convertToBTC()
+        await this.createUser({ ...this.newUser, valor_carteira: this.btcValue, id: String(this.allUsers.length + 1) })
+        this.newUser = {
+          nome: '',
+          sobrenome: '',
+          email: '',
+          valor_carteira: 0
+        }
+        this.fetchUsers()
+        this.closeModal()
+      } catch (error) {
+        console.error('Erro ao adicionar usuário:', error)
       }
-      this.closeModal()
     },
     async fetchExchangeRate() {
       try {
@@ -98,8 +108,7 @@ export default {
     currencyValue(newValue) {
       this.fetchExchangeRate(newValue)
     }
-  }
-
+  },
 }
 </script>
 
