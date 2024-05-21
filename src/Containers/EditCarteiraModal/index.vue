@@ -33,7 +33,7 @@ import Input from '../../components/Input/index.vue'
 import Button from '../../components/Button/index.vue'
 
 export default {
-  name: 'EditModal',
+  name: 'EditCarteiraModal',
   components: {
     Title,
     Input,

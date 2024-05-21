@@ -35,7 +35,7 @@
       <Pagination />
     </div>
 
-    <EditModal :user="selectedUser" :visible="isEditModalVisible" @close="isEditModalVisible = false" @save="editUser" />
+    <EditCarteiraModal :user="selectedUser" :visible="isEditModalVisible" @close="isEditModalVisible = false" @save="editUser" />
   </BoxContent>
 </template>
 
@@ -45,7 +45,7 @@ import BoxContent from '../../components/BoxContent/index.vue'
 import Title from '../../components/Title/index.vue'
 import Button from '../../components/Button/index.vue'
 import Pagination from '../../components/Pagination/index.vue'
-import EditModal from '../EditModal/index.vue'
+import EditCarteiraModal from '../EditCarteiraModal/index.vue'
 
 export default {
   name: 'Tabela',
@@ -54,7 +54,7 @@ export default {
     Title,
     Button,
     Pagination,
-    EditModal
+    EditCarteiraModal
   },
   computed: {
     ...mapGetters('users', ['allUsers'])
