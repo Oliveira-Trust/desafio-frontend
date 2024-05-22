@@ -3,6 +3,7 @@ import NavBar from '@/components/feature/NavBar.vue'
 import Button from '@/components/common/CommonButton.vue'
 import UsersTable from '@/components/feature/UsersTable.vue'
 import CommonCard from '@/components/common/CommonCard.vue'
+import FilterInput from './components/feature/FilterInput.vue'
 
 const showUserModal = () => {
   console.log('showUserModal')
@@ -21,7 +22,10 @@ const showUserModal = () => {
           </div>
           <div class="flex justify-center items-center py-7"></div>
         </div>
-        <div class="py-5">
+        <div class="flex flex-col py-5">
+          <CommonCard class="mb-10">
+            <FilterInput />
+          </CommonCard>
           <CommonCard>
             <UsersTable @editUserClick="() => {}" @deleteUserClick="() => {}" />
           </CommonCard>
