@@ -23,17 +23,17 @@ const onClick = () => {
     @click="onClick"
   >
     <font-awesome-icon :icon="['fas', name]" />
-    <span v-if="tooltipText" class="tooltip-text">{{ tooltipText }}</span>
+    <span v-if="tooltipText" class="tooltip-text z-10">{{ tooltipText }}</span>
   </div>
 </template>
 
 <style scoped>
 .icon-button .tooltip-text {
-  @apply text-[14px] invisible min-w-[60px] bg-[#424242] text-[#fff] text-center px-[0] py-[7px] rounded-[6px] absolute top-[120%] left-2/4 -ml-[30px] opacity-0 [transition:opacity_0.2s];
+  @apply text-sm invisible min-w-16 bg-neutral-800 text-white text-center py-2 rounded absolute top-[120%] left-2/4 -ml-7 opacity-0 [transition:opacity_0.2s];
 }
 
 .icon-button .tooltip-text::after {
-  @apply content-['_'] absolute bottom-full left-2/4 -ml-[5px] border-[5px] border-solid;
+  @apply content-['_'] absolute bottom-full left-2/4 -ml-1.5 border-4 border-solid;
 }
 
 .icon-button:hover .tooltip-text {

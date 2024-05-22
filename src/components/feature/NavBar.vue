@@ -3,7 +3,7 @@ import IconButton from '../common/IconButton.vue'
 import ProfileAvatar from './ProfileAvatar.vue'
 </script>
 <template>
-  <div class="h-[80px] bg-white [box-shadow:#9999993d_0px_3px_8px] flex justify-center">
+  <div class="h-20 bg-white [box-shadow:#9999993d_0px_3px_8px] flex justify-center">
     <div class="w-4/5 h-full p-0 flex justify-between items-center">
       <div class="flex items-center">
         <img class="mr-2.5 w-8" src="../../assets/logo.png" alt="Oliveira Trust Logo" />
