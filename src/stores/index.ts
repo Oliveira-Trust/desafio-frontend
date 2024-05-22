@@ -1,15 +1,41 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { makeRequest } from '@/utils/request.utils';
+
+import type { User } from '@/types/user.type';
+import type { PaginationData } from '@/types/pagination.type';
+import type { FilterData } from '@/types/filter.type';
+import { getUsers } from '@/services/user.service';
 
 export const useAppStore = defineStore('app', () => {
-  const users = ref({})
+  const users = ref<User[]>([])
+  const filter = ref<FilterData | null>(null)
+  const paginationData = ref<PaginationData>({totalItems: 0, currentPage: 1, pages: 0})
 
-  async function pullUsers() {
-    const response = await makeRequest(import.meta.env.VITE_USERS_API_ENDPOINT);
+  async function pullPaginatedUsers({ currentPage = 1, pageLimit = 10 }: { currentPage?: number, pageLimit?: number}) {
 
-    users.value = await response.json();
+    let queryString = '';
+    queryString += '?_page=' + currentPage;
+    queryString += '&_per_page=' + pageLimit;
+
+    queryString += `&${Object.keys(filter)[0]}_like=${
+      filter.value?.nome
+    }`;
+    queryString += `&${Object.keys(filter)[1]}_like=${
+      filter.value?.sobrenome
+    }`;
+    queryString += `&${Object.keys(filter)[2]}_like=${
+      filter.value?.email
+    }`;
+
+    const usersResponse = await getUsers(queryString);
+    users.value = usersResponse.data
+
+    paginationData.value = {
+      currentPage,
+      totalItems: usersResponse.items,
+      pages: Math.ceil(usersResponse.items / pageLimit),
+    };
   }
 
-  return { users, pullUsers }
+  return { users, paginationData, pullPaginatedUsers }
 })
