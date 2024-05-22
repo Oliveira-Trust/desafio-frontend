@@ -4,11 +4,12 @@ import IconButton from '../common/IconButton.vue'
 import CommonButton from '../common/CommonButton.vue'
 import { useAppStore } from '@/stores'
 import type { User } from '@/types/user.type'
+import { exportUsersToCSV } from '@/utils/export.utils'
 
 const store = useAppStore()
 
 const users = computed(() => store.users)
-const paginationData = computed(() => store.paginationData)
+const pagination = computed(() => store.paginationData)
 
 onMounted(() => {
   store.pullPaginatedUsers({})
@@ -23,28 +24,30 @@ const handleDeleteClick = (user: User) => {
 }
 
 const handlePageClick = async (page: number) => {
-  console.log('page click: ', page)
+  await store.pullPaginatedUsers({ currentPage: page })
 }
 
 const handleFirstPageClick = async () => {
-  console.log('first page')
+  await store.pullPaginatedUsers({ currentPage: 1 })
 }
 
 const handleLastPageClick = async () => {
-  console.log('last page')
+  await store.pullPaginatedUsers({ currentPage: pagination.value.pages })
 }
 
 const handlePreviousPageClick = async () => {
-  console.log('previous page')
+  if (pagination.value.currentPage === 1) return
+  await store.pullPaginatedUsers({ currentPage: pagination.value.currentPage - 1 })
 }
 
 const handleNextPageClick = async () => {
-  console.log('next page')
+  if (pagination.value.currentPage === pagination.value.pages) return
+  await store.pullPaginatedUsers({ currentPage: pagination.value.currentPage + 1 })
 }
 
 const handleExportToCSV = async () => {
-  console.log(paginationData.value)
-  console.log(users.value)
+  const users = await store.getAllUsers()
+  exportUsersToCSV(users)
 }
 </script>
 <template>
@@ -86,48 +89,45 @@ const handleExportToCSV = async () => {
     </table>
     <hr class="solid" />
     <div class="mt-2.5 flex justify-between">
-      <p class="text-gray-500">{{ paginationData.totalItems }} registro(s)</p>
+      <p class="text-gray-500">{{ pagination.totalItems }} registro(s)</p>
       <div class="flex justify-center items-center">
         <IconButton name="chevron-left" @onClick="handlePreviousPageClick" />
-        <div
-          class="flex justify-center items-end text-gray-300"
-          v-if="paginationData.currentPage >= 4"
-        >
+        <div class="flex justify-center items-end text-gray-300" v-if="pagination.currentPage >= 4">
           <CommonButton small outlined label="1" @onClick="handleFirstPageClick" />
           ...
         </div>
         <div v-for="i in [2, 1]" :key="'previous-' + i">
           <CommonButton
-            v-if="paginationData.currentPage > i"
+            v-if="pagination.currentPage > i"
             small
             outlined
-            :label="(paginationData.currentPage - i).toString()"
-            @onClick="handlePageClick(paginationData.currentPage - i)"
+            :label="(pagination.currentPage - i).toString()"
+            @onClick="handlePageClick(pagination.currentPage - i)"
           />
         </div>
         <CommonButton
           small
-          :label="paginationData.currentPage.toString()"
-          @onClick="handlePageClick(paginationData.currentPage)"
+          :label="pagination.currentPage.toString()"
+          @onClick="handlePageClick(pagination.currentPage)"
         />
         <div v-for="i in 2" :key="'next-' + i">
           <CommonButton
-            v-if="paginationData.currentPage + i <= paginationData.pages"
+            v-if="pagination.currentPage + i <= pagination.pages"
             small
             outlined
-            :label="(paginationData.currentPage + i).toString()"
-            @onClick="handlePageClick(paginationData.currentPage + i)"
+            :label="(pagination.currentPage + i).toString()"
+            @onClick="handlePageClick(pagination.currentPage + i)"
           />
         </div>
         <div
           class="flex justify-center items-end text-gray-300"
-          v-if="paginationData.currentPage <= paginationData.pages - 3"
+          v-if="pagination.currentPage <= pagination.pages - 3"
         >
           ...
           <CommonButton
             small
             outlined
-            :label="paginationData.pages.toString()"
+            :label="pagination.pages.toString()"
             @onClick="handleLastPageClick"
           />
         </div>
