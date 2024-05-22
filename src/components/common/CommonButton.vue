@@ -47,31 +47,31 @@ const onClick = () => {
   @apply rounded px-6 py-2.5 text-center no-underline flex justify-center items-center text-sm font-bold h-10 cursor-pointer;
 }
 .small {
-  @apply px-[4px] py-[2px] m-[2px] h-[30px] min-w-[28px];
+  @apply px-1 py-0.5 m-0.5 h-8 min-w-7;
 }
 
 .small.outlined {
-  @apply border-[1px] border-[solid] border-[#d5d5d5] text-[#808080] hover:border-[#5393ff];
+  @apply border border-slate-400 text-gray-700 hover:border-sky-600;
 }
 
 .filled {
-  @apply bg-[#2979ff] border-[none] text-[white] hover:bg-[#5393ff];
+  @apply bg-sky-700 border-[none] text-white hover:bg-sky-600;
 }
 
 .outlined {
-  @apply bg-[white] border-[1px] border-[solid] border-[#2979ff] text-[#2979ff] hover:border-[#5393ff] hover:text-[#5393ff];
+  @apply bg-[white] border border-sky-700 text-sky-700 hover:border-sky-600 hover:text-sky-600;
 }
 
 .icon-with-label {
-  @apply mr-[10px];
+  @apply mr-2.5;
 }
 
 .icon-outlined {
-  @apply fill-[#2979ff];
+  @apply fill-sky-700;
 }
 
 .outlined:hover > .icon-outlined {
-  @apply fill-[#5393ff];
+  @apply fill-sky-600;
 }
 
 .icon-filled {
@@ -79,10 +79,10 @@ const onClick = () => {
 }
 
 .danger {
-  @apply bg-[#dc3545] hover:bg-[#b2102f];
+  @apply bg-red-500 hover:bg-red-600;
 }
 
 .disabled {
-  @apply bg-[#cfd8dc] cursor-not-allowed hover:bg-[#b0bec5];
+  @apply bg-sky-200 cursor-not-allowed hover:bg-sky-300;
 }
 </style>
