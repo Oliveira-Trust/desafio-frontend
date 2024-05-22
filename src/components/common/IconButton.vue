@@ -29,36 +29,10 @@ const onClick = () => {
 
 <style scoped>
 .icon-button .tooltip-text {
-  font-size: 14px;
-  visibility: hidden;
-  min-width: 60px;
-  background-color: #424242;
-  color: #fff;
-  text-align: center;
-  padding: 7px 0;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  top: 120%;
-  left: 50%;
-  margin-left: -30px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.icon-button .tooltip-text::after {
-  content: ' ';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent #424242 transparent;
+  @apply text-[14px] invisible min-w-[60px] bg-[#424242] text-[#fff] text-center px-[0] py-[7px] rounded-[6px] absolute top-[120%] left-2/4 -ml-[30px] opacity-0 [transition:opacity_0.2s] after:content-['_'] after:absolute after:bottom-full after:left-2/4 after:-ml-[5px] after:border-[5px] after:border-solid;
 }
 
 .icon-button:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
+  @apply visible opacity-100;
 }
 </style>
