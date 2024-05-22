@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import defaultProfileAvatar from '@/assets/profile-avatar.png'
 
-defineProps({
-  url: {
-    type: String,
-    default: defaultProfileAvatar
-  }
+interface Props {
+  url: string
+}
+
+withDefaults(defineProps<Props>(), {
+  url: defaultProfileAvatar
 })
 </script>
 <template>

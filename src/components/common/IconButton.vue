@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 
+interface Props {
+  name: string
+  tooltipText?: string
+}
+
 const emit = defineEmits(['onClick'])
 
-defineProps({
-  name: {
-    type: String,
-    default: 'pencil-alt'
-  },
-  tooltipText: {
-    type: String,
-    default: undefined
-  }
+withDefaults(defineProps<Props>(), {
+  name: 'pencil-alt'
 })
 
 const onClick = () => {
