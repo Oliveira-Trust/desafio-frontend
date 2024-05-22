@@ -8,21 +8,21 @@ import { getPaginatedUsers, getUsers } from '@/services/user.service';
 
 export const useAppStore = defineStore('app', () => {
   const users = ref<User[]>([])
-  const filter = ref<FilterData | null>(null)
+  const filter = ref<FilterData>({nome: '', sobrenome: '', email: ''})
   const paginationData = ref<PaginationData>({totalItems: 0, currentPage: 1, pages: 0})
 
   async function pullPaginatedUsers({ currentPage = 1, pageLimit = 10 }: { currentPage?: number, pageLimit?: number}) {
     let queryString = '';
     queryString += '?_page=' + currentPage;
-    queryString += '&_per_page=' + pageLimit;
+    queryString += '&_limit=' + pageLimit;
 
-    queryString += `&${Object.keys(filter)[0]}_like=${
+    queryString += `&${Object.keys(filter.value)[0]}_like=${
       filter.value?.nome
     }`;
-    queryString += `&${Object.keys(filter)[1]}_like=${
+    queryString += `&${Object.keys(filter.value)[1]}_like=${
       filter.value?.sobrenome
     }`;
-    queryString += `&${Object.keys(filter)[2]}_like=${
+    queryString += `&${Object.keys(filter.value)[2]}_like=${
       filter.value?.email
     }`;
 
@@ -42,5 +42,9 @@ export const useAppStore = defineStore('app', () => {
     return response;
   }
 
-  return { users, paginationData, pullPaginatedUsers, getAllUsers }
+  function setFilter(filterData: FilterData) {
+    filter.value = filterData;
+  }
+
+  return { users, filter, setFilter, paginationData, pullPaginatedUsers, getAllUsers }
 })
