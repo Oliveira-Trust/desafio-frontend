@@ -13,8 +13,8 @@ const showUserModal = () => {
     <div class="flex justify-center">
       <div class="w-[80vw]">
         <div class="flex justify-between items-center mt-7">
-          <h1 class="font-black py-7">BTC Carteiras</h1>
-          <div class="flex justify-center items-center py-7">
+          <h1 class="font-black py-7 w-full">BTC Carteiras</h1>
+          <div class="flex justify-end items-center py-7 w-full">
             <Button label="Adicionar Carteira" @onClick="showUserModal" />
           </div>
           <div class="flex justify-center items-center py-7"></div>
