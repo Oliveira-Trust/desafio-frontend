@@ -6,7 +6,6 @@ export const makeRequest = async (
   let customHeaders = {};
   if (handleCors)
     customHeaders = {
-      'ngrok-skip-browser-warning': 'true',
       'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': 'true',
