@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import NavBar from '@/components/feature/NavBar.vue'
 import Button from '@/components/common/DefaultButton.vue'
+import { onMounted } from 'vue'
+import { useAppStore } from './stores'
+
+const store = useAppStore()
+
+onMounted(() => {
+  store.pullUsers()
+})
 
 const showUserModal = () => {
   console.log('showUserModal')
