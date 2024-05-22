@@ -1,47 +1,28 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import NavBar from '@/components/feature/NavBar.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div id="app">
+    <NavBar />
+    <div class="flex justify-center">
+      <div class="w-[80vw]">
+        <div class="flex justify-between mt-7">
+          <h1 class="font-black py-7">BTC Carteiras</h1>
+          <div class="flex justify-center items-center py-7"></div>
+        </div>
+        <div class="py-5"></div>
+        <div class="my-10 flex justify-center text-xs text-gray-400">
+          <b>Fintools | Desafio Front-End</b>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
-
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+@media only screen and (max-width: 790px) {
+  .app-container-body {
+    width: 90vw;
   }
 }
 </style>
