@@ -2,7 +2,7 @@
 import defaultProfileAvatar from '@/assets/profile-avatar.png'
 
 interface Props {
-  url: string
+  url?: string
 }
 
 withDefaults(defineProps<Props>(), {
