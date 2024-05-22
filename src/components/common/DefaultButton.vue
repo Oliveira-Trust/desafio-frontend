@@ -51,7 +51,7 @@ const onClick = () => {
 }
 
 .small.outlined {
-  @apply border-[1px] border-[solid] border-[#d5d5d5] text-[#808080] hover:border-[1px] hover:border-[solid] hover:border-[#5393ff];
+  @apply border-[1px] border-[solid] border-[#d5d5d5] text-[#808080] hover:border-[#5393ff];
 }
 
 .filled {
@@ -59,7 +59,7 @@ const onClick = () => {
 }
 
 .outlined {
-  @apply bg-[white] border-[1px] border-[solid] border-[#2979ff] text-[#2979ff] hover:bg-[white] hover:border-[1px] hover:border-[solid] hover:border-[#5393ff] hover:text-[#5393ff];
+  @apply bg-[white] border-[1px] border-[solid] border-[#2979ff] text-[#2979ff] hover:border-[#5393ff] hover:text-[#5393ff];
 }
 
 .icon-with-label {
