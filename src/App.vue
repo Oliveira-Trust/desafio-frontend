@@ -4,9 +4,29 @@ import Button from '@/components/common/CommonButton.vue'
 import UsersTable from '@/components/feature/UsersTable.vue'
 import CommonCard from '@/components/common/CommonCard.vue'
 import FilterInput from './components/feature/FilterInput.vue'
+import DeleteUserModal from './components/feature/modals/DeleteUserModal.vue'
+import type { User } from './types/user.type'
+import { ref } from 'vue'
+
+const userToDelete = ref<User>({} as User)
+const isDeleteUserModalOpen = ref(false)
 
 const showUserModal = () => {
   console.log('showUserModal')
+}
+
+const showDeleteUserModal = () => {
+  isDeleteUserModalOpen.value = true
+}
+
+const handleDeleteUser = (user: User) => {
+  userToDelete.value = user
+  showDeleteUserModal()
+}
+
+const closeDeleteUserModal = () => {
+  isDeleteUserModalOpen.value = false
+  userToDelete.value = {} as User
 }
 </script>
 
@@ -27,7 +47,7 @@ const showUserModal = () => {
             <FilterInput />
           </CommonCard>
           <CommonCard>
-            <UsersTable @editUserClick="() => {}" @deleteUserClick="() => {}" />
+            <UsersTable @editUserClick="() => {}" @deleteUserClick="handleDeleteUser" />
           </CommonCard>
         </div>
         <div class="my-10 flex justify-center text-xs text-gray-400">
@@ -35,6 +55,11 @@ const showUserModal = () => {
         </div>
       </div>
     </div>
+    <DeleteUserModal
+      :user="userToDelete"
+      :isOpen="isDeleteUserModalOpen"
+      @close="closeDeleteUserModal"
+    />
   </div>
 </template>
 <style scoped>
