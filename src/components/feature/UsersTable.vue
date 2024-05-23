@@ -172,7 +172,7 @@ table tr:nth-child(odd):hover td {
   }
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 658px) {
   .user-email-column {
     @apply hidden;
   }
