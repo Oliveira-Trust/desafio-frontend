@@ -32,7 +32,7 @@ defineProps<{
 
 <style scoped>
 .input-box {
-  @apply w-full flex items-center border-2 border-gray-400 rounded pt-[1px] pb-[1px] overflow-hidden mx-[0] my-2;
+  @apply w-full flex items-center border-2 border-gray-300 rounded pt-[1px] pb-[1px] overflow-hidden mx-[0] my-2;
 }
 
 .input-box .prefix {
@@ -48,7 +48,7 @@ defineProps<{
 }
 
 .input-box:focus-within {
-  @apply border-zinc-200;
+  @apply border-zinc-400;
 }
 
 .read-only {
@@ -73,7 +73,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type='number'] {
+/* input[type='number'] {
   -moz-appearance: textfield;
-}
+} */
 </style>

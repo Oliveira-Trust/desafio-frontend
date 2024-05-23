@@ -74,7 +74,7 @@ const handleBackgroundClick = (e: any) => {
 }
 
 .progress-bar .tooltip-text {
-  @apply text-sm invisible min-w-16 bg-neutral-800 text-white text-center px-4 py-2 rounded absolute top-[120%] left-2/4 -ml-7 opacity-0 [transition:opacity_0.2s];
+  @apply text-sm invisible min-w-16 bg-neutral-800 text-white text-center px-4 py-2 rounded absolute bottom-[120%] left-1/4 -ml-7 opacity-0 [transition:opacity_0.2s];
 }
 
 .progress-bar:hover .tooltip-text {

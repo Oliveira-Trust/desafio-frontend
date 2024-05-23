@@ -51,15 +51,15 @@ const onClick = () => {
 }
 
 .small.outlined {
-  @apply border border-slate-400 text-gray-700 hover:border-sky-600;
+  @apply border border-slate-400 text-gray-700 hover:border-blue-600;
 }
 
 .filled {
-  @apply bg-sky-700 border-[none] text-white hover:bg-sky-600;
+  @apply bg-blue-700 border-[none] text-white hover:bg-blue-600;
 }
 
 .outlined {
-  @apply bg-[white] border border-sky-700 text-sky-700 hover:border-sky-600 hover:text-sky-600;
+  @apply bg-[white] border border-blue-700 text-blue-700 hover:border-blue-600 hover:text-blue-600;
 }
 
 .icon-with-label {
@@ -67,11 +67,11 @@ const onClick = () => {
 }
 
 .icon-outlined {
-  @apply fill-sky-700;
+  @apply fill-blue-700;
 }
 
 .outlined:hover > .icon-outlined {
-  @apply fill-sky-600;
+  @apply fill-blue-600;
 }
 
 .icon-filled {
@@ -83,6 +83,6 @@ const onClick = () => {
 }
 
 .disabled {
-  @apply bg-sky-200 cursor-not-allowed hover:bg-sky-300;
+  @apply bg-blue-200 cursor-not-allowed hover:bg-blue-300;
 }
 </style>
