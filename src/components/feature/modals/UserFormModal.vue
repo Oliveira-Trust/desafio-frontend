@@ -119,26 +119,26 @@ watch(
         <TextInput placeholder="Nome" v-model="user.nome" />
         <TextInput placeholder="Sobrenome" v-model="user.sobrenome" />
         <TextInput placeholder="E-mail" v-model="user.email" />
-        <div class="buy-in">
+        <div class="flex justify-between items-center">
           <TextInput
             isCurrency
-            class="buy-in-input"
+            class="w-1/2"
             placeholder="Valor de compra"
             v-model="userCurrencyToAsk"
             :error="!isAmountValid"
           />
-          <h3 v-if="isAmountValid" class="buy-in-btc-value">BTC {{ cryptoCurrencyAmoutToBuy }}</h3>
-          <p v-else class="buy-in-invalid">Valor inválido</p>
+          <h3 v-if="isAmountValid" class="ml-2.5 w-1/2">BTC {{ cryptoCurrencyAmoutToBuy }}</h3>
+          <p v-else class="text-red-500 ml-2.5 w-1/2">Valor inválido</p>
         </div>
-        <div v-if="isEditing" class="wallet-value">
-          <b>Valor da Carteira</b>
-          <h3 v-if="isAmountValid" class="btc-full-value">BTC {{ userTotalCryptoCurrency }}</h3>
-          <div v-else class="btc-full-value-loading"></div>
+        <div v-if="isEditing" class="mt-5 w-full">
+          <b class="text-gray-600">Valor da Carteira</b>
+          <h3 v-if="isAmountValid" class="mt-1.5">BTC {{ userTotalCryptoCurrency }}</h3>
+          <div v-else class="h-8 w-1/2 bg-gray-300 rounded-md animated-loading"></div>
         </div>
-        <div class="user-modal-actions">
-          <TextButton class="user-modal-actions-close" @onClick="close" label="Cancelar" />
+        <div class="flex justify-end items-center flex-wrap mt-5 mb-8 mx-0">
+          <TextButton class="mt-2.5" @onClick="close" label="Cancelar" />
           <CommonButton
-            class="user-modal-actions-submit"
+            class="mt-2.5 ml-8"
             :disabled="!isFormValid"
             @onClick="save"
             label="Salvar"
@@ -149,63 +149,8 @@ watch(
   </div>
 </template>
 <style scoped>
-.buy-in {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.buy-in-input {
-  width: 50%;
-}
-
-.buy-in-btc-value {
-  margin-left: 10px;
-  width: 50%;
-}
-
-.wallet-value {
-  margin-top: 20px;
-  width: 100%;
-}
-
-.wallet-value > b {
-  color: #777;
-}
-
-.btc-full-value {
-  margin-top: 5px;
-}
-
-.buy-in-invalid {
-  color: #e53935;
-  margin-left: 10px;
-  width: 50%;
-}
-
-.user-modal-actions {
-  margin: 20px 0 30px 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.user-modal-actions-close {
-  margin-top: 10px;
-}
-
-.user-modal-actions-submit {
-  margin-top: 10px;
-  margin-left: 30px;
-}
-
-.btc-full-value-loading {
-  height: 30px;
-  width: 50%;
-  background: #eee;
+.animated-loading {
   background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-  border-radius: 5px;
   background-size: 200% 100%;
   animation: 1.5s shine linear infinite;
 }

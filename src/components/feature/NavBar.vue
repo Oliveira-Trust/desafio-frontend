@@ -20,11 +20,11 @@ import ProfileAvatar from './ProfileAvatar.vue'
 <style scoped>
 @media only screen and (max-width: 790px) {
   .nav-bar-content > h2 {
-    display: none;
+    @apply hidden;
   }
 
   .nav-bar-contents {
-    width: 90%;
+    @apply w-11/12;
   }
 }
 </style>

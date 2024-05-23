@@ -69,11 +69,7 @@ input:read-only {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
+  @apply m-0;
   -webkit-appearance: none;
-  margin: 0;
 }
-
-/* input[type='number'] {
-  -moz-appearance: textfield;
-} */
 </style>

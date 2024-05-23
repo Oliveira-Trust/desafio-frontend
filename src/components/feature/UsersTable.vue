@@ -168,13 +168,13 @@ table tr:nth-child(odd):hover td {
 
 @media only screen and (max-width: 790px) {
   .user-surname-column {
-    display: none;
+    @apply hidden;
   }
 }
 
 @media only screen and (max-width: 560px) {
   .user-email-column {
-    display: none;
+    @apply hidden;
   }
 }
 </style>
