@@ -24,3 +24,10 @@ hr.solid {
   width: 100%;
   border-top: 1px solid #eeeeee;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
