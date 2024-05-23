@@ -7,6 +7,7 @@ import type { User } from '@/types/user.type'
 import { exportUsersToCSV } from '@/utils/export.utils'
 
 const store = useAppStore()
+const emit = defineEmits(['editUserClick', 'deleteUserClick'])
 
 const users = computed(() => store.users)
 const pagination = computed(() => store.paginationData)
@@ -16,11 +17,11 @@ onMounted(() => {
 })
 
 const handleEditClick = (user: User) => {
-  console.log('edit: ', user.id)
+  emit('editUserClick', user)
 }
 
 const handleDeleteClick = (user: User) => {
-  console.log('delete: ', user.id)
+  emit('deleteUserClick', user)
 }
 
 const handlePageClick = async (page: number) => {
