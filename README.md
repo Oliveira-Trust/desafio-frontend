@@ -60,6 +60,8 @@ A aplicação rodará no endereço:
 http://localhost:5173/
 ```
 
+---
+
 Caso queira utilizar a API hospedada via Vercel, primeiro copie o env de produção:
 
 ```
