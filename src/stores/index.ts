@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 import type { User } from '@/types/user.type';
 import type { PaginationData } from '@/types/pagination.type';
 import type { FilterData } from '@/types/filter.type';
-import { getPaginatedUsers, getUsers } from '@/services/user.service';
+import { getPaginatedUsers, getUsers, deleteUser } from '@/services/user.service';
 
 export const useAppStore = defineStore('app', () => {
   const users = ref<User[]>([])
@@ -42,9 +42,14 @@ export const useAppStore = defineStore('app', () => {
     return response;
   }
 
+  async function removeUser(id: number) {
+    await deleteUser(id);
+    pullPaginatedUsers({ currentPage: paginationData.value.currentPage });
+  }
+
   function setFilter(filterData: FilterData) {
     filter.value = filterData;
   }
 
-  return { users, filter, setFilter, paginationData, pullPaginatedUsers, getAllUsers }
+  return { users, filter, setFilter, paginationData, pullPaginatedUsers, getAllUsers, removeUser }
 })

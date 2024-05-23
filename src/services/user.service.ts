@@ -15,3 +15,7 @@ export async function getUsers(): Promise<User[]> {
 
   return response.json();
 }
+
+export async function deleteUser(id: number): Promise<void> {
+  await makeRequest(import.meta.env.VITE_USERS_API_ENDPOINT + `/${id}`, false, { method: 'DELETE' });
+}
