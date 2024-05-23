@@ -4,12 +4,16 @@ import { defineStore } from 'pinia'
 import type { User } from '@/types/user.type';
 import type { PaginationData } from '@/types/pagination.type';
 import type { FilterData } from '@/types/filter.type';
-import { getPaginatedUsers, getUsers, deleteUser } from '@/services/user.service';
+import { getPaginatedUsersRequest, getUsersRequest, deleteUserRequest, updateUserRequest, createUserRequest } from '@/services/user.service';
+import { pullCryptoCurrencyPriceRequest } from '@/services/currency.service';
 
 export const useAppStore = defineStore('app', () => {
   const users = ref<User[]>([])
   const filter = ref<FilterData>({nome: '', sobrenome: '', email: ''})
   const paginationData = ref<PaginationData>({totalItems: 0, currentPage: 1, pages: 0})
+  const currency = ref('BRL')
+  const cryptoCurrency = ref('BTC')
+  const cryptoCurrencyValue = ref(0)
 
   async function pullPaginatedUsers({ currentPage = 1, pageLimit = 10 }: { currentPage?: number, pageLimit?: number}) {
     let queryString = '';
@@ -26,7 +30,7 @@ export const useAppStore = defineStore('app', () => {
       filter.value?.email
     }`;
 
-    const usersResponse = await getPaginatedUsers(queryString);
+    const usersResponse = await getPaginatedUsersRequest(queryString);
     users.value = usersResponse.data
 
     paginationData.value = {
@@ -37,13 +41,23 @@ export const useAppStore = defineStore('app', () => {
   }
 
   async function getAllUsers() {
-    const response = await getUsers();
+    const response = await getUsersRequest();
 
     return response;
   }
 
-  async function removeUser(id: number) {
-    await deleteUser(id);
+  async function createUser(user: Omit<User, 'id'>) {
+    await createUserRequest(user);
+    pullPaginatedUsers({ currentPage: paginationData.value.currentPage });
+  }
+
+  async function updateUser(id: number, user: Omit<User, 'id'> & { id?: number }) {
+    await updateUserRequest(id, user);
+    pullPaginatedUsers({ currentPage: paginationData.value.currentPage });
+  }
+
+  async function deleteUser(id: number) {
+    await deleteUserRequest(id);
     pullPaginatedUsers({ currentPage: paginationData.value.currentPage });
   }
 
@@ -51,5 +65,10 @@ export const useAppStore = defineStore('app', () => {
     filter.value = filterData;
   }
 
-  return { users, filter, setFilter, paginationData, pullPaginatedUsers, getAllUsers, removeUser }
+  async function pullCryptoCurrencyPrice() {
+    const coin = await pullCryptoCurrencyPriceRequest(cryptoCurrency.value, currency.value);
+    cryptoCurrencyValue.value = coin[`${cryptoCurrency.value}${currency.value}`].bid;
+  }
+
+  return { users, filter, setFilter, paginationData, pullPaginatedUsers, getAllUsers, deleteUser, updateUser, createUser, cryptoCurrencyValue, pullCryptoCurrencyPrice }
 })
