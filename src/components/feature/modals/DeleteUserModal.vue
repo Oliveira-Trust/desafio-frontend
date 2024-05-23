@@ -21,7 +21,7 @@ const close = () => {
 }
 
 const deleteUser = async () => {
-  await store.removeUser(props.user.id)
+  await store.deleteUser(props.user.id)
   close()
 }
 </script>
