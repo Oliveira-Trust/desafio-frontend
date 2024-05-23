@@ -15,7 +15,7 @@ const props = defineProps<{
 
 onMounted(() => {
   if (!props.withExpiration) return
-  expirationInterval.value = setInterval(
+  expirationInterval.value = window.setInterval(
     () => (expiration.value < expirationLimit.value ? (expiration.value += 1) : close()),
     1000
   )
