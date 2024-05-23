@@ -11,6 +11,15 @@ const onSearchClick = async () => {
   store.setFilter(filter.value)
   await store.pullPaginatedUsers({ currentPage: 1 })
 }
+
+const onClearFiltersClick = async () => {
+  store.setFilter({
+    nome: '',
+    sobrenome: '',
+    email: ''
+  })
+  await store.pullPaginatedUsers({ currentPage: 1 })
+}
 </script>
 
 <template>
@@ -24,13 +33,20 @@ const onSearchClick = async () => {
         v-model="filter.sobrenome"
       />
       <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email" />
-      <div class="filter-group-actions flex justify-center items-center">
+      <div class="filter-group-actions flex justify-between items-center gap-x-4">
         <CommonButton
-          class="filter-group-actions-submit"
+          class="filter-group-actions-button"
           @onClick="onSearchClick"
           label="Buscar"
           outlined
           icon="search"
+        />
+        <CommonButton
+          class="filter-group-actions-button"
+          @onClick="onClearFiltersClick"
+          label="Limpar"
+          :disabled="filter.nome === '' && filter.sobrenome === '' && filter.email === ''"
+          icon="close"
         />
       </div>
     </div>
@@ -49,7 +65,7 @@ const onSearchClick = async () => {
   .filter-input {
     @apply w-full;
   }
-  .filter-group-actions-submit {
+  .filter-group-actions-button {
     @apply mt-2.5 w-full;
   }
 }
