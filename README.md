@@ -80,6 +80,14 @@ A aplicação rodará no mesmo endereço:
 http://localhost:5173/
 ```
 
+## Testes unitários
+
+Para rodar os testes, rode o seguinte comando:
+
+```
+npm run test:unit
+```
+
 ## Considerações finais
 
 Gostaria de agradecer a oportunidade de realizar esse desafio, aprendi muito e gostei bastante do resultado, espero que gostem também!
