@@ -30,75 +30,23 @@ const deleteUser = async () => {
   <div class="delete-user-modal">
     <Modal v-show="isOpen" @close="close">
       <template v-slot:body>
-        <div class="delete-user-modal-body">
-          <div class="delete-user-modal-icon-circle">
+        <div class="py-10 flex flex-col justify-center items-center text-center">
+          <div class="border-4 border-red-500 rounded-full mb-6">
             <font-awesome-icon
-              class="delete-user-modal-icon"
+              class="pl-4 pr-4 py-3 fill-red-500"
               :icon="['fas', 'trash']"
               style="color: red; font-size: 2em"
             />
           </div>
-          <h2>Excluir Carteira</h2>
-          <p>Tem certeza que deseja excluir essa Carteira?</p>
+          <h2 class="mb-1">Excluir Carteira</h2>
+          <p class="m-0.5">Tem certeza que deseja excluir essa Carteira?</p>
           <p>Essa ação não poderá ser desfeita.</p>
-          <div class="delete-user-modal-actions">
-            <Button
-              class="delete-user-modal-actions-submit"
-              :danger="true"
-              @onClick="deleteUser"
-              label="Excluir"
-            />
-            <TextButton class="delete-user-modal-actions-close" @onClick="close" label="Cancelar" />
+          <div class="mt-5 flex flex-col justify-center items-center w-full">
+            <Button class="w-11/12 m-2.5" :danger="true" @onClick="deleteUser" label="Excluir" />
+            <TextButton class="m-2.5" @onClick="close" label="Cancelar" />
           </div>
         </div>
       </template>
     </Modal>
   </div>
 </template>
-<style scoped>
-.delete-user-modal-body {
-  padding: 40px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.delete-user-modal-icon-circle {
-  border: 2px solid #dc3545;
-  border-radius: 50%;
-  margin-bottom: 30px;
-}
-
-.delete-user-modal-icon {
-  padding: 14px 16px 7px 16px;
-  fill: #dc3545;
-}
-
-.delete-user-modal-actions {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.delete-user-modal-actions-close {
-  margin: 10px;
-}
-
-.delete-user-modal-actions-submit {
-  width: 90%;
-  margin: 10px;
-}
-
-.delete-user-modal-body > h2 {
-  margin-bottom: 4px;
-}
-
-.delete-user-modal-body > p {
-  margin: 2px;
-}
-</style>
