@@ -39,11 +39,35 @@ tbody tr:nth-child(2n) {
   justify-content: space-between;
   margin-top: 2rem;
   border-top: 1px solid #e4e4e4;
+  padding: 1rem;
 }
 
 .pagination-box .registros {
   font-size: 0.8rem;
   color: #aaa;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.pagination button {
+  padding: 0.3rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #777;
+  font-weight: normal;
+  font-size: 0.76rem;
+}
+
+.pagination .arrows {
+  border: none;
+}
+
+.pagination .current-number {
+  background-color: #007bff;
+  color: #fff;
 }
 
 .buttons-action {
