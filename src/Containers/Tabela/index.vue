@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in allUsers" :key="user.id">
+        <tr v-for="user in paginatedUsers" :key="user.id">
           <td>{{ user.nome }}</td>
           <td>{{ user.sobrenome }}</td>
           <td>{{ user.email }}</td>
@@ -32,7 +32,16 @@
     </table>
     <div class="pagination-box">
       <span class="registros">{{ allUsers.length }} registros</span>
-      <Pagination />
+
+      <div class="pagination">
+        <button @click="previousPage" :disabled="currentPage === 1" class="arrows">
+          <i class="pi pi-angle-left"></i>
+        </button>
+        <button v-for="number in totalPages" :key="number" @click="goToPage(number)" :class="currentPage === number ? 'current-number' : null">{{ number }}</button>
+        <button @click="nextPage" :disabled="currentPage === totalPages" class="arrows">
+          <i class="pi pi-angle-right"></i>
+        </button>
+      </div>
     </div>
 
     <EditCarteiraModal :user="selectedUser" :visible="isEditModalVisible" @close="isEditModalVisible = false" @save="editUser" />
@@ -44,7 +53,6 @@ import { mapGetters, mapActions } from 'vuex'
 import BoxContent from '../../components/BoxContent/index.vue'
 import Title from '../../components/Title/index.vue'
 import Button from '../../components/Button/index.vue'
-import Pagination from '../../components/Pagination/index.vue'
 import EditCarteiraModal from '../EditCarteiraModal/index.vue'
 
 export default {
@@ -53,11 +61,18 @@ export default {
     BoxContent,
     Title,
     Button,
-    Pagination,
     EditCarteiraModal
   },
   computed: {
-    ...mapGetters('users', ['allUsers'])
+    ...mapGetters('users', ['allUsers']),
+    paginatedUsers() {
+      const startIndex = (this.currentPage - 1) * this.perPage
+      const endIndex = startIndex + this.perPage
+      return this.allUsers.slice(startIndex, endIndex)
+    },
+    totalPages() {
+      return Math.ceil(this.allUsers.length / this.perPage)
+    }
   },
   methods: {
     ...mapActions('users', ['fetchUsers', 'deleteUser', 'updateUser']),
@@ -68,6 +83,21 @@ export default {
     editUser(updatedUser) {
       this.updateUser(updatedUser)
       this.isEditModalVisible = false
+    },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++
+      }
+    },
+    goToPage(page) {
+      if (page > 0 && page <= this.totalPages) {
+        this.currentPage = page
+      }
     }
   },
   created() {
@@ -76,7 +106,9 @@ export default {
   data() {
     return {
       isEditModalVisible: false,
-      selectedUser: {}
+      selectedUser: {},
+      currentPage: 1,
+      perPage: 10,
     }
   }
 }
