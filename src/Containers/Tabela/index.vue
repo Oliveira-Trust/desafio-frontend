@@ -31,7 +31,7 @@
       </tbody>
     </table>
     <div class="pagination-box">
-      <span class="registros">{{ allUsers.length }} registros</span>
+      <span class="registros">{{ allUsers ? allUsers.length : 0 }} registros</span>
 
       <div class="pagination">
         <button @click="previousPage" :disabled="currentPage === 1" class="arrows">
@@ -66,11 +66,13 @@ export default {
   computed: {
     ...mapGetters('users', ['allUsers']),
     paginatedUsers() {
+      if (!this.allUsers) return []
       const startIndex = (this.currentPage - 1) * this.perPage
       const endIndex = startIndex + this.perPage
       return this.allUsers.slice(startIndex, endIndex)
     },
     totalPages() {
+      if (!this.allUsers) return 0
       return Math.ceil(this.allUsers.length / this.perPage)
     }
   },
