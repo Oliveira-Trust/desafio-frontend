@@ -2,7 +2,7 @@
   <BoxContent>
     <div class="header">
       <Title :text="'Carteiras'" :level="'h2'">Test</Title>
-      <Button :color="'outlined'">Exportar CSV</Button>
+      <Button :color="'outlined'" @click="exportToCSV">Exportar CSV</Button>
     </div>
 
     <table tabindex="fixed">
@@ -54,6 +54,7 @@ import BoxContent from '../../components/BoxContent/index.vue'
 import Title from '../../components/Title/index.vue'
 import Button from '../../components/Button/index.vue'
 import EditCarteiraModal from '../EditCarteiraModal/index.vue'
+import * as XLSX from 'xlsx'
 
 export default {
   name: 'Tabela',
@@ -100,6 +101,30 @@ export default {
       if (page > 0 && page <= this.totalPages) {
         this.currentPage = page
       }
+    },
+    exportToCSV() {
+      const data = this.allUsers.map(user => ({
+        Nome: user.nome,
+        Sobrenome: user.sobrenome,
+        Email: user.email,
+        Bitcoin: user.valor_carteira
+      }))
+
+      const worksheet = XLSX.utils.json_to_sheet(data)
+      const csv = XLSX.utils.sheet_to_csv(worksheet)
+
+      // Create a Blob from the CSV data
+      const blob = new Blob([csv], { type: 'text/csv' })
+      const url = window.URL.createObjectURL(blob)
+
+      // Create a link to download it
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'users.csv'
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
     }
   },
   created() {
