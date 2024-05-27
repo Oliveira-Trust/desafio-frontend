@@ -45,6 +45,29 @@ const actions = {
       console.error('Erro ao atualizar usuário:', error)
     }
   },
+  async filterUsers({ commit, state }, filters) {
+    let filteredUsers = state.users
+
+    if (filters.nome) {
+      filteredUsers = filteredUsers.filter((user) =>
+        user.nome.toLowerCase().includes(filters.nome.toLowerCase()),
+      )
+    }
+
+    if (filters.sobrenome) {
+      filteredUsers = filteredUsers.filter((user) =>
+        user.sobrenome.toLowerCase().includes(filters.sobrenome.toLowerCase()),
+      )
+    }
+
+    if (filters.email) {
+      filteredUsers = filteredUsers.filter((user) =>
+        user.email.toLowerCase().includes(filters.email.toLowerCase()),
+      )
+    }
+
+    commit('setUsers', { users: filteredUsers })
+  },
 }
 
 const mutations = {
