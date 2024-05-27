@@ -1,112 +1,71 @@
-<p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">
- </p>
+# Projeto Vue.js com Vuex e JSON-Server
 
-## Desafio para candidatos à vaga de Desenvolvedor Front End (Jr/Pleno/Sênior).
-Olá caro desenvolvedor, nosso principal objetivo é conseguir ver a lógica implementada independente
-da sua experiência, framework ou linguagem utilizada para resolver o desafio. Queremos avaliar a sua
-capacidade em aplicar as regras de négocios na aplicação, separar as responsabilidades e ter um código
-legível para outros desenvolvedores, as instruções nesse projeto são apenas um direcional para entregar
-o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 🚀
+## Descrição do Projeto
 
-Não deixe de enviar o seu teste mesmo que incompleto!
+Este projeto é uma aplicação de gerenciamento de usuários de Bitcoin construída com Vue.js (versão 2), Vuex para gerenciamento de estado, e JSON-Server para simular uma API REST, xlxs para exportação em CSV, Axios para requisições. A aplicação permite a visualização, criação, edição e exclusão de usuários, bem como a exportação dos dados para CSV.
 
-## Tecnologias a serem utilizadas:
-* Vuejs (Fornecemos uma estrutura básica do aplicativo) 
-* CSS
-* HTML
+## Configuração e Execução do Projeto
 
-## Entrega:
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo
-e depois envie-nos o pull request. 
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado
-fazer o pull request.
+### Pré-requisitos
 
-Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
+Certifique-se de ter o Node.js e npm instalados em sua máquina.
 
-## O que vamos avaliar:
-- Legibilidade do código
-- Percepção da identidade do produto
-- Modularização
-- Lógica para aplicar a regra de negócio
-- Implementação das APIs
-
-## Instruções para o desafio:
-Você deve implementar um aplicativo feito com Vuejs utilizando uma API de usuários fornecida no próprio projeto e uma API externa de conversão de moedas.
-
-## Obrigatórios:
-- Acompanhar identidade visual do [protótipo fornecido](https://www.figma.com/proto/AO265OINopUSibxX8Dd4A6/Desafio-Front-End?page-id=0%3A1&node-id=2%3A362&viewport=314%2C48%2C0.15&scaling=contain&starting-point-node-id=2%3A362)
-- Listar os dados da API de usuários em uma tabela
-    - Deve conter todos os dados que achar relevante pela API (http://localhost:3004/users)
-    - Botões funcionais de editar(modal) e deletar registro p/ cada elemento
-- Possibilidade de adicionar novas carteiras através de um modal
-- Paginação da listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#paginate) do json-server)
-- Adicionar um filtro para listagem (Você pode usar [esquemas](https://github.com/typicode/json-server#full-text-search) do json-server)
-- Conversão do saldo Bitcoin (BTC) de cada carteira para moeda escolhida. Ex.: BTC para BRL, USD, etc
-
-Pode utilizar qualquer API para conversão de moedas, mas recomendamos essa aqui: [https://docs.awesomeapi.com.br/api-de-moedas](https://docs.awesomeapi.com.br/api-de-moedas) pela facilidade e boa documentação.
-
-#### Exemplo de conversão da moeda:
-- **Parâmetros de entrada**:
-    - Moeda de origem: Bitcoin (BTC)
-    - Moeda de destino: Real (BRL)
-    - Valor para conversão ex.: BTC 0.2242509
-- **Parâmetros de saída**:
-    - Moeda de origem: Bitcoin (BTC)
-    - Moeda de destino: Real (BRL)
-    - Valor para conversão ex.: BTC 0.2242509
-    - Valor comprado em "Moeda de destino" ex.: R$ 53.054,00
-- **Critérios de aceitação**:
-    - Ao criar ou editar uma carteira, deve ser possível inserir um valor de compra tendo como resultado o valor que será adquirido na criptomoeda de destino.
-    
-#### Informações úteis da API de conversão de moedas:
-- Conversão BTC para BRL
-    - https://economia.awesomeapi.com.br/json/last/BTC-BRL
-- Moedas para conversão
-    - https://docs.awesomeapi.com.br/api-de-moedas#moedas-com-conversao-para
-- Tradução das moedas
-    - https://economia.awesomeapi.com.br/json/available/uniq
-- Combinações possíveis
-    - https://economia.awesomeapi.com.br/json/available
-- Legendas
-    - https://docs.awesomeapi.com.br/api-de-moedas#legendas
-    
-## Bônus
-- Validação dos inputs para funcionalidade de criar e editar carteira
-- Gerenciamento de estado (vuex)
-- Exportar dados da lista em CSV (Você pode utlizar alguma biblioteca npm para esta funcionalidade)
-
-## Configurações do projeto
-
-É necessário possuir a biblioteca json-server instalada em sua máquina:
-
-```
-npm install -g json-server
-```
-Acesse a [documentação](https://github.com/typicode/json-server#getting-started) do json-server para entender melhor como manipular a API.
-
-Também será necessário instalar as dependências do projeto executando:
-
-```
-npm install
+Troque a versão do Node para 16:
+``` bash
+    nmv install 16
+    nvm use 16
 ```
 
-Finalmente podemos rodar o projeto e a API utilizando apenas um comando:
+### Instalação
 
-```
-npm start
-```
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/alvesxdani/desafio-frontend-oliveira-trust
+   ```
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd desafio-frontend-oliveira-trust
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-A api a ser consumida está rodando no endereço:
+### Execução do Projeto
 
-```
-http://localhost:3004/users
-```
+1. Inicie a aplicação Vue.js:
+   ```bash
+   npm start
+   ```
+3. Abra o navegador e acesse `http://localhost:8080`.
 
-e a aplicação em Vue.Js no endereço:
+## Detalhes da Implementação
 
-```
-http://localhost:8080/
-```
+### Vuex Store
 
-## Boa sorte! 🚀
+O Vuex é utilizado para gerenciar o estado da aplicação. A estrutura do módulo `users` inclui:
+
+- **State:** Armazena a lista de usuários.
+- **Getters:** Retorna a lista de todos os usuários.
+- **Actions:** Métodos assíncronos para buscar, criar, deletar e atualizar usuários através da API do JSON-Server.
+- **Mutations:** Métodos síncronos para atualizar o estado da store.
+
+### Componente `Tabela`
+
+O componente `Tabela` exibe a lista de usuários em uma tabela e permite a paginação, edição e exclusão de usuários. Também possui a funcionalidade de exportar os dados para CSV.
+
+#### Paginação
+
+A paginação é implementada com base no número total de usuários e o número de usuários exibidos por página. **Sem realizar a renderização com fetch.**
+
+#### Exportação para CSV
+
+A exportação para CSV utiliza a biblioteca `SheetJS (xlsx)` para converter os dados da tabela em um arquivo CSV e permite o download do arquivo.
+
+### Componente `FormularioFiltro`
+
+O componente `FormularioFiltro` permite filtrar a lista de usuários por nome, sobrenome e email. Os valores dos campos são gerenciados por meio de propriedades (`props`) e o estado local do componente.
+
+## Estilos
+
+Os estilos CSS são organizados em arquivos separados e importados nos componentes conforme necessário.
