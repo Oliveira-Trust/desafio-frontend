@@ -1,4 +1,4 @@
-# Projeto Vue.js com Vuex e JSON-Server
+# Desafio Técnico Oliveira Trust com Vue.js com Vuex e JSON-Server
 
 ## Descrição do Projeto
 
