@@ -12,7 +12,7 @@ Certifique-se de ter o Node.js e npm instalados em sua máquina.
 
 Troque a versão do Node para 16:
 ``` bash
-    nmv install 16
+    nvm install 16
     nvm use 16
 ```
 
