@@ -39,4 +39,9 @@ describe('CommonButton', () => {
     const wrapper = mount(CommonButton, { props: { label: 'Confirmar', disabled: true } })
     expect(wrapper.find(".disabled").exists()).toBe(true);
   })
+
+  it('renders with an icon', () => {
+    const wrapper = mount(CommonButton, { props: { label: 'Confirmar', icon: 'close' } })
+    expect(wrapper.find(".button-icon").exists()).toBe(true);
+  })
 })
