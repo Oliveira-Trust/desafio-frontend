@@ -73,13 +73,13 @@ const handleExportToCSV = async () => {
         <td class="flex justify-end items-center">
           <div class="flex justify-center items-center">
             <IconButton
-              class="m-1"
+              class="edit-btn m-1"
               name="pencil-alt"
               tooltipText="Editar"
               @onClick="handleEditClick(user)"
             />
             <IconButton
-              class="m-1"
+              class="delete-btn m-1"
               name="trash-alt"
               tooltipText="Excluir"
               @onClick="handleDeleteClick(user)"
