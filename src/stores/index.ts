@@ -70,5 +70,17 @@ export const useAppStore = defineStore('app', () => {
     cryptoCurrencyValue.value = coin[`${cryptoCurrency.value}${currency.value}`].bid;
   }
 
-  return { users, filter, setFilter, paginationData, pullPaginatedUsers, getAllUsers, deleteUser, updateUser, createUser, cryptoCurrencyValue, pullCryptoCurrencyPrice }
+  return {
+    users,
+    filter,
+    setFilter,
+    paginationData,
+    pullPaginatedUsers,
+    getAllUsers,
+    deleteUser,
+    updateUser,
+    createUser,
+    cryptoCurrencyValue,
+    pullCryptoCurrencyPrice
+  }
 })
