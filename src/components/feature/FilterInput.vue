@@ -35,14 +35,14 @@ const onClearFiltersClick = async () => {
       <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email" />
       <div class="filter-group-actions flex justify-between items-center gap-x-4">
         <CommonButton
-          class="filter-group-actions-button"
+          class="search-button filter-group-actions-button"
           @onClick="onSearchClick"
           label="Buscar"
           outlined
           icon="search"
         />
         <CommonButton
-          class="filter-group-actions-button"
+          class="clear-button filter-group-actions-button"
           @onClick="onClearFiltersClick"
           label="Limpar"
           :disabled="filter.nome === '' && filter.sobrenome === '' && filter.email === ''"

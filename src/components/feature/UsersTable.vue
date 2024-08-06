@@ -94,11 +94,18 @@ const handleExportToCSV = async () => {
       <div class="flex justify-center items-center">
         <IconButton name="chevron-left" @onClick="handlePreviousPageClick" />
         <div class="flex justify-center items-end text-gray-300" v-if="pagination.currentPage >= 4">
-          <CommonButton small outlined label="1" @onClick="handleFirstPageClick" />
+          <CommonButton
+            class="first-page-button"
+            small
+            outlined
+            label="1"
+            @onClick="handleFirstPageClick"
+          />
           ...
         </div>
         <div v-for="i in [2, 1]" :key="'previous-' + i">
           <CommonButton
+            :class="'previous-' + i + '-page-button'"
             v-if="pagination.currentPage > i"
             small
             outlined
@@ -107,12 +114,14 @@ const handleExportToCSV = async () => {
           />
         </div>
         <CommonButton
+          class="current-page-button"
           small
           :label="pagination.currentPage.toString()"
           @onClick="handlePageClick(pagination.currentPage)"
         />
         <div v-for="i in 2" :key="'next-' + i">
           <CommonButton
+            :class="'next-' + i + '-page-button'"
             v-if="pagination.currentPage + i <= pagination.pages"
             small
             outlined
@@ -126,6 +135,7 @@ const handleExportToCSV = async () => {
         >
           ...
           <CommonButton
+            class="last-page-button"
             small
             outlined
             :label="pagination.pages.toString()"
