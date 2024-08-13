@@ -35,7 +35,10 @@ const isEditing = computed(() => {
 })
 
 const isAmountValid = computed(() => {
-  return cryptoCurrencyAmoutToBuy.value || cryptoCurrencyAmoutToBuy.value === 0
+  return (
+    (parseFloat(userCurrencyToAsk.value) || 0) >= 0 &&
+    (cryptoCurrencyAmoutToBuy.value || cryptoCurrencyAmoutToBuy.value >= 0)
+  )
 })
 
 const isEmailValid = computed(() => {
@@ -92,7 +95,10 @@ watch(
 watch(
   () => userCurrencyToAsk.value,
   (val) => {
-    const cryptoValue = getCryptoValueByCurrencyValue(val, cryptoCurrencyValue.value.toString())
+    const cryptoValue = getCryptoValueByCurrencyValue(
+      val || '0',
+      cryptoCurrencyValue.value.toString()
+    )
     cryptoCurrencyAmoutToBuy.value = cryptoValue
     userTotalCryptoCurrency.value = ((user.value?.valor_carteira ?? 0) + cryptoValue).toFixed(8)
   }

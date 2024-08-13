@@ -62,7 +62,7 @@ describe('UserFormModal.vue', () => {
       },
       props: {
         isOpen: true,
-        user: { id: 1, nome: 'Usuário', sobrenome: 'teste', email: 'teste@exemplo.com', valor_carteira: 0 },
+        user: { id: 1, nome: 'Usuário', sobrenome: 'teste', email: 'teste@exemplo.com' },
       },
     });
 
@@ -107,7 +107,7 @@ describe('UserFormModal.vue', () => {
       },
       props: {
         isOpen: true,
-        user: { id: 1, nome: 'Usuário', sobrenome: 'teste', email: 'teste@exemplo.com', valor_carteira: 0 },
+        user: { id: 1, nome: 'Usuário', sobrenome: 'teste', email: 'teste@exemplo.com' },
       },
     });
 
@@ -165,6 +165,26 @@ describe('UserFormModal.vue', () => {
 
     wrapper.vm.$nextTick(() => {
       expect(store.updateUser).toHaveBeenCalledWith(1, { id: 1, nome: 'atualizado', sobrenome: 'atualizado', email: 'atualizado@exemplo.com', valor_carteira: 0 })
+    });
+  })
+
+  it('renders invalid amount', async () => {
+    (getCryptoValueByCurrencyValue as any).mockReturnValue(-1);
+    const wrapper: any = mount(UserFormModal, {
+      global: {
+        plugins: [pinia],
+      },
+      props: {
+        isOpen: true,
+        user: { id: 1, nome: 'Usuário', sobrenome: 'teste', email: 'teste@exemplo.com' },
+      },
+    });
+
+    wrapper.vm.userCurrencyToAsk = -1;
+
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.text()).toContain('Valor inválido');
+      expect(wrapper.find('.animated-loading').exists()).toBe(true);
     });
   })
 });

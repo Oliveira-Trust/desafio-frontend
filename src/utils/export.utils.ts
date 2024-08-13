@@ -47,6 +47,6 @@ export function exportUsersToCSV (data: User[]) {
     a.click();
     document.body.removeChild(a);
   } else {
-    location.href = 'data:text/csv;encoding:utf-8,' + encodeURIComponent(csvString);
+    location.assign('data:text/csv;encoding:utf-8,' + encodeURIComponent(csvString));
   }
 }

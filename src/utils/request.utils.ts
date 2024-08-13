@@ -1,5 +1,5 @@
 export const makeRequest = async (
-  url = '',
+  url: string,
   options = {},
   customHeaders = {}
 ) => {
