@@ -42,8 +42,13 @@ const deleteUser = async () => {
           <p class="m-0.5">Tem certeza que deseja excluir essa Carteira?</p>
           <p>Essa ação não poderá ser desfeita.</p>
           <div class="mt-5 flex flex-col justify-center items-center w-full">
-            <Button class="w-11/12 m-2.5" :danger="true" @onClick="deleteUser" label="Excluir" />
-            <TextButton class="m-2.5" @onClick="close" label="Cancelar" />
+            <Button
+              class="confirm-button w-11/12 m-2.5"
+              :danger="true"
+              @onClick="deleteUser"
+              label="Excluir"
+            />
+            <TextButton class="close-button m-2.5" @onClick="close" label="Cancelar" />
           </div>
         </div>
       </template>

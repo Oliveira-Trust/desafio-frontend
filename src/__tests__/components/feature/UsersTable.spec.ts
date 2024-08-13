@@ -100,25 +100,102 @@ describe('UsersTable', () => {
       expect(store.pullPaginatedUsers).toHaveBeenCalledWith({currentPage: 2});
     })
 
-    // it('pulls first page on button click', () => {
-    //   const store = useAppStore()
-    //   const wrapper: any = mount(UsersTable, {
-    //     global: {
-    //       plugins: [pinia],
-    //     },
-    //   })
-  
-    //   store.paginationData = {
-    //     currentPage: 5,
-    //     totalItems: 80,
-    //     pages: 8
-    //   };
+    it('pulls current page on button click', () => {
+      const store = useAppStore()
+      const wrapper: any = mount(UsersTable, {
+        global: {
+          plugins: [pinia],
+        },
+      })
 
-    //   expect(wrapper.find('.previous-1-page-button').exists()).toBe(true);
-    //   wrapper.find('.previous-1-page-button').trigger('click');
+      store.users = [{
+          id: 1,
+          nome: 'User 1',
+          sobrenome: 'Test',
+          email: 'email@test.com'
+      }];
+
+      store.paginationData = {
+        currentPage: 1,
+        totalItems: 1,
+        pages: 1
+      };
+
+      wrapper.vm.$nextTick(() => {
+        expect(wrapper.find('.current-page-button').exists()).toBe(true);
+        wrapper.find('.current-page-button').trigger('click');
+    
+        expect(store.pullPaginatedUsers).toHaveBeenCalledWith({currentPage: 1});
+      })
+    })
+
+    it('pulls first page on button click', () => {
+      const store = useAppStore()
+      const wrapper: any = mount(UsersTable, {
+        global: {
+          plugins: [pinia],
+        },
+      })
   
-    //   expect(store.pullPaginatedUsers).toHaveBeenCalledWith({currentPage: 4});
-    // })
+      store.users = [];
+
+      for (let i = 0; i < 80; i++) {
+        store.users.push({
+          id: i,
+          nome: `User ${i}`,
+          sobrenome: `Test`,
+          email: `email${i}@test.com`
+        });
+      }
+
+      store.paginationData = {
+        currentPage: 5,
+        totalItems: 80,
+        pages: 8
+      };
+
+      wrapper.vm.$nextTick(() => {
+        expect(wrapper.text()).toContain('...')
+
+        expect(wrapper.find('.previous-1-page-button').exists()).toBe(true);
+        wrapper.find('.previous-1-page-button').trigger('click');
+    
+        expect(store.pullPaginatedUsers).toHaveBeenCalledWith({currentPage: 4});
+      })
+    })
+
+    it('pulls next page on button click', () => {
+      const store = useAppStore()
+      const wrapper: any = mount(UsersTable, {
+        global: {
+          plugins: [pinia],
+        },
+      })
+  
+      store.users = [];
+
+      for (let i = 0; i < 11; i++) {
+        store.users.push({
+          id: i,
+          nome: `User ${i}`,
+          sobrenome: `Test`,
+          email: `email${i}@test.com`
+        });
+      }
+
+      store.paginationData = {
+        currentPage: 1,
+        totalItems: 11,
+        pages: 2
+      };
+
+      wrapper.vm.$nextTick(() => {
+        expect(wrapper.find('.next-1-page-button').exists()).toBe(true);
+        wrapper.find('.next-1-page-button').trigger('click');
+    
+        expect(store.pullPaginatedUsers).toHaveBeenCalledWith({currentPage: 2});
+      })
+    })
   })
 
   describe('handleFirstPageClick', () => {

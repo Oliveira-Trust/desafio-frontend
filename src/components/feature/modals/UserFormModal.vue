@@ -138,7 +138,7 @@ watch(
         <div class="flex justify-end items-center flex-wrap mt-5 mb-8 mx-0">
           <TextButton class="mt-2.5" @onClick="close" label="Cancelar" />
           <CommonButton
-            class="mt-2.5 ml-8"
+            class="save-btn mt-2.5 ml-8"
             :disabled="!isFormValid"
             @onClick="save"
             label="Salvar"
