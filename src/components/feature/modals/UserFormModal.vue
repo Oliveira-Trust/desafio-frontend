@@ -122,13 +122,13 @@ watch(
       @close="close"
     >
       <template v-slot:body>
-        <TextInput placeholder="Nome" v-model="user.nome" />
-        <TextInput placeholder="Sobrenome" v-model="user.sobrenome" />
-        <TextInput placeholder="E-mail" v-model="user.email" />
+        <TextInput class="form-modal-input" placeholder="Nome" v-model="user.nome" />
+        <TextInput class="form-modal-input" placeholder="Sobrenome" v-model="user.sobrenome" />
+        <TextInput class="form-modal-input" placeholder="E-mail" v-model="user.email" />
         <div class="flex justify-between items-center">
           <TextInput
             isCurrency
-            class="w-1/2"
+            class="form-modal-input w-1/2"
             placeholder="Valor de compra"
             v-model="userCurrencyToAsk"
             :error="!isAmountValid"

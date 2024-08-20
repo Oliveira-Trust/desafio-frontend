@@ -11,11 +11,11 @@ export default mergeConfig(
       globals: true,
       environment: 'jsdom',
       setupFiles: './src/__tests__/setup-tests.ts',
-      exclude: [...configDefaults.exclude, 'e2e/**'],
+      exclude: [...configDefaults.exclude, './src/__tests__/e2e/**'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       coverage: {
         provider: 'istanbul', // or 'v8'
-        exclude: [...defaultCoverageExcludes, '**/__tests__/**', 'src/main.ts'],
+        exclude: [...defaultCoverageExcludes, '**/__tests__/**', 'src/main.ts', 'playwright.config.ts'],
       },
     }
   })

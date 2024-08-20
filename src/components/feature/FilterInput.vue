@@ -25,14 +25,24 @@ const onClearFiltersClick = async () => {
 <template>
   <div class="flex justify-between">
     <div class="filter-group flex justify-between w-full gap-x-4">
-      <TextInput class="filter-input" name="nome" placeholder="Nome" v-model="filter.nome" />
+      <TextInput
+        class="filter-input"
+        name="nome"
+        placeholder="Filtrar nome"
+        v-model="filter.nome"
+      />
       <TextInput
         class="filter-input"
         name="sobrenome"
-        placeholder="Sobrenome"
+        placeholder="Filtrar sobrenome"
         v-model="filter.sobrenome"
       />
-      <TextInput class="filter-input" name="email" placeholder="E-mail" v-model="filter.email" />
+      <TextInput
+        class="filter-input"
+        name="email"
+        placeholder="Filtrar e-mail"
+        v-model="filter.email"
+      />
       <div class="filter-group-actions flex justify-between items-center gap-x-4">
         <CommonButton
           class="search-button filter-group-actions-button"

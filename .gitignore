@@ -31,5 +31,8 @@ coverage
 
 *.tsbuildinfo
 
-#Environment
+# Environment
 .env
+
+# Tests
+test-results
