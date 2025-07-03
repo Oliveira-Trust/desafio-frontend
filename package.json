@@ -10,7 +10,10 @@
     "start": "npm-run-all --parallel serve api"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "core-js": "^3.6.5",
+    "json-server": "^1.0.0-alpha.23",
+    "primeicons": "^6.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
