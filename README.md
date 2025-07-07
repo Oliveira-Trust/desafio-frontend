@@ -12,9 +12,10 @@ o desafio mas pode ficar livre para resolver da forma que achar mais eficiente. 
 Não deixe de enviar o seu teste mesmo que incompleto!
 
 ## Tecnologias a serem utilizadas:
-* Vuejs (Fornecemos uma estrutura básica do aplicativo) 
-* CSS
-* HTML
+* Vue ou React
+* Vite, Nuxt ou Nextjs
+* TypeScript
+* Tailwindcss
 
 ## Entrega:
 Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome completo
@@ -26,13 +27,14 @@ Envie também seu LinkedIn ou currículo para vagas@oliveiratrust.com.br.
 
 ## O que vamos avaliar:
 - Legibilidade do código
-- Percepção da identidade do produto
+- Fidelização do protótipo fornecido
 - Modularização
 - Lógica para aplicar a regra de negócio
+- Experiência do usuário
 - Implementação das APIs
 
 ## Instruções para o desafio:
-Você deve implementar um aplicativo feito com Vuejs utilizando uma API de usuários fornecida no próprio projeto e uma API externa de conversão de moedas.
+Você deve implementar um aplicativo feito com Vite, Nuxt ou Nextjs utilizando uma API de usuários fornecida no próprio projeto e uma API externa de conversão de moedas.
 
 ## Obrigatórios:
 - Acompanhar identidade visual do [protótipo fornecido](https://www.figma.com/proto/AO265OINopUSibxX8Dd4A6/Desafio-Front-End?page-id=0%3A1&node-id=2%3A362&viewport=314%2C48%2C0.15&scaling=contain&starting-point-node-id=2%3A362)
@@ -72,41 +74,18 @@ Pode utilizar qualquer API para conversão de moedas, mas recomendamos essa aqui
     - https://docs.awesomeapi.com.br/api-de-moedas#legendas
     
 ## Bônus
-- Validação dos inputs para funcionalidade de criar e editar carteira
-- Gerenciamento de estado (vuex)
-- Exportar dados da lista em CSV (Você pode utlizar alguma biblioteca npm para esta funcionalidade)
+- Gerenciamento de estado
+- Cobertura de testes
+- Validação dos formulários existentes
+- Hospedagem: Netlify, Vercel, AWS Amplify, outros
 
 ## Configurações do projeto
 
-É necessário possuir a biblioteca json-server instalada em sua máquina:
+É necessário possuir a biblioteca json-server instalada em sua máquina para subir a [API local](https://github.com/Oliveira-Trust/desafio-frontend/blob/master/api/data.json):
 
 ```
-npm install -g json-server
+npm i -g json-server
 ```
 Acesse a [documentação](https://github.com/typicode/json-server#getting-started) do json-server para entender melhor como manipular a API.
-
-Também será necessário instalar as dependências do projeto executando:
-
-```
-npm install
-```
-
-Finalmente podemos rodar o projeto e a API utilizando apenas um comando:
-
-```
-npm start
-```
-
-A api a ser consumida está rodando no endereço:
-
-```
-http://localhost:3004/users
-```
-
-e a aplicação em Vue.Js no endereço:
-
-```
-http://localhost:8080/
-```
 
 ## Boa sorte! 🚀
