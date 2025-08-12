@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
   components: {
     dirs: ['~/components']
   },
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   experimental: {
     componentIslands: false
   },
-  ssr: true,
+  ssr: false,
   typescript: {
     strict: true
   }

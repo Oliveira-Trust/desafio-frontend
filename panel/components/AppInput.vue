@@ -24,7 +24,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
-const inputId = `input-${Math.random().toString(36).substr(2, 9)}`
+const inputId = computed(() => `input-${props.label.toLowerCase().replace(/\s+/g, '-')}`)
 const isFocused = ref(false)
 const hasValue = computed(() => props.modelValue && props.modelValue.toString().length > 0)
 

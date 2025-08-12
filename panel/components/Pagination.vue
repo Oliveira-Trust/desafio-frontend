@@ -14,6 +14,30 @@ const handlePageChange = (page: number) => {
     emit('page-change', page)
   }
 }
+
+const getVisiblePages = () => {
+  const pages = []
+  const maxVisible = 5
+  
+  if (props.totalPages <= maxVisible) {
+    for (let i = 1; i <= props.totalPages; i++) {
+      pages.push(i)
+    }
+  } else {
+    let start = Math.max(1, props.currentPage - 2)
+    let end = Math.min(props.totalPages, start + maxVisible - 1)
+    
+    if (end - start < maxVisible - 1) {
+      start = Math.max(1, end - maxVisible + 1)
+    }
+    
+    for (let i = start; i <= end; i++) {
+      pages.push(i)
+    }
+  }
+  
+  return pages
+}
 </script>
 
 <template>
@@ -33,7 +57,7 @@ const handlePageChange = (page: number) => {
       </button>
       
       <button
-        v-for="page in [1, 2, 3]"
+        v-for="page in getVisiblePages()"
         :key="page"
         @click="handlePageChange(page)"
         :class="[
