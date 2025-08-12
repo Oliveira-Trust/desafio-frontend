@@ -18,11 +18,24 @@ const handleEdit = (item: TableData) => {
 const handleDelete = (item: TableData) => {
 	emit('delete', item)
 }
+
+const formatValue = (value: any, key: string) => {
+	if (value === null || value === undefined) return '-'
+	
+	if (key === 'valor_carteira') {
+		return typeof value === 'number' ? value.toFixed(8) : '0.00000000'
+	}
+	
+	return value
+}
 </script>
 
 <template>
 	<div class="overflow-x-auto">
-		<table class="w-full">
+		<div v-if="!data || data.length === 0" class="text-center py-8 text-gray-500">
+			Nenhum registro encontrado
+		</div>
+		<table v-else class="w-full">
 			<thead>
 				<tr class="border-b-2 border-gray-200">
 					<th v-for="header in headers" :key="header.key"
@@ -57,8 +70,7 @@ const handleDelete = (item: TableData) => {
 								</button>
 							</AppTooltip>
 						</div>
-						<span v-else-if="header.key === 'valor_carteira'">{{ item[header.key].toFixed(8) }}</span>
-						<span v-else>{{ item[header.key] }}</span>
+						<span v-else>{{ formatValue(item[header.key], header.key) }}</span>
 					</td>
 				</tr>
 			</tbody>

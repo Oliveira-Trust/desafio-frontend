@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useUsersStore } from '~/stores/users'
 import type { User } from '~/interfaces'
+import type { FilterParams } from '~/services/filters'
 
 const usersStore = useUsersStore()
 
-const searchForm = ref({
+const searchForm = ref<FilterParams>({
 	nome: '',
 	sobrenome: '',
 	email: ''
@@ -20,13 +21,22 @@ const tableHeaders = [
 
 const handleSearch = async () => {
 	try {
-		await usersStore.searchUsers({
-			nome: searchForm.value.nome || undefined,
-			sobrenome: searchForm.value.sobrenome || undefined,
-			email: searchForm.value.email || undefined
-		})
+		await usersStore.searchUsers(searchForm.value)
 	} catch (error) {
 		console.error('Erro na busca:', error)
+	}
+}
+
+const handleClearFilters = async () => {
+	try {
+		await usersStore.clearFilters()
+		searchForm.value = {
+			nome: '',
+			sobrenome: '',
+			email: ''
+		}
+	} catch (error) {
+		console.error('Erro ao limpar filtros:', error)
 	}
 }
 
@@ -87,7 +97,17 @@ onMounted(() => {
 			<div class="bg-white rounded-lg shadow-lg shadow-gray-200">
 				<div class="p-6">
 					<div class="flex items-center justify-between mb-4">
-						<h2 class="text-lg font-semibold text-gray-900">Carteiras</h2>
+						<div class="flex items-center space-x-4">
+							<h2 class="text-lg font-semibold text-gray-900">Carteiras</h2>
+							<div v-if="usersStore.hasActiveFilters" class="flex items-center space-x-2">
+								<span class="text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+									Filtros ativos
+								</span>
+								<button @click="handleClearFilters" class="text-sm text-red-600 hover:text-red-800">
+									Limpar
+								</button>
+							</div>
+						</div>
 						<AppButton variant="outline" @click="handleExportCSV">
 							Exportar CSV
 						</AppButton>
@@ -98,8 +118,8 @@ onMounted(() => {
 					</div>
 					<DataTable v-else :headers="tableHeaders" :data="usersStore.paginatedUsers" @edit="handleEdit" @delete="handleDelete" />
 
-					<Pagination :current-page="usersStore.currentPage" :total-pages="usersStore.totalPages" :total-records="usersStore.currentPageRecordsCount"
-						@page-change="handlePageChange" />
+					<Pagination :current-page="usersStore.currentPage" :total-pages="usersStore.totalPages" :total-records="usersStore.totalRecords"
+						:items-per-page="usersStore.itemsPerPage" @page-change="handlePageChange" />
 				</div>
 			</div>
 		</main>

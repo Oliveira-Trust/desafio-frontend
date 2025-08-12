@@ -1,4 +1,5 @@
 import type User from './users'
+import type { FilterParams, FilterState } from '~/services/filters'
 
 export interface UsersState {
   allUsers: User[]
@@ -7,4 +8,6 @@ export interface UsersState {
   totalPages: number
   loading: boolean
   itemsPerPage: number
+  filters: FilterParams
+  filterState: FilterState
 }

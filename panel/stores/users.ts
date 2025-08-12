@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { usersService } from '~/services/users'
-import type { User, UsersState, SearchUsersParams } from '~/interfaces'
+import { filterService, type FilterParams, type FilterState } from '~/services/filters'
+import type { User, UsersState } from '~/interfaces'
 
 export const useUsersStore = defineStore('users', {
   state: (): UsersState => ({
@@ -9,33 +10,37 @@ export const useUsersStore = defineStore('users', {
     totalRecords: 0,
     totalPages: 0,
     loading: false,
-    itemsPerPage: 30
+    itemsPerPage: 30,
+    filters: filterService.clearFilters(),
+    filterState: {
+      activeFilters: filterService.clearFilters(),
+      hasActiveFilters: false
+    }
   }),
 
   getters: {
     paginatedUsers: (state) => {
-      const startIndex = (state.currentPage - 1) * state.itemsPerPage
-      const endIndex = startIndex + state.itemsPerPage
-      return state.allUsers.slice(startIndex, endIndex)
+      return state.allUsers
     },
     
     currentPageRecordsCount: (state) => {
-      const startIndex = (state.currentPage - 1) * state.itemsPerPage
-      const endIndex = startIndex + state.itemsPerPage
-      const currentPageUsers = state.allUsers.slice(startIndex, endIndex)
-      return currentPageUsers.length
+      return state.allUsers.length
+    },
+
+    hasActiveFilters: (state) => {
+      return state.filterState.hasActiveFilters
     }
   },
 
   actions: {
-    async loadUsers() {
+    async loadUsers(page: number = 1) {
       this.loading = true
       try {
-        const response = await usersService.getUsers()
-        this.allUsers = response
-        this.totalRecords = response.length
-        this.totalPages = Math.ceil(response.length / this.itemsPerPage)
-        this.currentPage = 1
+        const response = await usersService.getUsers(page, this.itemsPerPage)
+        this.allUsers = response.data
+        this.currentPage = response.currentPage
+        this.totalRecords = response.totalCount
+        this.totalPages = response.totalPages
       } catch (error) {
         console.error('Erro ao carregar usuários:', error)
         throw error
@@ -44,14 +49,16 @@ export const useUsersStore = defineStore('users', {
       }
     },
 
-    async searchUsers(params: SearchUsersParams) {
+    async searchUsers(filters: FilterParams, page: number = 1) {
       this.loading = true
       try {
-        const response = await usersService.searchUsers(params)
-        this.allUsers = response
-        this.totalRecords = response.length
-        this.totalPages = Math.ceil(response.length / this.itemsPerPage)
-        this.currentPage = 1
+        const response = await usersService.searchUsers(filters, page, this.itemsPerPage)
+        this.allUsers = response.data
+        this.currentPage = response.currentPage
+        this.totalRecords = response.totalCount
+        this.totalPages = response.totalPages
+        this.filters = filters
+        this.filterState = filterService.createFilterState(filters)
       } catch (error) {
         console.error('Erro na busca:', error)
         throw error
@@ -60,10 +67,20 @@ export const useUsersStore = defineStore('users', {
       }
     },
 
-    setCurrentPage(page: number) {
-      if (page >= 1 && page <= this.totalPages) {
-        this.currentPage = page
+    async setCurrentPage(page: number) {
+      if (page >= 1) {
+        if (this.hasActiveFilters) {
+          await this.searchUsers(this.filters, page)
+        } else {
+          await this.loadUsers(page)
+        }
       }
+    },
+
+    async clearFilters() {
+      this.filters = filterService.clearFilters()
+      this.filterState = filterService.createFilterState(this.filters)
+      await this.loadUsers(1)
     },
 
     resetState() {
@@ -72,6 +89,8 @@ export const useUsersStore = defineStore('users', {
       this.totalRecords = 0
       this.totalPages = 0
       this.loading = false
+      this.filters = filterService.clearFilters()
+      this.filterState = filterService.createFilterState(this.filters)
     }
   }
 })
