@@ -64,7 +64,7 @@ const handleClose = () => {
 			</div>
 
 			<div class="flex justify-end gap-3 pt-4">
-				<AppButton type="button" variant="outline" @click="handleClose">
+				<AppButton type="button" variant="link" @click="handleClose">
 					Cancelar
 				</AppButton>
 				<AppButton type="submit">

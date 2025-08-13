@@ -8,7 +8,7 @@ export interface TableData {
 }
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'danger'
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'link'
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
 }

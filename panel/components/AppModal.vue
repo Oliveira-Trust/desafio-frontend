@@ -61,13 +61,6 @@ onUnmounted(() => {
 					<div class="p-12">
 						<div class="flex items-center justify-between mb-4">
 							<h2 class="text-xl font-bold text-gray-900">{{ title }}</h2>
-							<button @click="emit('close')"
-								class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-										d="M6 18L18 6M6 6l12 12"></path>
-								</svg>
-							</button>
 						</div>
 
 						<div class="border-t border-gray-200 mb-6"></div>
