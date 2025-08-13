@@ -4,7 +4,7 @@
 ![vite](https://img.shields.io/badge/Vite-747bff?style=for-the-badge)
 ![tailwind](https://img.shields.io/badge/Tailwind-00bcff?style=for-the-badge)
 
-<img src="/docs/desktop.png">
+<img src="https://github.com/brenoeddye/ot-wallet-panel/blob/main/docs/desktop.png?raw=true">
 
 Live preview:
 
