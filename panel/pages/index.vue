@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUsersStore } from '~/stores/users'
+import { usersService } from '~/services/users'
 import type { User } from '~/interfaces'
 import type { FilterParams } from '~/services/filters'
 
@@ -15,7 +16,7 @@ const tableHeaders = [
 	{ key: 'nome', label: 'Nome' },
 	{ key: 'sobrenome', label: 'Sobrenome' },
 	{ key: 'email', label: 'Email' },
-	{ key: 'valor_carteira', label: 'Valor Carteira' },
+	{ key: 'valor_carteira', label: 'Bitcoin' },
 	{ key: 'actions', label: '' }
 ]
 
@@ -45,7 +46,7 @@ const handleAddWallet = () => {
 }
 
 const handleExportCSV = () => {
-	// Implementar exportar CSV
+	usersService.exportToCSV(usersStore.allUsers)
 }
 
 const handleEdit = (item: User) => {

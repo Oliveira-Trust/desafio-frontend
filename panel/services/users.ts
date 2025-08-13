@@ -74,5 +74,38 @@ export const usersService = {
       currentPage: page,
       perPage
     }
+  },
+
+  exportToCSV(users: User[]): void {
+    if (users.length === 0) {
+      alert('Não há dados para exportar')
+      return
+    }
+
+    const headers = ['Nome', 'Sobrenome', 'Email', 'Endereço', 'Data de Nascimento', 'Data de Abertura', 'Valor da Carteira', 'Endereço da Carteira']
+    
+    const csvContent = [
+      headers.join(','),
+      ...users.map(user => [
+        `"${user.nome}"`,
+        `"${user.sobrenome}"`,
+        `"${user.email}"`,
+        `"${user.endereco}"`,
+        `"${user.data_nascimento}"`,
+        `"${user.data_abertura}"`,
+        user.valor_carteira,
+        `"${user.endereco_carteira}"`
+      ].join(','))
+    ].join('\n')
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    const url = URL.createObjectURL(blob)
+    link.setAttribute('href', url)
+    link.setAttribute('download', `usuarios_${new Date().toISOString().split('T')[0]}.csv`)
+    link.style.visibility = 'hidden'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 }

@@ -23,7 +23,10 @@ const formatValue = (value: any, key: string) => {
 	if (value === null || value === undefined) return '-'
 	
 	if (key === 'valor_carteira') {
-		return typeof value === 'number' ? value.toFixed(8) : '0.00000000'
+		if (typeof value === 'number') {
+			return value.toString().replace('.', ',')
+		}
+		return '0'
 	}
 	
 	return value
