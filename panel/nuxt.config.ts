@@ -18,6 +18,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'OT | Wallets',
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
+      ],
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
       meta: [
         { name: 'format-detection', content: 'telephone=no' },
