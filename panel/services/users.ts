@@ -76,6 +76,84 @@ export const usersService = {
     }
   },
 
+  async createUser(userData: Omit<User, 'id' | 'data_abertura' | 'endereco' | 'data_nascimento' | 'endereco_carteira'>): Promise<User> {
+    const endpoint = import.meta.env.VITE_CREATE_USER || '/users';
+    
+    if (!endpoint) {
+      throw new Error('Erro interno');
+    }
+
+    const newUser = {
+      ...userData,
+      id: crypto.randomUUID(),
+      data_abertura: new Date().toISOString().split('T')[0] || '',
+      endereco: '',
+      data_nascimento: '',
+      endereco_carteira: ''
+    };
+
+    const url = `${API_BASE_URL}${endpoint}`;
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro: ${response.status} ${response.statusText}`);
+    }
+
+    return newUser;
+  },
+
+  async updateUser(userData: User): Promise<User> {
+    const endpoint = import.meta.env.VITE_UPDATE_USER || '/users';
+    
+    if (!endpoint) {
+      throw new Error('Erro interno');
+    }
+
+    const url = `${API_BASE_URL}${endpoint}/${userData.id}`;
+    
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro: ${response.status} ${response.statusText}`);
+    }
+
+    return userData;
+  },
+
+  async deleteUser(userId: string): Promise<void> {
+    const endpoint = import.meta.env.VITE_DELETE_USER || '/users';
+    
+    if (!endpoint) {
+      throw new Error('Erro interno');
+    }
+
+    const url = `${API_BASE_URL}${endpoint}/${userId}`;
+    
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro: ${response.status} ${response.statusText}`);
+    }
+  },
+
   exportToCSV(users: User[]): void {
     if (users.length === 0) {
       alert('Não há dados para exportar')

@@ -8,6 +8,10 @@ import type { WalletFormData } from '~/interfaces'
 const usersStore = useUsersStore()
 
 const isModalOpen = ref(false)
+const isDeleteModalOpen = ref(false)
+const isEditModalOpen = ref(false)
+const userToDelete = ref<User | null>(null)
+const userToEdit = ref<User | null>(null)
 
 const searchForm = ref<FilterParams>({
 	nome: '',
@@ -52,8 +56,12 @@ const handleModalClose = () => {
 	isModalOpen.value = false
 }
 
-const handleModalSubmit = (data: WalletFormData) => {
-	console.log('Dados da carteira:', data)
+const handleModalSubmit = async (data: WalletFormData) => {
+	try {
+		await usersStore.loadUsers(1);
+	} catch (error) {
+		console.error('Erro ao recarregar usuários:', error);
+	}
 }
 
 const handleExportCSV = () => {
@@ -61,11 +69,39 @@ const handleExportCSV = () => {
 }
 
 const handleEdit = (item: User) => {
-	// Implementar editar usuário
+	userToEdit.value = item;
+	isEditModalOpen.value = true;
+}
+
+const handleEditModalClose = () => {
+	isEditModalOpen.value = false;
+	userToEdit.value = null;
+}
+
+const handleEditSubmit = async (data: WalletFormData) => {
+	try {
+		await usersStore.loadUsers(usersStore.currentPage);
+	} catch (error) {
+		console.error('Erro ao recarregar usuários:', error);
+	}
 }
 
 const handleDelete = (item: User) => {
-	// Implementar deletar usuário
+	userToDelete.value = item;
+	isDeleteModalOpen.value = true;
+}
+
+const handleDeleteModalClose = () => {
+	isDeleteModalOpen.value = false;
+	userToDelete.value = null;
+}
+
+const handleDeleteConfirm = async (user: User) => {
+	try {
+		await usersStore.loadUsers(usersStore.currentPage);
+	} catch (error) {
+		console.error('Erro ao recarregar usuários:', error);
+	}
 }
 
 const handlePageChange = (page: number) => {
@@ -139,6 +175,20 @@ onMounted(() => {
 			:is-open="isModalOpen"
 			@close="handleModalClose"
 			@submit="handleModalSubmit"
+		/>
+		
+		<ModalsDeleteWalletModal 
+			:is-open="isDeleteModalOpen"
+			:user="userToDelete"
+			@close="handleDeleteModalClose"
+			@confirm="handleDeleteConfirm"
+		/>
+		
+		<ModalsEditWalletModal 
+			:is-open="isEditModalOpen"
+			:user="userToEdit"
+			@close="handleEditModalClose"
+			@submit="handleEditSubmit"
 		/>
 	</div>
 </template>

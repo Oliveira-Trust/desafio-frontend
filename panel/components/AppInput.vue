@@ -20,26 +20,26 @@ const props = defineProps({
 		type: Boolean,
 		default: false
 	}
-})
+});
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue']);
 
-const inputId = computed(() => `input-${props.label.toLowerCase().replace(/\s+/g, '-')}`)
-const isFocused = ref(false)
-const hasValue = computed(() => props.modelValue && props.modelValue.toString().length > 0)
+const inputId = computed(() => `input-${props.label.toLowerCase().replace(/\s+/g, '-')}`);
+const isFocused = ref(false);
+const hasValue = computed(() => props.modelValue && props.modelValue.toString().length > 0);
 
 const handleInput = (event: Event) => {
-	const target = event.target as HTMLInputElement
-	emit('update:modelValue', target.value)
-}
+	const target = event.target as HTMLInputElement;
+	emit('update:modelValue', target.value);
+};
 
 const handleFocus = () => {
-	isFocused.value = true
-}
+	isFocused.value = true;
+};
 
 const handleBlur = () => {
-	isFocused.value = false
-}
+	isFocused.value = false;
+};
 </script>
 
 <template>

@@ -1,36 +1,36 @@
 <script setup lang="ts">
-import type { TableHeader, TableData } from '~/interfaces'
+import type { TableHeader, TableData } from '~/interfaces';
 
 const props = defineProps<{
 	headers: TableHeader[]
 	data: TableData[]
-}>()
+}>();
 
 const emit = defineEmits<{
 	edit: [item: TableData]
 	delete: [item: TableData]
-}>()
+}>();
 
 const handleEdit = (item: TableData) => {
-	emit('edit', item)
-}
+	emit('edit', item);
+};
 
 const handleDelete = (item: TableData) => {
-	emit('delete', item)
-}
+	emit('delete', item);
+};
 
 const formatValue = (value: any, key: string) => {
-	if (value === null || value === undefined) return '-'
+	if (value === null || value === undefined) return '-';
 	
 	if (key === 'valor_carteira') {
 		if (typeof value === 'number') {
-			return value.toString().replace('.', ',')
+			return value.toString().replace('.', ',');
 		}
-		return '0'
+		return '0';
 	}
 	
-	return value
-}
+	return value;
+};
 </script>
 
 <template>

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { WalletFormData } from '~/interfaces'
+import type { WalletFormData, User } from '~/interfaces'
 import { useUsersStore } from '~/stores/users'
 import { validators, masks } from '~/utils'
 
 interface Props {
 	isOpen: boolean
+	user: User | null
 }
 
 const props = defineProps<Props>();
@@ -44,7 +45,7 @@ const validateForm = (): boolean => {
 };
 
 const handleSubmit = async () => {
-	if (!validateForm()) {
+	if (!validateForm() || !props.user) {
 		return;
 	}
 
@@ -52,18 +53,19 @@ const handleSubmit = async () => {
 
 	try {
 		const userData = {
+			id: props.user.id,
 			nome: formData.value.nome.trim(),
 			sobrenome: formData.value.sobrenome.trim(),
 			email: formData.value.email.trim(),
 			valor_carteira: parseFloat(formData.value.valor_compra.replace(/\D/g, '')) / 100
 		};
 
-		await usersStore.addUser(userData);
+		await usersStore.updateUser(userData);
 		emit('submit', { ...formData.value });
 		handleClose();
 	} catch (error) {
-		console.error('Erro ao adicionar usuário:', error);
-		alert('Erro ao adicionar carteira. Tente novamente.');
+		console.error('Erro ao atualizar usuário:', error);
+		alert('Erro ao atualizar carteira. Tente novamente.');
 	} finally {
 		isLoading.value = false;
 	}
@@ -79,10 +81,22 @@ const handleClose = () => {
 	errors.value = {};
 	emit('close');
 };
+
+watch(() => props.user, (newUser) => {
+	if (newUser) {
+		formData.value = {
+			nome: newUser.nome,
+			sobrenome: newUser.sobrenome,
+			email: newUser.email,
+			valor_compra: masks.currency((newUser.valor_carteira * 100).toString())
+		};
+		errors.value = {};
+	}
+}, { immediate: true });
 </script>
 
 <template>
-	<AppModal :is-open="isOpen" title="Adicionar Carteira" size="lg" @close="handleClose">
+	<AppModal :is-open="isOpen" title="Editar Carteira" size="lg" @close="handleClose">
 		<form @submit.prevent="handleSubmit" class="space-y-4">
 			<div>
 				<AppInput 
@@ -147,9 +161,9 @@ const handleClose = () => {
 				>
 					<span v-if="isLoading" class="flex items-center gap-2">
 						<div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-						Adicionando...
+						Atualizando...
 					</span>
-					<span v-else>Adicionar</span>
+					<span v-else>Atualizar</span>
 				</AppButton>
 			</div>
 		</form>

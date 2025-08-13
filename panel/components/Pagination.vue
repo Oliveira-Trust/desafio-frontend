@@ -12,7 +12,7 @@ const emit = defineEmits<{
 
 const handlePageChange = (page: number) => {
 	if (page >= 1 && page <= props.totalPages) {
-		emit('page-change', page)
+		emit('page-change', page);
 	}
 };
 
