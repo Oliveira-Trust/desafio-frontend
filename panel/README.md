@@ -1,75 +1,41 @@
-# Nuxt Minimal Starter
+# Fintools - Painel de carteiras de ativos
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![nuxt](https://img.shields.io/badge/Nuxt-50BB7A?style=for-the-badge)
+![vite](https://img.shields.io/badge/Vite-747bff?style=for-the-badge)
+![tailwind](https://img.shields.io/badge/Tailwind-00bcff?style=for-the-badge)
 
-## Setup
+<img src="/docs/desktop.png">
 
-Make sure to install dependencies:
+Live preview:
 
-```bash
-# npm
+https://ot-wallet-panel.vercel.app
+
+## Recursos
+
+* ♨️ Filtros que busca por letra ou expressão digitada para que a busca seja mais preciso.
+
+* 🏦 Conversão das moedas para BTC
+
+* 📱 Responsividade para melhorar o fluxo do uso em celulares
+
+* ✈️ Exportar toda a lista criada para um arquivo .csv
+
+## Projeto
+
+Este projeto consiste em um painel para administrar as carteiras ativas de clientes. O projeto foi feito com Nuxt.js + Vite.js para auxiliar no desenvolvimento foi adicionado o Tailwind para facilitar na construção da interface.
+
+Como rodar o projeto:
+
+```
+cd panel
+```
+
+```
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+```
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Aprecie todo o projeto e interface feita com carinho e muito código. ☕
