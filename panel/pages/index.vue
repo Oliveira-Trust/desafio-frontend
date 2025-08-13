@@ -3,8 +3,11 @@ import { useUsersStore } from '~/stores/users'
 import { usersService } from '~/services/users'
 import type { User } from '~/interfaces'
 import type { FilterParams } from '~/services/filters'
+import type { WalletFormData } from '~/interfaces'
 
 const usersStore = useUsersStore()
+
+const isModalOpen = ref(false)
 
 const searchForm = ref<FilterParams>({
 	nome: '',
@@ -42,7 +45,15 @@ const handleClearFilters = async () => {
 }
 
 const handleAddWallet = () => {
-	// Implementar adicionar carteira
+	isModalOpen.value = true
+}
+
+const handleModalClose = () => {
+	isModalOpen.value = false
+}
+
+const handleModalSubmit = (data: WalletFormData) => {
+	console.log('Dados da carteira:', data)
 }
 
 const handleExportCSV = () => {
@@ -124,5 +135,11 @@ onMounted(() => {
 				</div>
 			</div>
 		</main>
+		
+		<ModalsAddWalletModal 
+			:is-open="isModalOpen"
+			@close="handleModalClose"
+			@submit="handleModalSubmit"
+		/>
 	</div>
 </template>

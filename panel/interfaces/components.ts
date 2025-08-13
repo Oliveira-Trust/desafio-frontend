@@ -19,3 +19,16 @@ export interface TooltipProps {
   variant?: 'light' | 'dark'
   delay?: number
 }
+
+export interface ModalProps {
+  isOpen: boolean
+  title: string
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+}
+
+export interface WalletFormData {
+  nome: string
+  sobrenome: string
+  email: string
+  valor_compra: string
+}
