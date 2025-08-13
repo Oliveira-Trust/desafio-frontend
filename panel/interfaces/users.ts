@@ -8,4 +8,6 @@ export default interface User {
     data_abertura: string
     valor_carteira: number
     endereco_carteira: string
+    moeda_origem?: string
+    moeda_destino?: string
 }

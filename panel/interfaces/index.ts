@@ -1,5 +1,5 @@
 export type { default as User } from './users'
 export type { UsersState } from './store'
-export type { TableHeader, TableData, ButtonProps, TooltipProps, ModalProps, WalletFormData } from './components'
+export type { TableHeader, TableData, ButtonProps, TooltipProps, ModalProps, WalletFormData, Currency, CurrencyConversion } from './components'
 export type { ApiRequestOptions } from './services'
 export type { FilterParams, FilterState } from '~/services/filters'

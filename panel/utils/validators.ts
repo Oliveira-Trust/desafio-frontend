@@ -67,6 +67,8 @@ export const validators = {
 		sobrenome: string;
 		email: string;
 		valor_compra: string;
+		moeda_origem?: string;
+		moeda_destino?: string;
 	}): ValidationResult => {
 		const errors: Record<string, string> = {};
 
@@ -84,6 +86,11 @@ export const validators = {
 
 		const valorError = validators.currency(data.valor_compra, 'Valor de compra');
 		if (valorError) errors.valor_compra = valorError;
+
+		if (data.moeda_destino) {
+			const moedaDestinoError = validators.required(data.moeda_destino, 'Moeda de destino');
+			if (moedaDestinoError) errors.moeda_destino = moedaDestinoError;
+		}
 
 		return {
 			isValid: Object.keys(errors).length === 0,

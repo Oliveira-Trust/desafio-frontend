@@ -57,6 +57,12 @@ export const usersService = {
       throw new Error('Erro interno');
     }
 
+    const hasFilters = filters.nome || filters.sobrenome || filters.email;
+    
+    if (hasFilters) {
+      return this.searchUsersLocal(filters, page, perPage);
+    }
+
     const searchParams = filterService.getSearchParams(filters, page, perPage)
     const url = `${API_BASE_URL}${endpoint}?${searchParams.toString()}`;
     
@@ -76,6 +82,50 @@ export const usersService = {
     }
   },
 
+  async searchUsersLocal(filters: FilterParams, page: number = 1, perPage: number = 10): Promise<PaginatedResponse<User>> {
+    const endpoint = import.meta.env.VITE_LIST_USERS;
+    if (!endpoint) {
+      throw new Error('Erro interno');
+    }
+
+    const nomeFilter = filters.nome?.toLowerCase() || '';
+    const sobrenomeFilter = filters.sobrenome?.toLowerCase() || '';
+    const emailFilter = filters.email?.toLowerCase() || '';
+    
+    const url = `${API_BASE_URL}${endpoint}`;
+    const response = await fetch(url)
+    
+    if (!response.ok) {
+      throw new Error(`Erro: ${response.status} ${response.statusText}`)
+    }
+    
+    const allUsers: User[] = await response.json()
+    
+    const filteredUsers = allUsers.filter(user => {
+      const nome = user.nome?.toLowerCase() || '';
+      const sobrenome = user.sobrenome?.toLowerCase() || '';
+      const email = user.email?.toLowerCase() || '';
+      
+      const nomeMatch = !nomeFilter || nome.includes(nomeFilter);
+      const sobrenomeMatch = !sobrenomeFilter || sobrenome.includes(sobrenomeFilter);
+      const emailMatch = !emailFilter || email.includes(emailFilter);
+      
+      return nomeMatch && sobrenomeMatch && emailMatch;
+    });
+    
+    const startIndex = (page - 1) * perPage;
+    const endIndex = startIndex + perPage;
+    const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
+    
+    return {
+      data: paginatedUsers,
+      totalCount: filteredUsers.length,
+      totalPages: Math.ceil(filteredUsers.length / perPage),
+      currentPage: page,
+      perPage
+    }
+  },
+
   async createUser(userData: Omit<User, 'id' | 'data_abertura' | 'endereco' | 'data_nascimento' | 'endereco_carteira'>): Promise<User> {
     const endpoint = import.meta.env.VITE_CREATE_USER || '/users';
     
@@ -89,7 +139,9 @@ export const usersService = {
       data_abertura: new Date().toISOString().split('T')[0] || '',
       endereco: '',
       data_nascimento: '',
-      endereco_carteira: ''
+      endereco_carteira: '',
+      moeda_origem: userData.moeda_origem || 'BRL',
+      moeda_destino: userData.moeda_destino || 'BTC'
     };
 
     const url = `${API_BASE_URL}${endpoint}`;

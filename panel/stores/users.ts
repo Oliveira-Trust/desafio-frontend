@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { usersService } from '~/services/users'
 import { filterService, type FilterParams, type FilterState } from '~/services/filters'
 import type { User, UsersState } from '~/interfaces'
+import { getItemsPerPage } from '~/utils/screen'
 
 export const useUsersStore = defineStore('users', {
   state: (): UsersState => ({
@@ -29,6 +30,10 @@ export const useUsersStore = defineStore('users', {
 
     hasActiveFilters: (state) => {
       return state.filterState.hasActiveFilters
+    },
+
+    getItemsPerPage: (state) => {
+      return getItemsPerPage()
     }
   },
 
@@ -36,11 +41,13 @@ export const useUsersStore = defineStore('users', {
     async loadUsers(page: number = 1) {
       this.loading = true
       try {
-        const response = await usersService.getUsers(page, this.itemsPerPage)
+        const itemsPerPage = this.getItemsPerPage
+        const response = await usersService.getUsers(page, itemsPerPage)
         this.allUsers = response.data
         this.currentPage = response.currentPage
         this.totalRecords = response.totalCount
         this.totalPages = response.totalPages
+        this.itemsPerPage = itemsPerPage
       } catch (error) {
         console.error('Erro ao carregar usuários:', error)
         throw error
@@ -52,11 +59,13 @@ export const useUsersStore = defineStore('users', {
     async searchUsers(filters: FilterParams, page: number = 1) {
       this.loading = true
       try {
-        const response = await usersService.searchUsers(filters, page, this.itemsPerPage)
+        const itemsPerPage = this.getItemsPerPage
+        const response = await usersService.searchUsers(filters, page, itemsPerPage)
         this.allUsers = response.data
         this.currentPage = response.currentPage
         this.totalRecords = response.totalCount
         this.totalPages = response.totalPages
+        this.itemsPerPage = itemsPerPage
         this.filters = filters
         this.filterState = filterService.createFilterState(filters)
       } catch (error) {

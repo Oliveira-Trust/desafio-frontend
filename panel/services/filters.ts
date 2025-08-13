@@ -1,5 +1,3 @@
-import type { User } from '~/interfaces'
-
 export interface FilterParams {
   nome?: string
   sobrenome?: string

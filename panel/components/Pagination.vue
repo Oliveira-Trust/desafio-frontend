@@ -54,30 +54,43 @@ const getPageInfo = () => {
 </script>
 
 <template>
-	<div class="flex items-center justify-between mt-6 border-t border-gray-200 py-6 px-6">
-		<div class="text-sm text-gray-400">
-			{{ getPageInfo().end }} registro(s)
+	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-6 border-t border-gray-200 py-4 sm:py-6 px-4 sm:px-6 gap-4">
+		<div class="text-sm text-gray-400 text-center sm:text-left">
+			<span v-if="totalRecords > 0">
+				{{ getPageInfo().start }}-{{ getPageInfo().end }} de {{ totalRecords }} registro(s)
+			</span>
+			<span v-else>
+				0 registro(s)
+			</span>
 		</div>
-		<div class="flex items-center space-x-2">
+		<div class="flex items-center justify-center space-x-2">
 			<button @click="handlePageChange(currentPage - 1)" :disabled="currentPage === 1"
-				class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed">
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				class="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed rounded-lg border border-gray-200">
+				<svg class="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
 				</svg>
 			</button>
 
-			<button v-for="page in getVisiblePages()" :key="page" @click="handlePageChange(page)" :class="[
-				'w-7 h-7 flex items-center justify-center rounded-lg text-xs py-4',
-				page === currentPage
-					? 'bg-blue-600 text-white'
-					: 'text-gray-600 hover:text-gray-900 border border-gray-200'
-			]">
-				{{ page }}
-			</button>
+			<div class="hidden sm:flex items-center space-x-2">
+				<button v-for="page in getVisiblePages()" :key="page" @click="handlePageChange(page)" :class="[
+					'w-7 h-7 flex items-center justify-center rounded-lg text-xs py-4',
+					page === currentPage
+						? 'bg-blue-600 text-white'
+						: 'text-gray-600 hover:text-gray-900 border border-gray-200'
+				]">
+					{{ page }}
+				</button>
+			</div>
+
+			<div class="sm:hidden flex items-center space-x-2">
+				<span class="text-sm text-gray-600 px-3 py-2">
+					{{ currentPage }} de {{ totalPages }}
+				</span>
+			</div>
 
 			<button @click="handlePageChange(currentPage + 1)" :disabled="currentPage === totalPages"
-				class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed">
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				class="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed rounded-lg border border-gray-200">
+				<svg class="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
 				</svg>
 			</button>

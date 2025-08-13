@@ -47,20 +47,20 @@ onUnmounted(() => {
 <template>
 	<Teleport to="body">
 		<Transition name="modal">
-			<div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center">
+			<div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4">
 				<div class="fixed inset-0 bg-black bg-opacity-50" @click="handleBackdropClick"></div>
 
 				<div :class="[
-					'relative bg-white rounded-lg shadow-xl max-h-[90vh] overflow-y-auto',
-					size === 'sm' ? 'w-full max-w-md' :
-						size === 'md' ? 'w-full max-w-lg' :
-							size === 'lg' ? 'w-full max-w-2xl' :
-								size === 'xl' ? 'w-full max-w-4xl' :
-									'w-full max-w-lg'
+					'relative bg-white rounded-lg shadow-xl max-h-[90vh] overflow-y-auto w-full',
+					size === 'sm' ? 'max-w-md' :
+						size === 'md' ? 'max-w-lg' :
+							size === 'lg' ? 'max-w-2xl' :
+								size === 'xl' ? 'max-w-4xl' :
+									'max-w-lg'
 				]">
-					<div class="p-12">
+					<div class="p-6 sm:p-12">
 						<div class="flex items-center justify-between mb-4">
-							<h2 class="text-xl font-bold text-gray-900">{{ title }}</h2>
+							<h2 class="text-lg sm:text-xl font-bold text-gray-900">{{ title }}</h2>
 						</div>
 
 						<div class="border-t border-gray-200 mb-6"></div>

@@ -26,9 +26,24 @@ export interface ModalProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
+export interface Currency {
+  code: string
+  name: string
+}
+
+export interface CurrencyConversion {
+  from: string
+  to: string
+  amount: number
+  convertedAmount: number
+  rate: number
+}
+
 export interface WalletFormData {
   nome: string
   sobrenome: string
   email: string
   valor_compra: string
+  moeda_origem: string
+  moeda_destino: string
 }
