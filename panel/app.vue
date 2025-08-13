@@ -3,5 +3,7 @@
         <AppHeader />
 
         <NuxtPage />
+
+        <AppFooter />
     </div>
 </template>
