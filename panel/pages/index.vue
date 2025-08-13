@@ -107,32 +107,31 @@ onMounted(() => {
 			</div>
 
 			<div class="bg-white rounded-lg shadow-lg shadow-gray-200">
-				<div class="p-6">
-					<div class="flex items-center justify-between mb-4">
-						<div class="flex items-center space-x-4">
-							<h2 class="text-lg font-semibold text-gray-900">Carteiras</h2>
-							<div v-if="usersStore.hasActiveFilters" class="flex items-center space-x-2">
-								<span class="text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-									Filtros ativos
-								</span>
-								<button @click="handleClearFilters" class="text-sm text-red-600 hover:text-red-800">
-									Limpar
-								</button>
-							</div>
+				<div class="flex items-center justify-between px-6 py-6">
+					<div class="flex items-center space-x-4">
+						<h2 class="text-lg font-semibold text-gray-900">Carteiras</h2>
+						<div v-if="usersStore.hasActiveFilters" class="flex items-center space-x-2">
+							<span class="text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+								Filtros ativos
+							</span>
+							<button @click="handleClearFilters" class="text-sm text-red-600 hover:text-red-800">
+								Limpar
+							</button>
 						</div>
-						<AppButton variant="outline" @click="handleExportCSV">
-							Exportar CSV
-						</AppButton>
 					</div>
-
-					<div v-if="usersStore.loading" class="flex justify-center items-center py-8">
-						<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-					</div>
-					<DataTable v-else :headers="tableHeaders" :data="usersStore.paginatedUsers" @edit="handleEdit" @delete="handleDelete" />
-
-					<Pagination :current-page="usersStore.currentPage" :total-pages="usersStore.totalPages" :total-records="usersStore.totalRecords"
-						:items-per-page="usersStore.itemsPerPage" @page-change="handlePageChange" />
+					<AppButton variant="outline" @click="handleExportCSV">
+						Exportar CSV
+					</AppButton>
 				</div>
+
+				<div v-if="usersStore.loading" class="flex justify-center items-center py-8">
+					<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+				</div>
+
+				<DataTable class="px-6" v-else :headers="tableHeaders" :data="usersStore.paginatedUsers" @edit="handleEdit" @delete="handleDelete" />
+
+				<Pagination :current-page="usersStore.currentPage" :total-pages="usersStore.totalPages" :total-records="usersStore.totalRecords"
+					:items-per-page="usersStore.itemsPerPage" @page-change="handlePageChange" />
 			</div>
 		</main>
 		
