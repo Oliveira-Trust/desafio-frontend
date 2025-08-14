@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+button {
+  cursor: pointer;
+}
+.container {
+  background: #f5f6f8;
+}
